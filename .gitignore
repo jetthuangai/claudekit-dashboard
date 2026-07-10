@@ -1,0 +1,29 @@
+# ClaudeKit Dashboard — publish-safety gitignore
+# Tracked set is ONLY the static site: index.html, assets/, data/, scripts/, README.md, .nojekyll
+# Everything below stays local. NO negation rules (audit: git ls-files before any push).
+
+# Paid ClaudeKit Engineer kit — licensed content, never publish
+.claude/
+
+# Internal plans & docs (reports reference the private marketing repo)
+plans/
+docs/
+
+# Paid-kit release metadata
+release-manifest.json
+.repomixignore
+
+# Build cache (marketing repo raw fetches)
+scripts/.cache/
+
+# Node
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env & secrets
+.env*
+*.pem
