@@ -162,6 +162,16 @@ footer .dot { color: var(--pink); }
   color: transparent;
 }
 
+/* Forced colors (Windows High Contrast) strips the background image, which would leave
+   the clipped text transparent — i.e. invisible. Repaint it as ordinary text. */
+@media (forced-colors: active) {
+  .grad {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+
 .brand .sub {
   font-size: var(--fs-sm);
   line-height: 1.5;
@@ -973,4 +983,8 @@ aside::-webkit-scrollbar { display: none; }
     grid-template-rows: auto; /* reset the two-row track from ≥768, else a dead row + gap is left behind */
     grid-template-areas: "profile filters content";
   }
+
+  /* The 520px cap leaves a ~570px hole between the brand and the right-pinned search
+     once .wrap reaches 1500. Let the field take that space instead. */
+  .search { max-width: 720px; }
 }
