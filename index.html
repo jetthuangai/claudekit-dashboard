@@ -90,6 +90,61 @@
   </div>
 
   <div class="layout">
+    <!-- Profile card: STATIC. Must stay a sibling of #sidebar-filters —
+         render.sidebar() clears that node on every kit switch / favourite toggle. -->
+    <section class="profile" aria-labelledby="pf-name">
+      <img class="pf-avatar" src="assets/img/jett-huang.jpg" width="96" height="96"
+           alt="Ảnh chân dung Jett Huang" decoding="async">
+      <h2 class="pf-name" id="pf-name">Jett Huang <span class="grad">AI</span></h2>
+      <p class="pf-tagline">Web · AI · Automation</p>
+
+      <h3 class="pf-h">Giải pháp cung cấp</h3>
+      <ul class="pf-list">
+        <li>Xây dựng Web App, Web bán hàng, Landing Page</li>
+        <li>Research &amp; Developing các giải pháp AI vào kinh doanh, dịch vụ</li>
+        <li>Triển khai Server, Serverless — tối ưu tối đa chi phí vận hành</li>
+        <li>Xây dựng Workflow Automation: Marketing, ComfyUI, AI Generate</li>
+      </ul>
+
+      <h3 class="pf-h">Kỹ năng</h3>
+      <ul class="pf-skills">
+        <li>ComfyUI</li>
+        <li>Claude Code</li>
+        <li>Serverless</li>
+        <li>Docker</li>
+        <li>Python</li>
+        <li>Database</li>
+        <li>AI Generate</li>
+        <li>AI Agent</li>
+        <li>LLM / RAG</li>
+        <li>n8n Automation</li>
+        <li>VPS / Linux</li>
+        <li>API Integration</li>
+      </ul>
+
+      <h3 class="pf-h">Liên hệ</h3>
+      <ul class="pf-contact">
+        <li>
+          <a href="tel:+84947397868">
+            <span class="pf-ico" aria-hidden="true">💬</span>
+            <span class="pf-ctext"><b>Zalo / WhatsApp</b>+84 947 397 868</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/nhathoangfoto" target="_blank" rel="noopener">
+            <span class="pf-ico" aria-hidden="true">📘</span>
+            <span class="pf-ctext"><b>Facebook</b>nhathoangfoto</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:jetthuangai@gmail.com">
+            <span class="pf-ico" aria-hidden="true">✉️</span>
+            <span class="pf-ctext"><b>Email</b>jetthuangai@gmail.com</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
     <!-- Sidebar filters: mount #sidebar-filters — JS renders labels, items, type chips -->
     <aside id="sidebar-filters" aria-label="Bộ lọc">
       <p class="empty-note">Đang tải bộ lọc...</p>

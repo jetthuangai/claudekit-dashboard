@@ -95,7 +95,9 @@ button {
 
 /* ============ 3. LAYOUT ============ */
 .wrap {
-  max-width: 1240px;
+  /* 1500 (not 1240) so the ≥1440 three-column split still leaves the card grid
+     the 812px it needs for three cards. */
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 var(--sp-4); /* 16px mobile → 24px ≥768 */
   position: relative;
@@ -153,7 +155,7 @@ footer .dot { color: var(--pink); }
   white-space: nowrap;
 }
 
-.brand h1 .grad {
+.grad {
   background: var(--grad-pink);
   -webkit-background-clip: text;
   background-clip: text;
@@ -302,6 +304,135 @@ kbd {
   color: var(--text-muted);
   display: none; /* shown ≥768 */
 }
+
+/* ---- 4.45 Profile card (§4) ----
+   Static business card. Left-most column ≥1440; stacks above the filters below that.
+   Deliberately NOT an <aside>: the bare `aside` rules below would turn it into
+   a horizontal scroll strip on mobile. */
+.profile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+  text-align: center;
+}
+
+.pf-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--pink);
+  box-shadow: 0 0 0 4px var(--pink-dim);
+}
+
+.pf-name {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.pf-tagline {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.pf-h {
+  margin-top: var(--sp-5);
+  margin-bottom: var(--sp-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-soft-pink);
+  text-align: left;
+}
+
+.pf-list {
+  list-style: none;
+  text-align: left;
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.pf-list li {
+  position: relative;
+  padding-left: var(--sp-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Pink bullet: ::before instead of list-style so the dot picks up the accent colour */
+.pf-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.pf-skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  justify-content: flex-start;
+}
+
+.pf-skills li {
+  padding: var(--sp-1) var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-chip);
+  background: var(--surface-2);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.pf-contact {
+  list-style: none;
+  display: grid;
+  gap: var(--sp-1);
+}
+
+.pf-contact a {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  border-radius: var(--r-input);
+  text-align: left;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.pf-contact a:hover { background: var(--pink-dim); }
+
+.pf-ico { font-size: var(--fs-md); line-height: 1; flex-shrink: 0; }
+
+.pf-ctext {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  overflow-wrap: anywhere; /* keeps the email inside the 240px column */
+}
+
+.pf-ctext b {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.pf-contact a:hover .pf-ctext,
+.pf-contact a:hover .pf-ctext b { color: var(--text-soft-pink); }
 
 /* ---- 4.5 Sidebar filters (§4) ----
    Mobile: horizontal chip scroll. ≥768: sticky card. */
@@ -774,7 +905,23 @@ aside::-webkit-scrollbar { display: none; }
   .stat + .stat { padding-left: var(--sp-5); }
   .stats .hint { display: block; }
 
-  .layout { grid-template-columns: 240px 1fr; }
+  /* Left column stacks profile over filters; card grid keeps the full right column.
+     True 3-column split waits for ≥1440 (see below) — forcing it here would squeeze
+     the grid under the 812px it needs for three cards. */
+  .layout {
+    grid-template-columns: 240px 1fr;
+    /* Row 2 must be 1fr, not auto: a row-spanning item distributes its extra height
+       equally across intrinsic tracks, so an auto row 2 would let the tall card grid
+       inflate the profile row and shove the filters ~1200px down the page. */
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "profile content"
+      "filters content";
+  }
+
+  .profile { grid-area: profile; }
+  #sidebar-filters { grid-area: filters; }
+  .content { grid-area: content; }
 
   aside {
     display: block;
@@ -813,4 +960,17 @@ aside::-webkit-scrollbar { display: none; }
 /* ---- Desktop ≥1024px ---- */
 @media (min-width: 1024px) {
   .stats { margin: var(--sp-5) 0 var(--sp-6); }
+}
+
+/* ---- Wide ≥1440px: profile becomes its own left-most column ----
+   The two 240px rails + gaps cost 528px, and the card grid needs 812px for three cards.
+   Split any earlier and the grid drops to two cards — widening the window would then
+   paradoxically show FEWER cards. 1440 (not 1400) because a 1400px window has a ~1383px
+   layout viewport, leaving the grid 807px: five short. At 1440 it gets 864px. */
+@media (min-width: 1440px) {
+  .layout {
+    grid-template-columns: 240px 240px 1fr;
+    grid-template-rows: auto; /* reset the two-row track from ≥768, else a dead row + gap is left behind */
+    grid-template-areas: "profile filters content";
+  }
 }
