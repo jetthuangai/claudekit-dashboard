@@ -20,12 +20,13 @@ import { execFile } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
-import { parseDetail } from './lib/detail-parser.mjs';
+import { parseDetail, cleanProse, cleanFlagDesc } from './lib/detail-parser.mjs';
 
 const execFileAsync = promisify(execFile);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CACHE_DIR = path.join(ROOT, 'scripts', '.cache');
 const VI_CONTENT_PATH = path.join(ROOT, 'scripts', 'vi-content.json');
+const VI_DETAILS_PATH = path.join(ROOT, 'scripts', 'vi-details.json');
 const OUT_PATH = path.join(ROOT, 'data', 'data.js');
 // Published alongside data.js. This is DERIVED metadata (flags, examples, descriptions), not
 // the kits' raw source — those stay in .claude/ and scripts/.cache/, both gitignored.
@@ -507,6 +508,34 @@ async function main() {
   const details = {};
   for (const id of [...DETAILS.keys()].sort()) details[id] = DETAILS.get(id);
 
+  /* Vietnamese overlay. The extractors pull English out of the source files; scripts/vi-details.json
+     carries the translation, keyed by the SAME ids. Applying it here means the UI never has to know
+     two languages exist — details.js simply ships Vietnamese. Anything without a translation keeps
+     its English text rather than going blank. Command lines are keyed by their exact original string,
+     so a bare `/ck:ship beta` (nothing to translate) is absent from the map and passes through. */
+  const viDetails = fs.existsSync(VI_DETAILS_PATH)
+    ? JSON.parse(fs.readFileSync(VI_DETAILS_PATH, 'utf8'))
+    : {};
+  const viStats = { overview: 0, whenToUse: 0, flags: 0, examples: 0 };
+  for (const [id, vi] of Object.entries(viDetails)) {
+    const d = details[id];
+    if (!d) throw new Error(`vi-details.json has an id absent from the extracted set: ${id}`);
+    // cleanProse again on the way in: a translator working from the raw English carries the
+    // source's artefacts (literal "\n", a dangling "Examples:") straight into the Vietnamese.
+    if (vi.overview) { d.overview = cleanProse(vi.overview); viStats.overview++; }
+    if (vi.whenToUse) { d.whenToUse = cleanProse(vi.whenToUse); viStats.whenToUse++; }
+    if (vi.flags) {
+      d.flags = d.flags.map((f) =>
+        vi.flags[f.flag] ? { ...f, desc: cleanFlagDesc(vi.flags[f.flag]) } : f
+      );
+      viStats.flags++;
+    }
+    if (vi.examples) {
+      d.examples = d.examples.map((e) => vi.examples[e] || e);
+      viStats.examples++;
+    }
+  }
+
   const withFlags = Object.values(details).filter((d) => d.flags.length).length;
   const withExamples = Object.values(details).filter((d) => d.examples.length).length;
   const withWhen = Object.values(details).filter((d) => d.whenToUse).length;
@@ -540,6 +569,29 @@ async function main() {
     .flatMap(([id, d]) => d.examples.filter((e) => dialogue.test(e)).map((e) => `${id} :: ${e.slice(0, 60)}`));
   if (polluted.length) {
     throw new Error(`examples contain dialogue markup (${polluted.length}):\n  ` + polluted.slice(0, 5).join('\n  '));
+  }
+
+  /* Nothing may reach the UI still carrying the source's escaping or a heading whose body was
+     stripped. Both shipped once, and the Vietnamese overlay reintroduced them because the
+     translators worked from the unclean English. */
+  const LITERAL_NEWLINE = String.fromCharCode(92) + 'n';
+  const artefacts = [];
+  for (const [id, d] of Object.entries(details)) {
+    const fields = [d.overview, d.whenToUse, ...d.flags.map((f) => f.desc), ...d.examples];
+    for (const f of fields) {
+      if (f.includes(LITERAL_NEWLINE)) artefacts.push(`${id} :: literal newline :: ${f.slice(0, 50)}`);
+      if (/(?:Examples?|Ví dụ)\s*:\s*$/i.test(f)) artefacts.push(`${id} :: dangling heading :: ${f.slice(-40)}`);
+      if (/^(?:"[^"]*"|'[^']*'|\d+)\)\s*:/.test(f)) artefacts.push(`${id} :: stale default :: ${f.slice(0, 50)}`);
+    }
+  }
+  if (artefacts.length) {
+    throw new Error(`extraction artefacts reached the output (${artefacts.length}):\n  ` + artefacts.slice(0, 6).join('\n  '));
+  }
+
+  /* Vietnamese is the whole point of this dashboard. If the overlay stops applying, fail loudly
+     rather than quietly shipping an English UI. */
+  if (viStats.overview < 250) {
+    throw new Error(`Vietnamese overlay applied to only ${viStats.overview} overviews (expected ~300) — is scripts/vi-details.json stale?`);
   }
 
   const data = {

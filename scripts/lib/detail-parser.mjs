@@ -19,6 +19,20 @@ const MAX_EXAMPLES = 6;
 /** Absolute filesystem paths that a fenced block may contain; never a slash command. */
 const FS_PATH = /^\/(usr|home|etc|var|opt|tmp|bin|sbin|lib|mnt|media|root|proc|sys|dev|srv|boot|run|users)(\/|$)/i;
 
+/** A cell holding nothing but reference filenames — a docs-routing table, not a flag description. */
+const FILE_LIST = /^[\w./-]+\.md(\s*,\s*[\w./-]+\.md)*$/i;
+
+/**
+ * An earlier parser mistook the colon inside `(default: "a,b")` for the description separator and
+ * left the tail — `"a,b"): Capture ratios` — as the description. Translations were made from that,
+ * so the fragment survives in the Vietnamese overlay even now the parser is fixed. Deliberately
+ * narrow: only a quoted string or a number followed by `):`, never arbitrary prose.
+ */
+const STALE_DEFAULT = /^(?:"[^"]*"|'[^']*'|\d+)\)\s*:\s*/;
+
+/** Trailing heading whose body was stripped with the <example> blocks — in either language. */
+const DANGLING_EXAMPLES = /\s*(?:Examples?|Ví dụ)\s*:\s*$/i;
+
 /** Strip inline markdown emphasis/backticks that would render as literal noise. */
 function clean(s) {
   return (s || '')
@@ -37,13 +51,36 @@ function stripFrontmatter(text) {
 }
 
 /**
+ * Normalise a block of prose from the frontmatter.
+ *
+ * The frontmatter stores newlines as the two characters `\` + `n`, which are NOT whitespace —
+ * so collapsing whitespace leaves them behind and the UI renders a literal "\n". Unescape before
+ * cleaning. Stripping the <example> blocks also tends to leave a dangling "Examples:" heading
+ * with nothing under it; drop that too.
+ *
+ * Exported because the Vietnamese overlay needs the exact same treatment: a translator working
+ * from the raw text will faithfully carry the artefacts across.
+ */
+export function cleanProse(s) {
+  if (!s) return '';
+  const text = s
+    .replace(/\\n/g, '\n')
+    .replace(/<example>[\s\S]*?<\/example>/g, ' ')
+    .replace(/<\/?(example|commentary)>/g, ' ');
+  return truncate(clean(text).replace(DANGLING_EXAMPLES, '').trim(), MAX_OVERVIEW);
+}
+
+/** Flag description, with the stale `(default: …)` fragment removed. See STALE_DEFAULT. */
+export function cleanFlagDesc(s) {
+  return clean((s || '').replace(STALE_DEFAULT, ''));
+}
+
+/**
  * Full description minus the <example> blocks (those become `examples` instead).
  * build-data.mjs keeps only the first sentence for the card; the modal wants the rest.
  */
 export function parseOverview(description) {
-  if (!description) return '';
-  const withoutExamples = description.replace(/<example>[\s\S]*?<\/example>/g, ' ');
-  return truncate(clean(withoutExamples), MAX_OVERVIEW);
+  return cleanProse(description);
 }
 
 /**
@@ -77,15 +114,21 @@ export function parseFlags(text) {
   const body = stripFrontmatter(text);
   const found = new Map();
 
-  const bullet = /^\s*[-*]\s*`?(--[a-z][\w-]*)`?[^:\n]{0,30}?[:—–-]\s+(.+)$/gim;
+  /* Between the flag and its separator there may be a parenthetical — `*(default)*`, and worse,
+     `(default: "a,b,c")`, whose colon would otherwise be mistaken for the separator and leave the
+     description as `"a,b,c"): Capture ratios`. So skip whole (...) groups instead of scanning for
+     the first colon. */
+  const bullet = /^\s*[-*]\s*`?(--[a-z][\w-]*)`?((?:[^:(\n]|\([^)\n]*\)){0,40}?)[:—–-]\s+(.+)$/gim;
   const table = /^\s*\|\s*`?(--[a-z][\w-]*)`?\s*\|\s*([^|\n]+?)\s*\|/gim;
 
-  for (const re of [bullet, table]) {
+  for (const [re, descGroup] of [[bullet, 3], [table, 2]]) {
     let m;
     while ((m = re.exec(body)) !== null) {
       const flag = m[1];
-      const desc = clean(m[2]);
-      if (!desc || found.has(flag)) continue;
+      const desc = clean(m[descGroup]);
+      // A cell listing only reference files is a "which docs does this flag load" table, not a
+      // description of what the flag DOES. preview's 3-column nav table matched here otherwise.
+      if (!desc || found.has(flag) || FILE_LIST.test(desc)) continue;
       found.set(flag, truncate(desc, MAX_FLAG_DESC));
     }
   }

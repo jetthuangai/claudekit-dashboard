@@ -3,144 +3,144 @@
 // (.claude/, scripts/.cache/) are gitignored and never published.
 window.CK_DETAILS = {
   "eng-agent-brainstormer": {
-    "overview": "Use this agent when you need to brainstorm software solutions, evaluate architectural approaches, or debate technical decisions before implementation. Examples: - - -",
+    "overview": "Dùng agent này khi cần cùng nhau nghĩ ra giải pháp phần mềm, cân nhắc các hướng kiến trúc, hoặc mổ xẻ một quyết định kỹ thuật trước khi bắt tay vào code.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I want to add real-time notifications to my web app",
-      "Should I migrate from REST to GraphQL for my API?",
-      "I'm struggling with how to handle file uploads that can be several GB in size"
+      "Tôi muốn thêm thông báo real-time cho web app của mình",
+      "Tôi có nên chuyển API từ REST sang GraphQL không?",
+      "Tôi đang bí chỗ xử lý upload file nặng tới vài GB"
     ]
   },
   "eng-agent-code-reviewer": {
-    "overview": "Comprehensive code review with scout-based edge case detection. Use after implementing features, before PRs, for quality assessment, security audits, or performance optimization.",
+    "overview": "Review code toàn diện, dùng scout để phát hiện trường hợp biên. Dùng sau khi làm xong tính năng, trước khi mở PR, khi cần đánh giá chất lượng, rà soát bảo mật hoặc tối ưu hiệu năng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-agent-code-simplifier": {
-    "overview": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless instructed otherwise.",
+    "overview": "Dọn lại code cho gọn, rõ và dễ bảo trì mà vẫn giữ nguyên toàn bộ chức năng. Mặc định chỉ đụng vào phần code vừa sửa gần đây, trừ khi bạn yêu cầu khác.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-agent-debugger": {
-    "overview": "Use this agent when you need to investigate issues, analyze system behavior, diagnose performance problems, examine database structures, collect and analyze logs from servers or CI/CD pipelines, run tests for debugging purposes, or optimize system performance. This includes troubleshooting errors, identifying bottlenecks, analyzing failed deployments, investigating test failures, and creating diagnostic reports. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần điều tra lỗi, phân tích hành vi hệ thống, chẩn đoán vấn đề hiệu năng, xem xét cấu trúc database, thu thập và phân tích log từ server hoặc pipeline CI/CD, chạy test để gỡ lỗi, hoặc tối ưu hiệu năng hệ thống. Bao gồm cả việc truy tìm nguyên nhân lỗi, tìm điểm nghẽn, phân tích deploy thất bại, điều tra test fail và viết báo cáo chẩn đoán.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "The /api/users endpoint is throwing 500 errors",
-      "The GitHub Actions workflow keeps failing on the test step",
-      "The application response times have increased by 300% since yesterday"
+      "Endpoint /api/users đang trả lỗi 500",
+      "Quy trình GitHub Actions cứ fail ở bước test",
+      "Thời gian phản hồi của ứng dụng tăng 300% so với hôm qua"
     ]
   },
   "eng-agent-docs-manager": {
-    "overview": "Use this agent when you need to manage technical documentation, establish implementation standards, analyze and update existing documentation based on code changes, write or update Product Development Requirements (PDRs), organize documentation for developer productivity, or produce documentation summary reports. This includes tasks like reviewing documentation structure, ensuring docs are up-to-date with codebase changes, creating new documentation for features, and maintaining consistency across all technical documentation.",
+    "overview": "Dùng agent này khi cần quản lý tài liệu kỹ thuật, đặt ra chuẩn triển khai, phân tích và cập nhật tài liệu cũ theo thay đổi của code, viết hoặc cập nhật tài liệu yêu cầu phát triển sản phẩm (PDR), sắp xếp tài liệu cho dev làm việc nhanh hơn, hoặc làm báo cáo tổng hợp tài liệu. Bao gồm các việc như rà soát cấu trúc tài liệu, đảm bảo tài liệu bám sát mã nguồn, viết tài liệu mới cho tính năng, và giữ mọi tài liệu kỹ thuật nhất quán với nhau.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-agent-fullstack-developer": {
-    "overview": "Execute implementation phases from parallel plans. Handles backend (Node.js, APIs, databases), frontend (React, TypeScript), and infrastructure tasks. Designed for parallel execution with strict file ownership boundaries. Use when implementing a specific phase from /ck:plan --parallel output.",
+    "overview": "Thực thi các phase triển khai lấy từ kế hoạch chạy song song. Lo được cả backend (Node.js, API, database), frontend (React, TypeScript) lẫn hạ tầng. Thiết kế để chạy song song với ranh giới sở hữu file rõ ràng. Dùng khi cần làm một phase cụ thể từ kết quả của /ck:plan --parallel.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-agent-git-manager": {
-    "overview": "Stage, commit, and push code changes with conventional commits. Use when user says \"commit\", \"push\", or finishes a feature/fix.",
+    "overview": "Đưa code vào staging, commit và push theo chuẩn conventional commits. Dùng khi bạn nói \"commit\", \"push\", hoặc vừa làm xong một tính năng/sửa xong lỗi.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-agent-journal-writer": {
-    "overview": "Use this agent when:\\n- A test suite fails repeatedly despite multiple fix attempts\\n- A critical bug is discovered in production or staging\\n- An implementation approach proves fundamentally flawed and requires complete redesign\\n- External dependencies (APIs, services, libraries) cause blocking issues\\n- Performance bottlenecks are discovered that significantly impact user experience\\n- Security vulnerabilities are identified\\n- Database migrations fail or cause data integrity issues\\n- CI/CD pipelines break unexpectedly\\n- Integration conflicts arise between major system components\\n- Technical debt reaches a critical threshold requiring immediate attention\\n- A feature implementation takes significantly longer than estimated\\n- Architectural decisions prove problematic in practice\\n\\nExamples:\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi: - Bộ test fail đi fail lại dù đã sửa nhiều lần - Phát hiện lỗi nghiêm trọng trên production hoặc staging - Hướng triển khai sai từ gốc, phải thiết kế lại toàn bộ - Phụ thuộc bên ngoài (API, dịch vụ, thư viện) gây tắc nghẽn - Phát hiện điểm nghẽn hiệu năng ảnh hưởng rõ đến trải nghiệm người dùng - Phát hiện lỗ hổng bảo mật - Migration database fail hoặc làm hỏng tính toàn vẹn dữ liệu - Pipeline CI/CD đột nhiên hỏng - Xung đột tích hợp giữa các thành phần lớn của hệ thống - Nợ kỹ thuật chạm ngưỡng nguy hiểm, phải xử lý ngay - Một tính năng làm lâu hơn hẳn so với ước tính - Quyết định về kiến trúc bộc lộ vấn đề khi chạy thực tế",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "The Sepay webhook tests keep failing with connection timeouts. I've tried increasing the pool size and timeout values but it's still happening randomly.",
-      "We just realized that the GitHub invitation system doesn't properly validate user permissions before granting repository access. This could allow unauthorized users to access private repos.",
-      "The database schema migration we planned completely broke the order processing system. We need to roll back and rethink our approach."
+      "Test webhook Sepay cứ fail vì timeout kết nối. Tôi đã tăng pool size và giá trị timeout rồi mà vẫn thỉnh thoảng bị.",
+      "Bọn tôi vừa phát hiện hệ thống mời qua GitHub không kiểm tra quyền người dùng đúng cách trước khi cấp quyền truy cập repo. Người lạ có thể vào được repo riêng tư.",
+      "Migration schema database mà bọn tôi lên kế hoạch đã làm hỏng toàn bộ hệ thống xử lý đơn hàng. Cần roll back và tính lại hướng đi."
     ]
   },
   "eng-agent-planner": {
-    "overview": "Use this agent when you need to research, analyze, and create comprehensive implementation plans for new features, system architectures, or complex technical solutions. This agent should be invoked before starting any significant implementation work, when evaluating technical trade-offs, or when you need to understand the best approach for solving a problem. Examples:",
+    "overview": "Dùng agent này khi cần nghiên cứu, phân tích và lập kế hoạch triển khai đầy đủ cho tính năng mới, kiến trúc hệ thống, hoặc giải pháp kỹ thuật phức tạp. Nên gọi agent này trước khi bắt tay vào việc lớn, khi cần cân nhắc được–mất về kỹ thuật, hoặc khi muốn biết hướng giải quyết nào là tốt nhất.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to add OAuth2 authentication to our app",
-      "We need to migrate from SQLite to PostgreSQL",
-      "The app is running slowly on older devices"
+      "Tôi cần thêm đăng nhập OAuth2 cho ứng dụng",
+      "Chúng tôi cần chuyển từ SQLite sang PostgreSQL",
+      "App chạy chậm trên các máy đời cũ"
     ]
   },
   "eng-agent-project-manager": {
-    "overview": "Use this agent when you need comprehensive project oversight and coordination. Examples:",
+    "overview": "Dùng agent này khi bạn cần theo dõi và điều phối toàn cảnh dự án.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I just finished implementing the WebSocket terminal communication feature. Can you check our progress and update the plan?",
-      "The backend-developer and tester agents have finished their work. What's our overall project status?"
+      "Tôi vừa làm xong tính năng giao tiếp terminal qua WebSocket. Kiểm tra tiến độ và cập nhật kế hoạch giúp tôi được không?",
+      "Agent backend-developer và tester đã làm xong phần của họ. Tình trạng chung của dự án hiện giờ thế nào?"
     ]
   },
   "eng-agent-researcher": {
-    "overview": "Use this agent when you need to conduct comprehensive research on software development topics, including investigating new technologies, finding documentation, exploring best practices, or gathering information about plugins, packages, and open source projects. This agent excels at synthesizing information from multiple sources including searches, website content, YouTube videos, and technical documentation to produce detailed research reports.",
+    "overview": "Dùng agent này khi cần nghiên cứu kỹ một chủ đề lập trình: tìm hiểu công nghệ mới, tra tài liệu, tìm best practice, hoặc thu thập thông tin về plugin, package, dự án mã nguồn mở. Agent này giỏi tổng hợp thông tin từ nhiều nguồn — tìm kiếm web, nội dung trang web, video YouTube, tài liệu kỹ thuật — để cho ra một báo cáo nghiên cứu chi tiết.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to understand the latest developments in React Server Components and best practices for implementation",
-      "Research the top authentication solutions for Flutter apps with biometric support",
-      "What are the current best practices for securing REST APIs in 2024?"
+      "Tôi cần nắm những cập nhật mới nhất về React Server Components và cách làm chuẩn khi triển khai",
+      "Nghiên cứu các giải pháp đăng nhập tốt nhất cho app Flutter có hỗ trợ sinh trắc học",
+      "Năm 2024 có những cách nào là chuẩn để bảo mật REST API?"
     ]
   },
   "eng-agent-tester": {
-    "overview": "Use this agent when you need to validate code quality through testing, including running unit and integration tests, analyzing test coverage, validating error handling, checking performance requirements, or verifying build processes. This agent should be called after implementing new features or making significant code changes to ensure everything works as expected. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần kiểm định chất lượng code bằng test: chạy unit test và integration test, phân tích độ phủ test, kiểm tra phần xử lý lỗi, đối chiếu yêu cầu hiệu năng, hoặc xác minh quá trình build. Nên gọi sau khi làm xong tính năng mới hoặc sửa code đáng kể, để chắc chắn mọi thứ vẫn chạy đúng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I've implemented the new user authentication endpoint",
-      "Can you check if our test coverage is still above 80%?",
-      "I've fixed the database connection issue in the auth module"
+      "Tôi vừa làm xong endpoint đăng nhập người dùng",
+      "Kiểm tra giúp xem độ phủ test còn trên 80% không?",
+      "Tôi vừa sửa lỗi kết nối database trong module auth"
     ]
   },
   "eng-agent-ui-ux-designer": {
-    "overview": "Use this agent when the user needs UI/UX design work including interface designs, wireframes, design systems, user research, responsive layouts, animations, or design documentation. Examples:\\n\\n \\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần làm UI/UX: thiết kế giao diện, wireframe, design system, nghiên cứu người dùng, layout responsive, animation hoặc tài liệu thiết kế.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need a modern landing page design for our SaaS product with a hero section, features, and pricing",
-      "I've added a new dashboard widget, can you review the design?",
-      "The buttons across different pages look inconsistent",
-      "Here's the new signup form I just built"
+      "Tôi cần thiết kế landing page hiện đại cho sản phẩm SaaS, có phần hero, tính năng và bảng giá",
+      "Tôi vừa thêm một widget mới cho dashboard, xem giúp phần thiết kế được không?",
+      "Các nút bấm ở những trang khác nhau trông không đồng nhất",
+      "Đây là form đăng ký tôi vừa dựng xong"
     ]
   },
   "eng-skill-agent-browser": {
-    "overview": "Automate browsers and apps with agent-browser. Use for testing, screenshots, forms, scraping, Browserbase/cloud browsers, and Electron when real Chrome cookies are not required.",
-    "whenToUse": "Default for browser automation that does not depend on the user's real Chrome login state: autonomous sessions, ad-hoc navigation, screenshots, form fills, scraping, multi-tab work, self-verifying build loops, Electron desktop apps, Slack automation, and Browserbase/cloud browsers. For low-level Chrome DevTools Protocol diagnostics, use the configured chrome-devtools-mcp bridge or client when one is available. Reason first: if the task does not need a specific real Chrome profile, Chrome DevTools MCP may use its normal navigation tools. If it does need profile/cookie/account state, use ck:chrome-profile; let chrome-profile open --json create the tab and bind to its returned selector before using MCP inspection tools.",
+    "overview": "Tự động hoá trình duyệt và ứng dụng bằng agent-browser. Dùng để test, chụp màn hình, điền form, thu thập dữ liệu, chạy Browserbase/trình duyệt trên cloud, và Electron — khi không cần cookie Chrome thật.",
+    "whenToUse": "Lựa chọn mặc định cho tự động hoá trình duyệt khi không phụ thuộc vào trạng thái đăng nhập Chrome thật của bạn: chạy tự động, điều hướng tuỳ ý, chụp màn hình, điền form, thu thập dữ liệu, làm việc nhiều tab, vòng lặp tự kiểm tra khi build, app desktop Electron, tự động hoá Slack, và trình duyệt Browserbase/cloud. Nếu cần chẩn đoán sâu ở tầng Chrome DevTools Protocol, hãy dùng cầu nối chrome-devtools-mcp hoặc client đã cấu hình sẵn nếu có. Cân nhắc trước: nếu việc không cần đúng một profile Chrome thật, Chrome DevTools MCP có thể dùng các công cụ điều hướng thông thường. Còn nếu cần trạng thái profile/cookie/tài khoản, hãy dùng ck:chrome-profile; để chrome-profile open --json mở tab và gắn vào selector nó trả về trước khi dùng các công cụ kiểm tra của MCP.",
     "flags": [],
     "examples": []
   },
   "eng-skill-agentize": {
-    "overview": "Convert a codebase, feature, or module into an AI-agent-friendly CLI and/or MCP server. Covers npm packaging, stdio/SSE/Streamable HTTP surfaces, credential resolution, docs, tests, CI, and a companion Claude skill for users who need an existing capability exposed as a reusable agent tool.",
+    "overview": "Biến mã nguồn, một tính năng hoặc một module thành công cụ CLI và/hoặc MCP server để AI dùng lại được. Bao gồm đóng gói npm, các giao diện stdio/SSE/Streamable HTTP, xử lý thông tin đăng nhập, tài liệu, test, CI, kèm một skill Claude đi cùng cho ai muốn phơi một khả năng có sẵn thành công cụ agent dùng lại được.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--both",
-        "desc": "monorepo with shared core/, cli/ package, mcp/ package"
+        "desc": "monorepo có core/ dùng chung, package cli/ và package mcp/"
       },
       {
         "flag": "--mcp",
-        "desc": "MCP server only"
+        "desc": "chỉ tạo MCP server"
       },
       {
         "flag": "--cli",
-        "desc": "CLI only"
+        "desc": "chỉ tạo CLI"
       },
       {
         "flag": "--auto",
-        "desc": "fully autonomous — analyze, decide, implement without questions"
+        "desc": "chạy hoàn toàn tự động — tự phân tích, tự quyết, tự làm, không hỏi lại"
       },
       {
         "flag": "--ask",
-        "desc": "after analysis, challenge the user with clarifying questions before implementing"
+        "desc": "phân tích xong sẽ hỏi lại bạn vài câu để chốt trước khi bắt tay làm"
       }
     ],
     "examples": [
@@ -148,226 +148,226 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-ai-artist": {
-    "overview": "Generate product mockups, marketing assets, brand visuals, and concept art via Nano Banana with 129 curated prompts. Mandatory validation interview refines style/mood/colors (use --skip to bypass). 3 modes: search, creative, wild. Styles: Ukiyo-e, Bento grid, cyberpunk, cinematic, vintage patent.",
+    "overview": "Tạo mockup sản phẩm, ảnh marketing, ảnh thương hiệu và concept art qua Nano Banana với 129 prompt tuyển chọn. Có phỏng vấn ngắn bắt buộc để chốt style/tông/màu (dùng --skip để bỏ qua). 3 chế độ: search, creative, wild. Style: Ukiyo-e, Bento grid, cyberpunk, điện ảnh, bằng sáng chế cổ điển.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--provider",
-        "desc": "auto (default), google, or openrouter"
+        "desc": "auto (mặc định), google, hoặc openrouter"
       },
       {
         "flag": "--model",
-        "desc": "flash2 (default, fast+quality), flash (previous), pro (quality/4K)"
+        "desc": "flash2 (mặc định, nhanh + đẹp), flash (bản cũ), pro (chất lượng cao/4K)"
       },
       {
         "flag": "--dry-run",
-        "desc": "Show prompt without generating"
+        "desc": "Chỉ hiện prompt, không tạo ảnh"
       },
       {
         "flag": "--skip",
-        "desc": "Bypass validation interview"
+        "desc": "Bỏ qua phần phỏng vấn chốt style"
       }
     ],
     "examples": []
   },
   "eng-skill-ai-multimodal": {
-    "overview": "Analyze images/audio/video with Gemini API (better vision than Claude). Generate images (Imagen 4, Nano Banana 2, MiniMax), videos (Veo 3, Hailuo), speech (MiniMax TTS), music (MiniMax). Use for vision analysis, transcription, OCR, design extraction, multimodal AI.",
+    "overview": "Phân tích ảnh/audio/video bằng Gemini API (nhìn ảnh tốt hơn Claude). Tạo ảnh (Imagen 4, Nano Banana 2, MiniMax), video (Veo 3, Hailuo), giọng nói (MiniMax TTS), nhạc (MiniMax). Dùng cho phân tích hình ảnh, gỡ băng, OCR, bóc tách thiết kế, AI đa phương thức.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-ask": {
-    "overview": "Answer technical and architectural questions with expert analysis. Use for design decisions, best practices evaluation, solution comparison.",
+    "overview": "Trả lời câu hỏi kỹ thuật và kiến trúc bằng phân tích chuyên sâu. Dùng cho quyết định thiết kế, đánh giá best practice, so sánh giải pháp.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-backend-development": {
-    "overview": "Build backends with Node.js, Python, Go (NestJS, FastAPI, Django). Use for REST/GraphQL/gRPC APIs, auth (OAuth, JWT), databases, microservices, security (OWASP), Docker/K8s.",
-    "whenToUse": "Designing RESTful, GraphQL, or gRPC APIs Building authentication/authorization systems Optimizing database queries and schemas Implementing caching and performance optimization OWASP Top 10 security mitigation Designing scalable microservices Testing strategies (unit, integration, E2E) CI/CD pipelines and deployment Monitoring and debugging production systems",
+    "overview": "Xây backend với Node.js, Python, Go (NestJS, FastAPI, Django). Dùng cho API REST/GraphQL/gRPC, đăng nhập (OAuth, JWT), database, microservice, bảo mật (OWASP), Docker/K8s.",
+    "whenToUse": "Thiết kế API REST, GraphQL hoặc gRPC. Làm hệ thống đăng nhập và phân quyền. Tối ưu truy vấn và schema database. Làm cache và tối ưu hiệu năng. Phòng chống OWASP Top 10. Thiết kế microservice mở rộng được. Chiến lược test (unit, integration, E2E). Pipeline CI/CD và triển khai. Giám sát và gỡ lỗi hệ thống production.",
     "flags": [],
     "examples": []
   },
   "eng-skill-better-auth": {
-    "overview": "Add authentication with Better Auth (TypeScript). Use for email/password, OAuth providers (Google, GitHub), 2FA/MFA, passkeys/WebAuthn, sessions, RBAC, rate limiting.",
-    "whenToUse": "Implementing auth in TypeScript/JavaScript applications Adding email/password or social OAuth authentication Setting up 2FA, passkeys, magic links, advanced auth features Building multi-tenant apps with organization support Managing sessions and user lifecycle Working with any framework (Next.js, Nuxt, SvelteKit, Remix, Astro, Hono, Express, etc.)",
+    "overview": "Thêm đăng nhập bằng Better Auth (TypeScript). Dùng cho email/mật khẩu, đăng nhập qua OAuth (Google, GitHub), 2FA/MFA, passkey/WebAuthn, phiên đăng nhập, phân quyền RBAC, giới hạn tần suất.",
+    "whenToUse": "Làm đăng nhập cho ứng dụng TypeScript/JavaScript. Thêm đăng nhập bằng email/mật khẩu hoặc mạng xã hội (OAuth). Cài 2FA, passkey, magic link và các tính năng đăng nhập nâng cao. Xây app đa tổ chức (multi-tenant). Quản lý phiên đăng nhập và vòng đời tài khoản. Làm việc với bất kỳ framework nào (Next.js, Nuxt, SvelteKit, Remix, Astro, Hono, Express...)",
     "flags": [],
     "examples": []
   },
   "eng-skill-bootstrap": {
-    "overview": "Bootstrap new projects with research, tech stack, design, planning, and implementation. Modes: full (default interactive), auto (explicit autonomous), fast (skip research), parallel (multi-agent).",
+    "overview": "Khởi tạo dự án mới từ đầu: nghiên cứu, chọn công nghệ, thiết kế, lập kế hoạch và code. Các chế độ: full (mặc định, có hỏi đáp), auto (tự chạy, phải yêu cầu rõ), fast (bỏ qua nghiên cứu), parallel (nhiều agent chạy song song).",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--full",
-        "desc": "Load references/workflow-full.md"
+        "desc": "Nạp references/workflow-full.md"
       },
       {
         "flag": "--auto",
-        "desc": "Load references/workflow-auto.md only when explicitly requested"
+        "desc": "Chỉ nạp references/workflow-auto.md khi bạn yêu cầu rõ ràng"
       },
       {
         "flag": "--fast",
-        "desc": "Load references/workflow-fast.md"
+        "desc": "Nạp references/workflow-fast.md"
       },
       {
         "flag": "--parallel",
-        "desc": "Load references/workflow-parallel.md"
+        "desc": "Nạp references/workflow-parallel.md"
       }
     ],
     "examples": [
-      "/ck:bootstrap \"Build a SaaS dashboard with auth\" --fast",
-      "/ck:bootstrap \"E-commerce platform with Stripe\" --parallel"
+      "/ck:bootstrap \"Làm dashboard SaaS có đăng nhập\" --fast",
+      "/ck:bootstrap \"Nền tảng thương mại điện tử dùng Stripe\" --parallel"
     ]
   },
   "eng-skill-brainstorm": {
-    "overview": "Brainstorm solutions with trade-off analysis and brutal honesty. Use for ideation, architecture decisions, technical debates, feature exploration, feasibility assessment, design discussions, problem-first inversion, HTML editorial reports, and AgentWiki publishing.",
+    "overview": "Cùng AI nghĩ ra giải pháp, phân tích được–mất một cách thẳng thắn. Dùng để tìm ý tưởng, chốt kiến trúc, tranh luận kỹ thuật, khám phá tính năng, đánh giá tính khả thi, bàn về thiết kế, lật ngược vấn đề, xuất báo cáo HTML và đăng lên AgentWiki.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--html",
-        "desc": "After the markdown brainstorm report is written, also create a self-contained editorial magazine HTML report using references/editorial-magazine-html.md."
+        "desc": "Sau khi viết xong báo cáo brainstorm dạng markdown, tạo thêm một báo cáo HTML kiểu tạp chí, chạy độc lập, theo references/editorial-magazine-html.md."
       },
       {
         "flag": "--wiki",
-        "desc": "After local report creation, publish the markdown and HTML outputs through agentwiki CLI when available, then AgentWiki MCP document/site tools if available. Report skipped publishing when unavailable."
+        "desc": "Sau khi tạo báo cáo ở máy, đăng bản markdown và HTML qua agentwiki CLI nếu có; nếu không thì dùng công cụ document/site của AgentWiki MCP. Nếu không có cách nào, báo lại là đã bỏ qua bước đăng."
       }
     ],
     "examples": []
   },
   "eng-skill-chrome-profile": {
-    "overview": "Target a real Google Chrome profile for browser automation through Chrome DevTools MCP. Provides the chrome-profile CLI, profile discovery, live DevTools probing guidance, setup playbooks, and URL-anchor tab selection.",
+    "overview": "Trỏ tới một profile Google Chrome thật để tự động hoá trình duyệt qua Chrome DevTools MCP. Có sẵn CLI chrome-profile, dò tìm profile, hướng dẫn thăm dò DevTools trực tiếp, playbook cài đặt và cách chọn tab theo URL neo.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-ck-autoresearch": {
-    "overview": "Autoresearch is the upstream meta-framework (Udit Goenka, MIT) for autonomous goal-directed iteration with safety guardrails. Locally split into 4 specialized skills. Start here to learn the pattern, then route to the right specialized skill.",
+    "overview": "Autoresearch là meta-framework gốc (Udit Goenka, giấy phép MIT) cho vòng lặp tự chạy hướng theo mục tiêu, có rào an toàn. Ở đây nó được tách thành 4 skill chuyên biệt. Bắt đầu từ đây để nắm cách hoạt động, rồi đi tới skill phù hợp.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-ck-code-review": {
-    "overview": "Review code quality with evidence-based rigor. Supports input modes: pending changes, PR number, commit hash, and codebase scan. Focuses on bugs, regressions, maintainability, reliability, and verification gaps.",
+    "overview": "Rà soát chất lượng code dựa trên bằng chứng. Nhận nhiều nguồn đầu vào: thay đổi chưa commit, số PR, mã commit, hoặc quét cả mã nguồn. Tập trung vào bug, lỗi hồi quy, khả năng bảo trì, độ tin cậy và những chỗ chưa được kiểm chứng.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--pending",
-        "desc": "Pending"
+        "desc": "Các thay đổi chưa commit"
       }
     ],
     "examples": []
   },
   "eng-skill-ck-debug": {
-    "overview": "Debug systematically with root cause analysis before fixes. Use for bugs, test failures, unexpected behavior, performance issues, call stack tracing, multi-layer validation, log analysis, CI/CD failures, database diagnostics, system investigation.",
-    "whenToUse": "Code-level: Test failures, bugs, unexpected behavior, build failures, integration problems System-level: Server errors, CI/CD pipeline failures, performance degradation, database issues, log analysis Always: Before claiming work complete",
+    "overview": "Gỡ lỗi bài bản: truy ra nguyên nhân gốc rồi mới sửa. Dùng cho lỗi, test fail, hành vi bất thường, vấn đề hiệu năng, truy vết call stack, kiểm tra nhiều tầng, phân tích log, CI/CD hỏng, chẩn đoán database, điều tra hệ thống.",
+    "whenToUse": "Mức code: test fail, lỗi, hành vi bất thường, build fail, lỗi tích hợp. Mức hệ thống: lỗi server, pipeline CI/CD fail, hiệu năng tụt, sự cố database, phân tích log. Luôn dùng: trước khi tuyên bố công việc đã xong.",
     "flags": [],
     "examples": []
   },
   "eng-skill-ck-graphify": {
-    "overview": "Build queryable knowledge graphs from code, docs, papers, and images. Use for codebase understanding, architecture analysis, cross-file relationship discovery, token-efficient navigation.",
-    "whenToUse": "Understanding unfamiliar codebase architecture before planning Discovering cross-file relationships and dependency chains Finding \"god nodes\" (most-connected concepts) in large projects Navigating by structure instead of grepping every file Preparing context-efficient codebase representation (71.5x fewer tokens vs raw files)",
+    "overview": "Dựng bản đồ tri thức truy vấn được từ code, tài liệu, bài báo và hình ảnh. Dùng để hiểu mã nguồn, phân tích kiến trúc, tìm quan hệ giữa các file, và tra cứu tiết kiệm token.",
+    "whenToUse": "Cần hiểu kiến trúc một mã nguồn lạ trước khi lập kế hoạch. Cần tìm quan hệ và chuỗi phụ thuộc giữa các file. Cần tìm \"nút thần\" (khái niệm được nối nhiều nhất) trong dự án lớn. Muốn đi theo cấu trúc thay vì grep từng file. Cần chuẩn bị bản mô tả mã nguồn gọn nhẹ về context (ít hơn 71.5 lần token so với đọc file thô).",
     "flags": [],
     "examples": [
-      "/ck:scout \"auth module\" # find specific files"
+      "/ck:scout \"module đăng nhập\" # tìm file cụ thể"
     ]
   },
   "eng-skill-ck-loop": {
-    "overview": "Autonomous iterative optimization loop — run N iterations against a mechanical metric, learn from git history, auto-keep/discard changes. Use for improving measurable metrics (coverage, performance, bundle size, etc.) through repeated experimentation.",
-    "whenToUse": "Improve a measurable metric (test coverage, bundle size, ESLint errors, Lighthouse score, etc.) Autonomous execution over N iterations without manual intervention Git-tracked experiments where you want rollback on regression Exploring a search space of code changes with consistent evaluation",
+    "overview": "Vòng lặp tối ưu tự động — chạy N vòng nhắm vào một chỉ số máy đo được, học từ lịch sử git, tự giữ lại hoặc bỏ thay đổi. Dùng để cải thiện các chỉ số đo được (độ phủ test, hiệu năng, kích thước bundle...) qua nhiều lần thử lặp lại.",
+    "whenToUse": "Cải thiện một chỉ số đo được (độ phủ test, kích thước bundle, số lỗi ESLint, điểm Lighthouse...). Chạy tự động qua N vòng, không cần can thiệp tay. Thử nghiệm có git theo dõi, muốn rollback khi kết quả tệ đi. Dò tìm không gian các thay đổi code với cách chấm điểm nhất quán.",
     "flags": [],
     "examples": [
       "/ck:loop"
     ]
   },
   "eng-skill-ck-plan": {
-    "overview": "Plan implementations, design architectures, create technical roadmaps with detailed phases. Use for feature planning, system design, solution architecture, implementation strategy, phase documentation, editorial self-contained HTML plan artifacts with --html, and AgentWiki publishing with --wiki.",
-    "whenToUse": "Planning new feature implementations Architecting system designs Evaluating technical approaches Creating implementation roadmaps Breaking down complex requirements",
+    "overview": "Lập kế hoạch triển khai, thiết kế kiến trúc, dựng lộ trình kỹ thuật chia thành từng phase chi tiết. Dùng để lên kế hoạch tính năng, thiết kế hệ thống, dựng kiến trúc giải pháp, vạch chiến lược triển khai, viết tài liệu cho từng phase, xuất kế hoạch HTML tương tác độc lập với --html, và đăng lên AgentWiki với --wiki.",
+    "whenToUse": "Khi lên kế hoạch cho tính năng mới, thiết kế kiến trúc hệ thống, cân nhắc các hướng kỹ thuật, dựng lộ trình triển khai, hoặc bóc tách yêu cầu phức tạp thành từng bước.",
     "flags": [
       {
         "flag": "--auto",
-        "desc": "Auto-detect"
+        "desc": "Tự nhận diện chế độ phù hợp"
       },
       {
         "flag": "--fast",
-        "desc": "Fast"
+        "desc": "Chạy nhanh"
       },
       {
         "flag": "--hard",
-        "desc": "Hard"
+        "desc": "Làm kỹ"
       },
       {
         "flag": "--deep",
-        "desc": "Deep"
+        "desc": "Đào sâu"
       },
       {
         "flag": "--parallel",
-        "desc": "Parallel"
+        "desc": "Chạy song song"
       },
       {
         "flag": "--two",
-        "desc": "Two approaches"
+        "desc": "Đưa ra hai phương án"
       },
       {
         "flag": "--tdd",
-        "desc": "Add tests-first structure to each phase for regression-safe refactors"
+        "desc": "Thêm cấu trúc viết test trước cho từng phase, để dọn lại code mà không sợ hồi quy"
       },
       {
         "flag": "--no-tasks",
-        "desc": "Skip task hydration"
+        "desc": "Bỏ qua bước tạo task"
       },
       {
         "flag": "--html",
-        "desc": "Output a self-contained editorial interactive HTML plan with visible phase outlines, markdown detail modals, and optional generated watercolor technical sketch imagery"
+        "desc": "Xuất kế hoạch dạng HTML tương tác, độc lập một file: hiện dàn ý từng phase, popup chi tiết markdown, kèm tuỳ chọn sinh ảnh phác thảo kỹ thuật kiểu màu nước"
       },
       {
         "flag": "--github",
-        "desc": "Create or update a GitHub issue after plan validation with branch, summary, plan links, open questions, and ready to review"
+        "desc": "Tạo hoặc cập nhật GitHub issue sau khi kế hoạch được duyệt, kèm branch, tóm tắt, link kế hoạch, câu hỏi còn bỏ ngỏ và trạng thái sẵn sàng review"
       },
       {
         "flag": "--wiki",
-        "desc": "Publish the final reviewed plan docs or HTML artifact to AgentWiki via CLI or MCP when available"
+        "desc": "Đăng tài liệu kế hoạch đã duyệt (hoặc bản HTML) lên AgentWiki qua CLI hoặc MCP nếu có"
       }
     ],
     "examples": []
   },
   "eng-skill-ck-predict": {
-    "overview": "5 expert personas debate proposed changes before implementation. Catches architectural, security, performance, and UX issues early. Use before major features or risky changes.",
-    "whenToUse": "Before implementing a major or high-risk feature Before a significant refactor or architecture change Evaluating competing technical approaches Stress-testing assumptions in a proposed design",
+    "overview": "5 chuyên gia ảo tranh luận về thay đổi bạn định làm, trước khi bắt tay code. Bắt sớm các vấn đề về kiến trúc, bảo mật, hiệu năng và trải nghiệm người dùng. Dùng trước khi làm tính năng lớn hoặc thay đổi rủi ro cao.",
+    "whenToUse": "Trước khi làm một tính năng lớn hoặc rủi ro cao. Trước khi dọn lại code quy mô lớn hoặc đổi kiến trúc. Khi cân nhắc giữa nhiều hướng kỹ thuật. Khi muốn thử thách các giả định trong một thiết kế đề xuất.",
     "flags": [],
     "examples": [
-      "/ck:predict \"Add WebSocket support for real-time notifications\"",
-      "/ck:predict \"Migrate authentication from JWT to session cookies\"",
-      "/ck:predict \"Add multi-tenancy to the database layer\"",
-      "/ck:predict \"Replace REST API with GraphQL\" --files src/api//*.ts",
-      "/ck:predict \"Pick auth library: Passport vs Better Auth\" --chain reason",
-      "/ck:predict \"Move from REST to GraphQL\" --chain probe"
+      "/ck:predict \"Thêm WebSocket cho thông báo thời gian thực\"",
+      "/ck:predict \"Chuyển đăng nhập từ JWT sang session cookie\"",
+      "/ck:predict \"Thêm multi-tenancy cho tầng database\"",
+      "/ck:predict \"Thay REST API bằng GraphQL\" --files src/api//*.ts",
+      "/ck:predict \"Chọn thư viện đăng nhập: Passport hay Better Auth\" --chain reason",
+      "/ck:predict \"Chuyển từ REST sang GraphQL\" --chain probe"
     ]
   },
   "eng-skill-ck-scenario": {
-    "overview": "Generate comprehensive edge cases and test scenarios by decomposing features across 12 dimensions. Use for pre-implementation risk discovery, QA planning, regression design, and iterative saturation when coverage must be exhaustive.",
-    "whenToUse": "Before implementing complex or stateful features Before writing tests (generates test targets) Risk assessment during planning or code review API design review — surface contract edge cases early Deep pre-release coverage audit (--saturation)",
+    "overview": "Sinh đầy đủ trường hợp biên và kịch bản test bằng cách mổ xẻ tính năng theo 12 khía cạnh. Dùng để tìm rủi ro trước khi code, lên kế hoạch QA, thiết kế test hồi quy, và lặp đến khi phủ hết trường hợp.",
+    "whenToUse": "Trước khi code tính năng phức tạp hoặc có lưu trạng thái. Trước khi viết test (sinh ra danh sách cần test). Đánh giá rủi ro lúc lập kế hoạch hoặc review code. Rà soát thiết kế API — lộ sớm các trường hợp biên của contract. Kiểm tra độ phủ kỹ trước khi phát hành (--saturation)",
     "flags": [
       {
         "flag": "--iterations",
-        "desc": "stop after N iterations"
+        "desc": "dừng sau N vòng lặp"
       },
       {
         "flag": "--saturation",
-        "desc": "stop when 2 consecutive iterations produce zero New classifications"
+        "desc": "dừng khi 2 vòng liên tiếp không sinh thêm phân loại Mới nào"
       }
     ],
     "examples": [
       "/ck:scenario src/api/payment.ts",
-      "/ck:scenario \"User registration with OAuth providers\"",
+      "/ck:scenario \"Đăng ký tài khoản qua các nhà cung cấp OAuth\"",
       "/ck:scenario src/api/payment.ts --iterations 25",
-      "/ck:scenario \"Add multi-tenancy to the database layer\" --saturation",
+      "/ck:scenario \"Thêm hỗ trợ đa tổ chức cho tầng database\" --saturation",
       "/ck:scenario src/middleware/auth.ts --saturation --domain security"
     ]
   },
   "eng-skill-ck-security": {
-    "overview": "STRIDE + OWASP-based security audit with optional red-team persona discovery loop and auto-fix. Scans code for vulnerabilities from multiple attacker perspectives (auth attacker, supply chain, insider, infrastructure), categorizes by severity, and can iteratively fix findings using ck:autoresearch pattern.",
-    "whenToUse": "Before a release or major deployment After adding auth, payment, or data-handling features Periodic security review (monthly/quarterly) Compliance check (SOC 2, GDPR, PCI-DSS prep)",
+    "overview": "Rà soát bảo mật theo STRIDE + OWASP, kèm vòng lặp red-team nhiều vai và tự động vá lỗi. Quét code tìm lỗ hổng từ nhiều góc nhìn kẻ tấn công (tấn công đăng nhập, chuỗi cung ứng, nội gián, hạ tầng), phân loại theo mức nghiêm trọng, và có thể vá dần các phát hiện theo mẫu ck:autoresearch.",
+    "whenToUse": "Trước khi phát hành hoặc triển khai lớn. Sau khi thêm tính năng đăng nhập, thanh toán hoặc xử lý dữ liệu. Rà soát bảo mật định kỳ (hằng tháng/hằng quý). Kiểm tra tuân thủ (chuẩn bị SOC 2, GDPR, PCI-DSS).",
     "flags": [],
     "examples": [
       "/ck:security src/api//*.ts",
@@ -378,60 +378,60 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-coding-level": {
-    "overview": "Set coding experience level for tailored output. Use for adjusting explanation depth, code complexity, and response format to user expertise.",
+    "overview": "Chỉnh mức độ kinh nghiệm lập trình để AI trả lời cho vừa. Dùng để điều chỉnh độ sâu giải thích, độ phức tạp của code và cách trình bày cho hợp với trình độ của bạn.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-context-engineering": {
-    "overview": "Check context usage limits, monitor time remaining, optimize token consumption, debug context failures. Use when asking about context percentage, rate limits, usage warnings, context optimization, agent architectures, memory systems.",
+    "overview": "Kiểm tra mức dùng context, theo dõi thời gian còn lại, tối ưu lượng token tiêu thụ, gỡ lỗi khi context có vấn đề. Dùng khi bạn hỏi về phần trăm context, giới hạn tần suất, cảnh báo mức dùng, tối ưu context, kiến trúc agent, hệ thống bộ nhớ.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-cook": {
-    "overview": "Implement features, plans, and fixes with structured workflow. Use for feature development, plan execution, code implementation pipelines.",
+    "overview": "Làm tính năng, kế hoạch và sửa lỗi theo quy trình có cấu trúc. Dùng cho phát triển tính năng, thực thi kế hoạch, các pipeline viết code.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--interactive",
-        "desc": "Full workflow with user input (default)"
+        "desc": "Quy trình đầy đủ, có hỏi ý bạn (mặc định)"
       },
       {
         "flag": "--fast",
-        "desc": "Skip research, scout→plan→code"
+        "desc": "Bỏ qua bước nghiên cứu, đi thẳng: scout → kế hoạch → code"
       },
       {
         "flag": "--parallel",
-        "desc": "Multi-agent execution"
+        "desc": "Chạy nhiều agent song song"
       },
       {
         "flag": "--no-test",
-        "desc": "Skip testing step"
+        "desc": "Bỏ qua bước test"
       },
       {
         "flag": "--auto",
-        "desc": "Auto-approve low-risk steps; high-risk changes stop for human approval before finalize/commit/ship"
+        "desc": "Tự duyệt các bước ít rủi ro; thay đổi rủi ro cao sẽ dừng chờ người duyệt trước khi chốt/commit/ship"
       },
       {
         "flag": "--tdd",
-        "desc": "Tests-first per phase — write tests for current behavior before"
+        "desc": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước đã"
       }
     ],
     "examples": [
-      "/ck:cook \"Add user authentication to the app\" --fast",
+      "/ck:cook \"Thêm đăng nhập người dùng cho ứng dụng\" --fast",
       "/ck:cook path/to/plan.md --auto",
-      "/ck:cook \"Refactor auth middleware\" --tdd"
+      "/ck:cook \"Dọn lại code middleware đăng nhập\" --tdd"
     ]
   },
   "eng-skill-copywriting": {
-    "overview": "Conversion copywriting formulas, headline templates, email copy patterns, landing page structures, CTA optimization, and writing style extraction. Activate for writing high-converting copy, crafting headlines, email campaigns, landing pages, or applying custom writing styles from assets/writing-styles/ directory.",
-    "whenToUse": "Writing headlines/subject lines, landing page copy, email campaigns Social posts, product descriptions, CTA optimization, A/B variations Applying custom writing styles from user documents",
+    "overview": "Công thức viết copy chuyển đổi, mẫu tiêu đề, mẫu email, cấu trúc landing page, tối ưu CTA và trích xuất phong cách viết. Dùng khi cần viết copy bán được hàng, đặt tiêu đề, làm chiến dịch email, landing page, hoặc áp dụng phong cách viết riêng lấy từ thư mục assets/writing-styles/.",
+    "whenToUse": "Viết headline/tiêu đề email, nội dung landing page, chiến dịch email. Bài đăng mạng xã hội, mô tả sản phẩm, tối ưu CTA, tạo biến thể A/B. Áp dụng phong cách viết riêng lấy từ tài liệu của bạn.",
     "flags": [],
     "examples": []
   },
   "eng-skill-cti-expert": {
-    "overview": "Analyze cyber threat intelligence and OSINT cases. Use for exposure reviews, domain recon, breach checks, username/email/phone research, image forensics, blockchain tracing, darknet checks, cloud tenant recon, vulnerability lookup, threat modeling, and structured reports.",
+    "overview": "Phân tích tình báo an ninh mạng và các vụ OSINT. Dùng để rà soát mức độ lộ lọt thông tin, do thám tên miền, kiểm tra rò rỉ dữ liệu, truy tìm theo username/email/số điện thoại, giám định ảnh, lần theo dấu vết blockchain, kiểm tra darknet, do thám tenant cloud, tra cứu lỗ hổng, mô hình hoá mối đe doạ và viết báo cáo có cấu trúc.",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -441,158 +441,158 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-databases": {
-    "overview": "Design schemas, write queries for MongoDB and PostgreSQL. Use for database design, SQL/NoSQL queries, aggregation pipelines, indexes, migrations, replication, performance optimization, psql CLI.",
-    "whenToUse": "Use when: Designing database schemas and data models Writing queries (SQL or MongoDB query language) Building aggregation pipelines or complex joins Optimizing indexes and query performance Implementing database migrations Setting up replication, sharding, or clustering Configuring backups and disaster recovery Managing database users and permissions Analyzing slow queries and performance issues Administering production database deployments",
+    "overview": "Thiết kế schema, viết truy vấn cho MongoDB và PostgreSQL. Dùng cho thiết kế cơ sở dữ liệu, truy vấn SQL/NoSQL, aggregation pipeline, index, di trú dữ liệu, replication, tối ưu hiệu năng, dùng psql CLI.",
+    "whenToUse": "Dùng khi: Thiết kế schema và mô hình dữ liệu. Viết truy vấn (SQL hoặc ngôn ngữ truy vấn MongoDB). Xây aggregation pipeline hoặc các phép join phức tạp. Tối ưu index và tốc độ truy vấn. Thực hiện di trú dữ liệu. Thiết lập replication, sharding hoặc clustering. Cấu hình sao lưu và khôi phục sự cố. Quản lý người dùng và quyền truy cập database. Phân tích truy vấn chậm và vấn đề hiệu năng. Vận hành database chạy thật.",
     "flags": [],
     "examples": []
   },
   "eng-skill-deploy": {
-    "overview": "Deploy projects to any platform with auto-detection. Use when user says \"deploy\", \"publish\", \"ship\", \"go live\", \"push to production\", \"host this app\", or mentions any hosting platform (Vercel, Netlify, Cloudflare, Railway, Fly.io, Render, Heroku, TOSE, Github Pages, AWS, GCP, Digital Ocean, Vultr, Coolify, Dokploy). Auto-detects deployment target from config files and docs/deployment.md.",
+    "overview": "Triển khai dự án lên bất kỳ nền tảng nào, tự nhận diện nơi cần đưa lên. Dùng khi bạn nói \"deploy\", \"publish\", \"ship\", \"go live\", \"đẩy lên production\", \"host app này\", hoặc nhắc tới bất kỳ nền tảng hosting nào (Vercel, Netlify, Cloudflare, Railway, Fly.io, Render, Heroku, TOSE, Github Pages, AWS, GCP, Digital Ocean, Vultr, Coolify, Dokploy). Tự dò đích triển khai từ file cấu hình và docs/deployment.md.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-design": {
-    "overview": "Design brand identity, logos, banners, and visual assets. Use for brand systems, design tokens, corporate identity programs. Not for UI code patterns.",
-    "whenToUse": "Brand identity, voice, assets Design system tokens and specs UI styling with shadcn/ui + Tailwind Logo design and AI generation Corporate identity program (CIP) deliverables Presentations and pitch decks Banner design for social media, ads, web, print Social photos for Instagram, Facebook, LinkedIn, Twitter, Pinterest, TikTok",
+    "overview": "Thiết kế bộ nhận diện thương hiệu, logo, banner và các ấn phẩm hình ảnh. Dùng cho hệ thống thương hiệu, design token, chương trình nhận diện doanh nghiệp. Không dùng cho code giao diện.",
+    "whenToUse": "Nhận diện thương hiệu, giọng điệu, bộ ấn phẩm; token và spec cho design system; style UI với shadcn/ui + Tailwind; thiết kế logo và tạo logo bằng AI; các hạng mục của chương trình nhận diện doanh nghiệp (CIP); slide thuyết trình và pitch deck; thiết kế banner cho mạng xã hội, quảng cáo, web, in ấn; ảnh đăng Instagram, Facebook, LinkedIn, Twitter, Pinterest, TikTok.",
     "flags": [],
     "examples": []
   },
   "eng-skill-devops": {
-    "overview": "Deploy to Cloudflare (Workers, R2, D1), Docker, GCP (Cloud Run, GKE), Kubernetes (kubectl, Helm). Use for serverless, containers, CI/CD, GitOps, security audit.",
-    "whenToUse": "Deploy serverless apps to Cloudflare Workers/Pages Containerize apps with Docker, Docker Compose Manage GCP with gcloud CLI (Cloud Run, GKE, Cloud SQL) Kubernetes cluster management (kubectl, Helm) GitOps workflows (Argo CD, Flux) CI/CD pipelines, multi-region deployments Security audits, RBAC, network policies",
+    "overview": "Triển khai lên Cloudflare (Workers, R2, D1), Docker, GCP (Cloud Run, GKE), Kubernetes (kubectl, Helm). Dùng cho serverless, container, CI/CD, GitOps, rà soát bảo mật.",
+    "whenToUse": "Triển khai app serverless lên Cloudflare Workers/Pages. Đóng gói app vào container với Docker, Docker Compose. Quản lý GCP bằng gcloud CLI (Cloud Run, GKE, Cloud SQL). Quản trị cụm Kubernetes (kubectl, Helm). Quy trình GitOps (Argo CD, Flux). Pipeline CI/CD, triển khai nhiều vùng. Rà soát bảo mật, RBAC, chính sách mạng.",
     "flags": [],
     "examples": []
   },
   "eng-skill-docs": {
-    "overview": "Analyze codebase and manage project documentation. Use for doc initialization, updates, summaries, codebase analysis.",
+    "overview": "Phân tích mã nguồn và quản lý tài liệu dự án. Dùng để khởi tạo tài liệu, cập nhật, tóm tắt và phân tích mã nguồn.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-docs-seeker": {
-    "overview": "Search library/framework documentation via llms.txt (context7.com). Use for API docs, GitHub repository analysis, technical documentation lookup, latest library features.",
+    "overview": "Tra tài liệu thư viện/framework qua llms.txt (context7.com). Dùng cho API docs, phân tích repo GitHub, tra cứu tài liệu kỹ thuật, xem tính năng mới nhất của thư viện.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-excalidraw": {
-    "overview": "Create Excalidraw diagrams — architecture, data flow, workflows, system design. Use when user wants to visualize, diagram, draw architecture, show data flow, create flowcharts, map components, or export .excalidraw files to PNG/SVG. Supports two modes: live MCP canvas (real-time) or file-based JSON + Playwright rendering. Also supports zero-config codebase auto-diagramming — just say \"diagram this repo\" or \"visualize the architecture\".",
+    "overview": "Vẽ sơ đồ Excalidraw — kiến trúc, luồng dữ liệu, quy trình, thiết kế hệ thống. Dùng khi muốn trực quan hoá, vẽ kiến trúc, thể hiện luồng dữ liệu, tạo flowchart, sơ đồ hoá các thành phần, hoặc xuất file .excalidraw ra PNG/SVG. Hỗ trợ hai chế độ: canvas MCP trực tiếp (thời gian thực) hoặc file JSON + render bằng Playwright. Cũng tự vẽ sơ đồ mã nguồn mà không cần cấu hình gì — chỉ cần nói \"vẽ sơ đồ repo này\" hoặc \"trực quan hoá kiến trúc\".",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-find-skills": {
-    "overview": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
-    "whenToUse": "Use this skill when the user: Asks \"how do I do X\" where X might be a common task with an existing skill Says \"find a skill for X\" or \"is there a skill for X\" Asks \"can you do X\" where X is a specialized capability Expresses interest in extending agent capabilities Wants to search for tools, templates, or workflows Mentions they wish they had help with a specific domain (design, testing, deployment, etc.)",
+    "overview": "Giúp bạn tìm và cài skill khi bạn hỏi kiểu \"làm X thế nào\", \"có skill nào làm X không\", \"có skill nào có thể...\", hoặc khi bạn muốn mở rộng khả năng của AI. Dùng skill này khi bạn đang tìm một chức năng mà có thể đã có sẵn dưới dạng skill cài được.",
+    "whenToUse": "Dùng skill này khi bạn: Hỏi \"làm X thế nào\" mà X có thể là việc phổ biến đã có skill sẵn. Nói \"tìm skill làm X\" hoặc \"có skill nào cho X không\". Hỏi \"bạn làm được X không\" với X là một khả năng chuyên biệt. Muốn mở rộng khả năng của agent. Muốn tìm công cụ, mẫu có sẵn hoặc quy trình. Nhắc rằng bạn ước có ai đó hỗ trợ một mảng cụ thể (thiết kế, test, triển khai...)",
     "flags": [],
     "examples": []
   },
   "eng-skill-fix": {
-    "overview": "Fix bugs, errors, test failures, and CI/CD issues with intelligent routing. Use for type errors, lint issues, log errors, UI bugs, code problems.",
+    "overview": "Sửa lỗi, sửa test fail và sự cố CI/CD, tự động chọn đúng hướng xử lý. Dùng cho lỗi kiểu dữ liệu, lỗi lint, lỗi trong log, lỗi giao diện, code có vấn đề.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--auto",
-        "desc": "Activate autonomous mode (default); high-risk fixes stop for human approval before finalize/commit/ship"
+        "desc": "Bật chế độ tự động (mặc định); những bản vá rủi ro cao sẽ dừng chờ bạn duyệt trước khi chốt/commit/ship"
       },
       {
         "flag": "--review",
-        "desc": "Activate human-in-the-loop review mode"
+        "desc": "Bật chế độ có người rà soát từng bước"
       },
       {
         "flag": "--quick",
-        "desc": "Activate quick mode"
+        "desc": "Bật chế độ sửa nhanh"
       },
       {
         "flag": "--parallel",
-        "desc": "Activate parallel mode: route to parallel fullstack-developer agents per issue"
+        "desc": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song"
       }
     ],
     "examples": []
   },
   "eng-skill-frontend-design": {
-    "overview": "Create polished frontend interfaces from designs/screenshots/videos. Use for web components, 3D experiences, replicating UI designs, quick prototypes, immersive interfaces, avoiding AI slop.",
+    "overview": "Dựng giao diện web chỉn chu từ bản thiết kế, ảnh chụp màn hình hoặc video. Dùng cho web component, trải nghiệm 3D, tái hiện thiết kế UI, làm prototype nhanh, giao diện nhập vai, tránh kiểu giao diện AI làm cho có.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-frontend-development": {
-    "overview": "Build React/TypeScript frontends with modern patterns. Use for components, Suspense, lazy loading, useSuspenseQuery, MUI v7 styling, TanStack Router, performance optimization.",
-    "whenToUse": "Creating new components or pages Building new features Fetching data with TanStack Query Setting up routing with TanStack Router Styling components with MUI v7 Performance optimization Organizing frontend code TypeScript best practices ---",
+    "overview": "Xây giao diện React/TypeScript theo pattern hiện đại. Dùng cho component, Suspense, lazy loading, useSuspenseQuery, style với MUI v7, TanStack Router, tối ưu hiệu năng.",
+    "whenToUse": "Tạo component hoặc trang mới. Làm tính năng mới. Lấy dữ liệu bằng TanStack Query. Cài routing với TanStack Router. Style component bằng MUI v7. Tối ưu hiệu năng. Sắp xếp lại code frontend. Áp dụng best practice của TypeScript",
     "flags": [],
     "examples": []
   },
   "eng-skill-ghpm": {
-    "overview": "GitHub project management for humans and AI agents. Use for issue/task planning, Projects boards, handoff status, gh/API automation, and CI-driven work tracking.",
+    "overview": "Quản lý dự án trên GitHub cho cả người lẫn AI agent. Dùng để lên kế hoạch issue/công việc, quản bảng Projects, theo dõi trạng thái bàn giao, tự động hoá bằng gh/API, và bám tiến độ công việc theo CI.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-git": {
-    "overview": "Manage git commits, pushes, PRs, branch merges, and PR review-and-merge automation. Use for commit, push, PR creation, PR merge, CI follow-up, and secret scanning.",
+    "overview": "Quản lý commit, push, PR, gộp nhánh và tự động rà soát–merge PR. Dùng để commit, push, tạo PR, merge PR, theo dõi CI và quét lộ secret.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-gkg": {
-    "overview": "Semantic code analysis with GitLab Knowledge Graph. Use for go-to-definition, find-usages, impact analysis, architecture visualization. Supports Ruby, Java, Kotlin, Python, TypeScript/JavaScript.",
-    "whenToUse": "Find all usages of a function/class across codebase Go-to-definition for symbols Impact analysis before refactoring Generate architecture diagrams RAG-enhanced code understanding Use repomix instead for: quick context dumps, any-language support, remote repos, token counting.",
+    "overview": "Phân tích code theo ngữ nghĩa với GitLab Knowledge Graph. Dùng để nhảy tới định nghĩa, tìm nơi sử dụng, đánh giá tác động, trực quan hoá kiến trúc. Hỗ trợ Ruby, Java, Kotlin, Python, TypeScript/JavaScript.",
+    "whenToUse": "Tìm mọi chỗ dùng một hàm/class trong cả mã nguồn. Nhảy tới định nghĩa của một ký hiệu. Đánh giá tác động trước khi dọn lại code. Sinh sơ đồ kiến trúc. Hiểu code với hỗ trợ RAG. Nếu chỉ cần đổ context nhanh, hỗ trợ mọi ngôn ngữ, repo từ xa hoặc đếm token thì dùng repomix thay thế.",
     "flags": [],
     "examples": []
   },
   "eng-skill-google-adk-python": {
-    "overview": "Build AI agents with Google ADK Python. Multi-agent systems, A2A protocol, MCP tools, workflow agents, state/memory, callbacks/plugins, Vertex AI deployment, evaluation.",
+    "overview": "Xây AI agent bằng Google ADK Python. Hệ đa agent, giao thức A2A, công cụ MCP, agent theo quy trình, trạng thái/bộ nhớ, callback/plugin, triển khai lên Vertex AI, đánh giá.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-html-video": {
-    "overview": "Create local MP4 videos from HTML/CSS/JS templates with nexu-io/html-video. Covers source checkout setup, template discovery, studio customization, preview, and render verification.",
+    "overview": "Tạo video MP4 ngay trên máy từ template HTML/CSS/JS bằng nexu-io/html-video. Gồm cài đặt mã nguồn, tìm template, tuỳ biến studio, xem trước và kiểm tra bản render.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-journal": {
-    "overview": "Write technical journal entries analyzing recent changes. Use for session reflections, change analysis, decision documentation.",
+    "overview": "Viết nhật ký kỹ thuật phân tích các thay đổi gần đây. Dùng để nhìn lại phiên làm việc, phân tích thay đổi, ghi lại quyết định.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-llms": {
-    "overview": "Generate llms.txt files from docs or codebase scanning. Follows llmstxt.org spec. Use for LLM-friendly site indexes, documentation summaries, AI context optimization.",
-    "whenToUse": "Project needs LLM-friendly documentation index Publishing docs site and want AI discoverability Creating context files for AI assistants User asks for \"llms.txt\", \"LLM documentation\", \"AI-friendly docs\"",
+    "overview": "Sinh file llms.txt từ tài liệu hoặc từ việc quét mã nguồn. Theo chuẩn llmstxt.org. Dùng để tạo mục lục site cho LLM đọc, tóm tắt tài liệu, tối ưu context cho AI.",
+    "whenToUse": "Dự án cần một mục lục tài liệu thân thiện với LLM. Publish trang tài liệu và muốn AI tìm thấy được. Tạo file context cho các trợ lý AI. Người dùng hỏi về \"llms.txt\", \"tài liệu cho LLM\", \"docs thân thiện với AI\"",
     "flags": [
       {
         "flag": "--full",
-        "desc": "Also generate llms-full.txt (expanded with inline content)"
+        "desc": "Sinh thêm llms-full.txt (bản mở rộng, kèm nội dung đầy đủ)"
       },
       {
         "flag": "--output",
-        "desc": "Custom output location (default: project root)"
+        "desc": "Chọn nơi lưu file (mặc định: thư mục gốc dự án)"
       },
       {
         "flag": "--url",
-        "desc": "Base URL prefix for links (e.g., https://example.com/docs)"
+        "desc": "Tiền tố URL gốc cho các link (ví dụ: https://example.com/docs)"
       }
     ],
     "examples": []
   },
   "eng-skill-markdown-novel-viewer": {
-    "overview": "View markdown files in a calm, book-like reader served via HTTP. Use for long-form content review — RFCs, runbooks, design docs, reports, specs, novels — anywhere you want a distraction-free reading mode in the browser.",
+    "overview": "Đọc file markdown trong một trình đọc êm mắt như đọc sách, phục vụ qua HTTP. Dùng cho nội dung dài — RFC, runbook, tài liệu thiết kế, báo cáo, đặc tả, tiểu thuyết — bất cứ khi nào bạn muốn chế độ đọc không bị phân tâm trên trình duyệt.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--open",
-        "desc": "Auto-open browser"
+        "desc": "Tự mở trình duyệt"
       },
       {
         "flag": "--background",
-        "desc": "Run in background"
+        "desc": "Chạy nền"
       },
       {
         "flag": "--stop",
-        "desc": "Stop all servers"
+        "desc": "Dừng tất cả server"
       }
     ],
     "examples": [
@@ -602,166 +602,154 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-mcp-builder": {
-    "overview": "Build MCP servers for LLM-external service integration. Use for FastMCP (Python), MCP SDK (Node/TypeScript), tool design, API integration, resource providers.",
+    "overview": "Xây MCP server để nối LLM với dịch vụ bên ngoài. Dùng cho FastMCP (Python), MCP SDK (Node/TypeScript), thiết kế tool, tích hợp API, cung cấp resource.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-media-processing": {
-    "overview": "Process media with FFmpeg (video/audio), ImageMagick (images), RMBG (AI background removal). Use for encoding, format conversion, filters, thumbnails, batch processing, HLS/DASH streaming.",
+    "overview": "Xử lý media bằng FFmpeg (video/audio), ImageMagick (ảnh), RMBG (xoá nền bằng AI). Dùng để encode, đổi định dạng, thêm bộ lọc, tạo ảnh thu nhỏ, xử lý hàng loạt, phát trực tiếp HLS/DASH.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-mermaidjs-v11": {
-    "overview": "Create diagrams with Mermaid.js v11 syntax. Use for flowcharts, sequence diagrams, class diagrams, ER diagrams, Gantt charts, state diagrams, architecture diagrams, timelines, user journeys.",
+    "overview": "Vẽ sơ đồ bằng cú pháp Mermaid.js v11. Dùng cho flowchart, sơ đồ tuần tự, sơ đồ lớp, sơ đồ ER, biểu đồ Gantt, sơ đồ trạng thái, sơ đồ kiến trúc, dòng thời gian, hành trình người dùng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-mintlify": {
-    "overview": "Build and maintain Mintlify documentation sites. Covers docs.json, MDX components, navigation, page frontmatter, theming, OpenAPI/AsyncAPI, AI docs assets such as llms.txt and skill.md, deployment targets, and local validation CLI commands.",
+    "overview": "Dựng và bảo trì trang tài liệu Mintlify. Bao gồm docs.json, component MDX, điều hướng, frontmatter của trang, giao diện, OpenAPI/AsyncAPI, các file tài liệu cho AI như llms.txt và skill.md, đích triển khai và các lệnh CLI kiểm tra tại máy.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-mobile-development": {
-    "overview": "Build mobile apps with React Native, Flutter, Swift/SwiftUI, Kotlin/Jetpack Compose. Use for iOS/Android, mobile UX, performance optimization, offline-first, app store deployment.",
-    "whenToUse": "Building mobile applications (iOS, Android, or cross-platform) Implementing mobile-first design and UX patterns Optimizing for mobile constraints (battery, memory, network, small screens) Making native vs cross-platform technology decisions Implementing offline-first architecture and data sync Following platform-specific guidelines (iOS HIG, Material Design) Optimizing mobile app performance and user experience Implementing mobile security and authentication Testing mobile applications (unit, integration, E2E) Deploying to App Store and Google Play",
+    "overview": "Làm app mobile với React Native, Flutter, Swift/SwiftUI, Kotlin/Jetpack Compose. Dùng cho iOS/Android, trải nghiệm mobile, tối ưu hiệu năng, ưu tiên offline, đưa app lên store.",
+    "whenToUse": "Làm app mobile (iOS, Android hoặc đa nền tảng). Thiết kế và trải nghiệm ưu tiên mobile. Tối ưu cho giới hạn của mobile (pin, bộ nhớ, mạng, màn hình nhỏ). Chọn giữa native và đa nền tảng. Làm kiến trúc offline-first và đồng bộ dữ liệu. Theo hướng dẫn của từng nền tảng (iOS HIG, Material Design). Tối ưu hiệu năng và trải nghiệm người dùng của app. Làm bảo mật và đăng nhập cho mobile. Test app mobile (unit, integration, E2E). Đưa app lên App Store và Google Play.",
     "flags": [],
     "examples": []
   },
   "eng-skill-payment-integration": {
-    "overview": "Integrate payments with SePay (VietQR), Polar, Stripe, Paddle (MoR subscriptions), Creem.io (licensing). Checkout, webhooks, subscriptions, QR codes, multi-provider orders.",
-    "whenToUse": "Payment gateway integration (checkout, processing) Subscription management (trials, upgrades, billing) Webhook handling (notifications, idempotency) QR code payments (VietQR, NAPAS) Software licensing (device activation) Multi-provider order management Revenue splits and commissions",
+    "overview": "Tích hợp thanh toán với SePay (VietQR), Polar, Stripe, Paddle (đăng ký thuê bao kiểu MoR), Creem.io (bản quyền). Trang thanh toán, webhook, gói thuê bao, mã QR, đơn hàng nhiều nhà cung cấp.",
+    "whenToUse": "Tích hợp cổng thanh toán (trang checkout, xử lý giao dịch). Quản lý gói thuê bao (dùng thử, nâng cấp, xuất hoá đơn). Xử lý webhook (thông báo, chống trùng lặp). Thanh toán bằng mã QR (VietQR, NAPAS). Cấp phép bản quyền phần mềm (kích hoạt theo thiết bị). Quản lý đơn hàng từ nhiều nhà cung cấp. Chia doanh thu và hoa hồng",
     "flags": [],
     "examples": []
   },
   "eng-skill-plans-kanban": {
-    "overview": "Open the ClaudeKit plans dashboard in the CLI config UI. Use for plan kanban views, progress tracking, timeline checks, and quick navigation into plan files.",
+    "overview": "Mở dashboard kế hoạch của ClaudeKit trong giao diện cấu hình CLI. Dùng để xem kế hoạch dạng kanban, theo dõi tiến độ, kiểm tra dòng thời gian và mở nhanh các file kế hoạch.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--stop",
-        "desc": "Stops the launcher-managed dashboard process if one was started by plans-kanban; otherwise prints manual shutdown guidance."
+        "desc": "Dừng tiến trình dashboard nếu nó do plans-kanban khởi động; nếu không thì in hướng dẫn tự tắt thủ công."
       },
       {
         "flag": "--open",
-        "desc": "Accepted. Opening is now the default behavior."
+        "desc": "Vẫn chấp nhận cờ này. Giờ mở dashboard đã là hành vi mặc định."
       }
     ],
     "examples": []
   },
   "eng-skill-preview": {
-    "overview": "View files or generate visual explanations, slides, and diagrams. Use for code walkthroughs, architecture visualization, HTML/Markdown presentations.",
+    "overview": "Xem file hoặc tạo giải thích trực quan, slide và sơ đồ. Dùng để dẫn giải code, hình dung kiến trúc, làm bản trình bày HTML/Markdown.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--explain",
-        "desc": "Generate visual explanation"
+        "desc": "Tạo phần giải thích trực quan"
       },
       {
         "flag": "--slides",
-        "desc": "Generate presentation slides"
+        "desc": "Tạo slide trình bày"
       },
       {
         "flag": "--diagram",
-        "desc": "Generate architecture diagram"
+        "desc": "Tạo sơ đồ kiến trúc"
       },
       {
         "flag": "--ascii",
-        "desc": "Terminal-friendly diagram"
+        "desc": "Sơ đồ dạng chữ, hợp với terminal"
       },
       {
         "flag": "--stop",
-        "desc": "Stop preview server"
-      },
-      {
-        "flag": "--diff",
-        "desc": "html-css-patterns.md, html-libraries.md"
-      },
-      {
-        "flag": "--plan-review",
-        "desc": "html-css-patterns.md, html-libraries.md"
-      },
-      {
-        "flag": "--recap",
-        "desc": "html-css-patterns.md, html-libraries.md"
+        "desc": "Dừng server preview"
       }
     ],
     "examples": []
   },
   "eng-skill-problem-solving": {
-    "overview": "Apply systematic problem-solving techniques when stuck. Use for complexity spirals, innovation blocks, recurring patterns, assumption constraints, simplification cascades, scale uncertainty.",
-    "whenToUse": "Apply when encountering: Complexity spiraling - Multiple implementations, growing special cases, excessive branching Innovation blocks - Conventional solutions inadequate, need breakthrough thinking Recurring patterns - Same issue across domains, reinventing solutions Assumption constraints - Forced into \"only way\", can't question premise Scale uncertainty - Production readiness unclear, edge cases unknown General stuck-ness - Unsure which technique applies",
+    "overview": "Áp dụng các kỹ thuật giải quyết vấn đề có hệ thống khi bạn bí. Dùng cho tình huống độ phức tạp leo thang, bí ý tưởng, vấn đề lặp đi lặp lại, bị bó buộc bởi giả định, cần đơn giản hoá dây chuyền, hoặc chưa chắc về quy mô.",
+    "whenToUse": "Dùng khi gặp: Độ phức tạp leo thang — nhiều cách làm chồng chéo, ngày càng nhiều trường hợp đặc biệt, rẽ nhánh quá nhiều. Bí ý tưởng — giải pháp thông thường không đủ, cần hướng đột phá. Vấn đề lặp lại — cùng một chuyện xảy ra ở nhiều mảng, cứ phải nghĩ lại giải pháp từ đầu. Bị bó buộc bởi giả định — bị ép vào \"chỉ có cách này\", không dám đặt lại câu hỏi. Chưa chắc về quy mô — chưa rõ đã chạy thật được chưa, chưa biết hết trường hợp biên. Bí chung chung — không biết nên dùng kỹ thuật nào.",
     "flags": [],
     "examples": []
   },
   "eng-skill-project-management": {
-    "overview": "Track progress, update plan statuses, manage Claude Tasks, generate reports, coordinate docs updates. Use for project oversight, status checks, plan completion, task hydration, cross-session continuity.",
-    "whenToUse": "Checking project status or progress across plans Updating plan statuses after feature completion Hydrating/syncing Claude Tasks with plan files Generating status reports or summaries Coordinating documentation updates after milestones Verifying task completeness against acceptance criteria Cross-session resume of multi-phase work",
+    "overview": "Theo dõi tiến độ, cập nhật trạng thái kế hoạch, quản lý Claude Tasks, xuất báo cáo, điều phối việc cập nhật tài liệu. Dùng để giám sát dự án, kiểm tra trạng thái, chốt kế hoạch hoàn thành, nạp lại task, nối tiếp công việc giữa các phiên.",
+    "whenToUse": "Kiểm tra tình trạng hoặc tiến độ dự án trên các kế hoạch. Cập nhật trạng thái kế hoạch sau khi làm xong tính năng. Nạp/đồng bộ Claude Tasks với các file kế hoạch. Xuất báo cáo trạng thái hoặc bản tóm tắt. Điều phối cập nhật tài liệu sau mỗi cột mốc. Đối chiếu task đã xong với tiêu chí nghiệm thu. Tiếp tục công việc nhiều giai đoạn ở phiên sau",
     "flags": [],
     "examples": []
   },
   "eng-skill-project-organization": {
-    "overview": "Organize files, directories, and content structure in any project. Use when creating files, determining output paths, organizing existing assets, or standardizing project layout.",
-    "whenToUse": "Creating any file that needs a consistent output path Organizing existing project files and directories Determining where to save plans, reports, docs, assets, tests Enforcing naming conventions across the project Structuring markdown content (plans, journals, reports, docs)",
+    "overview": "Sắp xếp file, thư mục và cấu trúc nội dung trong bất kỳ dự án nào. Dùng khi tạo file mới, quyết định nơi lưu kết quả, dọn lại tài nguyên có sẵn hoặc chuẩn hoá bố cục dự án.",
+    "whenToUse": "Khi tạo bất kỳ file nào cần đường dẫn thống nhất; sắp xếp lại file và thư mục có sẵn; quyết định nơi lưu kế hoạch, báo cáo, tài liệu, tài nguyên, test; áp quy ước đặt tên cho cả dự án; chuẩn hoá cấu trúc nội dung markdown (kế hoạch, nhật ký, báo cáo, tài liệu).",
     "flags": [],
     "examples": []
   },
   "eng-skill-react-best-practices": {
-    "overview": "Apply React and Next.js performance optimization patterns from Vercel Engineering. Use for component optimization, rendering performance, bundle analysis.",
+    "overview": "Áp dụng các mẫu tối ưu hiệu năng React và Next.js từ đội kỹ thuật Vercel. Dùng để tối ưu component, tốc độ render, phân tích bundle.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-remotion": {
-    "overview": "Build video content with Remotion in React. Use for programmatic video creation, animated sequences, data-driven video rendering.",
-    "whenToUse": "Use this skills whenever you are dealing with Remotion code to obtain the domain-specific knowledge.",
+    "overview": "Làm video bằng Remotion trong React. Dùng để tạo video bằng code, dựng chuỗi hoạt ảnh, render video từ dữ liệu.",
+    "whenToUse": "Dùng skill này mỗi khi bạn đụng tới code Remotion để có kiến thức chuyên sâu về nó.",
     "flags": [],
     "examples": []
   },
   "eng-skill-repomix": {
-    "overview": "Pack repositories into AI-friendly files with Repomix (XML, Markdown, plain text). Use for new-project onboarding, codebase snapshots, LLM context preparation, security audits, third-party library analysis.",
-    "whenToUse": "Use when: Packaging codebases for AI analysis Creating repository snapshots for LLM context Analyzing third-party libraries Preparing for security audits Generating documentation context Investigating bugs across large codebases Creating AI-friendly code representations",
+    "overview": "Gói cả repo thành file dễ đọc cho AI bằng Repomix (XML, Markdown, văn bản thuần). Dùng khi làm quen dự án mới, chụp ảnh nhanh mã nguồn, chuẩn bị context cho LLM, rà soát bảo mật, phân tích thư viện bên thứ ba.",
+    "whenToUse": "Dùng khi: Đóng gói mã nguồn cho AI phân tích. Tạo bản chụp toàn repo làm context cho LLM. Phân tích thư viện bên thứ ba. Chuẩn bị cho rà soát bảo mật. Tạo context cho việc viết tài liệu. Truy lỗi trong mã nguồn lớn. Tạo bản trình bày code dễ đọc với AI.",
     "flags": [],
     "examples": []
   },
   "eng-skill-research": {
-    "overview": "Research technical solutions, analyze architectures, gather requirements thoroughly. Use for technology evaluation, best practices research, solution design, scalability/security/maintainability analysis.",
+    "overview": "Nghiên cứu giải pháp kỹ thuật, phân tích kiến trúc, thu thập yêu cầu kỹ lưỡng. Dùng để đánh giá công nghệ, tìm hiểu best practice, thiết kế giải pháp, phân tích khả năng mở rộng/bảo mật/dễ bảo trì.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-retro": {
-    "overview": "Generate data-driven sprint retrospectives from any git history. Use for sprint reviews, commit analysis, code-health indicators, team-velocity reporting, and quarterly engineering reviews. Works on solo or team repos.",
+    "overview": "Tạo bản tổng kết sprint dựa trên dữ liệu từ lịch sử git. Dùng để review sprint, phân tích commit, đánh giá sức khoẻ mã nguồn, báo cáo tốc độ làm việc của team và tổng kết kỹ thuật theo quý. Chạy được cho cả repo cá nhân lẫn repo team.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--compare",
-        "desc": "off"
+        "desc": "tắt"
       },
       {
         "flag": "--team",
-        "desc": "off"
+        "desc": "tắt"
       }
     ],
     "examples": []
   },
   "eng-skill-review-pr": {
-    "overview": "Review GitHub PRs for duplicate prior work, project standards, strategic necessity, correctness, security, breaking changes, code quality, and AI-slop patterns. Supports --fix and --reply.",
+    "overview": "Review PR trên GitHub: kiểm tra có trùng việc đã làm không, chuẩn dự án, mức cần thiết về chiến lược, tính đúng đắn, bảo mật, thay đổi phá vỡ tương thích, chất lượng code và các dấu hiệu code AI viết ẩu. Hỗ trợ --fix và --reply.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-scout": {
-    "overview": "Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents.",
-    "whenToUse": "Beginning work on feature spanning multiple directories User mentions needing to \"find\", \"locate\", or \"search for\" files Starting debugging session requiring file relationships understanding User asks about project structure or where functionality lives Before changes that might affect multiple codebase parts",
+    "overview": "Dò quét mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom ngữ cảnh cho công việc, tìm kiếm nhanh trên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
+    "whenToUse": "Khi bắt đầu làm tính năng trải rộng nhiều thư mục; khi cần \"tìm\", \"định vị\" hay \"tra\" file; khi bắt đầu gỡ lỗi và cần hiểu các file liên quan nhau ra sao; khi muốn biết cấu trúc dự án hoặc một chức năng nằm ở đâu; trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
     "flags": [],
     "examples": []
   },
   "eng-skill-security-scan": {
-    "overview": "Scan codebase for security vulnerabilities, hardcoded secrets, dependency issues, and OWASP patterns. Use when asked to 'security scan', 'check for secrets', 'audit security', or before major releases.",
+    "overview": "Quét mã nguồn tìm lỗ hổng bảo mật, khoá bí mật viết cứng trong code, vấn đề ở thư viện phụ thuộc và các mẫu lỗi theo OWASP. Dùng khi được yêu cầu 'quét bảo mật', 'kiểm tra lộ khoá bí mật', 'rà soát bảo mật', hoặc trước các đợt phát hành lớn.",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -772,181 +760,181 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-sequential-thinking": {
-    "overview": "Apply step-by-step analysis for complex problems with revision capability. Use for multi-step reasoning, hypothesis verification, adaptive planning, problem decomposition, course correction.",
+    "overview": "Phân tích từng bước cho vấn đề phức tạp, có thể quay lại sửa bước đã làm. Dùng cho suy luận nhiều bước, kiểm chứng giả thuyết, lập kế hoạch linh hoạt, chia nhỏ vấn đề, chỉnh hướng giữa chừng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-shader": {
-    "overview": "Write GLSL fragment shaders for procedural graphics. Topics: shapes (SDF), patterns, noise (Perlin/simplex/cellular), fBm, colors (HSB/RGB), matrices, gradients, animations. Use for generative art, textures, visual effects, WebGL, Three.js shaders.",
-    "whenToUse": "Creating procedural textures (wood, marble, clouds, terrain) Drawing shapes with distance fields (SDF) Generating patterns, noise, gradients Building visual effects and animations Writing custom shaders for Three.js, WebGL, Processing",
+    "overview": "Viết fragment shader GLSL cho đồ hoạ thủ tục. Chủ đề: hình khối (SDF), hoa văn, nhiễu (Perlin/simplex/cellular), fBm, màu (HSB/RGB), ma trận, gradient, hoạt ảnh. Dùng cho nghệ thuật sinh tạo, texture, hiệu ứng hình ảnh, WebGL, shader cho Three.js.",
+    "whenToUse": "Tạo texture thủ tục (gỗ, đá hoa, mây, địa hình). Vẽ hình bằng trường khoảng cách (SDF). Sinh hoa văn, nhiễu, gradient. Làm hiệu ứng hình ảnh và hoạt ảnh. Viết shader riêng cho Three.js, WebGL, Processing.",
     "flags": [],
     "examples": []
   },
   "eng-skill-ship": {
-    "overview": "Ship pipeline: merge target, test, review, journal, optional AgentWiki publish, commit, push, PR. Use for official main/master or beta dev/beta releases.",
+    "overview": "Quy trình phát hành: merge nhánh đích, test, rà soát, ghi nhật ký, tuỳ chọn đăng lên AgentWiki, commit, push, tạo PR. Dùng cho bản chính thức trên main/master hoặc bản beta trên dev/beta.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--skip-tests",
-        "desc": "Skip test step (use when tests already passed)"
+        "desc": "Bỏ bước test (dùng khi test đã pass rồi)"
       },
       {
         "flag": "--skip-review",
-        "desc": "Skip pre-landing review step"
+        "desc": "Bỏ bước rà soát trước khi merge"
       },
       {
         "flag": "--skip-journal",
-        "desc": "Skip journal writing step"
+        "desc": "Bỏ bước viết nhật ký"
       },
       {
         "flag": "--skip-docs",
-        "desc": "Skip docs update step"
+        "desc": "Bỏ bước cập nhật tài liệu"
       },
       {
         "flag": "--dry-run",
-        "desc": "Show what would happen without executing"
+        "desc": "Chỉ xem trước sẽ làm gì, không thực thi"
       }
     ],
     "examples": []
   },
   "eng-skill-shopify": {
-    "overview": "Build Shopify apps, extensions, and themes with Shopify CLI, GraphQL Admin API, Polaris UI, Liquid, webhooks, billing, and app configuration workflows.",
+    "overview": "Xây app, extension và theme cho Shopify với Shopify CLI, GraphQL Admin API, Polaris UI, Liquid, webhook, thanh toán và quy trình cấu hình app.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-show-off": {
-    "overview": "Create preference-aware self-contained HTML pages to showcase work. Use for demos, visual presentations, interactive showcases.",
+    "overview": "Tạo trang HTML độc lập, biết chiều theo sở thích người xem, để khoe kết quả công việc. Dùng cho demo, trình bày trực quan, showcase tương tác.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--url",
-        "desc": "Page URL to capture"
+        "desc": "URL trang cần chụp"
       },
       {
         "flag": "--output-dir",
-        "desc": "Output directory for images"
+        "desc": "Thư mục xuất ảnh"
       },
       {
         "flag": "--sections",
-        "desc": "Comma-separated CSS selectors for sections"
+        "desc": "Danh sách CSS selector của các phần, cách nhau bằng dấu phẩy"
       },
       {
         "flag": "--ratios",
-        "desc": "\"horizontal,vertical,square\"): Capture ratios"
+        "desc": "Tỉ lệ khung ảnh khi chụp"
       },
       {
         "flag": "--settle-delay",
-        "desc": "1500): Ms to wait AFTER the page is visually ready (fonts + images + CSS backgrounds all resolved). Alias: --delay (back-compat)."
+        "desc": "Số mili-giây chờ thêm SAU khi trang đã hiện đủ (font + ảnh + ảnh nền CSS đều đã tải xong). Tên gọi khác: --delay (giữ cho tương thích cũ)."
       },
       {
         "flag": "--render-timeout",
-        "desc": "15000): Max ms to wait for any single readiness signal (fonts, images, bg-images). Prevents a broken asset from hanging the run."
+        "desc": "Số mili-giây tối đa chờ một tín hiệu sẵn sàng bất kỳ (font, ảnh, ảnh nền). Tránh để một tài nguyên hỏng làm treo cả lượt chạy."
       },
       {
         "flag": "--format",
-        "desc": "\"png\"): Image format (png/jpg/webp)"
+        "desc": "Định dạng ảnh (png/jpg/webp)"
       },
       {
         "flag": "--quality",
-        "desc": "90): Image quality (1-100, for jpg/webp)"
+        "desc": "Chất lượng ảnh (1-100, cho jpg/webp)"
       },
       {
         "flag": "--max-size",
-        "desc": "5): Max file size in MB before compression"
+        "desc": "Dung lượng tối đa tính bằng MB trước khi nén"
       },
       {
         "flag": "--executable-path",
-        "desc": "Optional Chrome/Chromium executable path. Also reads CHROME_EXECUTABLE_PATH or PUPPETEER_EXECUTABLE_PATH."
+        "desc": "Đường dẫn tới Chrome/Chromium (không bắt buộc). Cũng đọc được từ CHROME_EXECUTABLE_PATH hoặc PUPPETEER_EXECUTABLE_PATH."
       }
     ],
     "examples": []
   },
   "eng-skill-skill-creator": {
-    "overview": "Create or update Claude skills with eval-driven iteration. Use for new skills, skill scripts, references, benchmark optimization, description optimization, eval testing, extending Claude's capabilities.",
+    "overview": "Tạo hoặc cập nhật skill cho Claude, lặp cải tiến dựa trên kết quả đánh giá. Dùng để làm skill mới, viết script cho skill, thêm tài liệu tham chiếu, tối ưu theo benchmark, tối ưu phần mô tả, chạy eval, mở rộng khả năng của Claude.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-stitch": {
-    "overview": "AI design generation with Google Stitch. Generate UI designs from text prompts, export Tailwind/HTML/DESIGN.md, orchestrate design-to-code pipeline. Use for rapid prototyping, UI generation, design exploration.",
+    "overview": "Sinh thiết kế bằng AI với Google Stitch. Tạo giao diện từ mô tả bằng chữ, xuất ra Tailwind/HTML/DESIGN.md, nối luôn mạch từ thiết kế sang code. Dùng để làm mẫu nhanh, sinh giao diện, thử nghiệm ý tưởng thiết kế.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-tanstack": {
-    "overview": "Build with TanStack Start (full-stack React framework), TanStack Form (headless form management), and TanStack AI (AI streaming/chat). Use when creating TanStack projects, routes, server functions, forms, validation, or AI chat features.",
+    "overview": "Làm việc với TanStack Start (framework React full-stack), TanStack Form (quản lý form không giao diện) và TanStack AI (chat/streaming AI). Dùng khi tạo dự án TanStack, viết route, server function, form, kiểm tra dữ liệu nhập, hoặc tính năng chat AI.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-team": {
-    "overview": "Orchestrate Agent Teams for parallel multi-session collaboration. Use for research, implementation, review, and debug workflows requiring independent teammates.",
+    "overview": "Điều phối Agent Team để nhiều phiên làm việc song song. Dùng cho các quy trình nghiên cứu, triển khai, rà soát và gỡ lỗi cần nhiều đồng đội chạy độc lập.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--plan-approval",
-        "desc": "plan gate (default: on for cook)"
+        "desc": "Chốt duyệt kế hoạch trước khi làm (mặc định: bật với cook)"
       },
       {
         "flag": "--delegate",
-        "desc": "lead only coordinates, never touches code"
+        "desc": "Lead chỉ điều phối, không đụng vào code"
       },
       {
         "flag": "--worktree",
-        "desc": "use git worktrees for implementation isolation (default: on for cook)"
+        "desc": "Dùng git worktree để tách biệt phần triển khai (mặc định: bật với cook)"
       }
     ],
     "examples": []
   },
   "eng-skill-tech-graph": {
-    "overview": "Generate production-quality SVG+PNG technical diagrams — architecture, data flow, flowchart, sequence, agent/memory, or concept maps — across 8 visual styles. Use when user wants \"generate diagram\", \"draw diagram\", \"visualize\", \"architecture diagram\", \"flowchart\", or any system/flow they want illustrated. Pairs with /ck:preview --diagram for visual self-review and /ck:mermaidjs-v11 for inline-doc diagrams; this skill is the publish-grade output mode.",
+    "overview": "Sinh sơ đồ kỹ thuật SVG+PNG chất lượng xuất bản — kiến trúc, luồng dữ liệu, flowchart, sequence, agent/bộ nhớ, hoặc sơ đồ khái niệm — với 8 phong cách hình ảnh. Dùng khi bạn muốn \"tạo sơ đồ\", \"vẽ sơ đồ\", \"minh hoạ\", \"sơ đồ kiến trúc\", \"flowchart\", hoặc bất kỳ hệ thống/luồng nào cần vẽ ra. Đi kèm /ck:preview --diagram để tự xem lại bằng mắt và /ck:mermaidjs-v11 cho sơ đồ nhúng trong tài liệu; skill này là bản xuất chất lượng cao nhất.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-test": {
-    "overview": "Run unit, integration, e2e, and UI tests. Use for test execution, coverage analysis, build verification, visual regression, and QA reports.",
-    "whenToUse": "After implementation: Validate new features or bug fixes Coverage checks: Ensure coverage meets project thresholds (80%+) UI verification: Visual regression, responsive layout, accessibility Build validation: Verify build process, dependencies, CI/CD compatibility Pre-commit/push: Final quality gate",
+    "overview": "Chạy test unit, integration, e2e và test giao diện. Dùng để chạy test, phân tích độ phủ, kiểm tra build, phát hiện thay đổi giao diện ngoài ý muốn và xuất báo cáo QA.",
+    "whenToUse": "Sau khi code xong: kiểm chứng tính năng mới hoặc bản vá lỗi. Kiểm tra độ phủ: đảm bảo đạt ngưỡng của dự án (từ 80% trở lên). Kiểm tra giao diện: so sánh ảnh chụp, bố cục responsive, khả năng tiếp cận. Kiểm tra build: xác nhận quá trình build, các phụ thuộc và tương thích CI/CD. Trước khi commit/push: chốt chặn chất lượng cuối cùng",
     "flags": [],
     "examples": []
   },
   "eng-skill-threejs": {
-    "overview": "Build 3D web experiences with Three.js. Use for WebGL/WebGPU scenes, GLTF models, animations, physics, VR/XR. Supports 556 searchable examples.",
-    "whenToUse": "Building 3D scenes, games, or visualizations Loading 3D models (GLTF, FBX, OBJ) Implementing animations, physics, or VR/XR Creating particle effects or custom shaders Optimizing rendering performance",
+    "overview": "Dựng trải nghiệm web 3D với Three.js. Dùng cho cảnh WebGL/WebGPU, mô hình GLTF, hoạt ảnh, vật lý, VR/XR. Có 556 ví dụ tra cứu được.",
+    "whenToUse": "Dựng cảnh 3D, game hoặc đồ hoạ trực quan. Nạp mô hình 3D (GLTF, FBX, OBJ). Làm hoạt ảnh, vật lý hoặc VR/XR. Tạo hiệu ứng hạt hoặc shader tự viết. Tối ưu tốc độ render.",
     "flags": [],
     "examples": []
   },
   "eng-skill-ui-styling": {
-    "overview": "Style UIs with shadcn/ui components (Radix UI + Tailwind CSS). Use for accessible components, themes, dark mode, responsive layouts, design systems, color customization.",
-    "whenToUse": "Use when: Building UI with React-based frameworks (Next.js, Vite, Remix, Astro) Implementing accessible components (dialogs, forms, tables, navigation) Styling with utility-first CSS approach Creating responsive, mobile-first layouts Implementing dark mode and theme customization Building design systems with consistent tokens Generating visual designs, posters, or brand materials Rapid prototyping with immediate visual feedback Adding complex UI patterns (data tables, charts, command palettes)",
+    "overview": "Làm giao diện với component shadcn/ui (Radix UI + Tailwind CSS). Dùng cho component dễ tiếp cận, theme, chế độ tối, layout co giãn, design system, tuỳ biến màu sắc.",
+    "whenToUse": "Dùng khi: Xây giao diện với các framework nền React (Next.js, Vite, Remix, Astro). Làm component dễ tiếp cận (hộp thoại, form, bảng, thanh điều hướng). Style theo hướng utility-first CSS. Dựng layout co giãn, ưu tiên mobile. Làm chế độ tối và tuỳ biến theme. Xây design system với bộ token thống nhất. Tạo thiết kế hình ảnh, poster hoặc tài sản thương hiệu. Dựng mẫu nhanh, thấy kết quả ngay. Thêm các pattern giao diện phức tạp (bảng dữ liệu, biểu đồ, command palette)",
     "flags": [],
     "examples": []
   },
   "eng-skill-ui-ux-pro-max": {
-    "overview": "UI/UX design intelligence for web and mobile: style selection, color systems, typography, layout, accessibility, interaction states, responsive behavior, forms, charts, design systems, and code review across React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS.",
+    "overview": "Trí tuệ thiết kế UI/UX cho web và mobile: chọn phong cách, hệ màu, kiểu chữ, bố cục, khả năng tiếp cận, trạng thái tương tác, responsive, form, biểu đồ, design system và review code trên React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui và HTML/CSS.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-use-mcp": {
-    "overview": "Discover and execute MCP server tools. Two execution paths: Gemini CLI (LLM-driven, all tasks) or direct scripts (deterministic, specific tool/server). Use for MCP integrations, tool execution, capability discovery, persistent tool catalog.",
+    "overview": "Tìm và chạy tool của các MCP server. Hai cách chạy: qua Gemini CLI (do LLM điều khiển, hợp mọi tác vụ) hoặc chạy script trực tiếp (chắc chắn, nhắm đúng tool/server cụ thể). Dùng cho tích hợp MCP, chạy tool, khám phá khả năng, lưu danh mục tool dùng lâu dài.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-vibe": {
-    "overview": "Run the full vibe pipeline. Use for GitHub issues, feature requests, bug fixes, or autonomous ship runs. Supports worktree, reusable/TDD plan gates, cook or fix routing, ship PR, review-pr, merge/CI watch.",
+    "overview": "Chạy trọn pipeline vibe. Dùng cho GitHub issue, yêu cầu tính năng, sửa lỗi hoặc chạy ship tự động. Hỗ trợ worktree, cổng duyệt kế hoạch (tái dùng/TDD), định tuyến sang cook hoặc fix, ship PR, review-pr, theo dõi merge/CI.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--beta",
-        "desc": "Ship to beta/dev target via /ck:ship beta; final ready label is ready to ship beta."
+        "desc": "Ship lên nhánh beta/dev qua /ck:ship beta; nhãn sẵn sàng cuối cùng là ready to ship beta."
       },
       {
         "flag": "--ship",
-        "desc": "After review/fix/reply, merge the PR and watch/fix CI until success or true external blocker."
+        "desc": "Sau bước review/fix/reply, merge PR rồi theo dõi và sửa CI cho tới khi xanh hoặc gặp rào cản thật sự từ bên ngoài."
       }
     ],
     "examples": [
@@ -956,379 +944,379 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-watzup": {
-    "overview": "Generate short handoff reports from Git branches, remote refs, worktrees, unfinished plans, and roadmap docs. Surfaces priority-ranked next steps with checkbox progress and rationale. Use when the user asks what's in flight, wants progress/next steps, is in a fresh worktree or detached checkout, or needs end-of-session status.",
+    "overview": "Tạo báo cáo bàn giao ngắn gọn từ các branch Git, ref trên remote, worktree, kế hoạch còn dang dở và tài liệu lộ trình. Nêu các việc nên làm tiếp theo thứ tự ưu tiên, kèm tiến độ dạng checkbox và lý do. Dùng khi bạn muốn biết đang có gì dở dang, cần xem tiến độ/việc tiếp theo, vừa mở worktree mới hay checkout tách rời, hoặc cần chốt trạng thái cuối phiên làm việc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-web-design-guidelines": {
-    "overview": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+    "overview": "Rà soát code giao diện xem có tuân thủ Web Interface Guidelines không. Dùng khi bạn nói \"review giao diện giúp tôi\", \"kiểm tra khả năng tiếp cận\", \"audit thiết kế\", \"rà soát UX\", hoặc \"đối chiếu site của tôi với best practice\".",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-web-frameworks": {
-    "overview": "Build with Next.js (App Router, RSC, SSR, ISR), Turborepo monorepos. Use for React apps, server rendering, build optimization, caching strategies, shared dependencies.",
-    "whenToUse": "Building new full-stack web applications with modern React Setting up monorepos with multiple apps and shared packages Implementing server-side rendering and static generation Optimizing build performance with intelligent caching Creating consistent UI with professional iconography Managing workspace dependencies across multiple projects Deploying production-ready applications with proper optimization",
+    "overview": "Làm web với Next.js (App Router, RSC, SSR, ISR) và monorepo Turborepo. Dùng cho app React, render phía server, tối ưu build, chiến lược cache, dùng chung dependency.",
+    "whenToUse": "Làm web full-stack mới với React hiện đại. Dựng monorepo nhiều app dùng chung package. Triển khai render phía server và sinh trang tĩnh. Tối ưu tốc độ build bằng cache thông minh. Tạo giao diện nhất quán với bộ icon chuyên nghiệp. Quản lý dependency giữa nhiều dự án trong workspace. Đưa app lên chạy thật với tối ưu đầy đủ.",
     "flags": [],
     "examples": []
   },
   "eng-skill-web-testing": {
-    "overview": "Web testing with Playwright, Vitest, k6. E2E/unit/integration/load/security/visual/a11y testing. Use for test automation, flakiness, Core Web Vitals, mobile gestures, cross-browser.",
+    "overview": "Test web với Playwright, Vitest, k6. Test E2E/unit/integration/tải/bảo mật/giao diện/a11y. Dùng cho tự động hoá test, test chập chờn, Core Web Vitals, thao tác cảm ứng trên mobile, chạy đa trình duyệt.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-worktree": {
-    "overview": "Create, inspect, and clean isolated git worktrees. Use for feature isolation, worktree health audits, stale cleanup, and monorepo or submodule workflows.",
+    "overview": "Tạo, kiểm tra và dọn các git worktree tách biệt. Dùng để tách tính năng, soát tình trạng worktree, dọn worktree cũ, và làm việc với monorepo hoặc submodule.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--prefix",
-        "desc": "Branch type: feat|fix|refactor|docs|test|chore|perf"
+        "desc": "Loại nhánh: feat|fix|refactor|docs|test|chore|perf"
       },
       {
         "flag": "--base",
-        "desc": "Override auto-detected base branch (default: dev→develop→main→master)"
+        "desc": "Ghi đè nhánh gốc tự nhận diện (mặc định: dev→develop→main→master)"
       },
       {
         "flag": "--checkout-submodules",
-        "desc": "Run git submodule update --init --checkout --recursive in the new worktree after create"
+        "desc": "Chạy git submodule update --init --checkout --recursive trong worktree mới sau khi tạo"
       },
       {
         "flag": "--no-prefix",
-        "desc": "Skip branch prefix and preserve original case and slashes (for Jira keys, multi-segment branches like user/type/feature)"
+        "desc": "Bỏ tiền tố nhánh, giữ nguyên chữ hoa/thường và dấu gạch chéo (dùng cho mã Jira, nhánh nhiều tầng như user/type/feature)"
       },
       {
         "flag": "--worktree-root",
-        "desc": "Override default location (only if needed)"
+        "desc": "Ghi đè vị trí mặc định (chỉ khi cần)"
       },
       {
         "flag": "--json",
-        "desc": "JSON output"
+        "desc": "Xuất JSON"
       },
       {
         "flag": "--dry-run",
-        "desc": "Preview"
+        "desc": "Xem trước"
       }
     ],
     "examples": []
   },
   "eng-skill-xia": {
-    "overview": "Extract, compare, port, or adapt a feature from a GitHub repository or local repo path into the current project. Use when the user wants to copy behavior from another repo, study how another codebase implements something, compare implementations, or rewrite a feature in the local stack. Triggers on: 'port from', 'copy from repo', 'like how X does it', 'clone feature from', 'adapt from', 'bring feature from', 'borrow from', 'take from repo', 'xia', 'xi a', 'xia feature'.",
+    "overview": "Trích xuất, so sánh, port hoặc chuyển thể một tính năng từ repo GitHub hay repo trên máy vào dự án hiện tại. Dùng khi bạn muốn bê hành vi từ repo khác về, tìm hiểu cách một mã nguồn khác làm điều gì đó, so sánh hai cách cài đặt, hoặc viết lại tính năng theo công nghệ của dự án mình. Kích hoạt khi nói: 'port from', 'copy from repo', 'like how X does it', 'clone feature from', 'adapt from', 'bring feature from', 'borrow from', 'take from repo', 'xia', 'xi a', 'xia feature'.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--compare",
-        "desc": "side-by-side analysis only, no implementation plan"
+        "desc": "chỉ phân tích đối chiếu hai bên, không lập kế hoạch triển khai"
       },
       {
         "flag": "--copy",
-        "desc": "transplant with minimal changes"
+        "desc": "bê nguyên về, sửa tối thiểu"
       },
       {
         "flag": "--improve",
-        "desc": "copy plus refactor for the local codebase"
+        "desc": "bê về rồi dọn lại code cho hợp mã nguồn hiện tại"
       },
       {
         "flag": "--port",
-        "desc": "rewrite idiomatically for the local stack (default)"
+        "desc": "viết lại cho đúng chất công nghệ của dự án (mặc định)"
       },
       {
         "flag": "--fast",
-        "desc": "skip research and challenge phases, auto-approve"
+        "desc": "bỏ qua bước nghiên cứu và phản biện, tự duyệt"
       },
       {
         "flag": "--auto",
-        "desc": "keep the full workflow, auto-approve gates"
+        "desc": "giữ nguyên quy trình đầy đủ, tự duyệt các cổng phê duyệt"
       }
     ],
     "examples": []
   },
   "mkt-agent-analytics-analyst": {
-    "overview": "Use this agent for performance reporting and marketing insights. This includes campaign performance reports, traffic analysis, conversion tracking, custom event analysis, and trend identification. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để làm báo cáo hiệu quả và rút ra insight marketing: báo cáo hiệu quả chiến dịch, phân tích lưu lượng truy cập, theo dõi chuyển đổi, phân tích sự kiện tuỳ chỉnh và nhận diện xu hướng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Generate a monthly marketing performance report",
-      "Analyze our website traffic trends"
+      "Làm báo cáo hiệu quả marketing hằng tháng",
+      "Phân tích xu hướng lưu lượng truy cập website của chúng tôi"
     ]
   },
   "mkt-agent-attraction-specialist": {
-    "overview": "Use this agent for lead generation, top-of-funnel content, and competitor intelligence. This includes keyword research, gap analysis, landing page content, programmatic SEO templates, and lead magnet ideation. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này cho việc tìm khách hàng tiềm năng, làm nội dung đầu phễu và thu thập thông tin đối thủ. Bao gồm nghiên cứu từ khoá, phân tích khoảng trống, nội dung landing page, mẫu SEO tự động hàng loạt, và nghĩ ý tưởng lead magnet.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to improve our lead generation strategy",
-      "What keywords are our competitors ranking for that we're missing?"
+      "Tôi cần cải thiện chiến lược tìm khách hàng tiềm năng",
+      "Đối thủ đang lên top với những từ khoá nào mà mình đang bỏ lỡ?"
     ]
   },
   "mkt-agent-campaign-debugger": {
-    "overview": "Use this agent when you need to investigate marketing issues, analyze campaign behavior, diagnose performance problems, examine analytics data, collect and analyze marketing metrics, or optimize campaign performance. This includes troubleshooting underperforming campaigns, identifying conversion bottlenecks, analyzing failed ad deployments, investigating tracking issues, and creating diagnostic reports. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần điều tra vấn đề marketing, phân tích diễn biến chiến dịch, chẩn đoán hiệu suất kém, xem dữ liệu analytics, thu thập và phân tích chỉ số marketing, hoặc tối ưu hiệu quả chiến dịch. Bao gồm cả việc xử lý chiến dịch chạy kém, tìm điểm nghẽn chuyển đổi, phân tích quảng cáo chạy hỏng, điều tra lỗi tracking và làm báo cáo chẩn đoán.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Our Facebook ad campaign conversion rate dropped 50%",
-      "Our email campaign open rates have been steadily declining",
-      "The landing page to checkout conversion dropped from 5% to 2%"
+      "Tỷ lệ chuyển đổi chiến dịch quảng cáo Facebook của tụi mình tụt 50%",
+      "Tỷ lệ mở email của chiến dịch cứ giảm dần đều",
+      "Tỷ lệ chuyển đổi từ landing page sang thanh toán tụt từ 5% xuống 2%"
     ]
   },
   "mkt-agent-campaign-manager": {
-    "overview": "Use this agent for campaign orchestration across channels. This includes multi-channel campaign planning, performance tracking, budget allocation, timeline management, and campaign briefs. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để điều phối chiến dịch trên nhiều kênh: lên kế hoạch chiến dịch đa kênh, theo dõi hiệu quả, phân bổ ngân sách, quản lý tiến độ và viết brief chiến dịch.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Plan a launch campaign for our new feature",
-      "Coordinate our Q1 marketing efforts across all channels"
+      "Lên kế hoạch chiến dịch ra mắt cho tính năng mới của chúng tôi",
+      "Điều phối các hoạt động marketing quý 1 trên tất cả các kênh"
     ]
   },
   "mkt-agent-code-reviewer": {
-    "overview": "Use this agent when you need comprehensive code review and quality assessment. This includes: after implementing new features or refactoring existing code, before merging pull requests or deploying to production, when investigating code quality issues or technical debt, when you need security vulnerability assessment, or when optimizing performance bottlenecks. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần review code toàn diện và đánh giá chất lượng. Gồm: sau khi làm xong tính năng mới hoặc dọn lại code, trước khi merge pull request hoặc triển khai lên production, khi muốn soi vấn đề chất lượng code hoặc nợ kỹ thuật, khi cần đánh giá lỗ hổng bảo mật, hoặc khi tối ưu điểm nghẽn hiệu năng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I've finished implementing the user authentication endpoint",
-      "Can you review the changes I just made to the database service?",
-      "I've refactored the WebSocket handler to improve performance"
+      "Tôi vừa làm xong endpoint đăng nhập người dùng",
+      "Review giúp những thay đổi tôi vừa làm ở service database nhé?",
+      "Tôi vừa dọn lại code phần xử lý WebSocket để tăng hiệu năng"
     ]
   },
   "mkt-agent-community-manager": {
-    "overview": "Use this agent for Discord/Slack moderation and community engagement. This includes sentiment analysis, response drafting, moderation alerts, engagement metrics, and FAQ generation. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để kiểm duyệt và chăm sóc cộng đồng trên Discord/Slack. Bao gồm phân tích cảm xúc thành viên, soạn phản hồi, cảnh báo cần kiểm duyệt, đo mức độ tương tác và tạo FAQ.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "How should we manage our Discord community?",
-      "Analyze the sentiment in our Slack community"
+      "Nên quản lý cộng đồng Discord của mình thế nào?",
+      "Phân tích cảm xúc của thành viên trong cộng đồng Slack của mình"
     ]
   },
   "mkt-agent-content-creator": {
-    "overview": "Use this agent to generate marketing content. This includes blog posts, social media posts, video scripts, ad copy, landing page copy, and newsletter content. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để viết nội dung marketing: bài blog, bài đăng mạng xã hội, kịch bản video, lời quảng cáo, nội dung trang đích và bản tin email.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Write a blog post about productivity hacks",
-      "Create a script for our product demo video"
+      "Viết một bài blog về mẹo làm việc hiệu quả",
+      "Viết kịch bản cho video demo sản phẩm của chúng tôi"
     ]
   },
   "mkt-agent-content-reviewer": {
-    "overview": "Use this agent when you need comprehensive content review and quality assessment. This includes: after creating marketing content, copy, or campaigns, before publishing to production channels, when investigating content quality issues or brand inconsistencies, when you need SEO and conversion optimization assessment, or when optimizing content performance. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần rà soát nội dung toàn diện và đánh giá chất lượng. Bao gồm: sau khi viết xong nội dung marketing, bài quảng cáo hoặc chiến dịch; trước khi đăng lên kênh chính thức; khi nghi ngờ nội dung kém chất lượng hoặc lệch tông thương hiệu; khi cần đánh giá về SEO và tối ưu chuyển đổi; hoặc khi muốn tối ưu hiệu quả của nội dung.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I've finished writing the product landing page",
-      "Can you review the email campaign I just created?",
-      "I've optimized the blog post for SEO"
+      "Tôi viết xong trang đích giới thiệu sản phẩm rồi",
+      "Bạn xem lại giúp tôi chiến dịch email vừa làm được không?",
+      "Tôi đã tối ưu SEO cho bài blog rồi"
     ]
   },
   "mkt-agent-continuity-specialist": {
-    "overview": "Use this agent for customer retention and engagement strategies. This includes churn risk detection, re-engagement campaigns, NPS automation, testimonial requests, and customer health scoring. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này cho việc giữ chân và tương tác lại với khách hàng. Bao gồm phát hiện nguy cơ rời bỏ, chiến dịch kéo khách quay lại, tự động hoá khảo sát NPS, xin đánh giá/nhận xét, và chấm điểm sức khoẻ khách hàng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Our customer churn rate has increased to 8%",
-      "How can we improve customer retention?"
+      "Tỷ lệ khách rời bỏ của tụi mình tăng lên 8%",
+      "Làm sao để giữ chân khách hàng tốt hơn?"
     ]
   },
   "mkt-agent-copywriter": {
-    "overview": "Use this agent when you need to create high-converting, engagement-driven copy for marketing materials, social media posts, landing pages, email campaigns, product descriptions, or any content that needs to capture attention and drive action. Examples:\\n\\n \\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần viết chữ nghĩa có sức chuyển đổi và cuốn người đọc cho tài liệu marketing, bài đăng mạng xã hội, landing page, chiến dịch email, mô tả sản phẩm, hoặc bất kỳ nội dung nào cần hút sự chú ý và thúc đẩy hành động.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "We just added a new AI-powered code review feature. Can you write a hero headline and subheadline for the landing page?",
-      "We just shipped GitHub auto-invites for ClaudeKit. Need a tweet that'll get people excited.",
-      "Here's our new pricing page draft",
-      "Write subject lines for our product launch email campaign"
+      "Bọn mình vừa thêm tính năng review code bằng AI. Viết giúp tiêu đề chính và tiêu đề phụ cho landing page nhé?",
+      "Bọn mình vừa ra tính năng tự động mời vào GitHub cho ClaudeKit. Cần một tweet làm mọi người hào hứng.",
+      "Đây là bản nháp trang bảng giá mới của bọn mình",
+      "Viết tiêu đề email cho chiến dịch ra mắt sản phẩm của bọn mình"
     ]
   },
   "mkt-agent-database-admin": {
-    "overview": "Use this agent when you need to work with database systems, including querying for data analysis, diagnosing performance bottlenecks, optimizing database structures, managing indexes, implementing backup and restore strategies, setting up replication, configuring monitoring, managing user permissions, or when you need comprehensive database health assessments and optimization recommendations. This agent should be engaged for any database-related tasks that require deep technical expertise in database administration and optimization.\\n\\nExamples:\\n \\n \\n",
+    "overview": "Dùng agent này khi cần làm việc với database: truy vấn để phân tích dữ liệu, chẩn đoán điểm nghẽn hiệu năng, tối ưu cấu trúc, quản lý index, làm phương án sao lưu và phục hồi, thiết lập replication, cấu hình giám sát, phân quyền người dùng, hoặc khi cần đánh giá tổng thể sức khoẻ database và đề xuất tối ưu. Nên gọi agent này cho mọi việc liên quan tới database đòi hỏi chuyên môn sâu về quản trị và tối ưu.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "The application is running slowly, I think there might be database issues",
-      "We need to implement a reliable backup strategy for our PostgreSQL database",
-      "I've implemented the new feature but the queries seem slow"
+      "Ứng dụng chạy chậm, tôi nghĩ có thể do database có vấn đề",
+      "Chúng tôi cần một phương án sao lưu đáng tin cậy cho database PostgreSQL",
+      "Tôi làm xong tính năng mới rồi nhưng các truy vấn có vẻ chậm"
     ]
   },
   "mkt-agent-debugger": {
-    "overview": "Use this agent when you need to investigate issues, analyze system behavior, diagnose performance problems, examine database structures, collect and analyze logs from servers or CI/CD pipelines, run tests for debugging purposes, or optimize system performance. This includes troubleshooting errors, identifying bottlenecks, analyzing failed deployments, investigating test failures, and creating diagnostic reports. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần điều tra sự cố, phân tích hành vi hệ thống, chẩn đoán vấn đề hiệu năng, xem xét cấu trúc database, thu thập và phân tích log từ server hoặc pipeline CI/CD, chạy test để gỡ lỗi, hoặc tối ưu hiệu năng hệ thống. Bao gồm cả việc truy vết lỗi, tìm điểm nghẽn, phân tích triển khai thất bại, điều tra test fail, và viết báo cáo chẩn đoán.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "The /api/users endpoint is throwing 500 errors",
-      "The GitHub Actions workflow keeps failing on the test step",
-      "The application response times have increased by 300% since yesterday"
+      "Endpoint /api/users đang trả lỗi 500",
+      "Workflow GitHub Actions cứ fail ở bước test",
+      "Thời gian phản hồi của ứng dụng tăng 300% so với hôm qua"
     ]
   },
   "mkt-agent-docs-manager": {
-    "overview": "Use this agent when you need to manage technical documentation, establish implementation standards, analyze and update existing documentation based on code changes, write or update Product Development Requirements (PDRs), organize documentation for developer productivity, or produce documentation summary reports. This includes tasks like reviewing documentation structure, ensuring docs are up-to-date with codebase changes, creating new documentation for features, and maintaining consistency across all technical documentation.",
+    "overview": "Dùng agent này khi cần quản lý tài liệu kỹ thuật, đặt ra chuẩn triển khai, phân tích và cập nhật tài liệu có sẵn theo thay đổi của code, viết hoặc cập nhật tài liệu yêu cầu phát triển sản phẩm (PDR), sắp xếp tài liệu cho dev làm việc hiệu quả hơn, hoặc xuất báo cáo tổng hợp tài liệu. Bao gồm các việc như rà soát cấu trúc tài liệu, đảm bảo docs bám sát thay đổi trong mã nguồn, viết tài liệu mới cho tính năng, và giữ mọi tài liệu kỹ thuật nhất quán với nhau.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-agent-email-wizard": {
-    "overview": "Use this agent for email campaign orchestration and optimization. This includes sequence templates, dynamic content personalization, send-time optimization, A/B test design, subject line generation, and drip campaign architecture. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để dựng và tối ưu chiến dịch email. Bao gồm mẫu chuỗi email, cá nhân hoá nội dung động, chọn giờ gửi tối ưu, thiết kế A/B test, viết tiêu đề email, và dựng kiến trúc chuỗi email nuôi dưỡng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need a 7-day email sequence for new subscribers",
-      "Our email open rates have dropped below 15%"
+      "Tôi cần chuỗi email 7 ngày cho người mới đăng ký",
+      "Tỷ lệ mở email của tụi mình tụt xuống dưới 15%"
     ]
   },
   "mkt-agent-fullstack-developer": {
-    "overview": "Execute implementation phases from parallel plans. Handles backend (Node.js, APIs, databases), frontend (React, TypeScript), and infrastructure tasks. Designed for parallel execution with strict file ownership boundaries. Use when implementing a specific phase from /plan:parallel output.",
+    "overview": "Thực thi các phase triển khai lấy từ kế hoạch chạy song song. Lo được cả backend (Node.js, API, database), frontend (React, TypeScript) lẫn hạ tầng. Thiết kế để chạy song song với ranh giới sở hữu file rõ ràng. Dùng khi triển khai một phase cụ thể trong kết quả của /plan:parallel.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-agent-funnel-architect": {
-    "overview": "Use this agent for funnel design and conversion optimization. This includes funnel stage design, conversion rate analysis, bottleneck identification, A/B test recommendations, offer sequencing (Hormozi model), and attribution modeling. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để thiết kế phễu và tối ưu chuyển đổi. Bao gồm thiết kế các giai đoạn phễu, phân tích tỷ lệ chuyển đổi, tìm điểm nghẽn, gợi ý test A/B, sắp xếp chuỗi offer (mô hình Hormozi) và mô hình hoá attribution.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Design a webinar funnel for our SaaS product",
-      "Our funnel conversion is only 1.5%"
+      "Thiết kế phễu webinar cho sản phẩm SaaS của bọn mình",
+      "Phễu của bọn mình chỉ chuyển đổi được 1.5%"
     ]
   },
   "mkt-agent-git-manager": {
-    "overview": "Stage, commit, and push code changes with conventional commits. Use when user says \"commit\", \"push\", or finishes a feature/fix.",
+    "overview": "Stage, commit và push thay đổi code theo chuẩn conventional commit. Dùng khi bạn nói \"commit\", \"push\", hoặc vừa làm xong một tính năng/bản vá.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-agent-journal-writer": {
-    "overview": "Use this agent when:\\n- A test suite fails repeatedly despite multiple fix attempts\\n- A critical bug is discovered in production or staging\\n- An implementation approach proves fundamentally flawed and requires complete redesign\\n- External dependencies (APIs, services, libraries) cause blocking issues\\n- Performance bottlenecks are discovered that significantly impact user experience\\n- Security vulnerabilities are identified\\n- Database migrations fail or cause data integrity issues\\n- CI/CD pipelines break unexpectedly\\n- Integration conflicts arise between major system components\\n- Technical debt reaches a critical threshold requiring immediate attention\\n- A feature implementation takes significantly longer than estimated\\n- Architectural decisions prove problematic in practice\\n\\nExamples:\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi: - Bộ test fail liên tục dù đã sửa nhiều lần - Phát hiện lỗi nghiêm trọng trên production hoặc staging - Cách làm hiện tại sai từ gốc, phải thiết kế lại toàn bộ - Phụ thuộc bên ngoài (API, dịch vụ, thư viện) gây tắc nghẽn - Phát hiện điểm nghẽn hiệu năng ảnh hưởng lớn tới trải nghiệm người dùng - Phát hiện lỗ hổng bảo mật - Migration database fail hoặc làm hỏng tính toàn vẹn dữ liệu - Pipeline CI/CD đột nhiên hỏng - Xung đột tích hợp giữa các thành phần lớn của hệ thống - Nợ kỹ thuật chạm ngưỡng nguy hiểm, phải xử lý ngay - Một tính năng làm lâu hơn ước tính rất nhiều - Quyết định kiến trúc bộc lộ vấn đề khi chạy thực tế",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "The Sepay webhook tests keep failing with connection timeouts. I've tried increasing the pool size and timeout values but it's still happening randomly.",
-      "We just realized that the GitHub invitation system doesn't properly validate user permissions before granting repository access. This could allow unauthorized users to access private repos.",
-      "The database schema migration we planned completely broke the order processing system. We need to roll back and rethink our approach."
+      "Test webhook Sepay cứ fail vì timeout kết nối. Mình đã thử tăng pool size và giá trị timeout mà thỉnh thoảng vẫn bị.",
+      "Bọn mình vừa phát hiện hệ thống mời vào GitHub không kiểm tra quyền người dùng đúng cách trước khi cấp truy cập repo. Như vậy người không có quyền vẫn có thể vào được repo private.",
+      "Bản migration schema database mà bọn mình lên kế hoạch đã làm hỏng hoàn toàn hệ thống xử lý đơn hàng. Cần rollback và tính lại cách làm."
     ]
   },
   "mkt-agent-lead-qualifier": {
-    "overview": "Use this agent for intent detection, lead scoring, and behavioral analysis. This includes engagement pattern recognition, sales readiness prediction, and qualification criteria definition. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để nhận diện ý định mua, chấm điểm khách tiềm năng và phân tích hành vi. Bao gồm nhận diện mẫu tương tác, dự đoán mức độ sẵn sàng mua và định ra tiêu chí sàng lọc.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "How should we score and prioritize our leads?",
-      "Which leads are most likely to convert?"
+      "Nên chấm điểm và ưu tiên khách tiềm năng thế nào?",
+      "Khách tiềm năng nào có khả năng chốt đơn cao nhất?"
     ]
   },
   "mkt-agent-mcp-manager": {
-    "overview": "Manage MCP (Model Context Protocol) server integrations - discover tools/prompts/resources, analyze relevance for tasks, and execute MCP capabilities. Use when need to work with MCP servers, discover available MCP tools, filter MCP capabilities for specific tasks, execute MCP tools programmatically, or implement MCP client functionality. Keeps main context clean by handling MCP discovery in subagent context.",
+    "overview": "Quản lý việc tích hợp MCP server (Model Context Protocol) — tìm ra các tool/prompt/resource có sẵn, đánh giá cái nào hợp với việc đang làm, rồi gọi chạy. Dùng khi cần làm việc với MCP server, khám phá tool MCP đang có, lọc ra khả năng MCP phù hợp với từng việc, gọi tool MCP bằng code, hoặc tự viết phần client MCP. Việc khám phá MCP được đẩy sang subagent nên context chính vẫn gọn.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-agent-planner": {
-    "overview": "Use this agent when you need to research, analyze, and create comprehensive implementation plans for new features, system architectures, or complex technical solutions. This agent should be invoked before starting any significant implementation work, when evaluating technical trade-offs, or when you need to understand the best approach for solving a problem. Examples:",
+    "overview": "Dùng agent này khi cần nghiên cứu, phân tích và lập kế hoạch triển khai đầy đủ cho tính năng mới, kiến trúc hệ thống hoặc giải pháp kỹ thuật phức tạp. Nên gọi agent này trước khi bắt tay vào việc lớn, khi cần cân nhắc được–mất về kỹ thuật, hoặc khi muốn tìm hướng tiếp cận tốt nhất cho một bài toán.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to add OAuth2 authentication to our app",
-      "We need to migrate from SQLite to PostgreSQL",
-      "The app is running slowly on older devices"
+      "Tôi cần thêm đăng nhập OAuth2 cho ứng dụng",
+      "Chúng tôi cần chuyển từ SQLite sang PostgreSQL",
+      "Ứng dụng chạy chậm trên các thiết bị đời cũ"
     ]
   },
   "mkt-agent-project-manager": {
-    "overview": "Use this agent when you need comprehensive project oversight and coordination. Examples:",
+    "overview": "Dùng agent này khi cần giám sát và điều phối dự án một cách toàn diện.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I just finished implementing the WebSocket terminal communication feature. Can you check our progress and update the plan?",
-      "The backend-developer and tester agents have finished their work. What's our overall project status?"
+      "Tôi vừa làm xong tính năng giao tiếp terminal qua WebSocket. Kiểm tra tiến độ và cập nhật kế hoạch giúp tôi được không?",
+      "Agent backend-developer và tester đã làm xong phần việc của mình. Tình hình chung của dự án giờ ra sao?"
     ]
   },
   "mkt-agent-researcher": {
-    "overview": "Use this agent when you need to conduct comprehensive research on software development topics, including investigating new technologies, finding documentation, exploring best practices, or gathering information about plugins, packages, and open source projects. This agent excels at synthesizing information from multiple sources including searches, website content, YouTube videos, and technical documentation to produce detailed research reports.",
+    "overview": "Dùng agent này khi cần nghiên cứu sâu về các chủ đề lập trình: tìm hiểu công nghệ mới, tra tài liệu, tìm best practice, hoặc thu thập thông tin về plugin, package và dự án mã nguồn mở. Agent này mạnh ở việc tổng hợp thông tin từ nhiều nguồn — kết quả tìm kiếm, nội dung website, video YouTube, tài liệu kỹ thuật — để cho ra báo cáo nghiên cứu chi tiết.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to understand the latest developments in React Server Components and best practices for implementation",
-      "Research the top authentication solutions for Flutter apps with biometric support",
-      "What are the current best practices for securing REST APIs in 2024?"
+      "Tôi cần hiểu những cập nhật mới nhất về React Server Components và cách triển khai chuẩn",
+      "Nghiên cứu các giải pháp đăng nhập tốt nhất cho app Flutter có hỗ trợ sinh trắc học",
+      "Hiện nay có những cách nào tốt nhất để bảo mật REST API trong năm 2024?"
     ]
   },
   "mkt-agent-sale-enabler": {
-    "overview": "Use this agent for sales collateral and deal acceleration. This includes personalized pitch generation, objection handling guides, social proof matching, proposal templates, and case study generation. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này cho tài liệu bán hàng và đẩy nhanh tốc độ chốt deal: viết pitch cá nhân hoá, sổ tay xử lý từ chối, ghép bằng chứng xã hội phù hợp, mẫu đề xuất và viết case study.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need sales materials for our enterprise product",
-      "Our sales team needs better objection handling materials"
+      "Tôi cần tài liệu bán hàng cho sản phẩm enterprise",
+      "Đội sales cần tài liệu xử lý từ chối tốt hơn"
     ]
   },
   "mkt-agent-scout": {
-    "overview": "Use this agent when you need to quickly locate relevant files across a large codebase to complete a specific task. This agent is particularly useful when:\\n\\n \\n\\n \\n\\n \\n\\nProactively use this agent when:\\n- Beginning work on a feature that spans multiple directories\\n- User mentions needing to \"find\", \"locate\", or \"search for\" files\\n- Starting a debugging session that requires understanding file relationships\\n- User asks about project structure or where specific functionality lives\\n- Before making changes that might affect multiple parts of the codebase",
+    "overview": "Dùng agent này khi cần tìm nhanh các file liên quan trong một mã nguồn lớn để làm một việc cụ thể. Agent này đặc biệt hữu ích khi: Chủ động dùng agent này khi: - Bắt đầu làm một tính năng trải rộng nhiều thư mục - Người dùng nói cần \"tìm\", \"định vị\" hay \"tra\" file - Bắt đầu một phiên gỡ lỗi cần hiểu quan hệ giữa các file - Người dùng hỏi về cấu trúc dự án hoặc một chức năng nằm ở đâu - Trước khi sửa những chỗ có thể ảnh hưởng tới nhiều phần trong mã nguồn",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to add Stripe as a new payment provider. Can you help me find all the relevant files?",
-      "There's a bug in the login flow. I need to review all authentication files.",
-      "How are database migrations structured in this project?"
+      "Tôi cần thêm Stripe làm cổng thanh toán mới. Giúp tôi tìm hết các file liên quan được không?",
+      "Có lỗi trong luồng đăng nhập. Tôi cần rà soát toàn bộ file liên quan đến xác thực.",
+      "Trong dự án này, các migration database được tổ chức thế nào?"
     ]
   },
   "mkt-agent-scout-external": {
-    "overview": "Use this agent when you need to quickly locate relevant files across a large codebase to complete a specific task using external agentic tools (Gemini, OpenCode, etc.). This agent is particularly useful when:\\n\\n \\n\\n \\n\\n \\n\\nProactively use this agent when:\\n- Beginning work on a feature that spans multiple directories\\n- User mentions needing to \"find\", \"locate\", or \"search for\" files\\n- Starting a debugging session that requires understanding file relationships\\n- User asks about project structure or where specific functionality lives\\n- Before making changes that might affect multiple parts of the codebase",
+    "overview": "Dùng agent này khi cần tìm nhanh các file liên quan trong một mã nguồn lớn để làm một việc cụ thể, bằng công cụ agent bên ngoài (Gemini, OpenCode...). Nên chủ động dùng agent này khi: bắt đầu làm một tính năng trải rộng nhiều thư mục; người dùng nói cần \"tìm\", \"định vị\" hoặc \"tra\" file; bắt đầu một phiên gỡ lỗi cần hiểu quan hệ giữa các file; người dùng hỏi về cấu trúc dự án hoặc một chức năng nằm ở đâu; trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need to add Stripe as a new payment provider. Can you help me find all the relevant files?",
-      "There's a bug in the login flow. I need to review all authentication files.",
-      "How are database migrations structured in this project?"
+      "Tôi cần thêm Stripe làm cổng thanh toán mới. Giúp tôi tìm hết các file liên quan nhé?",
+      "Luồng đăng nhập đang có lỗi. Tôi cần xem lại toàn bộ file liên quan tới xác thực.",
+      "Dự án này tổ chức các bản migration database như thế nào?"
     ]
   },
   "mkt-agent-seo-specialist": {
-    "overview": "Use this agent for SEO audit and optimization. This includes technical SEO audit, content optimization, keyword analysis, link building strategy, JSON+LD generation, and competitor SEO analysis. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để rà soát và tối ưu SEO. Bao gồm audit SEO kỹ thuật, tối ưu nội dung, phân tích từ khoá, chiến lược xây liên kết, sinh JSON+LD và phân tích SEO đối thủ.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Audit our website for SEO issues",
-      "How can we rank higher for 'project management software'?"
+      "Rà soát website của mình xem có vấn đề SEO gì không",
+      "Làm sao để lên top cao hơn với từ khoá 'phần mềm quản lý dự án'?"
     ]
   },
   "mkt-agent-social-media-manager": {
-    "overview": "Use this agent for social media scheduling and analytics. This includes multi-platform post generation, content calendar management, engagement analysis, trend research, and platform-specific adaptation. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để lên lịch và phân tích mạng xã hội. Bao gồm viết bài cho nhiều nền tảng, quản lý lịch nội dung, phân tích tương tác, nghiên cứu xu hướng, và điều chỉnh nội dung cho từng nền tảng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Create a month of social content for our product",
-      "Our LinkedIn engagement has dropped 40%"
+      "Lên nội dung mạng xã hội cả tháng cho sản phẩm của bọn tôi",
+      "Tương tác LinkedIn của bọn tôi giảm 40%"
     ]
   },
   "mkt-agent-tester": {
-    "overview": "Use this agent when you need to validate code quality through testing, including running unit and integration tests, analyzing test coverage, validating error handling, checking performance requirements, or verifying build processes. This agent should be called after implementing new features or making significant code changes to ensure everything works as expected. Examples:\\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần kiểm chứng chất lượng code bằng test: chạy unit test và integration test, phân tích độ phủ test, kiểm tra việc xử lý lỗi, đối chiếu yêu cầu hiệu năng, hoặc xác minh quá trình build. Nên gọi agent này sau khi làm xong tính năng mới hoặc sửa code đáng kể, để chắc chắn mọi thứ vẫn chạy đúng.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I've implemented the new user authentication endpoint",
-      "Can you check if our test coverage is still above 80%?",
-      "I've fixed the database connection issue in the auth module"
+      "Mình vừa làm xong endpoint đăng nhập người dùng mới",
+      "Kiểm tra giúp xem độ phủ test còn trên 80% không?",
+      "Mình vừa sửa lỗi kết nối database trong module auth"
     ]
   },
   "mkt-agent-ui-ux-designer": {
-    "overview": "Use this agent when the user needs UI/UX design work including interface designs, wireframes, design systems, user research, responsive layouts, animations, or design documentation. Examples:\\n\\n \\n\\n \\n\\n \\n\\n",
+    "overview": "Dùng agent này khi cần làm thiết kế UI/UX: thiết kế giao diện, wireframe, design system, nghiên cứu người dùng, bố cục responsive, hiệu ứng chuyển động, hoặc tài liệu thiết kế.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "I need a modern landing page design for our SaaS product with a hero section, features, and pricing",
-      "I've added a new dashboard widget, can you review the design?",
-      "The buttons across different pages look inconsistent",
-      "Here's the new signup form I just built"
+      "Tôi cần một trang đích hiện đại cho sản phẩm SaaS, có phần hero, phần tính năng và bảng giá",
+      "Tôi vừa thêm một widget mới vào dashboard, bạn xem lại thiết kế giúp nhé?",
+      "Các nút bấm giữa những trang khác nhau trông không đồng nhất",
+      "Đây là form đăng ký tôi vừa dựng xong"
     ]
   },
   "mkt-agent-upsell-maximizer": {
-    "overview": "Use this agent for revenue expansion and product recommendations. This includes upsell opportunity identification, product recommendation logic, expansion revenue forecasting, feature adoption tracking, cross-sell sequences, and pricing tier optimization. Examples:\\n\\n \\n\\n",
+    "overview": "Dùng agent này để mở rộng doanh thu và gợi ý sản phẩm: tìm cơ hội upsell, xây logic gợi ý sản phẩm, dự báo doanh thu mở rộng, theo dõi mức sử dụng tính năng, chuỗi bán chéo và tối ưu các gói giá.",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "How can we increase our AOV from $50 to $75?",
-      "Design cross-sell recommendations for our product catalog"
+      "Làm sao tăng giá trị đơn hàng trung bình (AOV) từ 50$ lên 75$?",
+      "Thiết kế gợi ý bán chéo cho danh mục sản phẩm của chúng tôi"
     ]
   },
   "mkt-cmd-analyze": {
-    "overview": "💡💡 Analytics and performance reports",
+    "overview": "💡💡 Báo cáo phân tích và hiệu quả",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1339,7 +1327,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-analyze-report": {
-    "overview": "💡💡 Generate periodic reports",
+    "overview": "💡💡 Tạo báo cáo định kỳ",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1350,52 +1338,52 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-ask": {
-    "overview": "💡 Answer technical and architectural questions.",
+    "overview": "💡 Trả lời câu hỏi về kỹ thuật và kiến trúc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-brand-update": {
-    "overview": "🎨 Update brand identity and sync to all design systems",
+    "overview": "🎨 Cập nhật bộ nhận diện thương hiệu và đồng bộ sang toàn bộ design system",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/brand:update",
-      "/brand:update \"Ocean Professional\"",
-      "/brand:update \"midnight purple\""
+      "/brand:update \"Xanh đại dương, phong cách chuyên nghiệp\"",
+      "/brand:update \"tím nửa đêm\""
     ]
   },
   "mkt-cmd-campaign": {
-    "overview": "💡💡 Create and manage marketing campaigns",
+    "overview": "💡💡 Tạo và quản lý chiến dịch marketing",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/campaign create \"Q1 Product Launch\"",
-      "/campaign status \"Q1 Product Launch\"",
-      "/campaign analyze \"Q1 Product Launch\""
+      "/campaign create \"Ra mắt sản phẩm quý 1\"",
+      "/campaign status \"Ra mắt sản phẩm quý 1\"",
+      "/campaign analyze \"Ra mắt sản phẩm quý 1\""
     ]
   },
   "mkt-cmd-campaign-analyze": {
-    "overview": "💡💡 Analyze campaign performance",
+    "overview": "💡💡 Phân tích hiệu quả chiến dịch",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/campaign/analyze \"Q1 Product Launch\"",
-      "/campaign/analyze \"Black Friday Sale\""
+      "/campaign/analyze \"Ra mắt sản phẩm quý 1\"",
+      "/campaign/analyze \"Khuyến mãi Black Friday\""
     ]
   },
   "mkt-cmd-campaign-create": {
-    "overview": "💡💡💡 Create comprehensive digital marketing campaign",
+    "overview": "💡💡💡 Tạo chiến dịch marketing số toàn diện",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/campaign:create \"Q1 Product Launch\"",
-      "/campaign:create \"Black Friday sale for SaaS product\"",
-      "/campaign:create \"lead gen for enterprise B2B\""
+      "/campaign:create \"Ra mắt sản phẩm quý 1\"",
+      "/campaign:create \"Khuyến mãi Black Friday cho sản phẩm SaaS\"",
+      "/campaign:create \"tìm khách hàng tiềm năng cho B2B doanh nghiệp\""
     ]
   },
   "mkt-cmd-campaign-email": {
-    "overview": "💡💡 Email campaign management",
+    "overview": "💡💡 Quản lý chiến dịch email",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1405,16 +1393,16 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-campaign-status": {
-    "overview": "💡 Get campaign status",
+    "overview": "💡 Xem trạng thái chiến dịch",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/campaign/status \"Q1 Product Launch\"",
+      "/campaign/status \"Ra mắt sản phẩm quý 1\"",
       "/campaign/status"
     ]
   },
   "mkt-cmd-competitor": {
-    "overview": "💡💡 Competitive analysis",
+    "overview": "💡💡 Phân tích đối thủ cạnh tranh",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1438,7 +1426,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-dashboard-check": {
-    "overview": "Check Marketing Dashboard server status",
+    "overview": "Kiểm tra trạng thái server của Marketing Dashboard",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1446,42 +1434,42 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-docs-init": {
-    "overview": "💡💡💡💡 Analyze the codebase and create initial documentation",
+    "overview": "💡💡💡💡 Phân tích mã nguồn và tạo tài liệu ban đầu",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-docs-llms": {
-    "overview": "💡💡💡 Generate llms.txt based on the current codebase",
+    "overview": "💡💡💡 Sinh file llms.txt dựa trên mã nguồn hiện tại",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-docs-summarize": {
-    "overview": "💡 Analyze the codebase and update documentation",
+    "overview": "💡 Phân tích mã nguồn và cập nhật tài liệu",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-docs-update": {
-    "overview": "💡💡💡 Analyze the codebase and update documentation",
+    "overview": "💡💡💡 Phân tích mã nguồn và cập nhật tài liệu",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-email": {
-    "overview": "💡💡 Generate email content",
+    "overview": "💡💡 Soạn nội dung email",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/email newsletter",
-      "/email cold \"SaaS founders\"",
-      "/email launch \"New Feature\"",
+      "/email cold \"Nhà sáng lập SaaS\"",
+      "/email launch \"Tính năng mới\"",
       "/email nurture"
     ]
   },
   "mkt-cmd-email-flow": {
-    "overview": "Generate complete email automation sequence",
+    "overview": "Tạo chuỗi email tự động hoàn chỉnh",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1489,24 +1477,24 @@ window.CK_DETAILS = {
       "/email:flow cart",
       "/email:flow onboarding",
       "/email:flow re-engagement",
-      "/email:flow nurture \"convert to paid plan\"",
-      "/email:flow upsell \"sell annual upgrade\""
+      "/email:flow nurture \"chuyển khách sang gói trả phí\"",
+      "/email:flow upsell \"bán gói nâng cấp theo năm\""
     ]
   },
   "mkt-cmd-email-sequence": {
-    "overview": "Generate complete email drip sequence with copy",
+    "overview": "Tạo trọn bộ chuỗi email drip kèm nội dung",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/email:sequence welcome",
-      "/email:sequence onboarding \"project management SaaS\"",
-      "/email:sequence launch \"New Year sale 40% off\"",
-      "/email:sequence abandon \"checkout\"",
-      "/email:sequence nurture \"B2B lead magnet\""
+      "/email:sequence onboarding \"SaaS quản lý dự án\"",
+      "/email:sequence launch \"Khuyến mãi năm mới giảm 40%\"",
+      "/email:sequence abandon \"bỏ giỏ hàng lúc thanh toán\"",
+      "/email:sequence nurture \"tài liệu hút khách B2B\""
     ]
   },
   "mkt-cmd-funnel": {
-    "overview": "💡💡 Funnel design and optimization",
+    "overview": "💡💡 Thiết kế và tối ưu phễu",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1517,7 +1505,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-hub": {
-    "overview": "Open Content Hub + Marketing Dashboard",
+    "overview": "Mở Content Hub + Dashboard marketing",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1527,120 +1515,120 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-init": {
-    "overview": "💡💡💡💡 Initialize marketing project",
+    "overview": "💡💡💡💡 Khởi tạo dự án marketing",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-journal": {
-    "overview": "💡 Write some journal entries.",
+    "overview": "💡 Viết vài mục nhật ký kỹ thuật.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-kanban": {
-    "overview": "AI agent orchestration board (Coming Soon)",
+    "overview": "Bảng điều phối AI agent (sắp có)",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-persona": {
-    "overview": "💡💡 Customer persona management",
+    "overview": "💡💡 Quản lý chân dung khách hàng",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/persona create",
       "/persona analyze",
-      "/persona update \"Tech Startup Founder\"",
+      "/persona update \"Nhà sáng lập startup công nghệ\"",
       "/persona list"
     ]
   },
   "mkt-cmd-plan": {
-    "overview": "💡💡💡 Intelligent plan creation with prompt enhancement",
+    "overview": "💡💡💡 Lập kế hoạch thông minh, tự làm rõ prompt của bạn",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-archive": {
-    "overview": "Write journal entries and archive specific plans or all plans",
+    "overview": "Viết nhật ký làm việc và lưu trữ một kế hoạch cụ thể hoặc toàn bộ kế hoạch",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-ci": {
-    "overview": "Analyze Github Actions logs and provide a plan to fix the issues",
+    "overview": "Phân tích log GitHub Actions và đưa ra kế hoạch sửa lỗi",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-cro": {
-    "overview": "Create a CRO plan for the given content",
+    "overview": "Tạo kế hoạch CRO (tối ưu tỷ lệ chuyển đổi) cho nội dung được chỉ định",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-fast": {
-    "overview": "💡💡 No research. Only analyze and create an implementation plan",
+    "overview": "💡💡 Không nghiên cứu. Chỉ phân tích và lập kế hoạch triển khai",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-hard": {
-    "overview": "💡💡💡 Research, analyze, and create an implementation plan",
+    "overview": "💡💡💡 Nghiên cứu, phân tích và lập kế hoạch triển khai",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-parallel": {
-    "overview": "💡💡💡 Create detailed plan with parallel-executable phases",
+    "overview": "💡💡💡 Tạo kế hoạch chi tiết với các phase chạy song song được",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-two": {
-    "overview": "💡💡💡💡 Research & create an implementation plan with 2 approaches",
+    "overview": "💡💡💡💡 Nghiên cứu và lập kế hoạch triển khai với 2 hướng tiếp cận",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-plan-validate": {
-    "overview": "Validate plan with critical questions interview",
+    "overview": "Kiểm chứng kế hoạch bằng loạt câu hỏi phản biện",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-play": {
-    "overview": "Marketing playbook orchestrator — expert strategy, AI execution, goal tracking",
+    "overview": "Điều phối playbook marketing — chiến lược từ chuyên gia, AI thực thi, theo dõi mục tiêu",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-play-create": {
-    "overview": "Create a new marketing playbook from expert template",
+    "overview": "Tạo playbook marketing mới từ mẫu của chuyên gia",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-play-goals": {
-    "overview": "Goal tracker — set targets, pull metrics, view progress",
+    "overview": "Theo dõi mục tiêu — đặt chỉ tiêu, lấy số liệu, xem tiến độ",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-play-next": {
-    "overview": "Show and execute next ready playbook step",
+    "overview": "Xem và chạy bước tiếp theo đã sẵn sàng trong playbook",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-play-status": {
-    "overview": "Show playbook progress dashboard",
+    "overview": "Xem dashboard tiến độ playbook",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-preview": {
-    "overview": "Path to markdown file, plan directory, or plans collection",
+    "overview": "Đường dẫn tới file markdown, thư mục kế hoạch, hoặc cả bộ kế hoạch",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1652,18 +1640,18 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-seo": {
-    "overview": "💡💡 SEO audit and optimization",
+    "overview": "💡💡 Rà soát và tối ưu SEO",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/seo:audit https://example.com",
-      "/seo:keywords \"project management software\"",
+      "/seo:keywords \"phần mềm quản lý dự án\"",
       "/seo:optimize https://example.com/blog/post-title",
       "/seo:schema"
     ]
   },
   "mkt-cmd-seo-audit": {
-    "overview": "💡💡 Technical SEO audit",
+    "overview": "💡💡 Rà soát SEO kỹ thuật",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1672,75 +1660,75 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-seo-keywords": {
-    "overview": "💡💡 Keyword research & planning",
+    "overview": "💡💡 Nghiên cứu và lên kế hoạch từ khoá",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/seo:keywords \"AI writing tools\"",
-      "/seo:keywords \"project management software\"",
-      "/seo:keywords \"sustainable fashion\""
+      "/seo:keywords \"công cụ viết bằng AI\"",
+      "/seo:keywords \"phần mềm quản lý dự án\"",
+      "/seo:keywords \"thời trang bền vững\""
     ]
   },
   "mkt-cmd-seo-pseo": {
-    "overview": "💡💡 Programmatic SEO template generation",
+    "overview": "💡💡 Sinh hàng loạt template SEO (programmatic SEO)",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/seo/pseo location",
       "/seo/pseo comparison",
-      "/seo/pseo \"best {tool} for {usecase}\""
+      "/seo/pseo \"{tool} tốt nhất cho {usecase}\""
     ]
   },
   "mkt-cmd-skill-add": {
-    "overview": "Add new reference files or scripts to a skill",
+    "overview": "Thêm file tham chiếu hoặc script mới vào một skill",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-create": {
-    "overview": "Create a new agent skill",
+    "overview": "Tạo một skill agent mới",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-fix-logs": {
-    "overview": "Fix the agent skill based on logs.txt file.",
+    "overview": "Sửa skill dựa trên file logs.txt.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-optimize": {
-    "overview": "Optimize an existing agent skill",
+    "overview": "Tối ưu một skill có sẵn",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-optimize-auto": {
-    "overview": "Optimize an existing agent skill [auto]",
+    "overview": "Tối ưu một skill có sẵn [tự động]",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-plan": {
-    "overview": "Plan to create a new agent skill",
+    "overview": "Lên kế hoạch tạo một agent skill mới",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-skill-update": {
-    "overview": "Update an existing agent skill [auto]",
+    "overview": "Cập nhật một skill agent có sẵn [auto]",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-slides-create": {
-    "overview": "Create strategic presentation slides with Chart.js and design tokens",
+    "overview": "Tạo slide thuyết trình chiến lược với Chart.js và design token",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-social": {
-    "overview": "💡💡 Social media content generation",
+    "overview": "💡💡 Soạn nội dung cho mạng xã hội",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1751,13 +1739,13 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-social-schedule": {
-    "overview": "💡 Schedule social media posts",
+    "overview": "💡 Lên lịch đăng bài mạng xã hội",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/social/schedule week",
       "/social/schedule month",
-      "/social/schedule campaign \"Product Launch\""
+      "/social/schedule campaign \"Ra mắt sản phẩm\""
     ]
   },
   "mkt-cmd-storage-list": {
@@ -1777,11 +1765,11 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--dry-run",
-        "desc": "Preview files without uploading"
+        "desc": "Xem trước danh sách file, không upload"
       },
       {
         "flag": "--extensions",
-        "desc": "Filter by file extensions"
+        "desc": "Lọc theo phần mở rộng file"
       }
     ],
     "examples": [
@@ -1808,121 +1796,121 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-test-ui": {
-    "overview": "💡💡 Run UI tests on a website & generate a detailed report.",
+    "overview": "💡💡 Chạy test giao diện trên một website và xuất báo cáo chi tiết.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--cookies",
-        "desc": "Inject cookies (JSON array)"
+        "desc": "Nạp cookie (mảng JSON)"
       },
       {
         "flag": "--token",
-        "desc": "Inject Bearer token"
+        "desc": "Nạp Bearer token"
       },
       {
         "flag": "--token-key",
-        "desc": "localStorage key for token (default: access_token)"
+        "desc": "Khoá localStorage chứa token (mặc định: access_token)"
       },
       {
         "flag": "--header",
-        "desc": "Set HTTP header with token (e.g., Authorization)"
+        "desc": "Gắn token vào HTTP header (ví dụ: Authorization)"
       },
       {
         "flag": "--local-storage",
-        "desc": "Inject localStorage items"
+        "desc": "Nạp dữ liệu vào localStorage"
       },
       {
         "flag": "--session-storage",
-        "desc": "Inject sessionStorage items"
+        "desc": "Nạp dữ liệu vào sessionStorage"
       },
       {
         "flag": "--reload",
-        "desc": "Reload page after injection"
+        "desc": "Tải lại trang sau khi nạp"
       },
       {
         "flag": "--clear",
-        "desc": "Clear saved auth session"
+        "desc": "Xoá phiên đăng nhập đã lưu"
       }
     ],
     "examples": []
   },
   "mkt-cmd-test-workflow": {
-    "overview": "Run workflow tests with step-by-step manual verification",
+    "overview": "Chạy test quy trình, kiểm tra thủ công từng bước một",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-use-mcp": {
-    "overview": "Utilize tools of Model Context Protocol (MCP) servers",
+    "overview": "Dùng các công cụ từ MCP server (Model Context Protocol)",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-video-create": {
-    "overview": "💡💡 Create a video using Veo 3.1",
+    "overview": "💡💡 Tạo video bằng Veo 3.1",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/video:script:create {type} \"{prompt}\"",
       "/video:storyboard:create {script-file-or-prompt}",
       "/video:storyboard:create content/video/{type}/{date}-{slug}/script.md",
-      "/video:create \"30-second TikTok ad for ClaudeKit showing: problem -> workflow -> aha moment -> CTA\"",
+      "/video:create \"Quảng cáo TikTok 30 giây cho ClaudeKit, theo mạch: vấn đề -> quy trình -> khoảnh khắc vỡ oà -> kêu gọi hành động\"",
       "/video:create content/video/reel/claudekit-workflow/script.md",
       "/video:create assets/storyboards/claudekit-workflow/storyboard.json"
     ]
   },
   "mkt-cmd-video-script-create": {
-    "overview": "💡💡 Create a production-ready video script with creative direction",
+    "overview": "💡💡 Viết kịch bản video sẵn sàng sản xuất, kèm định hướng sáng tạo",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/video:script:create youtube \"complete guide to Claude Code\"",
-      "/video:script:create reel \"3 marketing automation tips\"",
-      "/video:script:create explainer \"product onboarding flow\"",
-      "/video:script:create tutorial \"setting up email campaigns\"",
-      "/video:script:create short \"ClaudeKit intro\" --art-direction \"Modern Tech Futurism\""
+      "/video:script:create youtube \"hướng dẫn đầy đủ về Claude Code\"",
+      "/video:script:create reel \"3 mẹo tự động hoá marketing\"",
+      "/video:script:create explainer \"luồng onboarding sản phẩm\"",
+      "/video:script:create tutorial \"cách thiết lập chiến dịch email\"",
+      "/video:script:create short \"giới thiệu ClaudeKit\" --art-direction \"Modern Tech Futurism\""
     ]
   },
   "mkt-cmd-video-storyboard-create": {
-    "overview": "💡💡 Create a storyboard for video content",
+    "overview": "💡💡 Tạo storyboard cho nội dung video",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/video:storyboard:create scripts/product-demo.md",
-      "/video:storyboard:create \"30-second TikTok ad for fitness app showing before/after transformation\""
+      "/video:storyboard:create \"Quảng cáo TikTok 30 giây cho app tập luyện, cho thấy sự thay đổi trước và sau\""
     ]
   },
   "mkt-cmd-watzup": {
-    "overview": "💡 Review recent changes and wrap up the work",
+    "overview": "💡 Rà soát các thay đổi gần đây và chốt lại công việc",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-worktree": {
-    "overview": "Create isolated git worktree for parallel development",
+    "overview": "Tạo git worktree riêng biệt để làm song song nhiều việc",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--prefix",
-        "desc": "Branch type: feat|fix|refactor|docs|test|chore|perf"
+        "desc": "Loại nhánh: feat|fix|refactor|docs|test|chore|perf"
       },
       {
         "flag": "--env",
-        "desc": "Comma-separated .env files to copy"
+        "desc": "Danh sách file .env cần chép sang, cách nhau bởi dấu phẩy"
       },
       {
         "flag": "--json",
-        "desc": "Output JSON for parsing"
+        "desc": "Xuất JSON để máy đọc"
       },
       {
         "flag": "--dry-run",
-        "desc": "Preview without executing"
+        "desc": "Xem trước, không thực thi"
       }
     ],
     "examples": []
   },
   "mkt-cmd-write-audit": {
-    "overview": "Audit content quality against copywriting, SEO, and platform standards",
+    "overview": "Chấm chất lượng nội dung theo chuẩn copywriting, SEO và từng nền tảng",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1931,17 +1919,17 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-write-blog": {
-    "overview": "💡💡 Create SEO-optimized blog content",
+    "overview": "💡💡 Viết bài blog chuẩn SEO",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/write/blog \"best project management tools for startups\"",
-      "/write/blog \"AI marketing automation guide\"",
-      "/write/blog \"remote team productivity tips\""
+      "/write/blog \"công cụ quản lý dự án tốt nhất cho startup\"",
+      "/write/blog \"hướng dẫn tự động hoá marketing bằng AI\"",
+      "/write/blog \"mẹo tăng năng suất cho đội làm việc từ xa\""
     ]
   },
   "mkt-cmd-write-blog-youtube": {
-    "overview": "💡💡 Generate SEO-optimized blog article from YouTube video",
+    "overview": "💡💡 Viết bài blog chuẩn SEO từ một video YouTube",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1950,42 +1938,42 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-write-cro": {
-    "overview": "Analyze the current content and optimize for conversion",
+    "overview": "Phân tích nội dung hiện tại và tối ưu để tăng chuyển đổi",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-write-enhance": {
-    "overview": "Analyze the current copy issues and enhance it",
+    "overview": "Phân tích điểm yếu của bài viết hiện tại và viết lại cho hay hơn",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-write-fast": {
-    "overview": "Write creative & smart copy [FAST]",
+    "overview": "Viết nội dung sáng tạo, thông minh [NHANH]",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-write-formula": {
-    "overview": "Generate copy using proven copywriting formulas (AIDA, PAS, BAB, etc.)",
+    "overview": "Viết copy theo các công thức đã được kiểm chứng (AIDA, PAS, BAB...)",
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "/copy:formula AIDA \"SaaS product launch\"",
-      "/copy:formula PAS \"email deliverability problems\"",
-      "/copy:formula BAB \"fitness transformation program\"",
-      "/copy:formula \"marketing automation tool\" # defaults to AIDA"
+      "/copy:formula AIDA \"ra mắt sản phẩm SaaS\"",
+      "/copy:formula PAS \"email không vào được hộp thư\"",
+      "/copy:formula BAB \"chương trình thay đổi vóc dáng\"",
+      "/copy:formula \"công cụ tự động hoá marketing\" # mặc định dùng AIDA"
     ]
   },
   "mkt-cmd-write-good": {
-    "overview": "Write good creative & smart copy [GOOD]",
+    "overview": "Viết nội dung sáng tạo, thông minh, chỉn chu [CHẤT LƯỢNG]",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-cmd-write-publish": {
-    "overview": "Audit content, auto-fix issues, output publish-ready version",
+    "overview": "Rà soát nội dung, tự sửa lỗi, xuất ra bản sẵn sàng đăng",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -1994,7 +1982,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-youtube-blog": {
-    "overview": "Convert YouTube video to SEO-optimized blog post",
+    "overview": "Chuyển video YouTube thành bài blog chuẩn SEO",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2004,7 +1992,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-youtube-infographic": {
-    "overview": "Convert YouTube video to visual infographic",
+    "overview": "Chuyển video YouTube thành infographic trực quan",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2014,7 +2002,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-cmd-youtube-social": {
-    "overview": "Convert YouTube video to multi-platform social posts",
+    "overview": "Chuyển video YouTube thành bài đăng cho nhiều nền tảng mạng xã hội",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2024,56 +2012,56 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-ab-test-setup": {
-    "overview": "When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions \"A/B test,\" \"split test,\" \"experiment,\" \"test this change,\" \"variant copy,\" \"multivariate test,\" or \"hypothesis.\" For tracking implementation, see analytics-tracking.",
+    "overview": "Dùng khi bạn muốn lên kế hoạch, thiết kế hoặc triển khai một A/B test hay một thử nghiệm. Cũng dùng khi bạn nhắc tới \"A/B test\", \"split test\", \"thử nghiệm\", \"test thay đổi này\", \"biến thể nội dung\", \"multivariate test\" hoặc \"giả thuyết\". Muốn cài phần tracking thì xem analytics-tracking.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ads-management": {
-    "overview": "Activate for paid advertising campaigns on Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads. Includes ad copywriting, audience targeting, budget optimization, A/B testing, ROAS tracking, and AI creative asset generation (images & videos) with ai-multimodal and ai-artist skills using Gemini Nano Banana Pro and Veo 3.1.",
-    "whenToUse": "Paid ad campaign creation/optimization Ad copywriting (search, display, social) Audience targeting setup Budget optimization & scaling A/B testing strategy ROAS/CPA tracking & attribution Creative asset generation (ad images & videos) Competitor ad analysis",
+    "overview": "Kích hoạt cho các chiến dịch quảng cáo trả tiền trên Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads. Gồm viết nội dung quảng cáo, nhắm đúng tệp khách, tối ưu ngân sách, test A/B, theo dõi ROAS, và sinh ảnh/video quảng cáo bằng AI qua skill ai-multimodal và ai-artist với Gemini Nano Banana Pro và Veo 3.1.",
+    "whenToUse": "Tạo và tối ưu chiến dịch quảng cáo trả tiền. Viết nội dung quảng cáo (tìm kiếm, hiển thị, mạng xã hội). Thiết lập nhắm tệp khách hàng. Tối ưu ngân sách và mở rộng quy mô. Chiến lược test A/B. Theo dõi và quy kết ROAS/CPA. Sinh ảnh và video quảng cáo. Phân tích quảng cáo của đối thủ.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-affiliate-marketing": {
-    "overview": "Build high-converting SaaS affiliate programs with 20-40% commissions, KOL/KOC partnerships, and fraud prevention. Covers platform selection (PartnerStack, FirstPromoter, Rewardful), commission structures (recurring vs one-time, tiered), influencer outreach strategies, FTC/GDPR compliance, risk management, and case studies (Dropbox 3900%, PayPal 100M users). Use for designing affiliate programs, recruiting partners, optimizing conversion rates, preventing fraud, or scaling referral revenue.",
+    "overview": "Xây chương trình affiliate cho SaaS với hoa hồng 20-40%, hợp tác KOL/KOC và chống gian lận. Bao gồm chọn nền tảng (PartnerStack, FirstPromoter, Rewardful), cách chia hoa hồng (theo kỳ hay một lần, chia bậc), cách tiếp cận người ảnh hưởng, tuân thủ FTC/GDPR, quản trị rủi ro và các case thực tế (Dropbox tăng 3900%, PayPal đạt 100 triệu người dùng). Dùng khi thiết kế chương trình affiliate, tuyển đối tác, tối ưu tỷ lệ chuyển đổi, chống gian lận, hoặc mở rộng doanh thu từ giới thiệu.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ai-artist": {
-    "overview": "Generate images via Nano Banana with 129 curated prompts. Mandatory validation interview refines style/mood/colors (use --skip to bypass). 3 modes: search, creative, wild. Styles: Ukiyo-e, Bento grid, cyberpunk, cinematic, vintage patent.",
+    "overview": "Tạo ảnh qua Nano Banana với 129 prompt tuyển chọn. Có phỏng vấn ngắn bắt buộc để chốt style/tông/màu (dùng --skip để bỏ qua). 3 chế độ: search, creative, wild. Style: Ukiyo-e, Bento grid, cyberpunk, điện ảnh, bằng sáng chế cổ điển.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--model",
-        "desc": "flash2 (default, fast+quality), flash (previous), pro (quality/4K)"
+        "desc": "flash2 (mặc định, nhanh + đẹp), flash (bản cũ), pro (chất lượng cao/4K)"
       },
       {
         "flag": "--dry-run",
-        "desc": "Show prompt without generating"
+        "desc": "Chỉ hiện prompt, không tạo ảnh"
       },
       {
         "flag": "--skip",
-        "desc": "Bypass validation interview"
+        "desc": "Bỏ qua phần phỏng vấn chốt style"
       }
     ],
     "examples": []
   },
   "mkt-skill-ai-multimodal": {
-    "overview": "Analyze images/audio/video with Gemini API (better vision than Claude). Generate images (Imagen 4, Nano Banana 2, MiniMax), videos (Veo 3, Hailuo), speech (MiniMax TTS), music (MiniMax). Use for vision analysis, transcription, OCR, design extraction, multimodal AI.",
+    "overview": "Phân tích ảnh/audio/video bằng Gemini API (nhìn hình tốt hơn Claude). Tạo ảnh (Imagen 4, Nano Banana 2, MiniMax), video (Veo 3, Hailuo), giọng nói (MiniMax TTS), nhạc (MiniMax). Dùng để phân tích hình ảnh, gỡ băng, OCR, bóc tách thiết kế, xử lý AI đa phương tiện.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-analytics": {
-    "overview": "Activate for marketing analytics, KPI tracking, reporting dashboards, attribution analysis, and performance optimization. Use when analyzing campaign data, creating reports, or measuring marketing ROI.",
-    "whenToUse": "Campaign performance analysis KPI dashboard creation Attribution modeling ROI calculation A/B test analysis Funnel optimization Report generation",
+    "overview": "Kích hoạt cho phân tích marketing, theo dõi KPI, làm dashboard báo cáo, phân tích quy kết (attribution) và tối ưu hiệu quả. Dùng khi phân tích dữ liệu chiến dịch, làm báo cáo, hoặc đo ROI marketing.",
+    "whenToUse": "Phân tích hiệu quả chiến dịch. Làm dashboard KPI. Dựng mô hình quy kết (attribution). Tính ROI. Phân tích test A/B. Tối ưu phễu. Xuất báo cáo",
     "flags": [],
     "examples": []
   },
   "mkt-skill-analyze": {
-    "overview": "💡💡 Analytics and performance reports",
+    "overview": "💡💡 Phân tích số liệu và báo cáo hiệu quả",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2084,72 +2072,72 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-ask": {
-    "overview": "💡 Answer technical and architectural questions.",
+    "overview": "💡 Trả lời các câu hỏi về kỹ thuật và kiến trúc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-assets-organizing": {
-    "overview": "Organize all outputs from slash commands and subagents in assets/ directory by topics, date format, and slugs.",
-    "whenToUse": "Use this skill when: Creating content that needs file output (articles, videos, designs) Generating AI assets (images, storyboards, scripts) Organizing existing assets Determining output paths for new content types",
+    "overview": "Sắp xếp mọi kết quả từ lệnh slash và subagent vào thư mục assets/ theo chủ đề, định dạng ngày và slug.",
+    "whenToUse": "Dùng skill này khi: Tạo nội dung cần xuất ra file (bài viết, video, thiết kế). Sinh tài nguyên bằng AI (ảnh, storyboard, kịch bản). Sắp xếp lại tài nguyên có sẵn. Xác định đường dẫn xuất file cho loại nội dung mới.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-backend-development": {
-    "overview": "Build robust backend systems with modern technologies (Node.js, Python, Go, Rust), frameworks (NestJS, FastAPI, Django), databases (PostgreSQL, MongoDB, Redis), APIs (REST, GraphQL, gRPC), authentication (OAuth 2.1, JWT), testing strategies, security best practices (OWASP Top 10), performance optimization, scalability patterns (microservices, caching, sharding), DevOps practices (Docker, Kubernetes, CI/CD), and monitoring. Use when designing APIs, implementing authentication, optimizing database queries, setting up CI/CD pipelines, handling security vulnerabilities, building microservices, or developing production-ready backend systems.",
-    "whenToUse": "Designing RESTful, GraphQL, or gRPC APIs Building authentication/authorization systems Optimizing database queries and schemas Implementing caching and performance optimization OWASP Top 10 security mitigation Designing scalable microservices Testing strategies (unit, integration, E2E) CI/CD pipelines and deployment Monitoring and debugging production systems",
+    "overview": "Xây hệ thống backend vững chắc với công nghệ hiện đại (Node.js, Python, Go, Rust), framework (NestJS, FastAPI, Django), database (PostgreSQL, MongoDB, Redis), API (REST, GraphQL, gRPC), đăng nhập/xác thực (OAuth 2.1, JWT), chiến lược test, chuẩn bảo mật (OWASP Top 10), tối ưu hiệu năng, mẫu mở rộng quy mô (microservices, caching, sharding), quy trình DevOps (Docker, Kubernetes, CI/CD) và giám sát hệ thống. Dùng khi thiết kế API, làm hệ thống đăng nhập, tối ưu truy vấn database, dựng pipeline CI/CD, xử lý lỗ hổng bảo mật, xây microservices, hoặc phát triển backend sẵn sàng chạy thật.",
+    "whenToUse": "Thiết kế API RESTful, GraphQL hoặc gRPC. Xây hệ thống xác thực/phân quyền. Tối ưu truy vấn và schema database. Làm caching và tối ưu hiệu năng. Khắc phục các lỗ hổng OWASP Top 10. Thiết kế microservices mở rộng được. Chiến lược test (unit, integration, E2E). Pipeline CI/CD và triển khai. Giám sát và gỡ lỗi hệ thống đang chạy thật.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-banner-design": {
-    "overview": "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills.",
+    "overview": "Thiết kế banner cho mạng xã hội, quảng cáo, ảnh bìa website, ấn phẩm sáng tạo và bản in. Đưa ra nhiều hướng nghệ thuật kèm hình do AI tạo. Việc làm được: thiết kế, tạo, sinh banner. Nền tảng: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, ảnh bìa website, bản in. Phong cách: tối giản, gradient, chữ lớn ấn tượng, dựa trên ảnh chụp, minh hoạ, hình học, retro, glassmorphism, 3D, neon, duotone, kiểu tạp chí, cắt dán. Dùng kèm các skill ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-better-auth": {
-    "overview": "Implement authentication and authorization with Better Auth - a framework-agnostic TypeScript authentication framework. Features include email/password authentication with verification, OAuth providers (Google, GitHub, Discord, etc.), two-factor authentication (TOTP, SMS), passkeys/WebAuthn support, session management, role-based access control (RBAC), rate limiting, and database adapters. Use when adding authentication to applications, implementing OAuth flows, setting up 2FA/MFA, managing user sessions, configuring authorization rules, or building secure authentication systems for web applications.",
-    "whenToUse": "Implementing auth in TypeScript/JavaScript applications Adding email/password or social OAuth authentication Setting up 2FA, passkeys, magic links, advanced auth features Building multi-tenant apps with organization support Managing sessions and user lifecycle Working with any framework (Next.js, Nuxt, SvelteKit, Remix, Astro, Hono, Express, etc.)",
+    "overview": "Làm phần đăng nhập và phân quyền bằng Better Auth — một framework xác thực viết bằng TypeScript, chạy được với mọi framework. Có sẵn: đăng nhập email/mật khẩu kèm xác minh, đăng nhập OAuth (Google, GitHub, Discord...), xác thực hai lớp (TOTP, SMS), passkey/WebAuthn, quản lý phiên đăng nhập, phân quyền theo vai trò (RBAC), giới hạn tần suất và các adapter cho database. Dùng khi cần thêm đăng nhập cho ứng dụng, làm luồng OAuth, cài 2FA/MFA, quản lý phiên người dùng, cấu hình luật phân quyền, hoặc dựng hệ thống xác thực an toàn cho web.",
+    "whenToUse": "Làm phần xác thực cho ứng dụng TypeScript/JavaScript. Thêm đăng nhập email/mật khẩu hoặc đăng nhập qua mạng xã hội. Cài 2FA, passkey, magic link và các tính năng xác thực nâng cao. Xây app đa tổ chức (multi-tenant). Quản lý phiên đăng nhập và vòng đời người dùng. Làm việc với bất kỳ framework nào (Next.js, Nuxt, SvelteKit, Remix, Astro, Hono, Express...)",
     "flags": [],
     "examples": []
   },
   "mkt-skill-brainstorm": {
-    "overview": "Brainstorm solutions with trade-off analysis and brutal honesty. Use for ideation, architecture decisions, technical debates, feature exploration, feasibility assessment, design discussions.",
+    "overview": "Cùng nghĩ giải pháp, phân tích được–mất và nói thẳng không nể nang. Dùng để lên ý tưởng, quyết định kiến trúc, tranh luận kỹ thuật, khai phá tính năng, đánh giá tính khả thi, bàn về thiết kế.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-brand": {
-    "overview": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
-    "whenToUse": "Brand voice definition and content tone guidance Visual identity standards and style guide development Messaging framework creation Brand consistency review and audit Asset organization, naming, and approval Color palette management and typography specs",
+    "overview": "Giọng điệu thương hiệu, bộ nhận diện hình ảnh, khung thông điệp, quản lý tài sản, giữ thương hiệu nhất quán. Kích hoạt khi làm nội dung gắn thương hiệu, xác định tông giọng, tài sản marketing, kiểm tra tuân thủ thương hiệu, sổ tay phong cách.",
+    "whenToUse": "Xác định giọng điệu thương hiệu và hướng dẫn tông nội dung. Chuẩn nhận diện hình ảnh và xây sổ tay phong cách. Xây khung thông điệp. Rà soát và kiểm tra tính nhất quán của thương hiệu. Sắp xếp, đặt tên và duyệt tài sản. Quản lý bảng màu và quy cách chữ.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-campaign": {
-    "overview": "Marketing campaign planning, execution, optimization. Create campaigns, track status, analyze performance, manage budgets, coordinate multi-channel efforts.",
-    "whenToUse": "Campaign planning and launch execution Multi-channel coordination Budget allocation and timeline management Performance tracking and optimization Email campaign management",
+    "overview": "Lập kế hoạch, chạy và tối ưu chiến dịch marketing. Tạo chiến dịch, theo dõi trạng thái, phân tích hiệu quả, quản lý ngân sách, phối hợp nhiều kênh.",
+    "whenToUse": "Lập kế hoạch và triển khai chiến dịch. Phối hợp đa kênh. Phân bổ ngân sách và quản lý tiến độ. Theo dõi và tối ưu hiệu quả. Quản lý chiến dịch email.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-chrome-devtools": {
-    "overview": "Browser automation, debugging, and performance analysis using Puppeteer CLI scripts. Use for automating browsers, taking screenshots, analyzing performance, monitoring network traffic, web scraping, form automation, and JavaScript debugging.",
+    "overview": "Tự động hoá trình duyệt, gỡ lỗi và phân tích hiệu năng bằng script Puppeteer CLI. Dùng để điều khiển trình duyệt, chụp màn hình, phân tích hiệu năng, theo dõi lưu lượng mạng, thu thập dữ liệu web, tự động điền form và gỡ lỗi JavaScript.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--close",
-        "desc": "Close browser and clear session"
+        "desc": "Đóng trình duyệt và xoá phiên"
       },
       {
         "flag": "--headless",
-        "desc": "Show browser window"
+        "desc": "Hiện cửa sổ trình duyệt"
       },
       {
         "flag": "--timeout",
-        "desc": "Set timeout (ms)"
+        "desc": "Đặt thời gian chờ (ms)"
       },
       {
         "flag": "--wait-until",
-        "desc": "Wait strategy"
+        "desc": "Cách chờ trang tải xong"
       }
     ],
     "examples": [
@@ -2158,32 +2146,32 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-cip-design": {
-    "overview": "Corporate Identity Program design with 50 deliverables, 20 styles, 20 industries. Generate CIP mockups with Gemini Nano Banana (Flash/Pro). Actions: design, create, generate brand identity. Deliverables: business card, letterhead, signage, vehicle, apparel, packaging. Styles: corporate, luxury, minimal, modern.",
+    "overview": "Thiết kế chương trình nhận diện doanh nghiệp (CIP) với 50 hạng mục, 20 phong cách, 20 ngành nghề. Tạo mockup CIP bằng Gemini Nano Banana (Flash/Pro). Việc làm được: thiết kế, tạo, sinh bộ nhận diện thương hiệu. Hạng mục: danh thiếp, giấy tiêu đề, biển hiệu, decal xe, đồng phục, bao bì. Phong cách: doanh nghiệp, sang trọng, tối giản, hiện đại.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ckm-storage": {
-    "overview": "S3 storage operations - upload, sync, list, get URLs",
+    "overview": "Thao tác với kho lưu trữ S3 - tải lên, đồng bộ, liệt kê, lấy URL",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-claude-code": {
-    "overview": "Activate when users ask about Claude Code installation, slash commands (/plan, /fix, /content, /docs, /design, /git), creating/managing Agent Skills, configuring MCP servers, setting up hooks/plugins, IDE integration (VS Code, JetBrains), CI/CD workflows, enterprise deployment (SSO, RBAC, sandboxing), troubleshooting authentication/performance issues, or advanced features (extended thinking, caching, checkpointing).",
+    "overview": "Kích hoạt khi người dùng hỏi về: cài đặt Claude Code, các lệnh gạch chéo (/plan, /fix, /content, /docs, /design, /git), tạo và quản lý Agent Skills, cấu hình MCP server, cài hook/plugin, tích hợp IDE (VS Code, JetBrains), quy trình CI/CD, triển khai cho doanh nghiệp (SSO, RBAC, sandbox), xử lý sự cố đăng nhập/hiệu năng, hoặc các tính năng nâng cao (extended thinking, caching, checkpoint).",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-code-review": {
-    "overview": "Use when receiving code review feedback (especially if unclear or technically questionable), when completing tasks or major features requiring review before proceeding, or before making any completion/success claims. Covers three practices - receiving feedback with technical rigor over performative agreement, requesting reviews via code-reviewer subagent, and verification gates requiring evidence before any status claims. Essential for subagent-driven development, pull requests, and preventing false completion claims.",
+    "overview": "Dùng khi nhận phản hồi review code (nhất là khi phản hồi khó hiểu hoặc đáng ngờ về mặt kỹ thuật), khi hoàn thành một task hay tính năng lớn cần được review trước khi đi tiếp, hoặc trước khi tuyên bố đã xong/thành công. Gồm ba thực hành: tiếp nhận phản hồi bằng lập luận kỹ thuật chặt chẽ thay vì gật đầu cho có, yêu cầu review qua subagent code-reviewer, và các cổng kiểm chứng bắt buộc phải có bằng chứng trước khi tuyên bố trạng thái. Rất cần cho quy trình dùng subagent, cho pull request, và để tránh tuyên bố hoàn thành sai sự thật.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-competitor": {
-    "overview": "Competitive analysis, alternative pages, vs comparisons, SEO competitor content, market positioning, and battlecard generation.",
-    "whenToUse": "Analyze competitor websites and positioning Content gap analysis vs competitors SEO comparison with competitors Create competitor alternative/vs/comparison pages Generate sales battlecards Track competitors",
+    "overview": "Phân tích đối thủ, làm trang \"giải pháp thay thế\", trang so sánh, nội dung SEO đấu đối thủ, định vị thị trường và làm battlecard cho sales.",
+    "whenToUse": "Phân tích website và cách định vị của đối thủ. So sánh khoảng trống nội dung với đối thủ. So sánh SEO với đối thủ. Làm trang thay thế/so sánh với đối thủ. Tạo battlecard cho sales. Theo dõi đối thủ.",
     "flags": [],
     "examples": [
       "/competitor analyze https://competitor.com",
@@ -2194,67 +2182,67 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-competitor-alternatives": {
-    "overview": "When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user mentions 'alternative page,' 'vs page,' 'competitor comparison,' 'comparison page,' '[Product] vs [Product],' '[Product] alternative,' or 'competitive landing pages.' Covers four formats: singular alternative, plural alternatives, you vs competitor, and competitor vs competitor. Emphasizes deep research, modular content architecture, and varied section types beyond feature tables.",
+    "overview": "Dùng khi bạn muốn làm trang so sánh đối thủ hoặc trang \"giải pháp thay thế\" phục vụ SEO và bán hàng. Cũng dùng khi bạn nhắc tới 'alternative page', 'vs page', 'so sánh đối thủ', 'trang so sánh', '[Sản phẩm] vs [Sản phẩm]', '[Sản phẩm] alternative' hay 'landing page cạnh tranh'. Bao gồm bốn dạng: một giải pháp thay thế, nhiều giải pháp thay thế, bạn vs đối thủ, và đối thủ vs đối thủ. Chú trọng nghiên cứu sâu, cấu trúc nội dung theo mô-đun, và đa dạng kiểu section chứ không chỉ mỗi bảng so sánh tính năng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-content-hub": {
-    "overview": "Browser-based asset gallery for managing marketing assets. Visual grid with filter/search, brand context sidebar, and actions (preview, edit, generate). R2-ready manifest for future cloud sync. Use when browsing assets, managing content library, or generating new assets with brand context.",
+    "overview": "Thư viện ảnh/tài sản marketing chạy trên trình duyệt. Lưới hình ảnh có lọc/tìm kiếm, thanh bên chứa thông tin thương hiệu, kèm các thao tác (xem trước, sửa, tạo mới). Có sẵn manifest tương thích R2 để sau này đồng bộ lên cloud. Dùng khi duyệt tài sản, quản lý thư viện nội dung, hoặc tạo tài sản mới theo đúng thương hiệu.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-content-marketing": {
-    "overview": "Activate for content strategy, editorial calendars, content pillar mapping, blog planning, and content audit. Use when planning content programs, creating editorial workflows, or building topic clusters.",
-    "whenToUse": "Content strategy development Editorial calendar creation Blog post planning Content pillar/cluster mapping Content audit needed Repurposing workflows",
+    "overview": "Dùng cho chiến lược nội dung, lịch biên tập, sơ đồ trụ nội dung, kế hoạch blog và rà soát nội dung. Kích hoạt khi lập chương trình nội dung, xây quy trình biên tập hoặc dựng cụm chủ đề.",
+    "whenToUse": "Xây chiến lược nội dung; lập lịch biên tập; lên kế hoạch bài blog; vẽ sơ đồ trụ/cụm nội dung; cần rà soát lại nội dung đang có; quy trình tái sử dụng nội dung.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-cook": {
-    "overview": "ALWAYS activate this skill before implementing EVERY feature, plan, or fix.",
+    "overview": "LUÔN bật skill này trước khi làm BẤT KỲ tính năng, kế hoạch hay bản sửa lỗi nào.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--interactive",
-        "desc": "Full workflow with user input (default)"
+        "desc": "Chạy đủ quy trình, có hỏi ý bạn (mặc định)"
       },
       {
         "flag": "--fast",
-        "desc": "Skip research, scout→plan→code"
+        "desc": "Bỏ qua bước nghiên cứu, đi thẳng: scout → kế hoạch → code"
       },
       {
         "flag": "--parallel",
-        "desc": "Multi-agent execution"
+        "desc": "Chạy nhiều agent song song"
       },
       {
         "flag": "--no-test",
-        "desc": "Skip testing step"
+        "desc": "Bỏ qua bước test"
       },
       {
         "flag": "--auto",
-        "desc": "Auto-approve all steps"
+        "desc": "Tự duyệt mọi bước"
       }
     ],
     "examples": [
-      "/cook \"Add user authentication to the app\" --fast",
+      "/cook \"Thêm đăng nhập người dùng cho ứng dụng\" --fast",
       "/cook path/to/plan.md --auto"
     ]
   },
   "mkt-skill-copywriting": {
-    "overview": "Conversion copywriting formulas, headline templates, email copy patterns, landing page structures, CTA optimization, and writing style extraction. Activate for writing high-converting copy, crafting headlines, email campaigns, landing pages, or applying custom writing styles from assets/writing-styles/ directory.",
-    "whenToUse": "Writing headlines/subject lines, landing page copy, email campaigns Social posts, product descriptions, CTA optimization, A/B variations Applying custom writing styles from user documents",
+    "overview": "Công thức viết quảng cáo chuyển đổi, mẫu tiêu đề, mẫu email, cấu trúc landing page, tối ưu nút CTA, và bóc tách văn phong. Kích hoạt khi cần viết nội dung bán hàng chuyển đổi cao, đặt tiêu đề, làm chiến dịch email, viết landing page, hoặc áp dụng văn phong riêng lấy từ thư mục assets/writing-styles/.",
+    "whenToUse": "Viết tiêu đề/tiêu đề email, nội dung landing page, chiến dịch email. Bài mạng xã hội, mô tả sản phẩm, tối ưu CTA, tạo biến thể A/B. Áp dụng văn phong riêng lấy từ tài liệu của người dùng",
     "flags": [],
     "examples": []
   },
   "mkt-skill-creativity": {
-    "overview": "Creative direction intelligence. 55 styles, 18 platforms, 12 voiceover types, 17 music genres, 30 campaign categories. Actions: create, design, plan, direct, brief creative campaigns. Projects: ads, videos, social content, commercials, brand films. Styles: minimalist, maximalist, nostalgic, cinematic, UGC, luxury, futuristic, emotional. Topics: visual style, platform specs, voiceover, music, color palette, audience targeting.",
+    "overview": "Bộ não chỉ đạo sáng tạo. 55 phong cách, 18 nền tảng, 12 kiểu giọng đọc, 17 thể loại nhạc, 30 nhóm chiến dịch. Việc làm được: tạo, thiết kế, lên kế hoạch, chỉ đạo, viết brief cho chiến dịch sáng tạo. Loại dự án: quảng cáo, video, nội dung mạng xã hội, TVC, phim thương hiệu. Phong cách: tối giản, cầu kỳ, hoài niệm, điện ảnh, UGC, sang trọng, tương lai, giàu cảm xúc. Chủ đề: phong cách hình ảnh, thông số từng nền tảng, giọng đọc, nhạc, bảng màu, nhắm đối tượng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-dashboard": {
-    "overview": "Launch and manage the Marketing Dashboard",
+    "overview": "Khởi chạy và quản lý Marketing Dashboard",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2267,93 +2255,93 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-databases": {
-    "overview": "Work with MongoDB (document database, BSON documents, aggregation pipelines, Atlas cloud) and PostgreSQL (relational database, SQL queries, psql CLI, pgAdmin). Use when designing database schemas, writing queries and aggregations, optimizing indexes for performance, performing database migrations, configuring replication and sharding, implementing backup and restore strategies, managing database users and permissions, analyzing query performance, or administering production databases.",
-    "whenToUse": "Use when: Designing database schemas and data models Writing queries (SQL or MongoDB query language) Building aggregation pipelines or complex joins Optimizing indexes and query performance Implementing database migrations Setting up replication, sharding, or clustering Configuring backups and disaster recovery Managing database users and permissions Analyzing slow queries and performance issues Administering production database deployments",
+    "overview": "Làm việc với MongoDB (database dạng document, tài liệu BSON, aggregation pipeline, Atlas trên cloud) và PostgreSQL (database quan hệ, truy vấn SQL, psql CLI, pgAdmin). Dùng khi thiết kế schema, viết truy vấn và aggregation, tối ưu index cho hiệu năng, chạy migration, cấu hình replication và sharding, làm sao lưu và khôi phục, quản lý người dùng và quyền, phân tích hiệu năng truy vấn, hoặc quản trị database chạy thật.",
+    "whenToUse": "Dùng khi: Thiết kế schema và mô hình dữ liệu. Viết truy vấn (SQL hoặc cú pháp MongoDB). Dựng aggregation pipeline hoặc join phức tạp. Tối ưu index và tốc độ truy vấn. Chạy migration database. Thiết lập replication, sharding hoặc phân cụm. Cấu hình sao lưu và khôi phục thảm hoạ. Quản lý người dùng và phân quyền. Phân tích truy vấn chậm và vấn đề hiệu năng. Quản trị database chạy thật trên production.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-debugging": {
-    "overview": "Systematic debugging framework ensuring root cause investigation before fixes. Includes four-phase debugging process, backward call stack tracing, multi-layer validation, and verification protocols. Use when encountering bugs, test failures, unexpected behavior, performance issues, or before claiming work complete. Prevents random fixes, masks over symptoms, and false completion claims.",
-    "whenToUse": "Always use for: Test failures, bugs, unexpected behavior, performance issues, build failures, integration problems, before claiming work complete Especially when: Under time pressure, \"quick fix\" seems obvious, tried multiple fixes, don't fully understand issue, about to claim success",
+    "overview": "Khung gỡ lỗi bài bản: luôn truy ra nguyên nhân gốc trước khi sửa. Gồm quy trình gỡ lỗi 4 giai đoạn, lần ngược call stack, kiểm chứng nhiều tầng và quy tắc xác minh. Dùng khi gặp lỗi, test fail, hành vi bất thường, vấn đề hiệu năng, hoặc trước khi tuyên bố đã xong việc. Ngăn kiểu sửa mò, vá triệu chứng và báo xong khi chưa xong.",
+    "whenToUse": "Luôn dùng khi: test fail, có lỗi, hành vi bất thường, vấn đề hiệu năng, build hỏng, trục trặc tích hợp, và trước khi tuyên bố đã xong việc. Đặc biệt khi: đang gấp, thấy có cách \"sửa nhanh\" quá hiển nhiên, đã thử nhiều cách sửa, chưa thực sự hiểu lỗi, hoặc sắp báo là đã xong.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-design": {
-    "overview": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform), poster design (20-30 styles, 4 recombinable axes, model-agnostic prompt emission). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, design poster, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
-    "whenToUse": "Brand identity, voice, assets Design system tokens and specs UI styling with shadcn/ui + Tailwind Logo design and AI generation Corporate identity program (CIP) deliverables Presentations and pitch decks Banner design for social media, ads, web, print Social photos for Instagram, Facebook, LinkedIn, Twitter, Pinterest, TikTok Poster design (event, editorial, marketing) with locked-style + varied-composition prompts",
+    "overview": "Skill thiết kế toàn diện: nhận diện thương hiệu, design token, style giao diện, tạo logo (55 phong cách, Gemini AI), bộ nhận diện doanh nghiệp (50 hạng mục, mockup CIP), slide trình bày HTML (Chart.js), thiết kế banner (22 phong cách, cho mạng xã hội/quảng cáo/web/in ấn), thiết kế icon (15 phong cách, SVG, Gemini 3.1 Pro), ảnh mạng xã hội (HTML → chụp màn hình, nhiều nền tảng), thiết kế poster (20-30 phong cách, 4 trục kết hợp được, không phụ thuộc mô hình AI nào). Việc làm được: thiết kế logo, làm CIP, tạo mockup, dựng slide, thiết kế banner, tạo icon, làm ảnh mạng xã hội, thiết kế poster, ảnh cho mạng xã hội, nhận diện thương hiệu, design system. Nền tảng: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
+    "whenToUse": "Nhận diện thương hiệu, giọng điệu, bộ tài sản hình ảnh. Design token và đặc tả design system. Style giao diện với shadcn/ui + Tailwind. Thiết kế logo và tạo logo bằng AI. Các hạng mục của bộ nhận diện doanh nghiệp (CIP). Slide trình bày và pitch deck. Thiết kế banner cho mạng xã hội, quảng cáo, web, in ấn. Ảnh mạng xã hội cho Instagram, Facebook, LinkedIn, Twitter, Pinterest, TikTok. Thiết kế poster (sự kiện, biên tập, marketing) với phong cách cố định nhưng bố cục đa dạng.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-design-system": {
-    "overview": "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
-    "whenToUse": "Design token creation Component state definitions CSS variable systems Spacing/typography scales Design-to-code handoff Tailwind theme configuration Slide/presentation generation",
+    "overview": "Kiến trúc token, đặc tả component và tạo slide. Token ba tầng (primitive→semantic→component), biến CSS, thang khoảng cách/chữ, đặc tả component, tạo slide có chiến lược. Dùng cho design token, thiết kế hệ thống, bản trình bày đúng chuẩn thương hiệu.",
+    "whenToUse": "Tạo design token. Định nghĩa trạng thái của component. Hệ thống biến CSS. Thang khoảng cách/typography. Bàn giao từ thiết kế sang code. Cấu hình theme Tailwind. Tạo slide/bản trình bày.",
     "flags": [],
     "examples": [
-      "/slides:create \"10-slide investor pitch for ClaudeKit Marketing\""
+      "/slides:create \"Bộ 10 slide gọi vốn cho ClaudeKit Marketing\""
     ]
   },
   "mkt-skill-devops": {
-    "overview": "Deploy and manage cloud infrastructure on Cloudflare (Workers, R2, D1, KV, Pages, Durable Objects, Browser Rendering), Docker containers, and Google Cloud Platform (Compute Engine, GKE, Cloud Run, App Engine, Cloud Storage). Use when deploying serverless functions to the edge, configuring edge computing solutions, managing Docker containers and images, setting up CI/CD pipelines, optimizing cloud infrastructure costs, implementing global caching strategies, working with cloud databases, or building cloud-native applications.",
-    "whenToUse": "Use this skill when: Deploying serverless applications to Cloudflare Workers Containerizing applications with Docker Managing Google Cloud infrastructure with gcloud CLI Setting up CI/CD pipelines across platforms Optimizing cloud infrastructure costs Implementing multi-region deployments Building edge-first architectures Managing container orchestration with Kubernetes Configuring cloud storage solutions (R2, Cloud Storage) Automating infrastructure with scripts and IaC",
+    "overview": "Triển khai và quản lý hạ tầng cloud trên Cloudflare (Workers, R2, D1, KV, Pages, Durable Objects, Browser Rendering), container Docker, và Google Cloud Platform (Compute Engine, GKE, Cloud Run, App Engine, Cloud Storage). Dùng khi đưa hàm serverless ra edge, cấu hình giải pháp edge computing, quản lý container và image Docker, dựng pipeline CI/CD, tối ưu chi phí hạ tầng cloud, làm chiến lược cache toàn cầu, làm việc với database trên cloud, hoặc xây ứng dụng cloud-native.",
+    "whenToUse": "Dùng skill này khi: Triển khai ứng dụng serverless lên Cloudflare Workers. Đóng gói ứng dụng vào container Docker. Quản lý hạ tầng Google Cloud bằng gcloud CLI. Dựng pipeline CI/CD trên nhiều nền tảng. Tối ưu chi phí hạ tầng cloud. Triển khai đa vùng. Xây kiến trúc ưu tiên edge. Điều phối container bằng Kubernetes. Cấu hình lưu trữ trên cloud (R2, Cloud Storage). Tự động hoá hạ tầng bằng script và IaC.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-docs": {
-    "overview": "Initialize, update, and summarize project documentation",
+    "overview": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-docs-seeker": {
-    "overview": "Search technical documentation using executable scripts to detect query type, fetch from llms.txt sources (context7.com), and analyze results. Use when user needs: (1) Topic-specific documentation (features/components/concepts), (2) Library/framework documentation, (3) GitHub repository analysis, (4) Documentation discovery with automated agent distribution strategy",
+    "overview": "Tra tài liệu kỹ thuật bằng script: nhận diện loại truy vấn, lấy dữ liệu từ các nguồn llms.txt (context7.com) rồi phân tích kết quả. Dùng khi cần: (1) tài liệu theo chủ đề (tính năng/component/khái niệm), (2) tài liệu thư viện/framework, (3) phân tích repo GitHub, (4) khám phá tài liệu với chiến lược phân bổ agent tự động.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-elevenlabs": {
-    "overview": "Generate speech, clone voices, create sound effects & music with ElevenLabs API. TTS, voice design, audio generation, conversational AI agents.",
+    "overview": "Tạo giọng nói, nhân bản giọng, làm hiệu ứng âm thanh và nhạc bằng ElevenLabs API. Chuyển văn bản thành giọng nói (TTS), thiết kế giọng, tạo audio, agent AI hội thoại.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-email": {
-    "overview": "Email campaigns, newsletters, drip sequences, automation flows, email copywriting, deliverability, subject line formulas, A/B testing. Generate email content for any marketing purpose.",
-    "whenToUse": "Email content generation (newsletter, cold, launch, nurture, welcome, winback) Email automation flow design Drip sequence creation Subject line optimization Deliverability best practices",
+    "overview": "Chiến dịch email, bản tin, chuỗi email nuôi dưỡng, luồng tự động, viết lời email, tỉ lệ vào hộp thư, công thức viết tiêu đề, test A/B. Soạn nội dung email cho mọi mục đích marketing.",
+    "whenToUse": "Soạn nội dung email (bản tin, email chào hàng, ra mắt, nuôi dưỡng, chào mừng, kéo khách quay lại). Thiết kế luồng email tự động. Tạo chuỗi email nuôi dưỡng. Tối ưu tiêu đề email. Cách để email không rơi vào spam.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-fix": {
-    "overview": "Fix bugs, errors, test failures, CI/CD issues with intelligent routing. Use when reporting bugs, type errors, log errors, UI issues, code problems. Auto-classifies complexity and activates relevant skills.",
+    "overview": "Sửa lỗi, lỗi build, test fail và trục trặc CI/CD, tự chọn hướng xử lý phù hợp. Dùng khi báo lỗi, lỗi kiểu dữ liệu, lỗi trong log, lỗi giao diện hoặc code có vấn đề. Tự đánh giá độ khó và bật các skill liên quan.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-form-cro": {
-    "overview": "When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use when the user mentions \"form optimization,\" \"lead form conversions,\" \"form friction,\" \"form fields,\" \"form completion rate,\" or \"contact form.\" For signup/registration forms, see signup-flow-cro. For popups containing forms, see popup-cro.",
-    "whenToUse": "More than 5-6 fields Logically distinct sections Conditional paths based on answers Complex forms (applications, quotes)",
+    "overview": "Dùng khi muốn tối ưu bất kỳ form nào KHÔNG phải form đăng ký tài khoản — gồm form thu thập khách tiềm năng, form liên hệ, form đặt lịch demo, form đăng ký hồ sơ, form khảo sát, hay form thanh toán. Cũng dùng khi bạn nhắc tới \"tối ưu form\", \"tăng chuyển đổi form thu lead\", \"form gây khó chịu\", \"các trường trong form\", \"tỉ lệ điền xong form\" hoặc \"form liên hệ\". Với form đăng ký tài khoản, xem signup-flow-cro. Với popup có chứa form, xem popup-cro.",
+    "whenToUse": "Form có hơn 5-6 trường. Form chia thành các phần rõ rệt. Form rẽ nhánh theo câu trả lời. Form phức tạp (đơn ứng tuyển, báo giá).",
     "flags": [],
     "examples": []
   },
   "mkt-skill-free-tool-strategy": {
-    "overview": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free tool,\" \"marketing tool,\" \"calculator,\" \"generator,\" \"interactive tool,\" \"lead gen tool,\" \"build a tool for leads,\" or \"free resource.\" This skill bridges engineering and marketing — useful for founders and technical marketers.",
+    "overview": "Dùng khi bạn muốn lên ý tưởng, đánh giá hoặc xây một công cụ miễn phí phục vụ marketing — thu lead, tăng giá trị SEO, hoặc nhận diện thương hiệu. Cũng dùng khi bạn nhắc tới \"engineering as marketing\", \"công cụ miễn phí\", \"công cụ marketing\", \"calculator\", \"generator\", \"công cụ tương tác\", \"công cụ thu lead\", \"làm công cụ để lấy lead\" hay \"tài nguyên miễn phí\". Skill này bắc cầu giữa kỹ thuật và marketing — hợp cho founder và marketer có nền kỹ thuật.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-frontend-design": {
-    "overview": "Create polished frontend interfaces from designs/screenshots/videos. Use for web components, 3D experiences, replicating UI designs, quick prototypes, immersive interfaces, avoiding AI slop.",
+    "overview": "Dựng giao diện frontend tinh tế từ bản thiết kế/ảnh chụp màn hình/video. Dùng cho component web, trải nghiệm 3D, dựng lại thiết kế UI, prototype nhanh, giao diện đắm chìm, tránh kiểu \"AI làm cho có\".",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-frontend-development": {
-    "overview": "Frontend development guidelines for React/TypeScript applications. Modern patterns including Suspense, lazy loading, useSuspenseQuery, file organization with features directory, MUI v7 styling, TanStack Router, performance optimization, and TypeScript best practices. Use when creating components, pages, features, fetching data, styling, routing, or working with frontend code.",
-    "whenToUse": "Creating new components or pages Building new features Fetching data with TanStack Query Setting up routing with TanStack Router Styling components with MUI v7 Performance optimization Organizing frontend code TypeScript best practices ---",
+    "overview": "Hướng dẫn làm frontend cho ứng dụng React/TypeScript. Các pattern hiện đại: Suspense, lazy loading, useSuspenseQuery, tổ chức file theo thư mục features, style bằng MUI v7, TanStack Router, tối ưu hiệu năng và best practice TypeScript. Dùng khi tạo component, trang, tính năng, lấy dữ liệu, style, routing hoặc làm việc với code frontend.",
+    "whenToUse": "Tạo component hoặc trang mới; làm tính năng mới; lấy dữ liệu bằng TanStack Query; thiết lập routing với TanStack Router; style component bằng MUI v7; tối ưu hiệu năng; tổ chức lại code frontend; best practice TypeScript.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-funnel": {
-    "overview": "💡💡 Funnel design and optimization",
+    "overview": "💡💡 Thiết kế và tối ưu phễu chuyển đổi",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2364,25 +2352,25 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-gamification-marketing": {
-    "overview": "Design gamified marketing campaigns using points, badges, leaderboards, streaks, challenges. Use for loyalty programs, referral campaigns, onboarding flows, engagement boosts, email gamification. Provides mechanics selection, psychology alignment, strategy docs, templates, KPIs.",
+    "overview": "Thiết kế chiến dịch marketing kiểu game hoá với điểm thưởng, huy hiệu, bảng xếp hạng, chuỗi ngày liên tiếp, thử thách. Dùng cho chương trình khách hàng thân thiết, chiến dịch giới thiệu bạn bè, quy trình onboarding, tăng tương tác, game hoá email. Cung cấp cách chọn cơ chế, căn chỉnh tâm lý người dùng, tài liệu chiến lược, mẫu có sẵn và bộ chỉ số KPI.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-git": {
-    "overview": "Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets.",
+    "overview": "Thao tác git với conventional commit. Dùng để stage, commit, push, tạo PR, merge. Tự tách commit theo type/scope. Quét bảo mật để tránh lộ secret.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-google-adk-python": {
-    "overview": "Build AI agents with Google ADK Python. Multi-agent systems, tool integration, workflow orchestration.",
-    "whenToUse": "Use this skill when users need to: Build AI agents with tool integration and orchestration capabilities Create multi-agent systems with hierarchical coordination Implement workflow agents (sequential, parallel, loop) for predictable pipelines Integrate LLM-powered agents with Google Search, Code Execution, or custom tools Deploy agents to Vertex AI Agent Engine, Cloud Run, or custom infrastructure Evaluate and test agent performance systematically Implement human-in-the-loop approval flows for tool execution",
+    "overview": "Xây AI agent bằng Google ADK Python. Hệ đa agent, tích hợp công cụ, điều phối quy trình.",
+    "whenToUse": "Dùng skill này khi cần: Xây AI agent có tích hợp công cụ và khả năng điều phối. Tạo hệ đa agent có phân cấp phối hợp. Làm agent quy trình (tuần tự, song song, vòng lặp) cho các pipeline đoán trước được. Kết nối agent chạy bằng LLM với Google Search, Code Execution hoặc công cụ tự viết. Triển khai agent lên Vertex AI Agent Engine, Cloud Run hoặc hạ tầng riêng. Đánh giá và kiểm thử hiệu quả của agent một cách có hệ thống. Làm luồng cần người duyệt trước khi agent chạy công cụ.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-hub": {
-    "overview": "Open Content Hub + Marketing Dashboard",
+    "overview": "Mở Content Hub + Dashboard marketing",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2392,56 +2380,56 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-init": {
-    "overview": "💡💡💡💡 Initialize marketing project",
+    "overview": "💡💡💡💡 Khởi tạo dự án marketing",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-journal": {
-    "overview": "💡 Write some journal entries.",
+    "overview": "💡 Viết vài dòng nhật ký làm việc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-kanban": {
-    "overview": "AI agent orchestration board (Coming Soon)",
+    "overview": "Bảng điều phối AI agent (Sắp ra mắt)",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-kit-builder": {
-    "overview": "Build ClaudeKit Marketing components - skills, agents, commands, workflows. Use when creating new automation, extending marketing capabilities, or understanding kit structure. Includes templates, examples, and init scripts.",
-    "whenToUse": "Creating new skill for specialized task Adding new agent for marketing automation Building command for user workflow Designing workflow for process orchestration Understanding kit component structure",
+    "overview": "Xây các thành phần của ClaudeKit Marketing — skill, agent, lệnh, quy trình. Dùng khi tạo tự động hoá mới, mở rộng năng lực marketing, hoặc muốn hiểu cấu trúc của kit. Có sẵn template, ví dụ và script khởi tạo.",
+    "whenToUse": "Tạo skill mới cho một việc chuyên biệt. Thêm agent mới để tự động hoá marketing. Làm lệnh mới cho quy trình của người dùng. Thiết kế quy trình để điều phối công việc. Hiểu cấu trúc các thành phần trong kit.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-launch-strategy": {
-    "overview": "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' or 'product update.' This skill covers phased launches, channel strategy, and ongoing launch momentum.",
+    "overview": "Dùng khi bạn muốn lên kế hoạch ra mắt sản phẩm, công bố tính năng mới hoặc chiến lược phát hành. Cũng dùng khi bạn nhắc tới 'launch', 'Product Hunt', 'ra mắt tính năng', 'thông báo', 'go-to-market', 'ra mắt bản beta', 'early access', 'danh sách chờ', hoặc 'cập nhật sản phẩm'. Skill này bao gồm ra mắt theo từng giai đoạn, chiến lược kênh và cách duy trì đà sau khi ra mắt.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-logo-design": {
-    "overview": "Logo design intelligence with 55 styles, 30 color palettes, 25 industries. Generate logos with Gemini Nano Banana model, search styles/colors/industries. Actions: design, create, generate logo. Industries: tech, healthcare, finance, food, fashion, fitness. Styles: minimalist, vintage, luxury, geometric, abstract, mascot, emblem. Features: AI prompt generation, design briefs, color psychology.",
+    "overview": "Thiết kế logo với 55 phong cách, 30 bảng màu, 25 ngành nghề. Tạo logo bằng model Gemini Nano Banana, tìm theo phong cách/màu/ngành. Hành động: thiết kế, tạo, sinh logo. Ngành: công nghệ, y tế, tài chính, ẩm thực, thời trang, thể hình. Phong cách: tối giản, cổ điển, sang trọng, hình học, trừu tượng, linh vật, huy hiệu. Tính năng: tự sinh prompt, brief thiết kế, tâm lý học màu sắc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-markdown-novel-viewer": {
-    "overview": "View markdown files with calm, book-like reading experience. Background HTTP server for rendering markdown.",
+    "overview": "Đọc file markdown trong giao diện êm mắt như đọc sách. Chạy một HTTP server nền để render markdown.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--open",
-        "desc": "Auto-open browser"
+        "desc": "Tự mở trình duyệt"
       },
       {
         "flag": "--background",
-        "desc": "Run in background"
+        "desc": "Chạy nền"
       },
       {
         "flag": "--stop",
-        "desc": "Stop all servers"
+        "desc": "Tắt mọi server đang chạy"
       }
     ],
     "examples": [
@@ -2451,7 +2439,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-marketing-dashboard": {
-    "overview": "Local-first marketing command center for solopreneurs. Manage campaigns, content, and assets with Claude Code AI automation.",
+    "overview": "Trung tâm điều hành marketing chạy ngay trên máy, dành cho người làm một mình. Quản lý chiến dịch, nội dung và tài sản hình ảnh, có Claude Code tự động hoá bằng AI.",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2459,103 +2447,103 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-marketing-ideas": {
-    "overview": "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' or 'ideas to grow.' This skill provides 140 proven marketing approaches organized by category.",
+    "overview": "Dùng khi bạn cần ý tưởng, cảm hứng hoặc chiến lược marketing cho sản phẩm SaaS/phần mềm của mình. Cũng dùng khi bạn hỏi 'ý tưởng marketing', 'ý tưởng tăng trưởng', 'marketing kiểu gì', 'chiến lược marketing', 'chiến thuật marketing', 'cách quảng bá' hay 'ý tưởng để phát triển'. Skill này đưa ra 140 cách làm marketing đã được kiểm chứng, sắp xếp theo nhóm.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-marketing-planning": {
-    "overview": "Plan marketing strategies, campaigns, content calendars, and initiatives using proven frameworks (RACE, SOSTAC, STP). Activates marketing-research for data-driven insights.",
-    "whenToUse": "Use this skill when: Planning marketing campaigns and launches Creating content strategies and editorial calendars Developing brand positioning and messaging Designing customer acquisition funnels Building multi-channel marketing initiatives Evaluating marketing approach trade-offs",
+    "overview": "Lập chiến lược marketing, chiến dịch, lịch nội dung và các sáng kiến theo các khung đã được kiểm chứng (RACE, SOSTAC, STP). Tự gọi marketing-research để lấy dữ liệu làm căn cứ.",
+    "whenToUse": "Dùng skill này khi: Lên kế hoạch chiến dịch marketing và các đợt ra mắt. Xây chiến lược nội dung và lịch biên tập. Định vị thương hiệu và xây thông điệp. Thiết kế phễu thu hút khách hàng. Triển khai marketing đa kênh. Cân nhắc được–mất giữa các hướng làm marketing.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-marketing-psychology": {
-    "overview": "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science,' 'why people buy,' 'decision-making,' or 'consumer behavior.' This skill provides 70+ mental models organized for marketing application.",
+    "overview": "Dùng khi bạn muốn áp dụng nguyên lý tâm lý, mô hình tư duy hoặc khoa học hành vi vào marketing. Cũng dùng khi bạn nhắc tới 'tâm lý học', 'mô hình tư duy', 'thiên kiến nhận thức', 'thuyết phục', 'khoa học hành vi', 'vì sao người ta mua hàng', 'ra quyết định', hoặc 'hành vi người tiêu dùng'. Skill này cung cấp hơn 70 mô hình tư duy, sắp xếp sẵn để dùng cho marketing.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-marketing-research": {
-    "overview": "Research market trends, competitors, audience insights, and marketing best practices. Use before marketing-planning for data-driven strategy.",
+    "overview": "Nghiên cứu xu hướng thị trường, đối thủ, chân dung khách hàng và cách làm marketing hiệu quả. Dùng trước bước lập kế hoạch marketing để chiến lược có dữ liệu chống lưng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-mcp-builder": {
-    "overview": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+    "overview": "Hướng dẫn tạo MCP server (Model Context Protocol) chất lượng cao, giúp LLM tương tác với dịch vụ bên ngoài qua các công cụ được thiết kế tử tế. Dùng khi xây MCP server để tích hợp API hoặc dịch vụ bên ngoài, bằng Python (FastMCP) hay Node/TypeScript (MCP SDK) đều được.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-mcp-management": {
-    "overview": "Manage Model Context Protocol (MCP) servers - discover, analyze, and execute tools/prompts/resources from configured MCP servers. Use when working with MCP integrations, need to discover available MCP capabilities, filter MCP tools for specific tasks, execute MCP tools programmatically, access MCP prompts/resources, or implement MCP client functionality. Supports intelligent tool selection, multi-server management, and context-efficient capability discovery.",
-    "whenToUse": "Use this skill when: 1. Discovering MCP Capabilities: Need to list available tools/prompts/resources from configured servers 2. Task-Based Tool Selection: Analyzing which MCP tools are relevant for a specific task 3. Executing MCP Tools: Calling MCP tools programmatically with proper parameter handling 4. MCP Integration: Building or debugging MCP client implementations 5. Context Management: Avoiding context pollution by delegating MCP operations to subagents",
+    "overview": "Quản lý các MCP server — khám phá, phân tích và chạy tool/prompt/resource từ những MCP server đã cấu hình. Dùng khi làm việc với tích hợp MCP, cần xem có sẵn năng lực MCP nào, lọc tool MCP cho một việc cụ thể, gọi tool MCP bằng code, truy cập prompt/resource của MCP, hoặc tự làm client MCP. Hỗ trợ chọn tool thông minh, quản lý nhiều server, và khám phá năng lực mà vẫn tiết kiệm context.",
+    "whenToUse": "Dùng skill này khi: 1. Khám phá năng lực MCP: cần liệt kê tool/prompt/resource có sẵn trên các server đã cấu hình 2. Chọn tool theo tác vụ: xem tool MCP nào phù hợp với việc đang làm 3. Chạy tool MCP: gọi tool MCP bằng code với tham số đúng chuẩn 4. Tích hợp MCP: xây hoặc gỡ lỗi client MCP 5. Quản lý context: tránh làm rác context bằng cách đẩy thao tác MCP sang subagent",
     "flags": [],
     "examples": []
   },
   "mkt-skill-media-processing": {
-    "overview": "Process multimedia files with FFmpeg (video/audio encoding, conversion, streaming, filtering, hardware acceleration), ImageMagick (image manipulation, format conversion, batch processing, effects, composition), and RMBG (AI-powered background removal). Use when converting media formats, encoding videos with specific codecs (H.264, H.265, VP9), resizing/cropping images, removing backgrounds from images, extracting audio from video, applying filters and effects, optimizing file sizes, creating streaming manifests (HLS/DASH), generating thumbnails, batch processing images, creating composite images, or implementing media processing pipelines. Supports 100+ formats, hardware acceleration (NVENC, QSV), and complex filtergraphs.",
+    "overview": "Xử lý file đa phương tiện với FFmpeg (mã hoá, chuyển đổi, streaming, lọc, tăng tốc phần cứng cho video/audio), ImageMagick (chỉnh sửa ảnh, đổi định dạng, xử lý hàng loạt, hiệu ứng, ghép ảnh) và RMBG (xoá nền bằng AI). Dùng khi đổi định dạng media, mã hoá video theo codec cụ thể (H.264, H.265, VP9), đổi kích thước/cắt ảnh, xoá nền ảnh, tách audio khỏi video, áp bộ lọc và hiệu ứng, giảm dung lượng file, tạo manifest streaming (HLS/DASH), tạo ảnh thu nhỏ, xử lý ảnh hàng loạt, ghép ảnh, hoặc dựng quy trình xử lý media. Hỗ trợ hơn 100 định dạng, tăng tốc phần cứng (NVENC, QSV) và filtergraph phức tạp.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-mermaidjs-v11": {
-    "overview": "Create diagrams and visualizations using Mermaid.js v11 syntax. Use when generating flowcharts, sequence diagrams, class diagrams, state diagrams, ER diagrams, Gantt charts, user journeys, timelines, architecture diagrams, or any of 24+ diagram types. Supports JavaScript API integration, CLI rendering to SVG/PNG/PDF, theming, configuration, and accessibility features. Essential for documentation, technical diagrams, project planning, system architecture, and visual communication.",
+    "overview": "Tạo sơ đồ và hình minh hoạ bằng cú pháp Mermaid.js v11. Dùng khi cần vẽ lưu đồ, sơ đồ tuần tự, sơ đồ lớp, sơ đồ trạng thái, sơ đồ ER, biểu đồ Gantt, hành trình người dùng, dòng thời gian, sơ đồ kiến trúc, hoặc bất kỳ loại nào trong hơn 24 loại sơ đồ. Hỗ trợ tích hợp API JavaScript, xuất ra SVG/PNG/PDF qua CLI, đổi giao diện, cấu hình và các tính năng hỗ trợ tiếp cận. Rất hữu ích cho tài liệu, sơ đồ kỹ thuật, lập kế hoạch dự án, kiến trúc hệ thống và trình bày trực quan.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-onboarding-cro": {
-    "overview": "When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions \"onboarding flow,\" \"activation rate,\" \"user activation,\" \"first-run experience,\" \"empty states,\" \"onboarding checklist,\" \"aha moment,\" or \"new user experience.\" For signup/registration optimization, see signup-flow-cro. For ongoing email sequences, see email-sequence.",
+    "overview": "Dùng khi muốn tối ưu trải nghiệm sau khi người dùng đăng ký: dẫn dắt người dùng mới, tỉ lệ kích hoạt, lần dùng đầu tiên, hoặc rút ngắn thời gian tới lúc thấy giá trị. Cũng dùng khi bạn nhắc tới \"luồng onboarding\", \"tỉ lệ kích hoạt\", \"kích hoạt người dùng\", \"trải nghiệm lần đầu\", \"màn hình trống\", \"checklist onboarding\", \"khoảnh khắc aha\" hoặc \"trải nghiệm người dùng mới\". Với việc tối ưu đăng ký tài khoản, xem signup-flow-cro. Với chuỗi email định kỳ, xem email-sequence.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-paid-ads": {
-    "overview": "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC,' 'paid media,' 'ad copy,' 'ad creative,' 'ROAS,' 'CPA,' 'ad campaign,' 'retargeting,' or 'audience targeting.' This skill covers campaign strategy, ad creation, audience targeting, and optimization.",
+    "overview": "Dùng khi bạn cần hỗ trợ về chiến dịch quảng cáo trả tiền trên Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X hoặc các nền tảng quảng cáo khác. Cũng dùng khi bạn nhắc tới 'PPC', 'paid media', 'nội dung quảng cáo', 'ad creative', 'ROAS', 'CPA', 'chiến dịch quảng cáo', 'retargeting', hoặc 'nhắm tệp khách hàng'. Skill này bao gồm chiến lược chiến dịch, dựng quảng cáo, nhắm tệp khách và tối ưu.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-payment-integration": {
-    "overview": "Integrate payments with SePay (VietQR), Polar (SaaS subscriptions), Stripe (global payments). Use for checkout, webhooks, QR codes, subscriptions, currency conversion, multi-provider order management, commission systems.",
-    "whenToUse": "Use when implementing: Payment gateway integration (checkout, processing) Subscription management (trials, upgrades, billing) Webhook handling (payment notifications, idempotency) QR code payments (VietQR, NAPAS) Usage-based billing (metering, credits) Automated benefit delivery (licenses, GitHub access, Discord roles) Customer portals (self-service management) Bank transfer automation (Vietnamese banks) Product catalogs with pricing Multi-provider order management (Polar + SePay) Currency conversion (USD/VND with fallback chains) Commission and referral systems Revenue tracking and maintainer payouts Discount management and cross-provider sync",
+    "overview": "Tích hợp thanh toán với SePay (VietQR), Polar (gói đăng ký SaaS), Stripe (thanh toán quốc tế). Dùng cho trang thanh toán, webhook, mã QR, gói đăng ký, quy đổi tiền tệ, quản lý đơn hàng nhiều nhà cung cấp, hệ thống hoa hồng.",
+    "whenToUse": "Dùng khi làm: Tích hợp cổng thanh toán (checkout, xử lý giao dịch). Quản lý gói đăng ký (dùng thử, nâng cấp, xuất hoá đơn). Xử lý webhook (thông báo thanh toán, chống xử lý trùng). Thanh toán bằng mã QR (VietQR, NAPAS). Tính tiền theo mức dùng (đo lượng dùng, credit). Tự động trao quyền lợi (license, quyền vào GitHub, role Discord). Cổng tự phục vụ cho khách hàng. Tự động hoá chuyển khoản ngân hàng (ngân hàng Việt Nam). Danh mục sản phẩm kèm giá. Quản lý đơn hàng nhiều nhà cung cấp (Polar + SePay). Quy đổi tiền tệ (USD/VND kèm nguồn dự phòng). Hệ thống hoa hồng và giới thiệu. Theo dõi doanh thu và chi trả cho người đóng góp. Quản lý mã giảm giá và đồng bộ giữa các nhà cung cấp.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-persona": {
-    "overview": "💡💡 Customer persona management",
+    "overview": "💡💡 Quản lý chân dung khách hàng",
     "whenToUse": "",
     "flags": [],
     "examples": [
       "/persona create",
       "/persona analyze",
-      "/persona update \"Tech Startup Founder\"",
+      "/persona update \"Nhà sáng lập startup công nghệ\"",
       "/persona list"
     ]
   },
   "mkt-skill-plan": {
-    "overview": "💡💡💡 Intelligent plan creation with prompt enhancement",
+    "overview": "💡💡💡 Tạo kế hoạch thông minh, có tăng cường prompt",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-plans-kanban": {
-    "overview": "Plans dashboard server with progress tracking and timeline visualization.",
+    "overview": "Server dashboard kế hoạch, có theo dõi tiến độ và xem dòng thời gian.",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--open",
-        "desc": "Auto-open browser"
+        "desc": "Tự mở trình duyệt"
       },
       {
         "flag": "--background",
-        "desc": "Run in background"
+        "desc": "Chạy nền"
       },
       {
         "flag": "--stop",
-        "desc": "Stop all servers"
+        "desc": "Dừng tất cả server"
       }
     ],
     "examples": [
@@ -2564,13 +2552,13 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-play": {
-    "overview": "Marketing playbook orchestrator with dependency-graph routing, quality gates, goal tracking, and smart suggestions. Expert strategy × AI execution speed. Triggers: /ckm:play, playbook, campaign playbook, what's next, play status.",
+    "overview": "Nhạc trưởng cho playbook marketing: định tuyến theo đồ thị phụ thuộc, có cổng chất lượng, theo dõi mục tiêu và gợi ý thông minh. Chiến lược của chuyên gia × tốc độ thực thi của AI. Kích hoạt bằng: /ckm:play, playbook, campaign playbook, what's next, play status.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-preview": {
-    "overview": "Path to markdown file, plan directory, or plans collection",
+    "overview": "Đường dẫn tới file markdown, thư mục kế hoạch, hoặc bộ sưu tập kế hoạch",
     "whenToUse": "",
     "flags": [],
     "examples": [
@@ -2582,186 +2570,186 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-pricing-strategy": {
-    "overview": "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,' or 'monetization.' This skill covers pricing research, tier structure, and packaging strategy.",
-    "whenToUse": "Freemium works when: Product has viral/network effects Free users provide value (content, data, referrals) Large market where % conversion drives volume Low marginal cost to serve free users Clear feature/usage limits for upgrade trigger Freemium risks: Free users may never convert Devalues product perception Support costs for non-paying users Harder to raise prices later Example: Slack Free tier for small teams Message history limit creates upgrade trigger Free users invite others (viral growth) Converts when team hits limit",
+    "overview": "Khi người dùng cần hỗ trợ về quyết định giá, đóng gói sản phẩm hoặc chiến lược kiếm tiền. Cũng dùng khi người dùng nhắc tới 'giá', 'các gói giá', 'freemium', 'dùng thử miễn phí', 'đóng gói', 'tăng giá', 'thước đo giá trị', 'Van Westendorp', 'mức sẵn lòng chi trả' hoặc 'monetization'. Skill này bao gồm nghiên cứu giá, cấu trúc gói và chiến lược đóng gói.",
+    "whenToUse": "Freemium hiệu quả khi: Sản phẩm có tính lan truyền/hiệu ứng mạng lưới. Người dùng miễn phí vẫn tạo ra giá trị (nội dung, dữ liệu, giới thiệu người mới). Thị trường lớn, chỉ cần % chuyển đổi nhỏ cũng đủ số lượng. Chi phí phục vụ thêm một người dùng miễn phí gần như bằng 0. Có giới hạn tính năng/mức dùng rõ ràng để thúc đẩy nâng cấp. Rủi ro của freemium: Người dùng miễn phí có thể không bao giờ trả tiền. Làm giảm giá trị cảm nhận của sản phẩm. Tốn chi phí hỗ trợ cho người không trả tiền. Về sau khó tăng giá hơn. Ví dụ: Slack. Gói miễn phí cho nhóm nhỏ. Giới hạn lịch sử tin nhắn tạo động lực nâng cấp. Người dùng miễn phí mời thêm người khác (tăng trưởng lan truyền). Chuyển đổi khi nhóm chạm giới hạn",
     "flags": [],
     "examples": []
   },
   "mkt-skill-problem-solving": {
-    "overview": "Apply systematic problem-solving techniques for complexity spirals (simplification cascades), innovation blocks (collision-zone thinking), recurring patterns (meta-pattern recognition), assumption constraints (inversion exercise), scale uncertainty (scale game), and dispatch when stuck. Techniques derived from Microsoft Amplifier project patterns adapted for immediate application.",
-    "whenToUse": "Apply when encountering: Complexity spiraling - Multiple implementations, growing special cases, excessive branching Innovation blocks - Conventional solutions inadequate, need breakthrough thinking Recurring patterns - Same issue across domains, reinventing solutions Assumption constraints - Forced into \"only way\", can't question premise Scale uncertainty - Production readiness unclear, edge cases unknown General stuck-ness - Unsure which technique applies",
+    "overview": "Áp dụng các kỹ thuật giải quyết vấn đề bài bản cho: vòng xoáy phức tạp (đơn giản hoá dây chuyền), bí ý tưởng (tư duy vùng va chạm), khuôn mẫu lặp lại (nhận diện mẫu ở tầng cao hơn), bị ràng buộc bởi giả định (bài tập đảo ngược), không rõ quy mô (trò chơi quy mô), và điều hướng khi bí. Các kỹ thuật lấy từ những mẫu của dự án Microsoft Amplifier, chỉnh lại để dùng được ngay.",
+    "whenToUse": "Dùng khi gặp: Vòng xoáy phức tạp - nhiều cách làm chồng chéo, ngày càng nhiều ngoại lệ, rẽ nhánh quá nhiều. Bí ý tưởng - giải pháp thông thường không đủ, cần hướng đột phá. Khuôn mẫu lặp lại - cùng một vấn đề xuất hiện ở nhiều nơi, cứ phải phát minh lại giải pháp. Bị ràng buộc bởi giả định - bị dồn vào thế \"chỉ có cách này\", không dám nghi ngờ tiền đề. Không rõ quy mô - chưa biết đã sẵn sàng chạy thật chưa, chưa rõ các trường hợp biên. Bí chung chung - không biết nên dùng kỹ thuật nào.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-referral-program-building": {
-    "overview": "Build referral programs for SaaS/digital products. Covers reward structures (two-sided, tiered, multi-step), platform selection (Rewardful, ReferralCandy, Viral Loops, FirstPromoter), technical implementation (tracking, attribution, API patterns), fraud prevention, email templates, and KPI metrics. Use for designing viral growth loops, implementing refer-a-friend features, or optimizing existing referral systems.",
+    "overview": "Xây chương trình giới thiệu bạn bè cho sản phẩm SaaS/số. Bao gồm cách chia thưởng (hai chiều, theo bậc, nhiều bước), chọn nền tảng (Rewardful, ReferralCandy, Viral Loops, FirstPromoter), phần kỹ thuật (theo dõi, quy kết nguồn, cách gọi API), chống gian lận, mẫu email và các chỉ số KPI. Dùng để thiết kế vòng tăng trưởng lan truyền, làm tính năng giới thiệu bạn bè, hoặc tối ưu chương trình giới thiệu đang có.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-remotion": {
-    "overview": "Best practices for Remotion - Video creation in React",
-    "whenToUse": "Use this skills whenever you are dealing with Remotion code to obtain the domain-specific knowledge.",
+    "overview": "Best practice cho Remotion - làm video bằng React",
+    "whenToUse": "Dùng skill này mỗi khi bạn đụng tới code Remotion, để có kiến thức chuyên sâu cho mảng này.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-repomix": {
-    "overview": "Package entire code repositories into single AI-friendly files using Repomix. Capabilities include pack codebases with customizable include/exclude patterns, generate multiple output formats (XML, Markdown, plain text), preserve file structure and context, optimize for AI consumption with token counting, filter by file types and directories, add custom headers and summaries. Use when packaging codebases for AI analysis, creating repository snapshots for LLM context, analyzing third-party libraries, preparing for security audits, generating documentation context, or evaluating unfamiliar codebases.",
-    "whenToUse": "Use when: Packaging codebases for AI analysis Creating repository snapshots for LLM context Analyzing third-party libraries Preparing for security audits Generating documentation context Investigating bugs across large codebases Creating AI-friendly code representations",
+    "overview": "Đóng gói cả repo code thành một file duy nhất cho AI đọc, bằng Repomix. Làm được: gói mã nguồn với luật include/exclude tuỳ ý, xuất nhiều định dạng (XML, Markdown, văn bản thuần), giữ nguyên cấu trúc thư mục và ngữ cảnh, đếm token để tối ưu cho AI, lọc theo loại file và thư mục, thêm phần đầu và tóm tắt riêng. Dùng khi cần gói mã nguồn cho AI phân tích, tạo ảnh chụp repo làm context cho LLM, tìm hiểu thư viện bên thứ ba, chuẩn bị rà soát bảo mật, tạo ngữ cảnh cho tài liệu, hoặc tìm hiểu một mã nguồn lạ.",
+    "whenToUse": "Dùng khi: Gói mã nguồn cho AI phân tích. Tạo ảnh chụp repo làm context cho LLM. Tìm hiểu thư viện bên thứ ba. Chuẩn bị rà soát bảo mật. Tạo ngữ cảnh cho tài liệu. Truy lỗi trong mã nguồn lớn. Tạo bản mô tả code cho AI dễ đọc",
     "flags": [],
     "examples": []
   },
   "mkt-skill-scout": {
-    "overview": "Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents.",
-    "whenToUse": "Beginning work on feature spanning multiple directories User mentions needing to \"find\", \"locate\", or \"search for\" files Starting debugging session requiring file relationships understanding User asks about project structure or where functionality lives Before changes that might affect multiple codebase parts",
+    "overview": "Dò mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom context cho công việc, tìm nhanh xuyên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
+    "whenToUse": "Bắt đầu làm tính năng trải rộng nhiều thư mục. Người dùng nói cần \"tìm\", \"định vị\" hoặc \"tra\" file. Bắt đầu phiên gỡ lỗi cần hiểu quan hệ giữa các file. Người dùng hỏi về cấu trúc dự án hoặc một chức năng nằm ở đâu. Trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-seo": {
-    "overview": "SEO audits, keyword research (ReviewWeb.site API), on-page optimization, technical SEO, programmatic SEO (pSEO), JSON+LD schema, Google Search Console API, Core Web Vitals. Used by seo-specialist, attraction-specialist agents.",
-    "whenToUse": "Keyword research with real data (volume, difficulty, CPC) Competitor domain analysis (traffic, top keywords, backlinks) Google Search Console data (queries, clicks, impressions, CTR, position) SEO audit or technical analysis JSON+LD schema generation Programmatic SEO (pSEO) templates Core Web Vitals measurement",
+    "overview": "Rà soát SEO, nghiên cứu từ khoá (API ReviewWeb.site), tối ưu on-page, SEO kỹ thuật, SEO lập trình (pSEO), schema JSON+LD, API Google Search Console, Core Web Vitals. Được dùng bởi agent seo-specialist và attraction-specialist.",
+    "whenToUse": "Nghiên cứu từ khoá bằng dữ liệu thật (lượng tìm kiếm, độ khó, CPC); phân tích domain đối thủ (traffic, từ khoá top, backlink); dữ liệu Google Search Console (truy vấn, lượt nhấp, lượt hiển thị, CTR, thứ hạng); rà soát SEO hoặc phân tích kỹ thuật; sinh schema JSON+LD; mẫu SEO lập trình (pSEO); đo Core Web Vitals.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-sequential-thinking": {
-    "overview": "Apply structured, reflective problem-solving for complex tasks requiring multi-step analysis, revision capability, and hypothesis verification. Use for complex problem decomposition, adaptive planning, analysis needing course correction, problems with unclear scope, multi-step solutions, and hypothesis-driven work.",
+    "overview": "Giải quyết vấn đề theo từng bước có suy xét lại, dành cho các bài toán phức tạp cần phân tích nhiều bước, sửa lại hướng đi giữa chừng và kiểm chứng giả thuyết. Dùng khi cần bóc tách vấn đề phức tạp, lập kế hoạch linh hoạt, phân tích cần điều chỉnh giữa đường, bài toán chưa rõ phạm vi, giải pháp nhiều bước, và công việc đi theo giả thuyết.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-shader": {
-    "overview": "Write GLSL fragment shaders for procedural graphics. Topics: shapes (SDF), patterns, noise (Perlin/simplex/cellular), fBm, colors (HSB/RGB), matrices, gradients, animations. Use for generative art, textures, visual effects, WebGL, Three.js shaders.",
-    "whenToUse": "Creating procedural textures (wood, marble, clouds, terrain) Drawing shapes with distance fields (SDF) Generating patterns, noise, gradients Building visual effects and animations Writing custom shaders for Three.js, WebGL, Processing",
+    "overview": "Viết GLSL fragment shader cho đồ hoạ sinh bằng thuật toán. Chủ đề: hình khối (SDF), hoạ tiết, nhiễu (Perlin/simplex/cellular), fBm, màu sắc (HSB/RGB), ma trận, chuyển sắc, hoạt ảnh. Dùng cho generative art, texture, hiệu ứng hình ảnh, WebGL, shader cho Three.js.",
+    "whenToUse": "Tạo texture bằng thuật toán (gỗ, đá hoa, mây, địa hình). Vẽ hình bằng distance field (SDF). Sinh hoạ tiết, nhiễu, chuyển sắc. Dựng hiệu ứng hình ảnh và hoạt ảnh. Viết shader riêng cho Three.js, WebGL, Processing",
     "flags": [],
     "examples": []
   },
   "mkt-skill-shopify": {
-    "overview": "Build Shopify applications, extensions, and themes using GraphQL/REST APIs, Shopify CLI, Polaris UI components, and Liquid templating. Capabilities include app development with OAuth authentication, checkout UI extensions for customizing checkout flow, admin UI extensions for dashboard integration, POS extensions for retail, theme development with Liquid, webhook management, billing API integration, product/order/customer management. Use when building Shopify apps, implementing checkout customizations, creating admin interfaces, developing themes, integrating payment processing, managing store data via APIs, or extending Shopify functionality.",
+    "overview": "Xây app, extension và theme cho Shopify bằng GraphQL/REST API, Shopify CLI, component giao diện Polaris và template Liquid. Làm được: phát triển app có đăng nhập OAuth, extension tuỳ biến trang thanh toán, extension cho trang quản trị, extension POS cho bán lẻ, làm theme bằng Liquid, quản lý webhook, tích hợp API tính phí, quản lý sản phẩm/đơn hàng/khách hàng. Dùng khi xây app Shopify, tuỳ biến trang thanh toán, làm giao diện quản trị, làm theme, tích hợp thanh toán, quản lý dữ liệu cửa hàng qua API, hoặc mở rộng tính năng cho Shopify.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-skill-creator": {
-    "overview": "Create or update Claude skills optimized for Skillmark benchmarks. Use for new skills, skill scripts, references, benchmark optimization, extending Claude's capabilities.",
+    "overview": "Tạo hoặc cập nhật skill cho Claude, tối ưu theo benchmark Skillmark. Dùng để làm skill mới, viết script cho skill, thêm tài liệu tham chiếu, tối ưu theo benchmark, mở rộng khả năng của Claude.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-slides": {
-    "overview": "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
-    "whenToUse": "Marketing presentations and pitch decks Data-driven slides with Chart.js Strategic slide design with layout patterns Copywriting-optimized presentation content",
+    "overview": "Tạo bản trình bày HTML có chiến lược với Chart.js, design token, bố cục responsive, công thức copywriting và cách dựng slide theo ngữ cảnh.",
+    "whenToUse": "Bản trình bày marketing và pitch deck. Slide dựa trên dữ liệu với Chart.js. Thiết kế slide có chiến lược theo mẫu bố cục. Nội dung trình bày tối ưu theo công thức copywriting.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-social": {
-    "overview": "Social media content creation, scheduling, API integrations for X/Twitter, Facebook, Threads, LinkedIn, YouTube, TikTok, Instagram. Platform-specific workflows, engagement templates, hook writing.",
-    "whenToUse": "Social media post creation (any platform) Content scheduling and calendar management Platform-specific content optimization Thread/carousel/reel creation Engagement strategy and hook writing",
+    "overview": "Tạo nội dung mạng xã hội, lên lịch đăng, tích hợp API cho X/Twitter, Facebook, Threads, LinkedIn, YouTube, TikTok, Instagram. Quy trình riêng cho từng nền tảng, mẫu tương tác, viết hook.",
+    "whenToUse": "Viết bài đăng mạng xã hội (mọi nền tảng). Lên lịch nội dung và quản lý lịch đăng. Tối ưu nội dung theo từng nền tảng. Làm thread/carousel/reel. Chiến lược tương tác và viết hook.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-storage": {
-    "overview": "S3-compatible object storage integration for marketing assets. Works with Cloudflare R2, AWS S3, MinIO, Backblaze B2, DigitalOcean Spaces.",
-    "whenToUse": "Upload generated assets (images, videos, slides) to cloud storage Sync local asset folders to remote bucket Get public URLs for sharing/embedding List remote assets",
+    "overview": "Tích hợp lưu trữ đối tượng chuẩn S3 cho tài sản marketing. Chạy được với Cloudflare R2, AWS S3, MinIO, Backblaze B2, DigitalOcean Spaces.",
+    "whenToUse": "Tải tài sản đã tạo (ảnh, video, slide) lên cloud. Đồng bộ thư mục tài sản dưới máy lên bucket từ xa. Lấy link công khai để chia sẻ/nhúng. Xem danh sách tài sản trên cloud",
     "flags": [],
     "examples": []
   },
   "mkt-skill-template-skill": {
-    "overview": "Replace with description of the skill and when Claude should use it.",
+    "overview": "Thay bằng mô tả skill và nêu rõ khi nào Claude nên dùng nó.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-test": {
-    "overview": "Test ClaudeKit workflows, run UI tests on websites, validate marketing commands/agents/skills with step-by-step verification.",
-    "whenToUse": "UI tests on websites (visual, accessibility, responsive) Workflow validation (command/agent/skill testing) Component scanning and test scenario generation Step-by-step manual verification",
+    "overview": "Test các quy trình ClaudeKit, chạy test giao diện trên website, kiểm chứng các lệnh/agent/skill marketing theo từng bước.",
+    "whenToUse": "Test giao diện website (hình ảnh, khả năng tiếp cận, responsive). Kiểm chứng quy trình (test lệnh/agent/skill). Quét component và sinh kịch bản test. Kiểm tra thủ công theo từng bước.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-threejs": {
-    "overview": "Build 3D web apps with Three.js (WebGL/WebGPU). 556 searchable examples, 60 API classes, 20 use cases. Actions: create 3D scene, load model, add animation, implement physics, build VR/XR. Topics: GLTF loader, PBR materials, particle effects, shadows, post-processing, compute shaders, TSL. Integrations: WebGPU, physics engines, spatial audio.",
-    "whenToUse": "Building 3D scenes, games, or visualizations Loading 3D models (GLTF, FBX, OBJ) Implementing animations, physics, or VR/XR Creating particle effects or custom shaders Optimizing rendering performance",
+    "overview": "Làm web 3D với Three.js (WebGL/WebGPU). 556 ví dụ tra cứu được, 60 class API, 20 tình huống dùng. Việc làm được: tạo cảnh 3D, nạp model, thêm chuyển động, làm vật lý, dựng VR/XR. Chủ đề: bộ nạp GLTF, vật liệu PBR, hiệu ứng hạt, đổ bóng, hậu kỳ, compute shader, TSL. Tích hợp: WebGPU, engine vật lý, âm thanh không gian.",
+    "whenToUse": "Dựng cảnh 3D, game hoặc đồ hoạ minh hoạ. Nạp model 3D (GLTF, FBX, OBJ). Làm chuyển động, vật lý hoặc VR/XR. Tạo hiệu ứng hạt hoặc shader riêng. Tối ưu tốc độ dựng hình.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ui-styling": {
-    "overview": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
-    "whenToUse": "Use when: Building UI with React-based frameworks (Next.js, Vite, Remix, Astro) Implementing accessible components (dialogs, forms, tables, navigation) Styling with utility-first CSS approach Creating responsive, mobile-first layouts Implementing dark mode and theme customization Building design systems with consistent tokens Generating visual designs, posters, or brand materials Rapid prototyping with immediate visual feedback Adding complex UI patterns (data tables, charts, command palettes)",
+    "overview": "Dựng giao diện đẹp và dễ tiếp cận với component shadcn/ui (nền Radix UI + Tailwind), style theo hướng utility-first của Tailwind CSS, và thiết kế hình ảnh trên canvas. Dùng khi xây giao diện, dựng design system, làm bố cục responsive, thêm component dễ tiếp cận (dialog, dropdown, form, bảng), tuỳ biến theme và màu sắc, làm chế độ tối, tạo thiết kế hình ảnh và poster, hoặc thống nhất phong cách xuyên suốt ứng dụng.",
+    "whenToUse": "Dùng khi: Dựng giao diện với framework nền React (Next.js, Vite, Remix, Astro). Làm component dễ tiếp cận (dialog, form, bảng, thanh điều hướng). Style theo hướng utility-first. Làm bố cục responsive, ưu tiên mobile. Làm chế độ tối và tuỳ biến theme. Dựng design system với bộ token thống nhất. Tạo thiết kế hình ảnh, poster hoặc ấn phẩm thương hiệu. Dựng bản mẫu nhanh, thấy kết quả ngay. Thêm các pattern giao diện phức tạp (bảng dữ liệu, biểu đồ, command palette).",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ui-ux-pro-max": {
-    "overview": "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
+    "overview": "Bộ não thiết kế UI/UX cho web và mobile. Gồm 50+ phong cách, 161 bảng màu, 57 cặp font, 161 loại sản phẩm, 99 nguyên tắc UX và 25 loại biểu đồ, trải trên 10 nền công nghệ (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui và HTML/CSS). Việc làm được: lên kế hoạch, dựng, tạo, thiết kế, triển khai, rà soát, sửa, cải thiện, tối ưu, nâng cấp, dọn lại code và kiểm tra code UI/UX. Loại dự án: website, landing page, dashboard, trang quản trị, thương mại điện tử, SaaS, portfolio, blog và app mobile. Thành phần: nút bấm, modal, thanh điều hướng, sidebar, card, bảng, form và biểu đồ. Phong cách: glassmorphism, claymorphism, tối giản, brutalism, neumorphism, bento grid, chế độ tối, responsive, skeuomorphism và flat design. Chủ đề: hệ màu, khả năng tiếp cận, animation, bố cục, typography, ghép font, khoảng cách, trạng thái tương tác, đổ bóng và gradient. Tích hợp: shadcn/ui MCP để tìm component và xem ví dụ.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-use-mcp": {
-    "overview": "Utilize tools of Model Context Protocol (MCP) servers",
+    "overview": "Dùng các tool của MCP server (Model Context Protocol)",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-video": {
-    "overview": "Video marketing strategy, script writing, storyboards, production workflows, video specs for YouTube/TikTok/Instagram/LinkedIn, thumbnail creation, Veo 3.1 generation, optimization, and repurposing.",
-    "whenToUse": "Video script writing with creative direction Storyboard creation for video content AI video generation with Veo 3.1 Video optimization for platforms Thumbnail design Video SEO optimization",
+    "overview": "Chiến lược marketing bằng video, viết kịch bản, storyboard, quy trình sản xuất, thông số video cho YouTube/TikTok/Instagram/LinkedIn, làm ảnh thu nhỏ, tạo video bằng Veo 3.1, tối ưu và tái sử dụng nội dung.",
+    "whenToUse": "Viết kịch bản video kèm định hướng sáng tạo. Dựng storyboard cho nội dung video. Tạo video bằng AI với Veo 3.1. Tối ưu video cho từng nền tảng. Thiết kế ảnh thu nhỏ. Tối ưu SEO cho video.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-watzup": {
-    "overview": "💡 Review recent changes and wrap up the work",
+    "overview": "💡 Xem lại các thay đổi gần đây và chốt lại công việc",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-web-design-guidelines": {
-    "overview": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+    "overview": "Rà soát code giao diện xem có theo đúng Web Interface Guidelines không. Dùng khi bạn nói \"xem lại giao diện giúp tôi\", \"kiểm tra khả năng tiếp cận\", \"soi lại thiết kế\", \"rà soát UX\", hoặc \"đối chiếu site của tôi với best practice\".",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-web-frameworks": {
-    "overview": "Build modern full-stack web applications with Next.js (App Router, Server Components, RSC, PPR, SSR, SSG, ISR), Turborepo (monorepo management, task pipelines, remote caching, parallel execution), and RemixIcon (3100+ SVG icons in outlined/filled styles). Use when creating React applications, implementing server-side rendering, setting up monorepos with multiple packages, optimizing build performance and caching strategies, adding icon libraries, managing shared dependencies, or working with TypeScript full-stack projects.",
-    "whenToUse": "Building new full-stack web applications with modern React Setting up monorepos with multiple apps and shared packages Implementing server-side rendering and static generation Optimizing build performance with intelligent caching Creating consistent UI with professional iconography Managing workspace dependencies across multiple projects Deploying production-ready applications with proper optimization",
+    "overview": "Xây web full-stack hiện đại với Next.js (App Router, Server Components, RSC, PPR, SSR, SSG, ISR), Turborepo (quản lý monorepo, pipeline tác vụ, cache từ xa, chạy song song) và RemixIcon (hơn 3100 icon SVG kiểu nét và kiểu đặc). Dùng khi làm ứng dụng React, dựng render phía server, lập monorepo nhiều package, tối ưu tốc độ build và chiến lược cache, thêm bộ icon, quản lý phụ thuộc dùng chung, hoặc làm dự án full-stack TypeScript.",
+    "whenToUse": "Làm web full-stack mới với React hiện đại. Lập monorepo gồm nhiều app và package dùng chung. Dựng render phía server và sinh trang tĩnh. Tối ưu tốc độ build bằng cache thông minh. Làm giao diện nhất quán với bộ icon chuyên nghiệp. Quản lý phụ thuộc dùng chung giữa nhiều dự án. Triển khai ứng dụng sẵn sàng chạy thật, đã tối ưu đầy đủ",
     "flags": [],
     "examples": []
   },
   "mkt-skill-worktree": {
-    "overview": "Create isolated git worktree for parallel development",
+    "overview": "Tạo git worktree tách biệt để làm song song nhiều việc",
     "whenToUse": "",
     "flags": [
       {
         "flag": "--prefix",
-        "desc": "Branch type: feat|fix|refactor|docs|test|chore|perf"
+        "desc": "Loại nhánh: feat|fix|refactor|docs|test|chore|perf"
       },
       {
         "flag": "--env",
-        "desc": "Comma-separated .env files to copy"
+        "desc": "Danh sách file .env cần copy, ngăn cách bằng dấu phẩy"
       },
       {
         "flag": "--json",
-        "desc": "Output JSON for parsing"
+        "desc": "Xuất JSON để dễ xử lý tiếp"
       },
       {
         "flag": "--dry-run",
-        "desc": "Preview without executing"
+        "desc": "Xem trước, không thực thi"
       }
     ],
     "examples": []
   },
   "mkt-skill-write": {
-    "overview": "Write creative copy, blog posts, CRO content, and more",
+    "overview": "Viết copy sáng tạo, bài blog, nội dung tối ưu chuyển đổi và nhiều thứ khác",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-youtube": {
-    "overview": "Convert YouTube videos to blog posts, infographics, social content. Download video/audio, get captions/transcripts, generate AI summaries, analyze comments via VidCap.xyz API.",
-    "whenToUse": "Convert YouTube videos to blog posts, infographics, social content Download video/audio from YouTube Extract captions and transcripts Generate AI summaries of video content Analyze video comments",
+    "overview": "Biến video YouTube thành bài blog, infographic, nội dung mạng xã hội. Tải video/audio, lấy phụ đề/bản ghi lời, tạo bản tóm tắt bằng AI, phân tích bình luận qua API VidCap.xyz.",
+    "whenToUse": "Biến video YouTube thành bài blog, infographic, nội dung mạng xã hội. Tải video/audio từ YouTube. Lấy phụ đề và bản ghi lời. Tạo bản tóm tắt nội dung video bằng AI. Phân tích bình luận video",
     "flags": [],
     "examples": []
   },
   "mkt-skill-youtube-thumbnail-design": {
-    "overview": "Design YouTube thumbnails with 17 styles, niche-specific guides, and CTR optimization. Generate complete thumbnails with text using Gemini Nano Banana Pro (4K text rendering). Actions: design, create, generate thumbnail. Niches: tech, gaming, education, cooking, fitness, business. Styles: facecam, before-after, listicle, diagram, whiteboard, bold-text, mystery, dark-dramatic. Features: AI generation with text baked in, brand identity, reference face, arrows, Google Font support.",
+    "overview": "Thiết kế thumbnail YouTube với 17 phong cách, hướng dẫn riêng cho từng ngách và tối ưu tỷ lệ click (CTR). Tạo thumbnail hoàn chỉnh kèm chữ bằng Gemini Nano Banana Pro (dựng chữ ở độ phân giải 4K). Thao tác: thiết kế, tạo, sinh thumbnail. Ngách: công nghệ, game, giáo dục, nấu ăn, thể hình, kinh doanh. Phong cách: facecam, trước-sau, listicle, sơ đồ, bảng trắng, chữ to, bí ẩn, tối kịch tính. Tính năng: AI sinh ảnh có sẵn chữ, nhận diện thương hiệu, ảnh mặt tham chiếu, mũi tên, hỗ trợ Google Font.",
     "whenToUse": "",
     "flags": [],
     "examples": []
