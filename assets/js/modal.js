@@ -70,6 +70,13 @@
     refs.desc = el("p", "m-desc");
     panel.appendChild(refs.desc);
 
+    /* Long-form detail (window.CK_DETAILS) — local only; absent on the published site,
+       so every one of these sections hides itself when its source is empty. */
+    refs.overviewLabel = el("p", "m-sec", "Mô tả chi tiết");
+    refs.overview = el("p", "m-overview");
+    panel.appendChild(refs.overviewLabel);
+    panel.appendChild(refs.overview);
+
     refs.whenLabel = el("p", "m-sec", "Khi nào dùng");
     refs.when = el("ul", "m-when");
     panel.appendChild(refs.whenLabel);
@@ -84,6 +91,16 @@
     refs.exampleWrap.appendChild(refs.copy);
     panel.appendChild(refs.exampleLabel);
     panel.appendChild(refs.exampleWrap);
+
+    refs.flagsLabel = el("p", "m-sec", "Các cờ (flags)");
+    refs.flags = el("dl", "m-flags");
+    panel.appendChild(refs.flagsLabel);
+    panel.appendChild(refs.flags);
+
+    refs.casesLabel = el("p", "m-sec", "Ví dụ thực tế");
+    refs.cases = el("div", "m-cases");
+    panel.appendChild(refs.casesLabel);
+    panel.appendChild(refs.cases);
 
     var noteLabel = el("p", "m-sec", "Ghi chú của bạn");
     refs.noteSaved = el("span", "m-note-saved", "✓ Đã lưu");
@@ -157,6 +174,19 @@
       });
     });
 
+    /* Each real-world example gets its own copy button — same usage-bump as the main one. */
+    refs.cases.addEventListener("click", function (e) {
+      var btn = e.target.closest(".m-case-copy");
+      if (!btn || !currentItem) return;
+      var id = currentItem.id;
+      CKApp.copyText(btn.dataset.cmd || "", function (ok) {
+        if (!ok) return;
+        CKApp.flashCopied(btn, "✓ Đã chép");
+        CKApp.store.bumpUsage(id);
+        if (CKApp.syncUsage) CKApp.syncUsage(id);
+      });
+    });
+
     /* related chips → open that item, keep the ORIGINAL trigger */
     refs.related.addEventListener("click", function (e) {
       var btn = e.target.closest("[data-open]");
@@ -218,18 +248,54 @@
 
     refs.desc.textContent = item.descVi || item.descEn || "";
 
-    /* "Khi nào dùng" — schema stores one Vietnamese string */
-    var hasWhen = !!item.whenToUseVi;
+    /* Long-form detail: local-only file, so treat it as optional everywhere. */
+    var detail = (window.CK_DETAILS || {})[item.id] || {};
+
+    var hasOverview = !!detail.overview;
+    refs.overviewLabel.hidden = !hasOverview;
+    refs.overview.hidden = !hasOverview;
+    refs.overview.textContent = detail.overview || "";
+
+    /* "Khi nào dùng" — the curated Vietnamese line first, then the source file's own
+       When-to-Use section (English) when it adds something. */
+    refs.when.textContent = "";
+    if (item.whenToUseVi) refs.when.appendChild(el("li", null, item.whenToUseVi));
+    if (detail.whenToUse) refs.when.appendChild(el("li", "m-when-src", detail.whenToUse));
+    var hasWhen = refs.when.childNodes.length > 0;
     refs.whenLabel.hidden = !hasWhen;
     refs.when.hidden = !hasWhen;
-    refs.when.textContent = "";
-    if (hasWhen) refs.when.appendChild(el("li", null, item.whenToUseVi));
 
     var hasExample = !!item.example;
     refs.exampleLabel.hidden = !hasExample;
     refs.exampleWrap.hidden = !hasExample;
     refs.example.textContent = item.example || "";
     refs.copy.textContent = "📋 Chép lệnh";
+
+    /* Flags — <dt> flag / <dd> meaning */
+    refs.flags.textContent = "";
+    (detail.flags || []).forEach(function (f) {
+      refs.flags.appendChild(el("dt", null, f.flag));
+      refs.flags.appendChild(el("dd", null, f.desc));
+    });
+    var hasFlags = (detail.flags || []).length > 0;
+    refs.flagsLabel.hidden = !hasFlags;
+    refs.flags.hidden = !hasFlags;
+
+    /* Real-world examples — each copyable on its own */
+    refs.cases.textContent = "";
+    (detail.examples || []).forEach(function (cmd) {
+      var row = el("div", "m-case");
+      row.appendChild(el("code", null, cmd));
+      var btn = el("button", "m-case-copy", "📋");
+      btn.type = "button";
+      btn.dataset.cmd = cmd;
+      btn.setAttribute("aria-label", "Chép: " + cmd);
+      row.appendChild(btn);
+      refs.cases.appendChild(row);
+    });
+    var hasCases = (detail.examples || []).length > 0;
+    refs.casesLabel.hidden = !hasCases;
+    refs.cases.hidden = !hasCases;
 
     setFavState(CKApp.store.isFavorite(item.id));
 

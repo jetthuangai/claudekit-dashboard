@@ -52,6 +52,10 @@
 /* ============ 2. BASE / RESET ============ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* An author `display` (flex/grid on .m-example, .m-flags, .m-cases, .m-related) outranks the
+   UA sheet's [hidden] rule, so `el.hidden = true` would silently do nothing. Restore it. */
+[hidden] { display: none !important; }
+
 html { color-scheme: dark; }
 
 body {
@@ -827,6 +831,85 @@ aside::-webkit-scrollbar { display: none; }
   color: var(--pink);
   flex: 1;
   word-break: break-all;
+}
+
+/* ---- Long-form detail (window.CK_DETAILS — local only) ---- */
+
+.m-overview {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* The source file's own When-to-Use text, under the curated Vietnamese line */
+.m-when li.m-when-src {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  opacity: .85;
+}
+
+.m-flags {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-2) var(--sp-3);
+  align-items: baseline;
+}
+
+.m-flags dt {
+  font: 600 13px/1.5 var(--font-mono);
+  color: var(--pink);
+  white-space: nowrap;
+}
+
+.m-flags dd {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.m-cases {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.m-case {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.m-case code {
+  flex: 1;
+  min-width: 0;
+  font: 400 13px/1.5 var(--font-mono);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.m-case-copy {
+  flex-shrink: 0;
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.m-case-copy:hover {
+  border-color: var(--pink);
+  background: var(--pink-dim);
+}
+
+/* Stack the flag list on narrow screens — a nowrap <dt> beside text would overflow */
+@media (max-width: 480px) {
+  .m-flags { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .m-flags dd { margin-bottom: var(--sp-2); }
 }
 
 .m-note {

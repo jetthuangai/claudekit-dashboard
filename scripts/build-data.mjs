@@ -20,13 +20,32 @@ import { execFile } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
+import { parseDetail } from './lib/detail-parser.mjs';
+
 const execFileAsync = promisify(execFile);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CACHE_DIR = path.join(ROOT, 'scripts', '.cache');
 const VI_CONTENT_PATH = path.join(ROOT, 'scripts', 'vi-content.json');
 const OUT_PATH = path.join(ROOT, 'data', 'data.js');
+// Deliberately NOT under data/: that directory is the publish tree. Keeping the paid-kit
+// detail out of it means a stray `git add -f` or a future CI-based Pages deploy cannot
+// expose it — the gitignore rule stops being the only thing standing between it and the web.
+const DETAILS_PATH = path.join(CACHE_DIR, 'details.js');
 const MKT_REPO = 'claudekit/claudekit-marketing';
 const OFFLINE = process.argv.includes('--offline');
+
+/**
+ * Long-form detail per item id (overview, when-to-use, flags, examples), filled as the
+ * extractors read each source file. Written to scripts/.cache/details.js — deliberately
+ * OUTSIDE the publish tree, because it carries paid-kit documentation.
+ * data.js stays thin (name + one-line description) and is the only published data.
+ */
+const DETAILS = new Map();
+
+function recordDetail(id, text, description) {
+  const detail = parseDetail(text, description);
+  if (detail) DETAILS.set(id, detail);
+}
 
 /* ---------------------------------------------------------------- *
  * Frontmatter mini-parser
@@ -235,8 +254,9 @@ function extractEngineer() {
     const text = fs.readFileSync(skillPath, 'utf8');
     const fm = parseFrontmatter(text);
     const hint = fm['argument-hint'] || '';
+    const id = `eng-skill-${slugify(dir)}`;
     items.push({
-      id: `eng-skill-${slugify(dir)}`,
+      id,
       name: `/ck:${dir}`,
       rawName: dir,
       type: 'skill',
@@ -246,6 +266,7 @@ function extractEngineer() {
       example: `/ck:${dir}${hint ? ' ' + hint : ''}`,
       keywords: parseArray(fm.keywords),
     });
+    recordDetail(id, text, fm.description);
   }
   const agentsDir = path.join(ROOT, '.claude', 'agents');
   const agentFiles = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md')).sort();
@@ -253,8 +274,9 @@ function extractEngineer() {
     const base = file.replace(/\.md$/, '');
     const text = fs.readFileSync(path.join(agentsDir, file), 'utf8');
     const fm = parseFrontmatter(text);
+    const id = `eng-agent-${slugify(base)}`;
     items.push({
-      id: `eng-agent-${slugify(base)}`,
+      id,
       name: fm.name || base,
       rawName: base,
       type: 'agent',
@@ -264,6 +286,7 @@ function extractEngineer() {
       example: '',
       keywords: parseArray(fm.keywords),
     });
+    recordDetail(id, text, fm.description);
   }
   return items;
 }
@@ -355,8 +378,9 @@ async function extractMarketing() {
     const fmName = fm.name || dir;
     const hasPrefix = fmName.includes(':');
     const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
+    const id = `mkt-skill-${slugify(dir)}`;
     items.push({
-      id: `mkt-skill-${slugify(dir)}`,
+      id,
       name: hasPrefix ? `/${fmName}` : fmName,
       rawName: dir,
       type: 'skill',
@@ -366,6 +390,7 @@ async function extractMarketing() {
       example: hasPrefix ? `/${fmName}${fm['argument-hint'] ? ' ' + fm['argument-hint'] : ''}` : '',
       keywords: parseArray(fm.keywords),
     });
+    recordDetail(id, text, fm.description);
   }
 
   // Agents
@@ -374,8 +399,9 @@ async function extractMarketing() {
     const base = p.split('/').pop().replace(/\.md$/, '');
     const fm = parseFrontmatter(text);
     const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
+    const id = `mkt-agent-${slugify(base)}`;
     items.push({
-      id: `mkt-agent-${slugify(base)}`,
+      id,
       name: fm.name || base,
       rawName: base,
       type: 'agent',
@@ -385,6 +411,7 @@ async function extractMarketing() {
       example: '',
       keywords: [],
     });
+    recordDetail(id, text, fm.description);
   }
 
   // Commands — id from FULL path slug (58 nested subcommands collide on basename).
@@ -395,8 +422,9 @@ async function extractMarketing() {
     const fm = parseFrontmatter(text);
     const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
     const rawName = segments.join(':');
+    const id = `mkt-cmd-${slugify(segments.join('-'))}`;
     items.push({
-      id: `mkt-cmd-${slugify(segments.join('-'))}`,
+      id,
       name: `/ckm:${rawName}`,
       rawName,
       type: 'command',
@@ -406,6 +434,7 @@ async function extractMarketing() {
       example: `/ckm:${rawName}${fm['argument-hint'] ? ' ' + fm['argument-hint'] : ''}`,
       keywords: [],
     });
+    recordDetail(id, text, fm.description);
   }
 
   return items;
@@ -474,6 +503,45 @@ async function main() {
     if (badRefs.length) throw new Error(`scenarios.js refs not in CK_DATA: ${badRefs.join(', ')}`);
   }
 
+  // Ordering the map by id keeps details.js stable across runs (no spurious diff).
+  const details = {};
+  for (const id of [...DETAILS.keys()].sort()) details[id] = DETAILS.get(id);
+
+  const withFlags = Object.values(details).filter((d) => d.flags.length).length;
+  const withExamples = Object.values(details).filter((d) => d.examples.length).length;
+  const withWhen = Object.values(details).filter((d) => d.whenToUse).length;
+
+  /* Every detail field needs BOTH a floor and a purity check, and the floors must run before
+     anything is written — otherwise a failed build leaves a fresh data.js beside a stale
+     details.js and the modal quietly serves yesterday's content.
+
+     A count of "items that got SOME detail" is worthless here: it stayed green at 305/306 while
+     the when-to-use extractor was returning nothing for 73 of 74 files, because `overview` alone
+     satisfied it. A purity check alone is just as blind — silently dropping every agent's
+     examples produces zero impurities. Both bugs shipped. Hence: floors, per field.
+     Set well under the observed corpus (74 / 29 / 101) to catch a regression, not normal drift. */
+  const floors = [
+    ['whenToUse', withWhen, 50, 74],
+    ['flags', withFlags, 20, 29],
+    ['examples', withExamples, 90, 101],
+  ];
+  for (const [field, actual, floor, observed] of floors) {
+    if (actual < floor) {
+      throw new Error(
+        `${field} populated for only ${actual} items (floor ${floor}, corpus has ~${observed}) — parser regression`
+      );
+    }
+  }
+
+  /* Examples must be a runnable command or the user's own words — never the dialogue
+     scaffolding around them. We once rendered "</example>" with a copy button next to it. */
+  const dialogue = /assistant:|<commentary>|<\/?example>/i;
+  const polluted = Object.entries(details)
+    .flatMap(([id, d]) => d.examples.filter((e) => dialogue.test(e)).map((e) => `${id} :: ${e.slice(0, 60)}`));
+  if (polluted.length) {
+    throw new Error(`examples contain dialogue markup (${polluted.length}):\n  ` + polluted.slice(0, 5).join('\n  '));
+  }
+
   const data = {
     generatedAt: new Date().toISOString().slice(0, 10),
     kits: { engineer, marketing },
@@ -486,9 +554,22 @@ async function main() {
     'utf8'
   );
 
+  fs.mkdirSync(path.dirname(DETAILS_PATH), { recursive: true });
+  fs.writeFileSync(
+    DETAILS_PATH,
+    '// GENERATED by scripts/build-data.mjs — do not edit by hand.\n' +
+      '// LOCAL ONLY: paid-kit documentation. Gitignored — must never be published.\n' +
+      'window.CK_DETAILS = ' + JSON.stringify(details, null, 2) + ';\n',
+    'utf8'
+  );
+
   console.log(`engineer : ${JSON.stringify(engineer.stats)}`);
   console.log(`marketing: ${JSON.stringify(marketing.stats)}`);
   console.log(`written  : ${path.relative(ROOT, OUT_PATH)}`);
+  console.log(
+    `details  : ${path.relative(ROOT, DETAILS_PATH)} — ${Object.keys(details).length}/${allIds.length} items` +
+      ` (${withWhen} when-to-use, ${withFlags} flags, ${withExamples} examples) [local only, gitignored]`
+  );
   if (warnings.missingVi.length) {
     console.log(`\n[warn] ${warnings.missingVi.length} items missing Vietnamese content`);
     fs.writeFileSync(path.join(ROOT, 'scripts', '.cache', 'missing-vi.txt'),

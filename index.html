@@ -190,6 +190,22 @@
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 <script src="data/data.js"></script>
 <script src="data/scenarios.js"></script>
+
+<!-- Long-form detail is generated locally and never published, so it exists only when the
+     dashboard runs off a local checkout. Request it there and nowhere else: on the live site
+     the file is absent, and a static <script> tag would fetch a 404 page and log a syntax
+     error. The modal reads window.CK_DETAILS on open, so an async load is fine. -->
+<script>
+(function () {
+  var h = location.hostname;
+  var local = !h || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(h) ||
+    /^(10\.|127\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(h); // LAN: same checkout, e.g. phone testing
+  if (!local) return;
+  var s = document.createElement("script");
+  s.src = "scripts/.cache/details.js";
+  document.head.appendChild(s);
+})();
+</script>
 <script src="assets/js/storage.js"></script>
 <script src="assets/js/render.js"></script>
 <script src="assets/js/search.js"></script>

@@ -13,6 +13,12 @@ docs/
 release-manifest.json
 .repomixignore
 
+# Legacy path for the generated long-form detail (flags, usage, examples) extracted from the
+# paid kits. It now lives in scripts/.cache/ (already ignored, and outside the publish tree),
+# but this net stays: an older checkout or a stale artifact must never be committable.
+# The published site keeps only data/data.js (name + one-line description).
+data/details.js
+
 # Build cache (marketing repo raw fetches)
 scripts/.cache/
 
