@@ -1,26 +1,27 @@
 # ClaudeKit Dashboard — publish-safety gitignore
-# Tracked set is ONLY the static site: index.html, assets/, data/, scripts/, README.md, .nojekyll
-# Everything below stays local. NO negation rules (audit: git ls-files before any push).
+#
+# The site is PUBLIC (GitHub Pages). Two different things must not be confused:
+#
+#   data/details.js  — DERIVED metadata: flag names + one-line meanings, example command
+#                      lines, the description, the when-to-use section. Published, on purpose:
+#                      it is what makes a card's detail view useful. ~145 KB.
+#
+#   scripts/.cache/  — the marketing kit's RAW source files, verbatim (~1.1 MB, 221 files).
+#   .claude/         — the engineer kit's RAW source files (~363 MB).
+#                      These ARE the paid product. Never publish them.
+#
+# The build script reads the raw files in place and writes only the derived file.
+# NO negation rules here — audit with `git ls-files` before any push.
 
-# Paid ClaudeKit Engineer kit — licensed content, never publish
+# Paid kits — raw source. Never published.
 .claude/
+scripts/.cache/
+release-manifest.json
+.repomixignore
 
 # Internal plans & docs (reports reference the private marketing repo)
 plans/
 docs/
-
-# Paid-kit release metadata
-release-manifest.json
-.repomixignore
-
-# Legacy path for the generated long-form detail (flags, usage, examples) extracted from the
-# paid kits. It now lives in scripts/.cache/ (already ignored, and outside the publish tree),
-# but this net stays: an older checkout or a stale artifact must never be committable.
-# The published site keeps only data/data.js (name + one-line description).
-data/details.js
-
-# Build cache (marketing repo raw fetches)
-scripts/.cache/
 
 # Node
 node_modules/
