@@ -1,0 +1,1075 @@
+/* ============================================================
+   ClaudeKit Dashboard — main.css
+   Contract: docs/design-guidelines.md (§1–§6). Mobile-first.
+   Order: tokens → base/reset → layout → components → states → media
+   ============================================================ */
+
+/* ============ 1. TOKENS (guidelines §1–§3) ============ */
+:root {
+  /* Nền & bề mặt */
+  --bg: #121212;
+  --surface: #1C1C21;
+  --surface-2: #26262C;
+  --border: #3F3F46;
+
+  /* Chữ */
+  --text: #E4E4E7;
+  --text-muted: #A1A1AA;
+  --text-soft-pink: #FFB3D9;
+
+  /* Hồng chủ đạo */
+  --pink: #FF1493;
+  --pink-strong: #FF3DA6;
+  --pink-dim: rgba(255, 20, 147, .14);
+  --pink-glow: rgba(255, 20, 147, .35);
+  --grad-pink: linear-gradient(135deg, #FF1493, #FF3DA6 60%, #FFB3D9);
+
+  /* Typography (§2) */
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+  --fs-xl: 28px;   /* H1, lh 1.25, w700 */
+  --fs-lg: 20px;   /* H2 / modal title, lh 1.35, w700 */
+  --fs-md: 16px;   /* card command, tab label, lh 1.55, w600 */
+  --fs-base: 15px; /* body, lh 1.6, w400 */
+  --fs-sm: 13px;   /* chips, badges, footer, kbd, lh 1.5 */
+
+  /* Spacing (§3, 4px base) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* Radii (§3) */
+  --r-card: 16px;
+  --r-input: 10px;
+  --r-chip: 999px;
+}
+
+/* ============ 2. BASE / RESET ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* An author `display` (flex/grid on .m-example, .m-flags, .m-cases, .m-related) outranks the
+   UA sheet's [hidden] rule, so `el.hidden = true` would silently do nothing. Restore it. */
+[hidden] { display: none !important; }
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 var(--fs-base)/1.6 var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Decorative top glow — purely visual (§1: max 1–2 glow/viewport) */
+body::before {
+  content: "";
+  position: fixed;
+  top: -240px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--pink-glow), transparent 70%);
+  opacity: .5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Focus ring on ALL interactive elements (§5/§6) */
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--pink); color: #121212; }
+
+/* ============ 3. LAYOUT ============ */
+.wrap {
+  /* 1500 (not 1240) so the ≥1440 three-column split still leaves the card grid
+     the 812px it needs for three cards. */
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 var(--sp-4); /* 16px mobile → 24px ≥768 */
+  position: relative;
+  z-index: 1;
+}
+
+header { padding: var(--sp-5) 0 var(--sp-4); }
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+/* Sidebar + main: 1 col mobile → 240px + 1fr ≥768 */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+footer {
+  margin-top: var(--sp-7);
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  align-items: center;
+}
+
+footer .dot { color: var(--pink); }
+footer a { color: var(--pink); text-decoration: none; }
+footer a:hover { color: var(--pink-strong); text-decoration: underline; }
+
+/* ============ 4. COMPONENTS ============ */
+
+/* ---- 4.1 Brand / logo (§4) ---- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.brand svg { flex: none; }
+
+.brand h1 {
+  font-size: 22px; /* → --fs-xl ≥768 */
+  line-height: 1.25;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.grad {
+  background: var(--grad-pink);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Forced colors (Windows High Contrast) strips the background image, which would leave
+   the clipped text transparent — i.e. invisible. Repaint it as ordinary text. */
+@media (forced-colors: active) {
+  .grad {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+}
+
+.brand .sub {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* ---- 4.2 Search bar (§4) ---- */
+.search {
+  flex: 1;
+  min-width: 220px;
+  width: 100%;      /* full-width mobile */
+  max-width: none;  /* → 520px ≥768 */
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 48px;
+  padding: 0 var(--sp-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+}
+
+.search:focus-within {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px var(--pink-glow);
+}
+
+.search svg { flex: none; opacity: .6; }
+
+.search input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  min-width: 0;
+}
+
+/* Ring lives on .search container via :focus-within */
+.search input:focus { outline: none; }
+
+.search input::placeholder { color: var(--text-muted); }
+
+.search kbd { display: none; } /* shown ≥768 */
+
+kbd {
+  font: 600 12px/1 var(--font-mono);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 4px 7px;
+  white-space: nowrap;
+}
+
+/* ---- 4.3 Tabs — kit switcher (§4) ---- */
+.tabs {
+  display: flex;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+}
+
+.tab {
+  flex: 1;
+  max-width: 340px;
+  min-height: 44px;
+  text-align: left;
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: var(--sp-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  color: var(--text-muted);
+}
+
+.tab .t-icon { font-size: 22px; line-height: 1; }
+
+.tab .t-text { display: flex; flex-direction: column; min-width: 0; }
+
+.tab .t-name {
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tab .t-count {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  display: none; /* shown ≥768 */
+}
+
+.tab[aria-selected="true"] {
+  background: var(--pink-dim);
+  border-color: var(--pink);
+  box-shadow: 0 0 24px var(--pink-glow);
+}
+
+.tab[aria-selected="true"] .t-name { color: var(--pink); }
+.tab[aria-selected="true"] .t-count { color: var(--text-soft-pink); }
+
+/* ---- 4.4 Stats strip (§4) ---- */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-3) var(--sp-4);
+  margin: var(--sp-5) 0;
+}
+
+.stat { display: flex; flex-direction: column; }
+
+.stat b {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-soft-pink);
+  line-height: 1.2;
+}
+
+.stat span {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--border);
+  padding-left: var(--sp-4);
+}
+
+.stats .hint {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  display: none; /* shown ≥768 */
+}
+
+/* ---- 4.45 Profile card (§4) ----
+   Static business card. Left-most column ≥1440; stacks above the filters below that.
+   Deliberately NOT an <aside>: the bare `aside` rules below would turn it into
+   a horizontal scroll strip on mobile. */
+.profile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+  text-align: center;
+}
+
+.pf-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--pink);
+  box-shadow: 0 0 0 4px var(--pink-dim);
+}
+
+.pf-name {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.pf-tagline {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.pf-h {
+  margin-top: var(--sp-5);
+  margin-bottom: var(--sp-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-soft-pink);
+  text-align: left;
+}
+
+.pf-list {
+  list-style: none;
+  text-align: left;
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.pf-list li {
+  position: relative;
+  padding-left: var(--sp-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Pink bullet: ::before instead of list-style so the dot picks up the accent colour */
+.pf-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.pf-skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  justify-content: flex-start;
+}
+
+.pf-skills li {
+  padding: var(--sp-1) var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-chip);
+  background: var(--surface-2);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.pf-contact {
+  list-style: none;
+  display: grid;
+  gap: var(--sp-1);
+}
+
+.pf-contact a {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  border-radius: var(--r-input);
+  text-align: left;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.pf-contact a:hover { background: var(--pink-dim); }
+
+.pf-ico { font-size: var(--fs-md); line-height: 1; flex-shrink: 0; }
+
+.pf-ctext {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  overflow-wrap: anywhere; /* keeps the email inside the 240px column */
+}
+
+.pf-ctext b {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.pf-contact a:hover .pf-ctext,
+.pf-contact a:hover .pf-ctext b { color: var(--text-soft-pink); }
+
+/* ---- 4.5 Sidebar filters (§4) ----
+   Mobile: horizontal chip scroll. ≥768: sticky card. */
+aside {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--sp-3);
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+aside::-webkit-scrollbar { display: none; }
+
+.f-label {
+  display: none; /* shown ≥768 */
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase; /* short non-VN-diacritic labels only */
+  color: var(--text-muted);
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+
+.f-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: none;
+  min-height: 44px;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-chip);
+  white-space: nowrap;
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.f-item:hover { background: var(--surface-2); color: var(--text); }
+
+.f-item.active {
+  background: var(--pink-dim);
+  border-color: var(--pink);
+  color: var(--text);
+}
+
+.f-item .cnt {
+  margin-left: auto;
+  font: 600 12px/1 var(--font-mono);
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border-radius: var(--r-chip);
+  padding: 4px 8px;
+}
+
+.f-item.active .cnt {
+  color: var(--text-soft-pink);
+  background: rgba(255, 20, 147, .2);
+}
+
+.type-chips { display: contents; } /* flow into scroll row on mobile */
+
+.type-chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--r-chip);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.type-chip:hover { color: var(--text); }
+
+.type-chip.active {
+  background: var(--pink-dim);
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.empty-note {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ---- 4.6 Card grid + cards (§4) ---- */
+.grid-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.grid-head h2,
+.scenarios h2 {
+  font-size: var(--fs-lg);
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.grid-head span { font-size: var(--fs-sm); color: var(--text-muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* → auto-fill minmax(260px,1fr) ≥768 */
+  gap: var(--sp-4);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.card:hover {
+  border-color: rgba(255, 20, 147, .5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card-icon { font-size: 28px; line-height: 1; }
+
+.card-actions { display: flex; gap: var(--sp-1); }
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-input);
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.icon-btn:hover { background: var(--surface-2); color: var(--text); }
+
+.icon-btn.fav[aria-pressed="true"] { color: var(--pink); }
+
+.card-cmd {
+  font: 600 var(--fs-md)/1.4 var(--font-mono);
+  color: var(--text);
+  word-break: break-all;
+}
+
+.card-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--sp-2);
+}
+
+.usage {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* "Có ghi chú" marker in card meta row */
+.note-ind {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Empty / loading state inside #card-grid */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: var(--sp-7) var(--sp-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-card);
+}
+
+/* ---- 4.7 Chips (§4) ---- */
+.chip {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 4px 12px;
+  border-radius: var(--r-chip);
+  white-space: nowrap;
+}
+
+.chip-cat { background: var(--pink-dim); color: var(--text-soft-pink); }
+
+.chip-type {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* ---- 4.8 Scenarios (§4) ---- */
+.scenarios { margin-top: var(--sp-7); }
+
+.scenarios > p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: var(--sp-1) 0 var(--sp-4);
+}
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* → auto-fill minmax(300px,1fr) ≥768 */
+  gap: var(--sp-4);
+}
+
+.sc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+}
+
+.sc-card h3 {
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+}
+
+.sc-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.sc-step {
+  font: 600 var(--fs-sm)/1 var(--font-mono);
+  padding: 8px 12px;
+  border-radius: var(--r-chip);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-soft-pink);
+}
+
+.sc-step:hover { border-color: var(--pink); color: var(--pink); }
+
+.sc-arrow { color: var(--pink); font-weight: 700; }
+
+.sc-note { font-size: var(--fs-sm); color: var(--text-muted); }
+
+.sc-tip {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* ---- 4.9 Modal (§4) — markup injected by JS into #modal-root ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(4px);
+  padding: var(--sp-4);
+  overflow-y: auto;
+}
+
+.overlay.open { display: grid; place-items: center; }
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: 0 0 48px var(--pink-glow), 0 24px 48px rgba(0, 0, 0, .5);
+  padding: var(--sp-5);
+}
+
+.m-head { display: flex; align-items: center; gap: var(--sp-3); }
+
+.m-icon { font-size: 32px; line-height: 1; }
+
+.m-cmd {
+  font: 700 var(--fs-lg)/1.35 var(--font-mono);
+  flex: 1;
+  word-break: break-all;
+}
+
+.m-close {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-input);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.m-close:hover { background: var(--surface-2); color: var(--text); }
+
+.m-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: var(--sp-3) 0;
+}
+
+.m-desc { color: var(--text); margin-bottom: var(--sp-4); }
+
+.m-sec {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase; /* short non-VN-diacritic labels only */
+  color: var(--text-muted);
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+
+.m-when { list-style: none; }
+
+.m-when li {
+  padding-left: var(--sp-4);
+  position: relative;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-1);
+}
+
+.m-when li::before {
+  content: "•";
+  color: var(--pink);
+  position: absolute;
+  left: 2px;
+}
+
+.m-example {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.m-example code {
+  font: 600 14px/1.5 var(--font-mono);
+  color: var(--pink);
+  flex: 1;
+  word-break: break-all;
+}
+
+/* ---- Long-form detail (window.CK_DETAILS — local only) ---- */
+
+.m-overview {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* The source file's own When-to-Use text, under the curated Vietnamese line */
+.m-when li.m-when-src {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  opacity: .85;
+}
+
+.m-flags {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-2) var(--sp-3);
+  align-items: baseline;
+}
+
+.m-flags dt {
+  font: 600 13px/1.5 var(--font-mono);
+  color: var(--pink);
+  white-space: nowrap;
+}
+
+.m-flags dd {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.m-cases {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.m-case {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.m-case code {
+  flex: 1;
+  min-width: 0;
+  font: 400 13px/1.5 var(--font-mono);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.m-case-copy {
+  flex-shrink: 0;
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.m-case-copy:hover {
+  border-color: var(--pink);
+  background: var(--pink-dim);
+}
+
+/* Stack the flag list on narrow screens — a nowrap <dt> beside text would overflow */
+@media (max-width: 480px) {
+  .m-flags { grid-template-columns: 1fr; gap: var(--sp-1); }
+  .m-flags dd { margin-bottom: var(--sp-2); }
+}
+
+.m-note {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  padding: var(--sp-3);
+}
+
+.m-note:focus {
+  outline: none; /* ring rendered via border + shadow below */
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px var(--pink-glow);
+}
+
+.m-note::placeholder { color: var(--text-muted); }
+
+/* "✓ Đã lưu" autosave hint next to the note label */
+.m-note-saved {
+  margin-left: var(--sp-2);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-soft-pink);
+}
+
+.m-related { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+/* ---- 4.10 Solid pink button (§1: text on --pink must be #121212) ---- */
+.btn-pink {
+  background: var(--pink);
+  color: #121212;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  padding: 10px 16px;
+  border-radius: var(--r-input);
+  white-space: nowrap;
+}
+
+.btn-pink:hover { background: var(--pink-strong); }
+
+/* ============ 5. STATES / MOTION (§5) ============ */
+/* All transitions & transforms guarded per guidelines */
+@media (prefers-reduced-motion: no-preference) {
+  .card, .tab, .f-item, .icon-btn, .type-chip, .sc-step, .btn-pink, .m-close {
+    transition: background-color .16s ease, border-color .16s ease,
+                color .16s ease, box-shadow .16s ease, transform .16s ease;
+  }
+
+  .card:hover { transform: translateY(-2px); }
+
+  .card:active, .btn-pink:active, .tab:active,
+  .f-item:active, .type-chip:active, .sc-step:active {
+    transform: scale(.98);
+  }
+
+  .modal { animation: pop .18s ease; }
+
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(12px) scale(.97); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ============ 6. MEDIA QUERIES (§3: mobile-first, 768 / 1024) ============ */
+
+/* ---- Tablet ≥768px: sidebar appears, multi-col grid ---- */
+@media (min-width: 768px) {
+  .wrap { padding: 0 var(--sp-5); }
+
+  .brand h1 { font-size: var(--fs-xl); }
+
+  .search { max-width: 520px; margin-left: auto; }
+  .search kbd { display: inline-block; }
+
+  .tab { padding: var(--sp-3) var(--sp-4); }
+  .tab .t-count { display: block; }
+
+  .stats { gap: var(--sp-5); padding: var(--sp-4) var(--sp-5); }
+  .stat + .stat { padding-left: var(--sp-5); }
+  .stats .hint { display: block; }
+
+  /* Left column stacks profile over filters; card grid keeps the full right column.
+     True 3-column split waits for ≥1440 (see below) — forcing it here would squeeze
+     the grid under the 812px it needs for three cards. */
+  .layout {
+    grid-template-columns: 240px 1fr;
+    /* Row 2 must be 1fr, not auto: a row-spanning item distributes its extra height
+       equally across intrinsic tracks, so an auto row 2 would let the tall card grid
+       inflate the profile row and shove the filters ~1200px down the page. */
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "profile content"
+      "filters content";
+  }
+
+  .profile { grid-area: profile; }
+  #sidebar-filters { grid-area: filters; }
+  .content { grid-area: content; }
+
+  aside {
+    display: block;
+    overflow-x: visible;
+    padding: var(--sp-4);
+    border-radius: var(--r-card);
+    position: sticky;
+    top: var(--sp-4);
+  }
+
+  .f-label { display: block; }
+  .f-label:first-child { margin-top: 0; }
+
+  .f-item {
+    display: flex;
+    width: 100%;
+    min-height: 40px;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: var(--r-input);
+    white-space: normal;
+  }
+
+  .f-item.active { border-left-color: var(--pink); }
+
+  .type-chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+  .type-chip { min-height: 0; }
+
+  .empty-note { white-space: normal; }
+
+  /* ~2 columns at tablet, 3 at desktop (1fr main column) */
+  .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .sc-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+}
+
+/* ---- Desktop ≥1024px ---- */
+@media (min-width: 1024px) {
+  .stats { margin: var(--sp-5) 0 var(--sp-6); }
+}
+
+/* ---- Wide ≥1440px: profile becomes its own left-most column ----
+   The two 240px rails + gaps cost 528px, and the card grid needs 812px for three cards.
+   Split any earlier and the grid drops to two cards — widening the window would then
+   paradoxically show FEWER cards. 1440 (not 1400) because a 1400px window has a ~1383px
+   layout viewport, leaving the grid 807px: five short. At 1440 it gets 864px. */
+@media (min-width: 1440px) {
+  .layout {
+    grid-template-columns: 240px 240px 1fr;
+    grid-template-rows: auto; /* reset the two-row track from ≥768, else a dead row + gap is left behind */
+    grid-template-areas: "profile filters content";
+  }
+
+  /* The 520px cap leaves a ~570px hole between the brand and the right-pinned search
+     once .wrap reaches 1500. Let the field take that space instead. */
+  .search { max-width: 720px; }
+}
