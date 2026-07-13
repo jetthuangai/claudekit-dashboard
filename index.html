@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClaudeKit Dashboard</title>
-<meta name="description" content="Bảng tra cứu skill, agent và lệnh của ClaudeKit Engineer &amp; Marketing — tìm nhanh, xem hướng dẫn tiếng Việt, lưu mục yêu thích.">
+<title>AgentKit Dashboard</title>
+<meta name="description" content="Bảng tra cứu skill, agent và lệnh của AgentKit Engineer &amp; Marketing — tìm nhanh, xem hướng dẫn tiếng Việt, lưu mục yêu thích.">
 <meta name="theme-color" content="#121212">
+<!-- Áp theme đã lưu TRƯỚC khi CSS vẽ (chống nháy màu). Chuỗi khóa 'ckdash:theme'
+     lặp lại từ storage.js có chủ đích: snippet phải chạy trước khi storage.js load. -->
+<script>try{var t=localStorage.getItem('ckdash:theme');if(t==='agentkit'){document.documentElement.dataset.theme='agentkit';var m=document.querySelector('meta[name=theme-color]');if(m)m.content='#050507';}}catch(e){}</script>
 
 <!-- Open Graph -->
-<meta property="og:title" content="ClaudeKit Dashboard">
-<meta property="og:description" content="Bảng tra cứu skill, agent và lệnh của ClaudeKit Engineer &amp; Marketing — hướng dẫn tiếng Việt, dễ hiểu cho người không chuyên.">
+<meta property="og:title" content="AgentKit Dashboard">
+<meta property="og:description" content="Bảng tra cứu skill, agent và lệnh của AgentKit Engineer &amp; Marketing — hướng dẫn tiếng Việt, dễ hiểu cho người không chuyên.">
 <meta property="og:type" content="website">
 
 <!-- Favicon: inline SVG data URI — pink gradient monogram ›_ (no extra request) -->
@@ -20,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/main.css?v=2">
 </head>
 <body>
 <div class="wrap">
@@ -30,7 +33,7 @@
   <div class="header-row">
     <div class="brand">
       <!-- Logo: inline SVG monogram — gradient rounded square + terminal chevron (guidelines §4) -->
-      <svg width="44" height="44" viewBox="0 0 44 44" role="img" aria-label="Logo ClaudeKit Dashboard">
+      <svg width="44" height="44" viewBox="0 0 44 44" role="img" aria-label="Logo AgentKit Dashboard">
         <defs>
           <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#FF1493"/>
@@ -43,7 +46,7 @@
         <line x1="24" y1="29" x2="32" y2="29" stroke="#121212" stroke-width="3.5" stroke-linecap="round"/>
       </svg>
       <div>
-        <h1>ClaudeKit <span class="grad">Dashboard</span></h1>
+        <h1>AgentKit <span class="grad">Dashboard</span></h1>
         <p class="sub">Tra cứu skill, agent &amp; lệnh — dành cho bạn</p>
       </div>
     </div>
@@ -55,6 +58,10 @@
       <input type="search" id="search-input" placeholder="Tìm skill, agent, lệnh..." aria-label="Tìm skill, agent, lệnh" autocomplete="off">
       <kbd>Ctrl K</kbd>
     </div>
+
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Chuyển giao diện AgentKit" title="Chuyển giao diện đen–hồng / AgentKit">
+      <span aria-hidden="true">🎨</span>
+    </button>
   </div>
 
   <!-- Tab shells: static chrome; JS fills counts + wires switching (phase 4) -->
@@ -174,9 +181,10 @@
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <span>ClaudeKit Dashboard <b>v1.0</b></span><span class="dot" aria-hidden="true">•</span>
+  <span>AgentKit Dashboard <b>v1.0</b></span><span class="dot" aria-hidden="true">•</span>
   <span>Dữ liệu cập nhật: <span id="footer-updated">10/07/2026</span></span><span class="dot" aria-hidden="true">•</span>
-  <span>Làm với 🩷 bởi Jetthuang &amp; ClaudeKit</span>
+  <span>Làm với 🩷 bởi Jetthuang &amp; AgentKit</span><span class="dot" aria-hidden="true">•</span>
+  <span><a href="legacy/index.html">Xem bản ClaudeKit cũ →</a></span>
 </footer>
 </div><!-- /wrap -->
 

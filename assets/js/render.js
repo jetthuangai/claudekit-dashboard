@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — render.js
+   AgentKit Dashboard — render.js
    Pure DOM builders: card, grid, sidebar, stats, tab counts.
    XSS-safe by construction: createElement + textContent ONLY —
    descriptions come from an external repo, never trust them.

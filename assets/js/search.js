@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — search.js
+   AgentKit Dashboard — search.js
    Fuse.js fuzzy search, one index per kit. Queries are ALSO
    diacritic-folded (same NFD strip + đ→d as scripts/build-data)
    so "sua loi" matches "sửa lỗi" via the searchFold field.

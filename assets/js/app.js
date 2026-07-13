@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — app.js (entry point, loaded LAST)
+   AgentKit Dashboard — app.js (entry point, loaded LAST)
 
    ARCHITECTURE NOTE: all app files are plain non-module scripts
    sharing the window.CKApp namespace. ES modules are ruled out —
@@ -13,6 +13,36 @@
 
   var CKApp = (window.CKApp = window.CKApp || {});
   var DATA = window.CK_DATA;
+
+  /* ---------- theme toggle (đen–hồng ⇄ AgentKit) ----------
+     Đặt TRƯỚC guard dữ liệu: nút đổi theme chỉ đụng localStorage +
+     attribute trên <html>, không phụ thuộc CK_DATA — data lỗi thì
+     đổi theme vẫn phải chạy. Snippet inline trong <head> đã áp
+     theme trước khi CSS vẽ; ở đây chỉ đồng bộ nút + xử lý click. */
+  (function initThemeToggle() {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn || !CKApp.store) return;
+
+    var THEME_COLOR = { "": "#121212", agentkit: "#050507" };
+
+    function apply(theme) {
+      if (theme === "agentkit") {
+        document.documentElement.dataset.theme = "agentkit";
+      } else {
+        delete document.documentElement.dataset.theme;
+      }
+      btn.setAttribute("aria-pressed", theme === "agentkit" ? "true" : "false");
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = THEME_COLOR[theme] || THEME_COLOR[""];
+    }
+
+    apply(CKApp.store.getTheme());
+
+    btn.addEventListener("click", function () {
+      var next = CKApp.store.getTheme() === "agentkit" ? "" : "agentkit";
+      apply(CKApp.store.setTheme(next));
+    });
+  })();
 
   /* Guard: without data the shell keeps its "Đang tải dữ liệu..."
      empty-state — never throw. */
@@ -156,7 +186,7 @@
     }
 
     /* Browse order: skills → commands → agents (ids sort agents first,
-       which buries the /ck: skills casual users came for). Search keeps
+       which buries the /ak: skills casual users came for). Search keeps
        Fuse relevance order untouched. */
     if (!state.query.trim()) {
       var rank = { skill: 0, command: 1, agent: 2 };

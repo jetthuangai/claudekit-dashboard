@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — modal.js
+   AgentKit Dashboard — modal.js
    Detail dialog: builds its skeleton once into #modal-root,
    open(item, kitId, trigger) fills it with textContent only.
    A11y: role=dialog aria-modal, focus trap, Esc/backdrop/✕

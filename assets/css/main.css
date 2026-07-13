@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — main.css
+   AgentKit Dashboard — main.css
    Contract: docs/design-guidelines.md (§1–§6). Mobile-first.
    Order: tokens → base/reset → layout → components → states → media
    ============================================================ */
@@ -22,6 +22,8 @@
   --pink-strong: #FF3DA6;
   --pink-dim: rgba(255, 20, 147, .14);
   --pink-glow: rgba(255, 20, 147, .35);
+  --pink-line: rgba(255, 20, 147, .5); /* hover border @50% alpha (§5) */
+  --pink-active: rgba(255, 20, 147, .2); /* active count badge bg */
   --grad-pink: linear-gradient(135deg, #FF1493, #FF3DA6 60%, #FFB3D9);
 
   /* Typography (§2) */
@@ -47,6 +49,26 @@
   --r-card: 16px;
   --r-input: 10px;
   --r-chip: 999px;
+}
+
+/* Theme AgentKit (nút toggle ở header) — ghi đè GIÁ TRỊ token, giữ nguyên
+   TÊN token (--pink mang màu xanh là nợ đặt tên chấp nhận được; đổi tên
+   là phải sửa hàng trăm chỗ var(--pink)). Palette lấy từ agentkit.best. */
+:root[data-theme="agentkit"] {
+  --bg: #050507;
+  --surface: #0d0d10;
+  --surface-2: #131318;
+  --border: rgba(124, 185, 234, .25);
+  --text: #fafafa;
+  --text-muted: #9FB0C4;
+  --text-soft-pink: #AAD6EC;
+  --pink: #7CB9EA;
+  --pink-strong: #C5E4F4;
+  --pink-dim: rgba(124, 185, 234, .14);
+  --pink-glow: rgba(124, 185, 234, .35);
+  --pink-line: rgba(124, 185, 234, .5);
+  --pink-active: rgba(124, 185, 234, .2);
+  --grad-pink: linear-gradient(135deg, #7CB9EA, #AAD6EC 60%, #C5E4F4);
 }
 
 /* ============ 2. BASE / RESET ============ */
@@ -139,6 +161,8 @@ footer {
 }
 
 footer .dot { color: var(--pink); }
+footer a { color: var(--pink); text-decoration: none; }
+footer a:hover { color: var(--pink-strong); text-decoration: underline; }
 
 /* ============ 4. COMPONENTS ============ */
 
@@ -229,6 +253,28 @@ kbd {
   border-radius: 6px;
   padding: 4px 7px;
   white-space: nowrap;
+}
+
+/* ---- 4.2b Theme toggle (đen–hồng ⇄ AgentKit) ---- */
+.theme-toggle {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--pink-line); }
+
+.theme-toggle[aria-pressed="true"] {
+  background: var(--pink-dim);
+  border-color: var(--pink);
 }
 
 /* ---- 4.3 Tabs — kit switcher (§4) ---- */
@@ -510,7 +556,7 @@ aside::-webkit-scrollbar { display: none; }
 
 .f-item.active .cnt {
   color: var(--text-soft-pink);
-  background: rgba(255, 20, 147, .2);
+  background: var(--pink-active);
 }
 
 .type-chips { display: contents; } /* flow into scroll row on mobile */
@@ -579,7 +625,7 @@ aside::-webkit-scrollbar { display: none; }
 }
 
 .card:hover {
-  border-color: rgba(255, 20, 147, .5);
+  border-color: var(--pink-line);
   box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
 }
 

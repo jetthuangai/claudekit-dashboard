@@ -1,5 +1,5 @@
 /* ============================================================
-   ClaudeKit Dashboard — storage.js
+   AgentKit Dashboard — storage.js
    Real localStorage persistence (favorites, notes, usage).
    Keys: ckdash:favorites (string[]), ckdash:notes ({id:string}),
    ckdash:usage ({id:number}), ckdash:v = 1 (future migrations).
@@ -19,7 +19,8 @@
     version: "ckdash:v",
     favorites: "ckdash:favorites",
     notes: "ckdash:notes",
-    usage: "ckdash:usage"
+    usage: "ckdash:usage",
+    theme: "ckdash:theme"
   };
 
   /* ---------- guarded localStorage access ---------- */
@@ -60,6 +61,10 @@
   var favorites = readJSON(KEYS.favorites, [], isStringArray);
   var notes = readJSON(KEYS.notes, {}, isPlainObject);
   var usage = readJSON(KEYS.usage, {}, isPlainObject);
+
+  /* Theme: chuỗi đơn, không phải JSON — chỉ nhận "agentkit", còn lại
+     coi như theme mặc định (đen–hồng, "" = không set data-theme). */
+  var theme = safeGet(KEYS.theme) === "agentkit" ? "agentkit" : "";
 
   safeSet(KEYS.version, "1");
 
@@ -112,6 +117,16 @@
     },
     getUsage: function (id) {
       return typeof usage[id] === "number" ? usage[id] : 0;
+    },
+
+    /* Theme ("" = đen–hồng mặc định | "agentkit") */
+    getTheme: function () {
+      return theme;
+    },
+    setTheme: function (name) {
+      theme = name === "agentkit" ? "agentkit" : "";
+      safeSet(KEYS.theme, theme);
+      return theme;
     }
   };
 })();
