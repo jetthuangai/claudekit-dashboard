@@ -6,10 +6,37 @@ Có nút đổi giao diện (đen–hồng ⇄ xanh AgentKit) ở góc header, v
 
 Site tĩnh thuần — HTML + CSS + vanilla JS, không build step, không framework.
 
-## Dùng thử
+## Cài đặt & khởi chạy
 
-- **Online**: bật GitHub Pages của repo này (Settings → Pages → Deploy from branch `main`, thư mục `/`).
-- **Local**: mở thẳng `index.html` bằng trình duyệt — mọi tính năng hoạt động cả trên `file://`.
+Đây là site tĩnh — **để xem thì chỉ cần trình duyệt**, không phải cài đặt gì. Node.js/`ak` chỉ cần khi muốn cập nhật lại dữ liệu (xem mục [Cập nhật dữ liệu](#cập-nhật-dữ-liệu)).
+
+### 1. Tải mã nguồn về
+
+```bash
+git clone https://github.com/jetthuangai/claudekit-dashboard.git
+cd claudekit-dashboard
+```
+
+(Không có Git cũng được: bấm **Code → Download ZIP** trên trang GitHub rồi giải nén.)
+
+### 2. Chạy trên máy
+
+- **Cách nhanh nhất**: bấm đúp mở `index.html` bằng trình duyệt (chạy được cả trên `file://`).
+  Lưu ý: cần **kết nối internet** cho lần đầu, vì thư viện tìm kiếm Fuse.js được nạp từ CDN. Mọi thứ khác (lọc, yêu thích, ghi chú, đổi giao diện) chạy offline bình thường.
+- **Cách khuyên dùng** (ổn định hơn, tránh vài hạn chế của `file://`): chạy một web server tĩnh trong thư mục dự án rồi mở `http://localhost:8000`:
+
+  ```bash
+  # có sẵn Python:
+  python -m http.server 8000
+  # hoặc có sẵn Node.js:
+  npx serve .
+  ```
+
+Bản dashboard cũ (ClaudeKit) nằm ở `legacy/index.html` — mở tương tự, hoặc bấm link "Xem bản ClaudeKit cũ" ở footer.
+
+### 3. Đưa lên mạng (GitHub Pages)
+
+Vào **Settings → Pages → Deploy from a branch**, chọn nhánh `main`, thư mục `/` (root). Sau ~1–2 phút site chạy tại `https://<tài-khoản>.github.io/<tên-repo>/`.
 
 ## Tính năng
 
