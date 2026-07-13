@@ -14,7 +14,7 @@ window.CK_SCENARIOS = [
     kit: 'engineer',
     icon: '🐞',
     question: 'Tôi gặp bug / web bị lỗi',
-    steps: [{ ref: 'eng-skill-fix' }, { ref: 'eng-skill-ck-debug', note: 'nếu chưa hết lỗi' }],
+    steps: [{ ref: 'eng-skill-fix' }, { ref: 'eng-skill-debug', note: 'nếu chưa hết lỗi' }],
     tip: 'Mô tả lỗi càng cụ thể (làm gì thì lỗi, thông báo gì) thì sửa càng nhanh.'
   },
   {
@@ -31,14 +31,14 @@ window.CK_SCENARIOS = [
     icon: '🎨',
     question: 'Tôi muốn làm logo / xử lý ảnh',
     steps: [{ ref: 'eng-skill-design' }, { ref: 'eng-skill-media-processing' }],
-    tip: 'Cần ảnh AI đẹp nhanh? Thử thêm /ck:ai-artist với 129 prompt có sẵn.'
+    tip: 'Cần ảnh AI đẹp nhanh? Thử thêm /ak:ai-artist với 129 prompt có sẵn.'
   },
   {
     id: 'ke-hoach-tinh-nang-lon',
     kit: 'engineer',
     icon: '📐',
     question: 'Tôi muốn làm tính năng lớn, bài bản',
-    steps: [{ ref: 'eng-skill-ck-plan' }, { ref: 'eng-skill-cook' }, { ref: 'eng-skill-ck-code-review' }],
+    steps: [{ ref: 'eng-skill-plan' }, { ref: 'eng-skill-cook' }, { ref: 'eng-skill-code-review' }],
     tip: 'Kế hoạch trước, code sau — tiết kiệm thời gian sửa đi sửa lại.'
   },
   {
@@ -46,23 +46,23 @@ window.CK_SCENARIOS = [
     kit: 'marketing',
     icon: '✍️',
     question: 'Tôi muốn viết content marketing',
-    steps: [{ ref: 'mkt-cmd-write-blog' }, { ref: 'mkt-cmd-write-audit' }, { ref: 'mkt-cmd-write-publish' }],
-    tip: 'Chuỗi viết → chấm điểm → xuất bản giúp content luôn đạt chuẩn trước khi đăng.'
+    steps: [{ ref: 'mkt-skill-content-marketing' }, { ref: 'mkt-skill-write' }, { ref: 'mkt-skill-social' }],
+    tip: 'Lên chiến lược nội dung → viết bài → đăng lên mạng xã hội, đi trọn một mạch.'
   },
   {
     id: 'len-top-google',
     kit: 'marketing',
     icon: '🔎',
     question: 'Tôi muốn website lên top Google',
-    steps: [{ ref: 'mkt-cmd-seo-audit' }, { ref: 'mkt-cmd-seo-keywords' }, { ref: 'mkt-cmd-write-blog' }],
-    tip: 'Audit trước để biết site yếu chỗ nào, rồi mới chọn từ khoá và viết bài.'
+    steps: [{ ref: 'mkt-skill-seo' }, { ref: 'mkt-skill-competitor' }, { ref: 'mkt-skill-write' }],
+    tip: 'Soi SEO để biết site yếu chỗ nào, xem đối thủ, rồi viết bài đúng hướng.'
   },
   {
     id: 'chien-dich-email',
     kit: 'marketing',
     icon: '📬',
     question: 'Tôi muốn làm chiến dịch email',
-    steps: [{ ref: 'mkt-cmd-persona' }, { ref: 'mkt-cmd-email-sequence' }, { ref: 'mkt-cmd-campaign-email' }],
-    tip: 'Hiểu khách (persona) trước khi viết chuỗi email — tỉ lệ mở sẽ khác hẳn.'
+    steps: [{ ref: 'mkt-skill-persona' }, { ref: 'mkt-skill-email' }, { ref: 'mkt-skill-campaign' }],
+    tip: 'Hiểu khách (persona) trước khi viết email và chạy chiến dịch — tỉ lệ mở sẽ khác hẳn.'
   }
 ];

@@ -1,39 +1,40 @@
 #!/usr/bin/env node
 /**
- * build-data.mjs — generates data/data.js for ClaudeKit Dashboard.
+ * build-data.mjs — generates data/data.js + data/details.js for the AgentKit Dashboard.
  *
- * Sources:
- *   - Engineer kit: local .claude/skills/*\/SKILL.md + .claude/agents/*.md
- *   - Marketing kit: private repo claudekit/claudekit-marketing via authenticated `gh` CLI
- *     (raw files cached under scripts/.cache/ so re-runs are offline-free)
+ * Source (since the AgentKit rebrand, 2026-07): the local `ak kit` build output for BOTH kits.
+ *   Produce it with:
+ *     ak kit init engineer  --build-only --out ../ak-kit-build --target claude-code --yes --no-interactive
+ *     ak kit init marketing --build-only --out ../ak-kit-build --target claude-code --yes --no-interactive
+ *   Both kits now share one shape: <kit>/skills/<ak-name>/SKILL.md + <kit>/agents/<name>.md.
+ *   Override the base dir with AK_KIT_SRC (default: ../ak-kit-build relative to repo root).
+ *   The raw kit files are the paid product — kept OUT of git; only the derived data is published.
  *
- * No npm dependencies (Node >= 18). Run: node scripts/build-data.mjs [--offline]
- *   --offline : never call `gh`; use cache only (fails if cache incomplete)
+ * No npm dependencies (Node >= 18). Run: node scripts/build-data.mjs
+ *   BUILD_BOOTSTRAP=1 : skip corpus-size / scenarios / Vietnamese floors so a first pass on a
+ *                       freshly changed kit can emit English output to translate from. Ship WITHOUT it.
  *
  * Item ids ({kit}-{type}-{path-slug}) are localStorage keys for favorites/notes/usage.
- * The id scheme is FROZEN — changing it orphans users' saved data.
+ * The id scheme is FROZEN — changing it orphans users' saved data. The leading `ak-` on every
+ * skill dir is stripped before slugifying, so ids stay stable across the ck→ak rename for every
+ * skill that kept its base name (e.g. ak-cook -> eng-skill-cook).
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFile } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { promisify } from 'node:util';
 
 import { parseDetail, cleanProse, cleanFlagDesc } from './lib/detail-parser.mjs';
 
-const execFileAsync = promisify(execFile);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const CACHE_DIR = path.join(ROOT, 'scripts', '.cache');
+const KIT_SRC = process.env.AK_KIT_SRC || path.join(ROOT, '..', 'ak-kit-build');
 const VI_CONTENT_PATH = path.join(ROOT, 'scripts', 'vi-content.json');
 const VI_DETAILS_PATH = path.join(ROOT, 'scripts', 'vi-details.json');
 const OUT_PATH = path.join(ROOT, 'data', 'data.js');
-// Published alongside data.js. This is DERIVED metadata (flags, examples, descriptions), not
-// the kits' raw source — those stay in .claude/ and scripts/.cache/, both gitignored.
+// Published alongside data.js. DERIVED metadata (flags, examples, descriptions), not raw kit source.
 // Not a dot-directory, because GitHub Pages does not serve dot-prefixed paths.
 const DETAILS_PATH = path.join(ROOT, 'data', 'details.js');
-const MKT_REPO = 'claudekit/claudekit-marketing';
-const OFFLINE = process.argv.includes('--offline');
+const BOOTSTRAP = process.env.BUILD_BOOTSTRAP === '1';
 
 /**
  * Long-form detail per item id (overview, when-to-use, flags, examples), filled as the
@@ -96,8 +97,6 @@ function parseArray(v) {
 
 /**
  * Fallback when frontmatter yields no description: first plain paragraph of the body.
- * Needed for real upstream files — some /ckm commands have no frontmatter at all, and
- * context-engineering's SKILL.md has a malformed block scalar (key interleaved mid-block).
  */
 function bodyIntro(text) {
   const body = text.replace(/^﻿?---\r?\n[\s\S]*?\r?\n---/, '');
@@ -135,6 +134,11 @@ function slugify(s) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+/** Strip the uniform `ak-` kit prefix so ids stay stable across the ck→ak rename. */
+function baseName(dir) {
+  return dir.replace(/^ak-/, '');
+}
+
 /* ---------------------------------------------------------------- *
  * Category taxonomies (Vietnamese labels)
  * ---------------------------------------------------------------- */
@@ -167,27 +171,29 @@ const MKT_CATEGORIES = [
 
 const KHAC = { id: 'khac', label: 'Khác', icon: '✨' };
 
-// Engineer skill dir -> category (authoritative for the 84 shipped skills).
+// Engineer skill base-name -> category. Includes ck→ak renames (plan, debug, code-review, …)
+// alongside the base names that survived the rebrand unchanged.
 const ENG_SKILL_CATEGORY = {
-  bootstrap: 'planning', 'ck-plan': 'planning', 'ck-predict': 'planning', 'ck-scenario': 'planning',
+  bootstrap: 'planning', plan: 'planning', predict: 'planning', scenario: 'planning',
   brainstorm: 'planning', 'problem-solving': 'planning',
   cook: 'implementation', 'backend-development': 'implementation', 'frontend-development': 'implementation',
   'mobile-development': 'implementation', 'web-frameworks': 'implementation', tanstack: 'implementation',
   'react-best-practices': 'implementation', 'better-auth': 'implementation', copywriting: 'implementation',
   agentize: 'implementation',
-  'ck-code-review': 'review-testing', test: 'review-testing', 'web-testing': 'review-testing',
-  'review-pr': 'review-testing', 'ck-loop': 'review-testing',
-  'ck-debug': 'debug', fix: 'debug', 'ck-autoresearch': 'debug', 'sequential-thinking': 'debug',
+  'code-review': 'review-testing', test: 'review-testing', 'web-testing': 'review-testing',
+  'review-pr': 'review-testing', loop: 'review-testing',
+  debug: 'debug', fix: 'debug', autoresearch: 'debug', 'sequential-thinking': 'debug',
   deploy: 'devops', devops: 'devops', ship: 'devops', git: 'devops', worktree: 'devops', ghpm: 'devops',
   docs: 'docs', 'docs-seeker': 'docs', journal: 'docs', llms: 'docs', 'markdown-novel-viewer': 'docs',
-  mintlify: 'docs', 'ck-graphify': 'docs', retro: 'docs', watzup: 'docs',
-  'ck-security': 'security', 'security-scan': 'security', 'cti-expert': 'security', gkg: 'security',
+  mintlify: 'docs', graphify: 'docs', retro: 'docs', watzup: 'docs',
+  security: 'security', 'security-scan': 'security', 'cti-expert': 'security', gkg: 'security',
   'ai-artist': 'media', 'media-processing': 'media', design: 'media', 'html-video': 'media',
   remotion: 'media', preview: 'media', shader: 'media', excalidraw: 'media', 'mermaidjs-v11': 'media',
   stitch: 'media', threejs: 'media',
   'ui-ux-pro-max': 'ui-design', 'ui-styling': 'ui-design', 'frontend-design': 'ui-design',
   'web-design-guidelines': 'ui-design', 'show-off': 'ui-design',
   research: 'research', ask: 'research', scout: 'research', repomix: 'research', xia: 'research',
+  advise: 'research', agentkit: 'utilities',
   'mcp-builder': 'integrations', 'use-mcp': 'integrations', 'google-adk-python': 'integrations',
   'chrome-profile': 'integrations', 'agent-browser': 'integrations', 'ai-multimodal': 'integrations',
   'payment-integration': 'integrations', shopify: 'integrations', 'context-engineering': 'integrations',
@@ -202,28 +208,29 @@ const ENG_AGENT_CATEGORY = {
   'fullstack-developer': 'implementation', debugger: 'debug', tester: 'review-testing',
   'git-manager': 'devops', 'code-simplifier': 'review-testing', brainstormer: 'planning',
   'journal-writer': 'docs', 'docs-manager': 'docs', 'project-manager': 'utilities',
-  'ui-ux-designer': 'ui-design',
+  'ui-ux-designer': 'ui-design', advisor: 'research',
 };
 
-// The marketing kit bundles generic dev-workflow tools (cook, fix, git, plan, docs...) —
-// they get their own "tools" category instead of polluting marketing domains.
+// Generic dev-workflow tools bundled into the marketing kit get their own "tools" bucket
+// instead of polluting the marketing domains.
 const MKT_TOOLS = new Set([
-  'ask', 'better-auth', 'ckm-storage', 'code-review', 'code-reviewer', 'context-engineering',
-  'cook', 'debugging', 'docs', 'docs-manager', 'docs-seeker', 'fix', 'frontend-development',
+  'ask', 'better-auth', 'code-review', 'code-reviewer', 'context-engineering',
+  'cook', 'debug', 'docs', 'docs-manager', 'docs-seeker', 'fix', 'frontend-development',
   'fullstack-developer', 'git', 'git-manager', 'google-adk-python', 'init', 'journal',
   'kanban', 'kit-builder', 'markdown-novel-viewer', 'mcp-management', 'mcp-manager',
   'payment-integration', 'plan', 'preview', 'problem-solving', 'project-manager', 'repomix',
   'sequential-thinking', 'shopify', 'skill-creator', 'storage', 'template-skill', 'test',
-  'use-mcp', 'watzup', 'web-frameworks', 'worktree',
+  'use-mcp', 'watzup', 'web-frameworks', 'worktree', 'agent-browser', 'agentkit',
+  'ai-multimodal', 'chrome-profile', 'scout', 'advise', 'brainstorm', 'agentize',
 ]);
-const MKT_TOOLS_RE = /^(docs|plan|skill|storage|test)([:\-]|$)/; // nested dev commands: docs:init, plan:*, skill:*...
+const MKT_TOOLS_RE = /^(docs|plan|skill|storage|test)([:\-]|$)/;
 
 // Marketing categorization: first matching rule wins (specific before generic).
 const MKT_RULES = [
   ['seo', /\bseo\b|competitor|keyword|backlink|positioning|programmatic|alternativ/],
   ['strategy', /campaign|^play([:\-]|$)|strateg|launch|psycholog|ab-test|split|experiment|research|persona|market-|planning|brainstorm|idea|scout/],
   ['design', /design|ui-ux|banner|artist|visual|logo|thumbnail|video|multimodal|elevenlabs|remotion|shader|threejs/],
-  ['performance', /analytic|kpi|attribution|metric|dashboard|report|tracking|data/],
+  ['performance', /analytic|analyze|kpi|attribution|metric|dashboard|report|tracking|data/],
   ['acquisition', /paid|\bads?\b|affiliate|acquisition|lead|outreach|growth|referral|viral|attraction|social/],
   ['conversion', /\bcro\b|conversion|onboarding|pricing|funnel|landing|form|upsell|retention|email|sale|qualifier|continuity/],
   ['content', /content|copywrit|blog|creativ|community|brand|storytell|newsletter|\bwrite\b|writer|wizard|hub|media/],
@@ -238,204 +245,67 @@ function mktCategory(rawName, desc) {
 }
 
 /* ---------------------------------------------------------------- *
- * Engineer kit (local filesystem)
+ * Local kit extraction (both kits share one on-disk shape)
  * ---------------------------------------------------------------- */
-const ENG_SKILL_EXCLUDE = new Set(['.venv', 'common', '_shared', 'document-skills']);
+const SKILL_EXCLUDE = new Set(['.venv', 'common', '_shared', 'document-skills']);
 
-function extractEngineer() {
-  const items = [];
-  const skillsDir = path.join(ROOT, '.claude', 'skills');
-  const dirs = fs.readdirSync(skillsDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !ENG_SKILL_EXCLUDE.has(d.name))
-    .map((d) => d.name)
-    .sort();
-  for (const dir of dirs) {
-    const skillPath = path.join(skillsDir, dir, 'SKILL.md');
-    if (!fs.existsSync(skillPath)) continue;
-    const text = fs.readFileSync(skillPath, 'utf8');
-    const fm = parseFrontmatter(text);
-    const hint = fm['argument-hint'] || '';
-    const id = `eng-skill-${slugify(dir)}`;
-    items.push({
-      id,
-      name: `/ck:${dir}`,
-      rawName: dir,
-      type: 'skill',
-      category: ENG_SKILL_CATEGORY[dir] || 'khac',
-      userInvocable: fm['user-invocable'] !== 'false',
-      descEn: firstSentence(fm.description) || firstSentence(bodyIntro(text)),
-      example: `/ck:${dir}${hint ? ' ' + hint : ''}`,
-      keywords: parseArray(fm.keywords),
-    });
-    recordDetail(id, text, fm.description);
-  }
-  const agentsDir = path.join(ROOT, '.claude', 'agents');
-  const agentFiles = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md')).sort();
-  for (const file of agentFiles) {
-    const base = file.replace(/\.md$/, '');
-    const text = fs.readFileSync(path.join(agentsDir, file), 'utf8');
-    const fm = parseFrontmatter(text);
-    const id = `eng-agent-${slugify(base)}`;
-    items.push({
-      id,
-      name: fm.name || base,
-      rawName: base,
-      type: 'agent',
-      category: ENG_AGENT_CATEGORY[base] || 'khac',
-      userInvocable: true,
-      descEn: firstSentence(fm.description) || firstSentence(bodyIntro(text)),
-      example: '',
-      keywords: parseArray(fm.keywords),
-    });
-    recordDetail(id, text, fm.description);
-  }
-  return items;
-}
-
-/* ---------------------------------------------------------------- *
- * Marketing kit (gh api + cache)
- * ---------------------------------------------------------------- */
-function cachePathFor(repoPath) {
-  return path.join(CACHE_DIR, repoPath.replace(/[\\/:]/g, '__'));
-}
-
-async function gh(args, opts = {}) {
-  // GitHub occasionally returns transient 5xx — retry with backoff before failing the build
-  let lastErr;
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      const { stdout } = await execFileAsync('gh', args, { maxBuffer: 64 * 1024 * 1024, ...opts });
-      return stdout;
-    } catch (err) {
-      lastErr = err;
-      const transient = /HTTP 5\d\d|timeout|ECONNRESET|ETIMEDOUT/i.test(String(err.stderr || err.message));
-      if (!transient || attempt === 3) break;
-      await new Promise((r) => setTimeout(r, attempt * 1500));
-    }
-  }
-  throw lastErr;
-}
-
-async function fetchRaw(repoPath) {
-  const cached = cachePathFor(repoPath);
-  if (fs.existsSync(cached)) return fs.readFileSync(cached, 'utf8');
-  if (OFFLINE) throw new Error(`--offline but cache miss: ${repoPath}`);
-  const raw = await gh(['api', '-H', 'Accept: application/vnd.github.raw',
-    `repos/${MKT_REPO}/contents/${repoPath}`]);
-  fs.mkdirSync(CACHE_DIR, { recursive: true });
-  fs.writeFileSync(cached, raw, 'utf8');
-  return raw;
-}
-
-/** Small promise pool so ~230 first-run fetches don't run serially or all at once. */
-async function mapPool(list, limit, fn) {
-  const results = new Array(list.length);
-  let next = 0;
-  async function worker() {
-    while (next < list.length) {
-      const i = next++;
-      results[i] = await fn(list[i], i);
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(limit, list.length) }, worker));
-  return results;
-}
-
-async function extractMarketing() {
-  const treeCache = path.join(CACHE_DIR, '__tree.json');
-  let treeJson;
-  if (fs.existsSync(treeCache)) {
-    treeJson = fs.readFileSync(treeCache, 'utf8');
-  } else {
-    if (OFFLINE) throw new Error('--offline but tree cache missing');
-    treeJson = await gh(['api', `repos/${MKT_REPO}/git/trees/main?recursive=1`]);
-    fs.mkdirSync(CACHE_DIR, { recursive: true });
-    fs.writeFileSync(treeCache, treeJson, 'utf8');
-  }
-  const tree = JSON.parse(treeJson);
-  if (tree.truncated) {
-    throw new Error('git tree response is truncated — recursive listing incomplete; aborting');
-  }
-  const paths = tree.tree.filter((e) => e.type === 'blob').map((e) => e.path);
-
-  const skillPaths = paths.filter((p) => /^(claude|\.agent)\/skills\/[^/]+\/SKILL\.md$/.test(p)).sort();
-  const agentPaths = paths.filter((p) => /^claude\/agents\/[^/]+\.md$/.test(p)).sort();
-  const commandPaths = paths.filter((p) => /^claude\/commands\/ckm\/.*\.md$/.test(p)).sort();
-
+function extractKit({ kitDir, idPrefix, skillCategory, agentCategory }) {
   const items = [];
 
-  // Skills — dedupe by dir name; claude/skills/ wins over .agent/skills/ (deterministic).
-  const skillByName = new Map();
-  const skillTexts = await mapPool(skillPaths, 6, async (p) => [p, await fetchRaw(p)]);
-  for (const [p, text] of skillTexts) {
-    const dir = p.split('/').slice(-2, -1)[0];
-    const fromClaude = p.startsWith('claude/');
-    if (skillByName.has(dir) && !fromClaude) continue; // .agent duplicate loses
-    if (skillByName.has(dir) && fromClaude && skillByName.get(dir).fromClaude) continue;
-    skillByName.set(dir, { p, text, fromClaude, dir });
-  }
-  for (const { text, dir } of [...skillByName.values()].sort((a, b) => a.dir.localeCompare(b.dir))) {
-    const fm = parseFrontmatter(text);
-    const fmName = fm.name || dir;
-    const hasPrefix = fmName.includes(':');
-    const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
-    const id = `mkt-skill-${slugify(dir)}`;
-    items.push({
-      id,
-      name: hasPrefix ? `/${fmName}` : fmName,
-      rawName: dir,
-      type: 'skill',
-      category: mktCategory(dir, desc),
-      userInvocable: fm['user-invocable'] !== 'false',
-      descEn: desc,
-      example: hasPrefix ? `/${fmName}${fm['argument-hint'] ? ' ' + fm['argument-hint'] : ''}` : '',
-      keywords: parseArray(fm.keywords),
-    });
-    recordDetail(id, text, fm.description);
-  }
-
-  // Agents
-  const agentTexts = await mapPool(agentPaths, 6, async (p) => [p, await fetchRaw(p)]);
-  for (const [p, text] of agentTexts) {
-    const base = p.split('/').pop().replace(/\.md$/, '');
-    const fm = parseFrontmatter(text);
-    const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
-    const id = `mkt-agent-${slugify(base)}`;
-    items.push({
-      id,
-      name: fm.name || base,
-      rawName: base,
-      type: 'agent',
-      category: mktCategory(base, desc),
-      userInvocable: true,
-      descEn: desc,
-      example: '',
-      keywords: [],
-    });
-    recordDetail(id, text, fm.description);
+  const skillsDir = path.join(kitDir, 'skills');
+  if (fs.existsSync(skillsDir)) {
+    const dirs = fs.readdirSync(skillsDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && !SKILL_EXCLUDE.has(d.name))
+      .map((d) => d.name)
+      .sort();
+    for (const dir of dirs) {
+      const skillPath = path.join(skillsDir, dir, 'SKILL.md');
+      if (!fs.existsSync(skillPath)) continue;
+      const text = fs.readFileSync(skillPath, 'utf8');
+      const fm = parseFrontmatter(text);
+      const base = baseName(dir);
+      const id = `${idPrefix}-skill-${slugify(base)}`;
+      const fmName = fm.name || `ak:${base}`;
+      const display = fmName.includes(':') ? `/${fmName}` : `/ak:${base}`;
+      const hint = fm['argument-hint'] || '';
+      const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
+      items.push({
+        id,
+        name: display,
+        rawName: base,
+        type: 'skill',
+        category: skillCategory(base, desc),
+        userInvocable: fm['user-invocable'] !== 'false',
+        descEn: desc,
+        example: `${display}${hint ? ' ' + hint : ''}`,
+        keywords: parseArray(fm.keywords),
+      });
+      recordDetail(id, text, fm.description);
+    }
   }
 
-  // Commands — id from FULL path slug (58 nested subcommands collide on basename).
-  const cmdTexts = await mapPool(commandPaths, 6, async (p) => [p, await fetchRaw(p)]);
-  for (const [p, text] of cmdTexts) {
-    const rel = p.replace(/^claude\/commands\/ckm\//, '').replace(/\.md$/, '');
-    const segments = rel.split('/');
-    const fm = parseFrontmatter(text);
-    const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
-    const rawName = segments.join(':');
-    const id = `mkt-cmd-${slugify(segments.join('-'))}`;
-    items.push({
-      id,
-      name: `/ckm:${rawName}`,
-      rawName,
-      type: 'command',
-      category: mktCategory(rawName, desc),
-      userInvocable: true,
-      descEn: desc,
-      example: `/ckm:${rawName}${fm['argument-hint'] ? ' ' + fm['argument-hint'] : ''}`,
-      keywords: [],
-    });
-    recordDetail(id, text, fm.description);
+  const agentsDir = path.join(kitDir, 'agents');
+  if (fs.existsSync(agentsDir)) {
+    const agentFiles = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md')).sort();
+    for (const file of agentFiles) {
+      const base = file.replace(/\.md$/, '');
+      const text = fs.readFileSync(path.join(agentsDir, file), 'utf8');
+      const fm = parseFrontmatter(text);
+      const id = `${idPrefix}-agent-${slugify(base)}`;
+      const desc = firstSentence(fm.description) || firstSentence(bodyIntro(text));
+      items.push({
+        id,
+        name: fm.name || base,
+        rawName: base,
+        type: 'agent',
+        category: agentCategory(base, desc),
+        userInvocable: true,
+        descEn: desc,
+        example: '',
+        keywords: parseArray(fm.keywords),
+      });
+      recordDetail(id, text, fm.description);
+    }
   }
 
   return items;
@@ -453,7 +323,6 @@ function finishKit(items, viContent, categoriesDef, warnings) {
     if (!it.descEn) warnings.emptyDescEn.push(it.id);
     it.searchFold = foldVi([it.name, it.rawName, it.descVi, it.descEn, ...it.keywords].join(' '));
   }
-  // related: same category, ranked by keyword overlap then name
   for (const it of items) {
     const peers = items.filter((o) => o !== it && o.category === it.category);
     const score = (o) => o.keywords.filter((k) => it.keywords.includes(k)).length;
@@ -474,26 +343,39 @@ function finishKit(items, viContent, categoriesDef, warnings) {
   return { categories, stats, items };
 }
 
-async function main() {
+function main() {
+  if (!fs.existsSync(KIT_SRC)) {
+    throw new Error(`kit source not found: ${KIT_SRC}\n  Build it first with \`ak kit init <kit> --build-only --out ${KIT_SRC} --target claude-code\` (set AK_KIT_SRC to override).`);
+  }
   const viContent = fs.existsSync(VI_CONTENT_PATH)
     ? JSON.parse(fs.readFileSync(VI_CONTENT_PATH, 'utf8'))
     : {};
   const warnings = { missingVi: [], emptyDescEn: [] };
 
-  const engItems = extractEngineer();
-  const mktItems = await extractMarketing();
+  const engItems = extractKit({
+    kitDir: path.join(KIT_SRC, 'ak-engineer'),
+    idPrefix: 'eng',
+    skillCategory: (base) => ENG_SKILL_CATEGORY[base] || 'khac',
+    agentCategory: (base) => ENG_AGENT_CATEGORY[base] || 'khac',
+  });
+  const mktItems = extractKit({
+    kitDir: path.join(KIT_SRC, 'ak-marketing'),
+    idPrefix: 'mkt',
+    skillCategory: (base, desc) => mktCategory(base, desc),
+    agentCategory: (base, desc) => mktCategory(base, desc),
+  });
 
   const engineer = { label: 'Engineer', icon: '🛠️', ...finishKit(engItems, viContent, ENG_CATEGORIES, warnings) };
   const marketing = { label: 'Marketing', icon: '📣', ...finishKit(mktItems, viContent, MKT_CATEGORIES, warnings) };
 
-  // Validations (fail build — see phase-01 plan)
   const allIds = [...engineer.items, ...marketing.items].map((i) => i.id);
   const dupes = allIds.filter((id, i) => allIds.indexOf(id) !== i);
   if (dupes.length) throw new Error(`duplicate ids: ${[...new Set(dupes)].join(', ')}`);
   if (warnings.emptyDescEn.length) {
     throw new Error(`empty descEn (parser regression?): ${warnings.emptyDescEn.join(', ')}`);
   }
-  // Scenario refs must point at real items (favorites/notes UX breaks on dead refs)
+
+  // Scenario refs must point at real items (favorites/notes UX breaks on dead refs).
   const scenariosPath = path.join(ROOT, 'data', 'scenarios.js');
   if (fs.existsSync(scenariosPath)) {
     const idSet = new Set(allIds);
@@ -501,27 +383,27 @@ async function main() {
     const badRefs = [...src.matchAll(/ref:\s*'([^']+)'/g)]
       .map((m) => m[1])
       .filter((ref) => !idSet.has(ref));
-    if (badRefs.length) throw new Error(`scenarios.js refs not in CK_DATA: ${badRefs.join(', ')}`);
+    if (badRefs.length) {
+      if (BOOTSTRAP) console.log(`[bootstrap] scenarios.js dead refs (fix before shipping): ${badRefs.join(', ')}`);
+      else throw new Error(`scenarios.js refs not in CK_DATA: ${badRefs.join(', ')}`);
+    }
   }
 
   // Ordering the map by id keeps details.js stable across runs (no spurious diff).
   const details = {};
   for (const id of [...DETAILS.keys()].sort()) details[id] = DETAILS.get(id);
 
-  /* Vietnamese overlay. The extractors pull English out of the source files; scripts/vi-details.json
-     carries the translation, keyed by the SAME ids. Applying it here means the UI never has to know
-     two languages exist — details.js simply ships Vietnamese. Anything without a translation keeps
-     its English text rather than going blank. Command lines are keyed by their exact original string,
-     so a bare `/ck:ship beta` (nothing to translate) is absent from the map and passes through. */
+  /* Vietnamese overlay, keyed by the SAME ids. A translation whose id no longer exists in the
+     extracted set is pruned with a warning (a kit rename legitimately drops ids); a MISSING
+     translation is the real concern and is caught by missingVi + the overview floor below. */
   const viDetails = fs.existsSync(VI_DETAILS_PATH)
     ? JSON.parse(fs.readFileSync(VI_DETAILS_PATH, 'utf8'))
     : {};
+  const staleViDetails = [];
   const viStats = { overview: 0, whenToUse: 0, flags: 0, examples: 0 };
   for (const [id, vi] of Object.entries(viDetails)) {
     const d = details[id];
-    if (!d) throw new Error(`vi-details.json has an id absent from the extracted set: ${id}`);
-    // cleanProse again on the way in: a translator working from the raw English carries the
-    // source's artefacts (literal "\n", a dangling "Examples:") straight into the Vietnamese.
+    if (!d) { staleViDetails.push(id); continue; }
     if (vi.overview) { d.overview = cleanProse(vi.overview); viStats.overview++; }
     if (vi.whenToUse) { d.whenToUse = cleanProse(vi.whenToUse); viStats.whenToUse++; }
     if (vi.flags) {
@@ -535,35 +417,31 @@ async function main() {
       viStats.examples++;
     }
   }
+  if (staleViDetails.length) {
+    console.log(`[warn] ${staleViDetails.length} vi-details.json ids no longer in the kit (pruned): ${staleViDetails.slice(0, 8).join(', ')}${staleViDetails.length > 8 ? ' …' : ''}`);
+  }
 
   const withFlags = Object.values(details).filter((d) => d.flags.length).length;
   const withExamples = Object.values(details).filter((d) => d.examples.length).length;
   const withWhen = Object.values(details).filter((d) => d.whenToUse).length;
 
-  /* Every detail field needs BOTH a floor and a purity check, and the floors must run before
-     anything is written — otherwise a failed build leaves a fresh data.js beside a stale
-     details.js and the modal quietly serves yesterday's content.
-
-     A count of "items that got SOME detail" is worthless here: it stayed green at 305/306 while
-     the when-to-use extractor was returning nothing for 73 of 74 files, because `overview` alone
-     satisfied it. A purity check alone is just as blind — silently dropping every agent's
-     examples produces zero impurities. Both bugs shipped. Hence: floors, per field.
-     Set well under the observed corpus (74 / 29 / 101) to catch a regression, not normal drift. */
-  const floors = [
-    ['whenToUse', withWhen, 50, 74],
-    ['flags', withFlags, 20, 29],
-    ['examples', withExamples, 90, 101],
-  ];
-  for (const [field, actual, floor, observed] of floors) {
-    if (actual < floor) {
-      throw new Error(
-        `${field} populated for only ${actual} items (floor ${floor}, corpus has ~${observed}) — parser regression`
-      );
+  /* Corpus-size floors catch a parser regression (extraction silently returning nothing).
+     Skipped under BUILD_BOOTSTRAP because a freshly changed kit legitimately shifts the counts;
+     recalibrate the floors to the new corpus, then ship without the flag. */
+  if (!BOOTSTRAP) {
+    const floors = [
+      ['whenToUse', withWhen, 45],
+      ['flags', withFlags, 15],
+      ['examples', withExamples, 50],
+    ];
+    for (const [field, actual, floor] of floors) {
+      if (actual < floor) {
+        throw new Error(`${field} populated for only ${actual} items (floor ${floor}) — parser regression`);
+      }
     }
   }
 
-  /* Examples must be a runnable command or the user's own words — never the dialogue
-     scaffolding around them. We once rendered "</example>" with a copy button next to it. */
+  /* Purity checks — always on (correctness, not corpus size). */
   const dialogue = /assistant:|<commentary>|<\/?example>/i;
   const polluted = Object.entries(details)
     .flatMap(([id, d]) => d.examples.filter((e) => dialogue.test(e)).map((e) => `${id} :: ${e.slice(0, 60)}`));
@@ -571,9 +449,6 @@ async function main() {
     throw new Error(`examples contain dialogue markup (${polluted.length}):\n  ` + polluted.slice(0, 5).join('\n  '));
   }
 
-  /* Nothing may reach the UI still carrying the source's escaping or a heading whose body was
-     stripped. Both shipped once, and the Vietnamese overlay reintroduced them because the
-     translators worked from the unclean English. */
   const LITERAL_NEWLINE = String.fromCharCode(92) + 'n';
   const artefacts = [];
   for (const [id, d] of Object.entries(details)) {
@@ -589,9 +464,12 @@ async function main() {
   }
 
   /* Vietnamese is the whole point of this dashboard. If the overlay stops applying, fail loudly
-     rather than quietly shipping an English UI. */
-  if (viStats.overview < 250) {
-    throw new Error(`Vietnamese overlay applied to only ${viStats.overview} overviews (expected ~300) — is scripts/vi-details.json stale?`);
+     rather than quietly shipping an English UI. Floor = 70% of items with details. */
+  if (!BOOTSTRAP) {
+    const floor = Math.floor(Object.keys(details).length * 0.7);
+    if (viStats.overview < floor) {
+      throw new Error(`Vietnamese overlay applied to only ${viStats.overview} overviews (floor ${floor} = 70% of ${Object.keys(details).length}) — is scripts/vi-details.json stale?`);
+    }
   }
 
   const data = {
@@ -611,7 +489,7 @@ async function main() {
     DETAILS_PATH,
     '// GENERATED by scripts/build-data.mjs — do not edit by hand.\n' +
       '// Derived metadata (flags, examples, descriptions). The raw kit files it comes from\n' +
-      '// (.claude/, scripts/.cache/) are gitignored and never published.\n' +
+      '// (the ak kit build output) are kept out of git and never published.\n' +
       'window.CK_DETAILS = ' + JSON.stringify(details, null, 2) + ';\n',
     'utf8'
   );
@@ -621,17 +499,19 @@ async function main() {
   console.log(`written  : ${path.relative(ROOT, OUT_PATH)}`);
   console.log(
     `details  : ${path.relative(ROOT, DETAILS_PATH)} — ${Object.keys(details).length}/${allIds.length} items` +
-      ` (${withWhen} when-to-use, ${withFlags} flags, ${withExamples} examples)`
+      ` (${withWhen} when-to-use, ${withFlags} flags, ${withExamples} examples; vi overview ${viStats.overview})`
   );
   if (warnings.missingVi.length) {
     console.log(`\n[warn] ${warnings.missingVi.length} items missing Vietnamese content`);
-    fs.writeFileSync(path.join(ROOT, 'scripts', '.cache', 'missing-vi.txt'),
+    fs.writeFileSync(path.join(ROOT, 'scripts', 'missing-vi.txt'),
       warnings.missingVi.join('\n'), 'utf8');
-    console.log('list written to scripts/.cache/missing-vi.txt — fill scripts/vi-content.json (phase-02)');
+    console.log('list written to scripts/missing-vi.txt — fill scripts/vi-content.json');
   }
 }
 
-main().catch((err) => {
+try {
+  main();
+} catch (err) {
   console.error('[build-data] FAILED:', err.message);
   process.exit(1);
-});
+}

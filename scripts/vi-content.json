@@ -1,311 +1,850 @@
 {
-  "eng-skill-agent-browser": { "descVi": "Tự động hoá trình duyệt: test web, chụp màn hình, điền form, thu thập dữ liệu.", "whenToUseVi": "Dùng khi cần thao tác web tự động mà không cần Chrome thật của bạn. Nếu cần cookie/tài khoản đang đăng nhập, dùng /ck:chrome-profile." },
-  "eng-skill-agentize": { "descVi": "Biến code có sẵn thành công cụ CLI hoặc MCP server cho AI dùng lại.", "whenToUseVi": "Dùng khi muốn đóng gói một tính năng thành công cụ mà agent khác gọi được." },
-  "eng-skill-ai-artist": { "descVi": "Tạo mockup sản phẩm, ảnh marketing, ảnh thương hiệu với 129 prompt tuyển chọn.", "whenToUseVi": "Dùng khi cần ảnh đẹp nhanh: mockup, poster, concept art. Có phỏng vấn ngắn để chốt style trước khi tạo." },
-  "eng-skill-ai-multimodal": { "descVi": "Phân tích ảnh/audio/video bằng Gemini; tạo ảnh, video, giọng nói, nhạc bằng AI.", "whenToUseVi": "Dùng khi cần đọc hiểu media (OCR, mô tả ảnh, gỡ băng) hoặc sinh ảnh/video/giọng đọc." },
-  "eng-skill-ask": { "descVi": "Hỏi đáp kỹ thuật chuyên sâu: so sánh giải pháp, tư vấn kiến trúc, best practice.", "whenToUseVi": "Dùng khi chỉ cần câu trả lời/phân tích, chưa muốn sửa code." },
-  "eng-skill-backend-development": { "descVi": "Xây backend với Node.js, Python, Go: API, đăng nhập, database, bảo mật.", "whenToUseVi": "Dùng khi phần việc chính là server, API hoặc xử lý dữ liệu phía sau." },
-  "eng-skill-better-auth": { "descVi": "Thêm đăng nhập cho web: email/mật khẩu, Google, GitHub, 2FA, passkey.", "whenToUseVi": "Dùng khi app cần hệ thống tài khoản và phân quyền với Better Auth (TypeScript)." },
-  "eng-skill-bootstrap": { "descVi": "Khởi tạo dự án mới từ A-Z: nghiên cứu, chọn công nghệ, thiết kế, lập kế hoạch, code.", "whenToUseVi": "Dùng khi bắt đầu một dự án hoàn toàn mới và muốn đi bài bản từng bước." },
-  "eng-skill-brainstorm": { "descVi": "Cùng AI cân nhắc giải pháp: phân tích được–mất thẳng thắn trước khi quyết.", "whenToUseVi": "Dùng khi phân vân giữa nhiều hướng kỹ thuật hoặc muốn phản biện ý tưởng." },
-  "eng-skill-chrome-profile": { "descVi": "Điều khiển Chrome thật của bạn (giữ nguyên đăng nhập, cookie) để tự động hoá.", "whenToUseVi": "Dùng khi tác vụ cần tài khoản đang đăng nhập sẵn trong Chrome hằng ngày." },
-  "eng-skill-ck-autoresearch": { "descVi": "Vòng lặp tự cải tiến: AI tự thử, tự học từ kết quả, lặp đến khi đạt mục tiêu.", "whenToUseVi": "Điểm vào chung của nhóm autoresearch — nên bắt đầu ở đây để được dẫn tới biến thể phù hợp." },
-  "eng-skill-ck-code-review": { "descVi": "Soát chất lượng code có bằng chứng: tìm bug, lỗi hồi quy, thiếu test.", "whenToUseVi": "Dùng sau khi code xong tính năng, trước khi gộp nhánh hoặc phát hành." },
-  "eng-skill-ck-debug": { "descVi": "Điều tra lỗi bài bản: truy đến gốc nguyên nhân rồi mới sửa.", "whenToUseVi": "Dùng với lỗi khó, lỗi tái diễn, hoặc khi /ck:fix chưa xử lý được." },
-  "eng-skill-ck-graphify": { "descVi": "Biến code/tài liệu thành bản đồ tri thức truy vấn được.", "whenToUseVi": "Dùng khi cần hiểu nhanh codebase lớn hoặc tìm quan hệ giữa các file." },
-  "eng-skill-ck-loop": { "descVi": "Chạy N vòng tối ưu tự động theo một chỉ số đo được (coverage, tốc độ...).", "whenToUseVi": "Chỉ dùng khi có chỉ số khách quan để máy tự chấm điểm từng vòng thử." },
-  "eng-skill-ck-plan": { "descVi": "Lập kế hoạch triển khai chi tiết theo từng phase trước khi code.", "whenToUseVi": "Dùng cho việc lớn, nhiều bước, cần kiến trúc rõ ràng và lộ trình." },
-  "eng-skill-ck-predict": { "descVi": "5 chuyên gia ảo tranh luận về thay đổi sắp làm để bắt lỗi sớm.", "whenToUseVi": "Dùng trước những thay đổi rủi ro cao: kiến trúc, bảo mật, hiệu năng." },
-  "eng-skill-ck-scenario": { "descVi": "Sinh danh sách ca kiểm thử và tình huống biên đầy đủ cho một tính năng.", "whenToUseVi": "Dùng trước khi code tính năng phức tạp hoặc khi lên kế hoạch QA." },
-  "eng-skill-ck-security": { "descVi": "Kiểm định bảo mật theo chuẩn STRIDE/OWASP, có thể tự vá lỗi tìm được.", "whenToUseVi": "Dùng để rà soát lỗ hổng trước khi phát hành hoặc theo định kỳ." },
-  "eng-skill-coding-level": { "descVi": "Chỉnh mức độ giải thích của AI theo trình độ của bạn.", "whenToUseVi": "Dùng khi muốn câu trả lời chi tiết hơn (người mới) hoặc gọn hơn (chuyên gia)." },
-  "eng-skill-context-engineering": { "descVi": "Theo dõi và tối ưu mức dùng context/token của phiên làm việc.", "whenToUseVi": "Dùng khi thấy cảnh báo giới hạn, phiên dài, hoặc muốn tiết kiệm token." },
-  "eng-skill-cook": { "descVi": "Làm tính năng mới từ A-Z theo quy trình chuẩn: hiểu yêu cầu, code, kiểm tra.", "whenToUseVi": "Dùng khi yêu cầu đã rõ và muốn triển khai nghiêm túc có kiểm soát." },
-  "eng-skill-copywriting": { "descVi": "Công thức viết quảng cáo chuyển đổi: tiêu đề, email, landing page, CTA.", "whenToUseVi": "Dùng khi cần chữ nghĩa bán hàng: headline, email chiến dịch, trang đích." },
-  "eng-skill-cti-expert": { "descVi": "Phân tích tình báo an ninh mạng và OSINT: tra cứu lộ lọt, điều tra dấu vết.", "whenToUseVi": "Dùng khi cần kiểm tra email/tên miền bị lộ, điều tra mối đe doạ, làm báo cáo an ninh." },
-  "eng-skill-databases": { "descVi": "Thiết kế cơ sở dữ liệu và viết truy vấn cho MongoDB, PostgreSQL.", "whenToUseVi": "Dùng khi việc chính là schema, truy vấn, index hoặc di trú dữ liệu." },
-  "eng-skill-deploy": { "descVi": "Đưa web lên mạng: tự nhận diện nền tảng phù hợp và triển khai giúp bạn.", "whenToUseVi": "Dùng khi muốn publish dự án lên Vercel, Netlify, GitHub Pages, Cloudflare..." },
-  "eng-skill-design": { "descVi": "Thiết kế bộ nhận diện thương hiệu: logo, banner, hệ thống hình ảnh.", "whenToUseVi": "Dùng cho việc thương hiệu/đồ hoạ, không phải giao diện code." },
-  "eng-skill-devops": { "descVi": "Hạ tầng cloud: Cloudflare, Docker, Kubernetes, GCP, CI/CD.", "whenToUseVi": "Dùng khi cần container, serverless, pipeline tự động hoặc audit hạ tầng." },
-  "eng-skill-docs": { "descVi": "Phân tích codebase và tạo/cập nhật tài liệu dự án tự động.", "whenToUseVi": "Dùng khi tài liệu thiếu, lỗi thời, hoặc khởi tạo docs cho dự án mới." },
-  "eng-skill-docs-seeker": { "descVi": "Tra tài liệu chính thức của thư viện/framework, luôn bản mới nhất.", "whenToUseVi": "Dùng khi cần API docs chuẩn xác thay vì trí nhớ của AI." },
-  "eng-skill-excalidraw": { "descVi": "Vẽ sơ đồ kiến trúc, luồng dữ liệu kiểu vẽ tay với Excalidraw.", "whenToUseVi": "Dùng khi muốn sơ đồ chỉnh sửa được hoặc vẽ nhanh kiến trúc repo." },
-  "eng-skill-find-skills": { "descVi": "Tìm và cài skill phù hợp khi bạn hỏi \"có cách nào làm X không?\".", "whenToUseVi": "Dùng khi không chắc đã có công cụ nào cho việc bạn cần." },
-  "eng-skill-fix": { "descVi": "Sửa lỗi tự động: bạn mô tả vấn đề, AI tự tìm nguyên nhân và vá lỗi cho bạn.", "whenToUseVi": "Dùng khi web/app báo lỗi, test fail, hoặc CI đỏ. Với lỗi khó truy vết, dùng thêm /ck:ck-debug." },
-  "eng-skill-frontend-design": { "descVi": "Dựng giao diện đẹp, tinh tế từ ảnh thiết kế/chụp màn hình/video.", "whenToUseVi": "Dùng khi độ đẹp và giống thiết kế là ưu tiên số một." },
-  "eng-skill-frontend-development": { "descVi": "Xây giao diện React/TypeScript theo pattern hiện đại.", "whenToUseVi": "Dùng khi việc chính là component, hiệu năng render, routing phía client." },
-  "eng-skill-ghpm": { "descVi": "Quản lý dự án trên GitHub: issue, bảng Projects, tự động hoá.", "whenToUseVi": "Dùng khi theo dõi công việc bằng GitHub Issues/Projects/Actions." },
-  "eng-skill-git": { "descVi": "Lưu và đồng bộ code tự động: commit, push, tạo PR không cần nhớ lệnh git.", "whenToUseVi": "Dùng khi muốn commit/đẩy code, tạo pull request, gộp nhánh an toàn." },
-  "eng-skill-gkg": { "descVi": "Phân tích code theo ngữ nghĩa: tìm nơi dùng hàm, đánh giá tác động sửa đổi.", "whenToUseVi": "Dùng khi cần biết \"sửa chỗ này ảnh hưởng đâu\" trong codebase lớn." },
-  "eng-skill-google-adk-python": { "descVi": "Xây AI agent bằng Google ADK Python: đa agent, công cụ MCP, deploy Vertex.", "whenToUseVi": "Dùng khi làm hệ thống agent trên hệ sinh thái Google." },
-  "eng-skill-html-video": { "descVi": "Tạo video MP4 từ template HTML/CSS/JS, render ngay trên máy.", "whenToUseVi": "Dùng cho video quảng bá, giải thích, clip mạng xã hội từ template web." },
-  "eng-skill-journal": { "descVi": "Ghi nhật ký kỹ thuật: phân tích thay đổi và quyết định của phiên làm việc.", "whenToUseVi": "Dùng cuối phiên để lưu lại vì sao đã làm gì — hữu ích khi quay lại sau." },
-  "eng-skill-llms": { "descVi": "Tạo file llms.txt giúp AI khác hiểu nhanh website/tài liệu của bạn.", "whenToUseVi": "Dùng khi muốn site thân thiện với AI hoặc tóm tắt docs theo chuẩn llmstxt." },
-  "eng-skill-markdown-novel-viewer": { "descVi": "Đọc file markdown dài như đọc sách: giao diện tĩnh lặng, dễ tập trung.", "whenToUseVi": "Dùng khi cần đọc kỹ tài liệu dài (spec, báo cáo, kế hoạch) trên trình duyệt." },
-  "eng-skill-mcp-builder": { "descVi": "Xây MCP server để nối AI với dịch vụ ngoài (API, database, SaaS).", "whenToUseVi": "Dùng khi muốn tự viết công cụ MCP bằng Python hoặc TypeScript." },
-  "eng-skill-media-processing": { "descVi": "Xử lý ảnh & video hàng loạt: resize, nén, đổi định dạng, xoá nền.", "whenToUseVi": "Dùng khi cần FFmpeg/ImageMagick: cắt video, nén ảnh, tách nền AI." },
-  "eng-skill-mermaidjs-v11": { "descVi": "Vẽ sơ đồ bằng chữ với Mermaid: flowchart, sequence, ER, Gantt.", "whenToUseVi": "Dùng khi cần sơ đồ nhúng thẳng vào tài liệu markdown." },
-  "eng-skill-mintlify": { "descVi": "Dựng site tài liệu đẹp với Mintlify: cấu hình, MDX, theme, deploy.", "whenToUseVi": "Dùng khi làm trang docs sản phẩm bằng Mintlify." },
-  "eng-skill-mobile-development": { "descVi": "Làm app di động: React Native, Flutter, Swift, Kotlin.", "whenToUseVi": "Dùng khi sản phẩm đích là app iOS/Android." },
-  "eng-skill-payment-integration": { "descVi": "Tích hợp thanh toán: SePay (VietQR), Stripe, Polar, Paddle, Creem.", "whenToUseVi": "Dùng khi cần nhận tiền: checkout, gói thuê bao, webhook, mã QR." },
-  "eng-skill-plans-kanban": { "descVi": "Mở bảng kanban theo dõi các kế hoạch ClaudeKit của dự án.", "whenToUseVi": "Dùng khi muốn nhìn tổng quan tiến độ các plan đang chạy." },
-  "eng-skill-preview": { "descVi": "Xem file hoặc tạo giải thích trực quan: slide, sơ đồ, walkthrough.", "whenToUseVi": "Dùng khi lời giải thích bằng hình sẽ dễ hiểu hơn bằng chữ." },
-  "eng-skill-problem-solving": { "descVi": "Bộ kỹ thuật gỡ bí có hệ thống khi vấn đề rối hoặc lặp lại.", "whenToUseVi": "Dùng khi bế tắc, vòng lặp phức tạp, hoặc cần đổi góc nhìn." },
-  "eng-skill-project-management": { "descVi": "Theo dõi tiến độ: cập nhật trạng thái plan, task, báo cáo tổng hợp.", "whenToUseVi": "Dùng khi cần điểm lại dự án đang ở đâu và bàn giao giữa các phiên." },
-  "eng-skill-project-organization": { "descVi": "Sắp xếp file, thư mục, cấu trúc dự án gọn gàng chuẩn mực.", "whenToUseVi": "Dùng khi phân vân đặt file ở đâu hoặc muốn dọn lại cấu trúc." },
-  "eng-skill-react-best-practices": { "descVi": "Tối ưu hiệu năng React/Next.js theo chuẩn Vercel Engineering.", "whenToUseVi": "Dùng khi app React chậm, render thừa, bundle phình to." },
-  "eng-skill-remotion": { "descVi": "Làm video bằng code React với Remotion: animation, video dữ liệu.", "whenToUseVi": "Dùng khi cần video sinh tự động theo dữ liệu/chương trình." },
-  "eng-skill-repomix": { "descVi": "Gói cả repo thành một file cho AI đọc: XML, Markdown, text.", "whenToUseVi": "Dùng khi cần đưa toàn bộ codebase vào ngữ cảnh AI hoặc audit thư viện ngoài." },
-  "eng-skill-research": { "descVi": "Nghiên cứu kỹ thuật sâu: đánh giá công nghệ, best practice, kiến trúc.", "whenToUseVi": "Dùng trước quyết định công nghệ quan trọng hoặc thiết kế giải pháp." },
-  "eng-skill-retro": { "descVi": "Tổng kết sprint từ lịch sử git: tốc độ, sức khoẻ code, xu hướng.", "whenToUseVi": "Dùng cho review sprint/quý dựa trên dữ liệu commit thật." },
-  "eng-skill-review-pr": { "descVi": "Review pull request trên GitHub: đúng chuẩn, bảo mật, chất lượng.", "whenToUseVi": "Dùng khi có PR cần soát, có thể kèm tự sửa lỗi và trả lời review." },
-  "eng-skill-scout": { "descVi": "Trinh sát codebase siêu nhanh bằng nhiều agent song song.", "whenToUseVi": "Dùng khi cần tìm file/hiểu cấu trúc repo trước khi bắt tay làm." },
-  "eng-skill-security-scan": { "descVi": "Quét lỗ hổng bảo mật: secret bị lộ, dependency rủi ro, pattern OWASP.", "whenToUseVi": "Dùng trước khi phát hành hoặc khi nghi có secret trong code." },
-  "eng-skill-sequential-thinking": { "descVi": "Phân tích từng bước có thể tự sửa hướng giữa chừng cho bài toán phức tạp.", "whenToUseVi": "Dùng khi vấn đề nhiều tầng, cần suy luận có kiểm chứng lại." },
-  "eng-skill-shader": { "descVi": "Viết shader GLSL: hoạ tiết procedural, hiệu ứng WebGL, generative art.", "whenToUseVi": "Dùng cho đồ hoạ lập trình: noise, gradient động, hiệu ứng nền." },
-  "eng-skill-ship": { "descVi": "Quy trình phát hành trọn gói: gộp nhánh, test, review, commit, tạo PR.", "whenToUseVi": "Dùng khi nhánh tính năng đã xong và muốn đưa lên main/beta chuẩn chỉnh." },
-  "eng-skill-shopify": { "descVi": "Làm app, extension, theme cho Shopify: CLI, GraphQL, Polaris, billing.", "whenToUseVi": "Dùng cho mọi việc liên quan nền tảng Shopify." },
-  "eng-skill-show-off": { "descVi": "Tạo trang HTML tự chứa để khoe/demo thành quả trực quan.", "whenToUseVi": "Dùng khi muốn trình bày kết quả đẹp mắt, gửi đi xem được ngay." },
-  "eng-skill-skill-creator": { "descVi": "Tự tạo hoặc nâng cấp skill cho Claude, có vòng lặp đánh giá.", "whenToUseVi": "Dùng khi muốn mở rộng khả năng của AI bằng skill riêng." },
-  "eng-skill-stitch": { "descVi": "Sinh thiết kế UI bằng AI Google Stitch từ mô tả chữ, xuất Tailwind/HTML.", "whenToUseVi": "Dùng để phác nhanh giao diện rồi chuyển thành code." },
-  "eng-skill-tanstack": { "descVi": "Xây app với TanStack Start/Form/AI: full-stack React, form, chat AI.", "whenToUseVi": "Dùng khi dự án chọn hệ sinh thái TanStack." },
-  "eng-skill-team": { "descVi": "Điều phối đội agent làm việc song song nhiều phiên.", "whenToUseVi": "Dùng cho việc lớn cần nhiều \"đồng đội AI\" độc lập: nghiên cứu, code, review." },
-  "eng-skill-tech-graph": { "descVi": "Vẽ sơ đồ kỹ thuật chất lượng cao (SVG+PNG): kiến trúc, luồng, flowchart.", "whenToUseVi": "Dùng khi cần hình sơ đồ đẹp để công bố trong tài liệu/slide — bản xuất bản chính thức." },
-  "eng-skill-test": { "descVi": "Kiểm tra web tự động: chạy test để chắc chắn mọi thứ hoạt động đúng.", "whenToUseVi": "Dùng sau khi sửa code để xác nhận không hỏng gì: unit, e2e, UI." },
-  "eng-skill-threejs": { "descVi": "Làm web 3D với Three.js: mô hình GLTF, animation, VR/XR.", "whenToUseVi": "Dùng khi cần cảnh 3D, WebGL/WebGPU, hiệu ứng không gian." },
-  "eng-skill-ui-styling": { "descVi": "Trang điểm giao diện với shadcn/ui + Tailwind: theme, dark mode, responsive.", "whenToUseVi": "Dùng khi cần component đẹp chuẩn accessibility và hệ thống màu." },
-  "eng-skill-ui-ux-pro-max": { "descVi": "Trí tuệ thiết kế UI/UX toàn diện: màu, chữ, bố cục, accessibility.", "whenToUseVi": "Dùng khi cần chiến lược UX, design system, hoặc review giao diện." },
-  "eng-skill-use-mcp": { "descVi": "Khám phá và chạy công cụ từ các MCP server đã cài.", "whenToUseVi": "Dùng khi muốn tận dụng tool MCP có sẵn cho tác vụ cụ thể." },
-  "eng-skill-vibe": { "descVi": "Một lệnh chạy trọn quy trình: từ issue GitHub đến code, review, PR.", "whenToUseVi": "Dùng khi muốn giao cả tính năng cho AI tự chạy từ đầu đến cuối." },
-  "eng-skill-watzup": { "descVi": "Báo cáo bàn giao nhanh: đang làm gì, còn gì dở, bước tiếp theo.", "whenToUseVi": "Dùng cuối phiên hoặc khi mở dự án ra không nhớ đang ở đâu." },
-  "eng-skill-web-design-guidelines": { "descVi": "Soát giao diện theo chuẩn Web Interface Guidelines và accessibility.", "whenToUseVi": "Dùng khi muốn kiểm tra site đạt chuẩn UX/a11y hay chưa." },
-  "eng-skill-web-frameworks": { "descVi": "Xây app Next.js hiện đại: App Router, RSC, SSR, monorepo Turborepo.", "whenToUseVi": "Dùng khi làm web Next.js hoặc tối ưu build/caching." },
-  "eng-skill-web-testing": { "descVi": "Test web chuyên sâu: Playwright, Vitest, k6 — e2e, tải, hiển thị.", "whenToUseVi": "Dùng khi cần test tự động trình duyệt, đo hiệu năng, bắt flaky test." },
-  "eng-skill-worktree": { "descVi": "Tạo bản sao làm việc git tách biệt để làm nhiều nhánh song song.", "whenToUseVi": "Dùng khi muốn thử nghiệm tính năng mà không đụng thư mục chính." },
-  "eng-skill-xia": { "descVi": "\"Xỉa\" tính năng từ repo khác về dự án của bạn: trích, so sánh, chuyển đổi.", "whenToUseVi": "Dùng khi thấy repo khác làm hay và muốn học/mang về áp dụng." },
-  "eng-agent-brainstormer": { "descVi": "Agent cùng bàn giải pháp: đánh giá kiến trúc, tranh luận kỹ thuật.", "whenToUseVi": "Gọi khi cần người phản biện trước khi chọn hướng triển khai." },
-  "eng-agent-code-reviewer": { "descVi": "Agent soát code toàn diện: bug tiềm ẩn, bảo mật, tình huống biên.", "whenToUseVi": "Gọi sau khi code xong hoặc trước khi tạo PR." },
-  "eng-agent-code-simplifier": { "descVi": "Agent dọn code cho gọn, rõ, dễ bảo trì mà không đổi hành vi.", "whenToUseVi": "Gọi sau khi tính năng chạy đúng để tinh gọn phần vừa viết." },
-  "eng-agent-debugger": { "descVi": "Agent điều tra sự cố: lỗi hệ thống, hiệu năng, log, CI/CD.", "whenToUseVi": "Gọi khi có lỗi khó, pipeline đỏ, hoặc app chậm bất thường." },
-  "eng-agent-docs-manager": { "descVi": "Agent quản tài liệu kỹ thuật: cập nhật docs theo thay đổi code.", "whenToUseVi": "Gọi khi cần viết/cập nhật tài liệu, chuẩn hoá docs dự án." },
-  "eng-agent-fullstack-developer": { "descVi": "Agent lập trình full-stack: thực thi phase từ kế hoạch song song.", "whenToUseVi": "Gọi khi triển khai một phase cụ thể trong plan nhiều nhánh." },
-  "eng-agent-git-manager": { "descVi": "Agent chuyên commit/push đúng chuẩn conventional commits.", "whenToUseVi": "Gọi khi cần lưu code, đẩy lên remote gọn gàng." },
-  "eng-agent-journal-writer": { "descVi": "Agent ghi lại sự cố nghiêm trọng và bài học khi mọi thứ đổ vỡ.", "whenToUseVi": "Gọi khi test fail dai dẳng, bug production, hoặc hướng đi sai phải làm lại." },
-  "eng-agent-planner": { "descVi": "Agent kiến trúc sư: nghiên cứu và soạn kế hoạch triển khai chi tiết.", "whenToUseVi": "Gọi trước khi làm tính năng lớn hoặc thay đổi kiến trúc." },
-  "eng-agent-project-manager": { "descVi": "Agent điều phối dự án: gom báo cáo, đối chiếu tiến độ với kế hoạch.", "whenToUseVi": "Gọi khi cần bức tranh tổng thể sau nhiều việc song song." },
-  "eng-agent-researcher": { "descVi": "Agent nghiên cứu: tổng hợp công nghệ, tài liệu từ nhiều nguồn.", "whenToUseVi": "Gọi khi cần tìm hiểu sâu một chủ đề trước khi quyết định." },
-  "eng-agent-tester": { "descVi": "Agent kiểm thử: chạy test suite, đo coverage, xác minh build.", "whenToUseVi": "Gọi sau khi thay đổi code đáng kể để bảo đảm không hỏng gì." },
-  "eng-agent-ui-ux-designer": { "descVi": "Agent thiết kế UI/UX: wireframe, design system, review giao diện.", "whenToUseVi": "Gọi khi cần thiết kế màn hình mới hoặc góp ý giao diện hiện có." },
-
-  "mkt-skill-ab-test-setup": { "descVi": "Thiết kế và triển khai A/B test bài bản: giả thuyết, cỡ mẫu, đo lường.", "whenToUseVi": "Dùng khi muốn thử nghiệm 2 phiên bản (giá, tiêu đề, giao diện) xem cái nào tốt hơn." },
-  "mkt-skill-ads-management": { "descVi": "Quản lý chiến dịch quảng cáo trả phí: Google, Meta, LinkedIn, TikTok Ads.", "whenToUseVi": "Dùng khi chạy ads: cấu trúc chiến dịch, ngân sách, tối ưu hiệu quả." },
-  "mkt-skill-affiliate-marketing": { "descVi": "Xây chương trình affiliate hoa hồng 20-40%, hợp tác KOL/KOC.", "whenToUseVi": "Dùng khi muốn người khác bán giúp sản phẩm và nhận hoa hồng." },
-  "mkt-skill-ai-artist": { "descVi": "Tạo ảnh marketing bằng AI Nano Banana với 129 prompt tuyển chọn.", "whenToUseVi": "Dùng khi cần ảnh đẹp cho chiến dịch: mockup, poster, ảnh thương hiệu." },
-  "mkt-skill-ai-multimodal": { "descVi": "Phân tích và tạo ảnh/audio/video bằng AI (Gemini, Imagen...).", "whenToUseVi": "Dùng khi cần đọc hiểu media hoặc sinh ảnh/video/giọng nói cho content." },
-  "mkt-skill-analytics": { "descVi": "Phân tích số liệu marketing: KPI, dashboard báo cáo, attribution.", "whenToUseVi": "Dùng khi muốn biết chiến dịch nào hiệu quả, tiền quảng cáo đi đâu." },
-  "mkt-skill-analyze": { "descVi": "Tổng hợp báo cáo hiệu quả marketing nhanh.", "whenToUseVi": "Dùng khi cần báo cáo tình hình marketing định kỳ hoặc đột xuất." },
-  "mkt-skill-ask": { "descVi": "Hỏi đáp kỹ thuật và kiến trúc trong ngữ cảnh marketing.", "whenToUseVi": "Dùng khi chỉ cần câu trả lời chuyên môn, chưa cần làm gì." },
-  "mkt-skill-assets-organizing": { "descVi": "Sắp xếp mọi file đầu ra (ảnh, content...) vào thư mục assets/ gọn gàng.", "whenToUseVi": "Chạy nền tự động khi các lệnh khác sinh file — giữ dự án ngăn nắp." },
-  "mkt-skill-backend-development": { "descVi": "Xây backend cho công cụ marketing: API, database, tự động hoá.", "whenToUseVi": "Dùng khi landing page/công cụ marketing cần phần server phía sau." },
-  "mkt-skill-banner-design": { "descVi": "Thiết kế banner: mạng xã hội, quảng cáo, hero website, in ấn.", "whenToUseVi": "Dùng khi cần banner đúng kích cỡ từng nền tảng, đẹp và nhất quán." },
-  "mkt-skill-better-auth": { "descVi": "Thêm đăng nhập/phân quyền cho công cụ web bằng Better Auth.", "whenToUseVi": "Dùng khi công cụ marketing của bạn cần hệ thống tài khoản." },
-  "mkt-skill-brainstorm": { "descVi": "Bàn ý tưởng thẳng thắn: phân tích được–mất trước khi quyết.", "whenToUseVi": "Dùng khi phân vân giữa các hướng chiến dịch/giải pháp." },
-  "mkt-skill-brand": { "descVi": "Quản lý thương hiệu: giọng điệu, nhận diện, khung thông điệp.", "whenToUseVi": "Dùng khi xây dựng hoặc chuẩn hoá brand voice và bộ nhận diện." },
-  "mkt-skill-campaign": { "descVi": "Lập kế hoạch, chạy và tối ưu chiến dịch marketing đa kênh.", "whenToUseVi": "Dùng khi bắt đầu một chiến dịch: từ mục tiêu đến thực thi." },
-  "mkt-skill-chrome-devtools": { "descVi": "Tự động hoá và debug trình duyệt bằng script Puppeteer.", "whenToUseVi": "Dùng khi cần thao tác web tự động hoặc phân tích hiệu năng trang." },
-  "mkt-skill-cip-design": { "descVi": "Thiết kế bộ nhận diện doanh nghiệp trọn gói: 50 hạng mục, 20 phong cách.", "whenToUseVi": "Dùng khi cần CIP đầy đủ: logo, danh thiếp, tài liệu, biển hiệu..." },
-  "mkt-skill-ckm-storage": { "descVi": "Thao tác kho lưu trữ S3: upload, đồng bộ, lấy link công khai.", "whenToUseVi": "Dùng khi cần đưa file media lên cloud storage và lấy URL." },
-  "mkt-skill-claude-code": { "descVi": "Giải đáp về Claude Code: cài đặt, lệnh slash, cấu hình.", "whenToUseVi": "Dùng khi thắc mắc cách dùng chính công cụ Claude Code." },
-  "mkt-skill-code-review": { "descVi": "Xử lý phản hồi review code một cách có kỹ thuật.", "whenToUseVi": "Dùng khi nhận feedback review khó hiểu hoặc cần phản biện." },
-  "mkt-skill-competitor": { "descVi": "Phân tích đối thủ: trang so sánh, nội dung SEO cạnh tranh.", "whenToUseVi": "Dùng khi muốn biết đối thủ đang làm gì và viết trang \"vs/alternative\"." },
-  "mkt-skill-competitor-alternatives": { "descVi": "Tạo trang so sánh đối thủ (X vs Y, alternatives) chuẩn SEO.", "whenToUseVi": "Dùng khi muốn hút khách đang tìm giải pháp thay thế đối thủ." },
-  "mkt-skill-content-hub": { "descVi": "Thư viện quản lý tài sản marketing ngay trên trình duyệt.", "whenToUseVi": "Dùng khi muốn xem/duyệt kho ảnh, video, content đã tạo." },
-  "mkt-skill-content-marketing": { "descVi": "Chiến lược nội dung: lịch biên tập, trụ cột content, kế hoạch blog.", "whenToUseVi": "Dùng khi xây kế hoạch nội dung dài hạn thay vì viết lẻ tẻ." },
-  "mkt-skill-context-engineering": { "descVi": "Tối ưu ngữ cảnh/token cho phiên làm việc AI.", "whenToUseVi": "Dùng khi phiên dài, chạm giới hạn, hoặc muốn tiết kiệm chi phí." },
-  "mkt-skill-cook": { "descVi": "Quy trình triển khai chuẩn cho mọi tính năng/bản sửa.", "whenToUseVi": "Dùng khi bắt tay làm bất kỳ tính năng nào trong bộ marketing kit." },
-  "mkt-skill-copywriting": { "descVi": "Công thức viết copy chuyển đổi: tiêu đề, email, landing page.", "whenToUseVi": "Dùng khi cần chữ nghĩa bán hàng hiệu quả cao." },
-  "mkt-skill-creativity": { "descVi": "Định hướng sáng tạo: ý tưởng thị giác và concept chiến dịch.", "whenToUseVi": "Dùng khi cần góc nhìn sáng tạo cho campaign hoặc visual." },
-  "mkt-skill-dashboard": { "descVi": "Khởi động Marketing Dashboard — trung tâm điều hành marketing.", "whenToUseVi": "Dùng khi muốn xem giao diện web quản lý chiến dịch, content, assets." },
-  "mkt-skill-databases": { "descVi": "Làm việc với MongoDB/PostgreSQL: schema, truy vấn, tối ưu.", "whenToUseVi": "Dùng khi công cụ marketing cần lưu trữ và truy vấn dữ liệu." },
-  "mkt-skill-debugging": { "descVi": "Khung debug bài bản: điều tra gốc rễ trước khi sửa.", "whenToUseVi": "Dùng khi công cụ/chiến dịch có lỗi cần truy nguyên nhân." },
-  "mkt-skill-design": { "descVi": "Thiết kế tổng hợp: nhận diện thương hiệu, design token, logo.", "whenToUseVi": "Dùng cho mọi việc thiết kế thị giác của thương hiệu." },
-  "mkt-skill-design-system": { "descVi": "Kiến trúc design token, spec component, sinh slide chuẩn brand.", "whenToUseVi": "Dùng khi cần hệ thống thiết kế nhất quán cho mọi ấn phẩm." },
-  "mkt-skill-devops": { "descVi": "Triển khai hạ tầng cloud: Cloudflare Workers, R2, Pages.", "whenToUseVi": "Dùng khi đưa công cụ/landing page lên hạ tầng cloud." },
-  "mkt-skill-docs": { "descVi": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án.", "whenToUseVi": "Dùng khi tài liệu dự án thiếu hoặc lỗi thời." },
-  "mkt-skill-docs-seeker": { "descVi": "Tra tài liệu kỹ thuật thông minh theo loại truy vấn.", "whenToUseVi": "Dùng khi cần docs chính xác của thư viện/API." },
-  "mkt-skill-elevenlabs": { "descVi": "Tạo giọng đọc, nhân bản giọng, hiệu ứng âm thanh, nhạc bằng ElevenLabs.", "whenToUseVi": "Dùng khi video/podcast cần giọng đọc AI tự nhiên hoặc âm thanh." },
-  "mkt-skill-email": { "descVi": "Email marketing: chiến dịch, newsletter, chuỗi drip tự động.", "whenToUseVi": "Dùng khi làm email: từ nội dung đến luồng tự động hoá." },
-  "mkt-skill-fix": { "descVi": "Sửa lỗi tự động với định tuyến thông minh.", "whenToUseVi": "Dùng khi công cụ báo lỗi, test fail, CI đỏ." },
-  "mkt-skill-form-cro": { "descVi": "Tối ưu form (khảo sát, liên hệ, thanh toán) để tăng tỉ lệ hoàn thành.", "whenToUseVi": "Dùng khi form bị bỏ dở nhiều — trừ form đăng ký (có skill riêng)." },
-  "mkt-skill-free-tool-strategy": { "descVi": "Chiến lược công cụ miễn phí để hút khách (engineering as marketing).", "whenToUseVi": "Dùng khi cân nhắc làm tool free để kéo traffic và lead." },
-  "mkt-skill-frontend-design": { "descVi": "Dựng giao diện đẹp từ ảnh thiết kế/screenshot.", "whenToUseVi": "Dùng khi landing page cần độ hoàn thiện thị giác cao." },
-  "mkt-skill-frontend-development": { "descVi": "Chuẩn phát triển frontend React/TypeScript.", "whenToUseVi": "Dùng khi code giao diện công cụ marketing." },
-  "mkt-skill-funnel": { "descVi": "Thiết kế và tối ưu phễu chuyển đổi khách hàng.", "whenToUseVi": "Dùng khi vẽ hành trình khách: từ biết đến mua, tìm điểm rơi rớt." },
-  "mkt-skill-gamification-marketing": { "descVi": "Game hoá marketing: điểm, huy hiệu, bảng xếp hạng, streak.", "whenToUseVi": "Dùng khi muốn tăng gắn bó người dùng bằng cơ chế trò chơi." },
-  "mkt-skill-git": { "descVi": "Thao tác git với commit đúng chuẩn.", "whenToUseVi": "Dùng khi lưu/đẩy code của dự án marketing." },
-  "mkt-skill-google-adk-python": { "descVi": "Xây AI agent bằng Google ADK Python.", "whenToUseVi": "Dùng khi tự động hoá marketing bằng agent trên nền Google." },
-  "mkt-skill-hub": { "descVi": "Mở Content Hub + Marketing Dashboard cùng lúc.", "whenToUseVi": "Dùng khi muốn vào nhanh trung tâm quản lý content và chiến dịch." },
-  "mkt-skill-init": { "descVi": "Khởi tạo dự án marketing: cấu trúc, brand, tài liệu nền.", "whenToUseVi": "Chạy một lần khi bắt đầu dùng bộ kit cho dự án/thương hiệu mới." },
-  "mkt-skill-journal": { "descVi": "Ghi nhật ký công việc marketing của phiên.", "whenToUseVi": "Dùng cuối phiên để lưu quyết định và bài học." },
-  "mkt-skill-kanban": { "descVi": "Bảng điều phối agent AI (sắp ra mắt).", "whenToUseVi": "Tính năng đang phát triển — theo dõi cập nhật của kit." },
-  "mkt-skill-kit-builder": { "descVi": "Tự xây thêm skill/agent/lệnh cho bộ ClaudeKit Marketing.", "whenToUseVi": "Dùng khi muốn mở rộng kit theo nhu cầu riêng." },
-  "mkt-skill-launch-strategy": { "descVi": "Chiến lược ra mắt sản phẩm/tính năng: Product Hunt, truyền thông.", "whenToUseVi": "Dùng khi chuẩn bị launch và cần kế hoạch từng ngày." },
-  "mkt-skill-logo-design": { "descVi": "Thiết kế logo với 55 phong cách, 30 bảng màu, 25 ngành.", "whenToUseVi": "Dùng khi cần logo mới hoặc làm mới logo hiện có." },
-  "mkt-skill-markdown-novel-viewer": { "descVi": "Đọc tài liệu markdown dài như đọc sách.", "whenToUseVi": "Dùng khi review kế hoạch/báo cáo dài cho dễ tập trung." },
-  "mkt-skill-marketing-dashboard": { "descVi": "Trung tâm điều hành marketing chạy trên máy, cho solopreneur.", "whenToUseVi": "Dùng làm \"bộ não\" quản lý campaign, content, số liệu tại chỗ." },
-  "mkt-skill-marketing-ideas": { "descVi": "Gợi ý ý tưởng và chiến lược marketing cho SaaS/sản phẩm số.", "whenToUseVi": "Dùng khi bí ý tưởng tăng trưởng hoặc cần cảm hứng chiến dịch." },
-  "mkt-skill-marketing-planning": { "descVi": "Lập kế hoạch marketing: chiến lược, lịch content, sáng kiến.", "whenToUseVi": "Dùng khi cần kế hoạch marketing có cấu trúc theo khung chuẩn." },
-  "mkt-skill-marketing-psychology": { "descVi": "Áp dụng tâm lý học hành vi vào marketing: hiệu ứng, mô hình tư duy.", "whenToUseVi": "Dùng khi muốn thông điệp chạm đúng tâm lý khách hàng." },
-  "mkt-skill-marketing-research": { "descVi": "Nghiên cứu thị trường: xu hướng, đối thủ, insight khách hàng.", "whenToUseVi": "Dùng trước khi quyết định chiến lược hoặc vào thị trường mới." },
-  "mkt-skill-mcp-builder": { "descVi": "Tự tạo MCP server nối AI với dịch vụ ngoài.", "whenToUseVi": "Dùng khi cần tích hợp AI với API/dịch vụ chưa có sẵn tool." },
-  "mkt-skill-mcp-management": { "descVi": "Quản lý MCP server: khám phá, phân tích, chạy tool.", "whenToUseVi": "Dùng khi thêm/bớt hoặc khai thác các MCP server đã cài." },
-  "mkt-skill-media-processing": { "descVi": "Xử lý media hàng loạt: FFmpeg video/audio, nén ảnh, xoá nền.", "whenToUseVi": "Dùng khi cần chuyển định dạng, cắt ghép, tối ưu file media." },
-  "mkt-skill-mermaidjs-v11": { "descVi": "Vẽ sơ đồ bằng chữ với Mermaid v11.", "whenToUseVi": "Dùng khi cần flowchart/sơ đồ nhúng trong tài liệu." },
-  "mkt-skill-onboarding-cro": { "descVi": "Tối ưu onboarding sau đăng ký: kích hoạt người dùng nhanh hơn.", "whenToUseVi": "Dùng khi user đăng ký xong nhưng bỏ đi trước khi thấy giá trị." },
-  "mkt-skill-paid-ads": { "descVi": "Chạy quảng cáo trả phí hiệu quả: Google, Meta, LinkedIn, TikTok.", "whenToUseVi": "Dùng khi cần chiến lược, cấu trúc và tối ưu chiến dịch ads." },
-  "mkt-skill-payment-integration": { "descVi": "Tích hợp thanh toán: SePay VietQR, Stripe, Polar, Paddle.", "whenToUseVi": "Dùng khi cần nhận tiền: checkout, thuê bao, webhook." },
-  "mkt-skill-persona": { "descVi": "Xây và quản lý chân dung khách hàng (persona).", "whenToUseVi": "Dùng khi cần hiểu rõ mình đang nói chuyện với ai." },
-  "mkt-skill-plan": { "descVi": "Tạo kế hoạch thông minh có tăng cường prompt.", "whenToUseVi": "Dùng trước việc lớn để có lộ trình rõ ràng." },
-  "mkt-skill-plans-kanban": { "descVi": "Bảng kanban theo dõi tiến độ các kế hoạch.", "whenToUseVi": "Dùng khi muốn nhìn tổng quan plan nào đang chạy tới đâu." },
-  "mkt-skill-play": { "descVi": "Chạy playbook marketing soạn sẵn theo chuyên gia, có theo dõi mục tiêu.", "whenToUseVi": "Dùng khi muốn theo một chiến lược chuẩn từng bước thay vì tự nghĩ." },
-  "mkt-skill-preview": { "descVi": "Xem trước file markdown, kế hoạch trực quan.", "whenToUseVi": "Dùng khi muốn đọc kế hoạch/tài liệu dạng đẹp thay vì text thô." },
-  "mkt-skill-pricing-strategy": { "descVi": "Chiến lược giá: đóng gói, bậc giá, tâm lý định giá.", "whenToUseVi": "Dùng khi quyết định giá bán, gói sản phẩm, mô hình kiếm tiền." },
-  "mkt-skill-problem-solving": { "descVi": "Kỹ thuật gỡ bí có hệ thống khi vấn đề phức tạp.", "whenToUseVi": "Dùng khi bế tắc hoặc vấn đề cứ lặp lại." },
-  "mkt-skill-referral-program-building": { "descVi": "Xây chương trình giới thiệu (referral) cho SaaS/sản phẩm số.", "whenToUseVi": "Dùng khi muốn khách cũ kéo khách mới có thưởng." },
-  "mkt-skill-remotion": { "descVi": "Làm video bằng code React với Remotion.", "whenToUseVi": "Dùng khi cần video sinh tự động theo dữ liệu." },
-  "mkt-skill-repomix": { "descVi": "Gói cả repo thành một file cho AI đọc.", "whenToUseVi": "Dùng khi cần AI hiểu toàn bộ codebase một lúc." },
-  "mkt-skill-scout": { "descVi": "Trinh sát codebase nhanh bằng agent song song.", "whenToUseVi": "Dùng khi cần tìm file/hiểu cấu trúc dự án." },
-  "mkt-skill-seo": { "descVi": "SEO toàn diện: audit, nghiên cứu từ khoá, tối ưu on-page.", "whenToUseVi": "Dùng khi muốn website lên hạng tìm kiếm Google." },
-  "mkt-skill-sequential-thinking": { "descVi": "Suy luận từng bước có kiểm chứng cho bài toán phức tạp.", "whenToUseVi": "Dùng khi cần phân tích nhiều tầng, tự sửa hướng giữa chừng." },
-  "mkt-skill-shader": { "descVi": "Viết shader GLSL cho đồ hoạ procedural.", "whenToUseVi": "Dùng cho hiệu ứng thị giác WebGL đặc biệt." },
-  "mkt-skill-shopify": { "descVi": "Làm app, theme, extension cho Shopify.", "whenToUseVi": "Dùng cho mọi việc trên nền tảng Shopify." },
-  "mkt-skill-skill-creator": { "descVi": "Tạo/nâng cấp skill Claude tối ưu theo benchmark.", "whenToUseVi": "Dùng khi muốn thêm khả năng mới cho AI." },
-  "mkt-skill-slides": { "descVi": "Tạo slide HTML chiến lược với biểu đồ Chart.js, đúng design token.", "whenToUseVi": "Dùng khi cần bộ slide thuyết trình đẹp, có số liệu." },
-  "mkt-skill-social": { "descVi": "Content mạng xã hội: sáng tạo, lên lịch, tích hợp API các nền tảng.", "whenToUseVi": "Dùng khi làm nội dung X/Twitter, Facebook, LinkedIn, TikTok..." },
-  "mkt-skill-storage": { "descVi": "Kho lưu trữ S3 cho tài sản marketing.", "whenToUseVi": "Dùng khi cần lưu media lên cloud và chia sẻ link." },
-  "mkt-skill-template-skill": { "descVi": "Khung mẫu để tạo skill mới (dành cho dev kit).", "whenToUseVi": "Chỉ dùng làm mẫu khi tự viết skill — không phải công cụ chạy trực tiếp." },
-  "mkt-skill-test": { "descVi": "Kiểm thử workflow của kit và test UI website.", "whenToUseVi": "Dùng khi cần xác nhận lệnh/luồng marketing chạy đúng." },
-  "mkt-skill-threejs": { "descVi": "Làm web 3D với Three.js.", "whenToUseVi": "Dùng khi landing page cần hiệu ứng 3D ấn tượng." },
-  "mkt-skill-ui-styling": { "descVi": "Giao diện đẹp chuẩn accessibility với shadcn/ui + Tailwind.", "whenToUseVi": "Dùng khi style công cụ web: theme, dark mode, responsive." },
-  "mkt-skill-ui-ux-pro-max": { "descVi": "Trí tuệ thiết kế UI/UX toàn diện cho web và mobile.", "whenToUseVi": "Dùng khi cần chiến lược UX, hệ thống màu chữ, review giao diện." },
-  "mkt-skill-use-mcp": { "descVi": "Khai thác tool từ các MCP server đã cài.", "whenToUseVi": "Dùng khi muốn tận dụng tool MCP có sẵn." },
-  "mkt-skill-video": { "descVi": "Chiến lược video marketing: kịch bản, storyboard, quy trình sản xuất.", "whenToUseVi": "Dùng khi làm video quảng bá từ ý tưởng đến xuất bản." },
-  "mkt-skill-watzup": { "descVi": "Điểm lại thay đổi gần đây và chốt phiên làm việc.", "whenToUseVi": "Dùng cuối phiên hoặc khi cần biết đang làm dở gì." },
-  "mkt-skill-web-design-guidelines": { "descVi": "Soát giao diện theo chuẩn Web Interface Guidelines.", "whenToUseVi": "Dùng khi kiểm tra accessibility và UX của trang." },
-  "mkt-skill-web-frameworks": { "descVi": "Xây web full-stack hiện đại với Next.js.", "whenToUseVi": "Dùng khi làm website/công cụ trên Next.js." },
-  "mkt-skill-worktree": { "descVi": "Tạo bản sao git tách biệt để làm song song.", "whenToUseVi": "Dùng khi thử nghiệm mà không đụng thư mục chính." },
-  "mkt-skill-write": { "descVi": "Viết đủ loại: copy sáng tạo, blog, nội dung tối ưu chuyển đổi.", "whenToUseVi": "Dùng khi cần chữ nghĩa chất lượng cho bất kỳ kênh nào." },
-  "mkt-skill-youtube": { "descVi": "Biến video YouTube thành blog, infographic, bài mạng xã hội.", "whenToUseVi": "Dùng khi muốn tái sử dụng video thành nhiều định dạng content." },
-  "mkt-skill-youtube-thumbnail-design": { "descVi": "Thiết kế thumbnail YouTube với 17 phong cách, tối ưu tỉ lệ click.", "whenToUseVi": "Dùng khi cần thumbnail nổi bật tăng CTR cho video." },
-
-  "mkt-agent-analytics-analyst": { "descVi": "Agent phân tích số liệu: báo cáo hiệu quả và insight marketing.", "whenToUseVi": "Gọi khi cần đọc số liệu chiến dịch và rút ra bài học." },
-  "mkt-agent-attraction-specialist": { "descVi": "Agent hút khách: lead generation, content đầu phễu, tình báo đối thủ.", "whenToUseVi": "Gọi khi cần kéo người lạ thành người quan tâm." },
-  "mkt-agent-campaign-debugger": { "descVi": "Agent điều tra sự cố chiến dịch: vì sao số liệu bất thường.", "whenToUseVi": "Gọi khi campaign chạy kém không rõ nguyên nhân." },
-  "mkt-agent-campaign-manager": { "descVi": "Agent điều phối chiến dịch đa kênh từ kế hoạch đến thực thi.", "whenToUseVi": "Gọi khi chạy chiến dịch phối hợp nhiều kênh cùng lúc." },
-  "mkt-agent-code-reviewer": { "descVi": "Agent soát chất lượng code của công cụ marketing.", "whenToUseVi": "Gọi sau khi code xong công cụ/landing page." },
-  "mkt-agent-community-manager": { "descVi": "Agent quản cộng đồng: Discord/Slack, tương tác thành viên.", "whenToUseVi": "Gọi khi vận hành cộng đồng người dùng." },
-  "mkt-agent-content-creator": { "descVi": "Agent sáng tạo nội dung marketing các định dạng.", "whenToUseVi": "Gọi khi cần sản xuất content số lượng lớn, đúng brand." },
-  "mkt-agent-content-reviewer": { "descVi": "Agent duyệt chất lượng nội dung trước khi xuất bản.", "whenToUseVi": "Gọi để soát content: đúng giọng điệu, chuẩn SEO, không sạn." },
-  "mkt-agent-continuity-specialist": { "descVi": "Agent giữ chân khách: chiến lược retention và gắn kết.", "whenToUseVi": "Gọi khi khách rời bỏ nhiều, cần tăng quay lại." },
-  "mkt-agent-copywriter": { "descVi": "Agent viết copy chuyển đổi cao cho mọi kênh.", "whenToUseVi": "Gọi khi cần headline, email, landing copy hiệu quả." },
-  "mkt-agent-database-admin": { "descVi": "Agent quản trị database: truy vấn, tối ưu, bảo trì.", "whenToUseVi": "Gọi khi làm việc trực tiếp với cơ sở dữ liệu." },
-  "mkt-agent-debugger": { "descVi": "Agent điều tra lỗi hệ thống và hiệu năng.", "whenToUseVi": "Gọi khi công cụ lỗi khó hoặc chạy chậm bất thường." },
-  "mkt-agent-docs-manager": { "descVi": "Agent quản tài liệu kỹ thuật của dự án.", "whenToUseVi": "Gọi khi cần viết/cập nhật docs." },
-  "mkt-agent-email-wizard": { "descVi": "Agent phù thuỷ email: điều phối và tối ưu chiến dịch email.", "whenToUseVi": "Gọi khi làm chuỗi email tự động, tăng open/click rate." },
-  "mkt-agent-fullstack-developer": { "descVi": "Agent lập trình full-stack thực thi phase từ kế hoạch.", "whenToUseVi": "Gọi khi triển khai công cụ web theo plan." },
-  "mkt-agent-funnel-architect": { "descVi": "Agent kiến trúc phễu: thiết kế và tối ưu chuyển đổi.", "whenToUseVi": "Gọi khi vẽ/cải thiện hành trình từ khách lạ đến mua hàng." },
-  "mkt-agent-git-manager": { "descVi": "Agent commit/push code đúng chuẩn.", "whenToUseVi": "Gọi khi cần lưu và đẩy code." },
-  "mkt-agent-journal-writer": { "descVi": "Agent ghi lại sự cố lớn và bài học rút ra.", "whenToUseVi": "Gọi khi có thất bại đáng ghi nhớ để không lặp lại." },
-  "mkt-agent-lead-qualifier": { "descVi": "Agent chấm điểm lead: phát hiện ý định, phân loại hành vi.", "whenToUseVi": "Gọi khi cần lọc lead nóng khỏi danh sách dài." },
-  "mkt-agent-mcp-manager": { "descVi": "Agent quản tích hợp MCP server: tool, prompt, tài nguyên.", "whenToUseVi": "Gọi khi thêm/khai thác MCP server." },
-  "mkt-agent-planner": { "descVi": "Agent lập kế hoạch triển khai chi tiết.", "whenToUseVi": "Gọi trước việc lớn cần nghiên cứu và lộ trình." },
-  "mkt-agent-project-manager": { "descVi": "Agent điều phối dự án và tổng hợp tiến độ.", "whenToUseVi": "Gọi khi cần bức tranh chung sau nhiều việc song song." },
-  "mkt-agent-researcher": { "descVi": "Agent nghiên cứu tổng hợp từ nhiều nguồn.", "whenToUseVi": "Gọi khi cần tìm hiểu sâu trước khi quyết định." },
-  "mkt-agent-sale-enabler": { "descVi": "Agent hỗ trợ bán hàng: tài liệu sales, đẩy nhanh chốt deal.", "whenToUseVi": "Gọi khi cần pitch deck, one-pager, tài liệu thuyết phục." },
-  "mkt-agent-scout": { "descVi": "Agent tìm file nhanh trong codebase lớn.", "whenToUseVi": "Gọi khi cần định vị code liên quan trước khi sửa." },
-  "mkt-agent-scout-external": { "descVi": "Agent trinh sát dùng công cụ ngoài (Gemini/OpenCode).", "whenToUseVi": "Gọi khi muốn quét repo bằng model ngoài tiết kiệm context." },
-  "mkt-agent-seo-specialist": { "descVi": "Agent chuyên SEO: audit và tối ưu thứ hạng.", "whenToUseVi": "Gọi khi cần chẩn đoán và cải thiện SEO của site." },
-  "mkt-agent-social-media-manager": { "descVi": "Agent quản mạng xã hội: lên lịch đăng và phân tích.", "whenToUseVi": "Gọi khi vận hành các kênh social đều đặn." },
-  "mkt-agent-tester": { "descVi": "Agent kiểm thử chất lượng qua test tự động.", "whenToUseVi": "Gọi sau thay đổi code đáng kể." },
-  "mkt-agent-ui-ux-designer": { "descVi": "Agent thiết kế UI/UX: wireframe, design system.", "whenToUseVi": "Gọi khi cần thiết kế hoặc review giao diện." },
-  "mkt-agent-upsell-maximizer": { "descVi": "Agent tăng doanh thu: gợi ý upsell và mở rộng giỏ hàng.", "whenToUseVi": "Gọi khi muốn khách hiện tại chi tiêu nhiều hơn một cách tự nhiên." },
-
-  "mkt-cmd-analyze": { "descVi": "Xem báo cáo phân tích và hiệu quả marketing.", "whenToUseVi": "Chạy khi cần số liệu tổng quan nhanh." },
-  "mkt-cmd-analyze-report": { "descVi": "Tạo báo cáo định kỳ (tuần/tháng).", "whenToUseVi": "Chạy khi đến kỳ báo cáo hoặc cần gửi cập nhật." },
-  "mkt-cmd-ask": { "descVi": "Hỏi đáp kỹ thuật nhanh.", "whenToUseVi": "Chạy khi chỉ cần câu trả lời, không cần hành động." },
-  "mkt-cmd-brand-update": { "descVi": "Cập nhật nhận diện thương hiệu và đồng bộ mọi design system.", "whenToUseVi": "Chạy khi đổi màu/logo/giọng điệu để mọi ấn phẩm ăn theo." },
-  "mkt-cmd-campaign": { "descVi": "Tạo và quản lý chiến dịch marketing.", "whenToUseVi": "Điểm vào chính khi làm việc với campaign." },
-  "mkt-cmd-campaign-analyze": { "descVi": "Phân tích hiệu quả một chiến dịch.", "whenToUseVi": "Chạy sau khi campaign chạy được một thời gian." },
-  "mkt-cmd-campaign-create": { "descVi": "Tạo chiến dịch digital marketing toàn diện.", "whenToUseVi": "Chạy khi bắt đầu campaign mới từ con số không." },
-  "mkt-cmd-campaign-email": { "descVi": "Quản lý chiến dịch email.", "whenToUseVi": "Chạy khi campaign trọng tâm là email." },
-  "mkt-cmd-campaign-status": { "descVi": "Xem trạng thái chiến dịch.", "whenToUseVi": "Chạy khi muốn biết campaign đang tới đâu." },
-  "mkt-cmd-competitor": { "descVi": "Phân tích cạnh tranh.", "whenToUseVi": "Chạy khi cần soi đối thủ: giá, content, SEO." },
-  "mkt-cmd-dashboard": { "descVi": "Mở Marketing Dashboard trên trình duyệt.", "whenToUseVi": "Chạy khi muốn giao diện web quản lý mọi thứ." },
-  "mkt-cmd-dashboard-check": { "descVi": "Kiểm tra server Dashboard có đang chạy không.", "whenToUseVi": "Chạy khi dashboard không mở được." },
-  "mkt-cmd-docs-init": { "descVi": "Phân tích codebase và tạo tài liệu ban đầu.", "whenToUseVi": "Chạy một lần cho dự án chưa có docs." },
-  "mkt-cmd-docs-llms": { "descVi": "Sinh file llms.txt từ codebase.", "whenToUseVi": "Chạy khi muốn site/repo thân thiện với AI." },
-  "mkt-cmd-docs-summarize": { "descVi": "Tóm tắt và cập nhật tài liệu.", "whenToUseVi": "Chạy khi cần bản tóm tắt docs nhanh." },
-  "mkt-cmd-docs-update": { "descVi": "Cập nhật tài liệu theo thay đổi code.", "whenToUseVi": "Chạy sau đợt sửa code lớn." },
-  "mkt-cmd-email": { "descVi": "Tạo nội dung email.", "whenToUseVi": "Chạy khi cần một email cụ thể ngay." },
-  "mkt-cmd-email-flow": { "descVi": "Tạo chuỗi email tự động hoàn chỉnh.", "whenToUseVi": "Chạy khi dựng automation: welcome, nurture, win-back." },
-  "mkt-cmd-email-sequence": { "descVi": "Tạo chuỗi email drip kèm nội dung đầy đủ.", "whenToUseVi": "Chạy khi cần một sequence nhiều email liền mạch." },
-  "mkt-cmd-funnel": { "descVi": "Thiết kế và tối ưu phễu.", "whenToUseVi": "Chạy khi vẽ hành trình chuyển đổi khách hàng." },
-  "mkt-cmd-hub": { "descVi": "Mở Content Hub + Dashboard.", "whenToUseVi": "Chạy khi vào trung tâm quản lý content." },
-  "mkt-cmd-init": { "descVi": "Khởi tạo dự án marketing.", "whenToUseVi": "Chạy một lần khi bắt đầu với kit." },
-  "mkt-cmd-journal": { "descVi": "Ghi nhật ký phiên làm việc.", "whenToUseVi": "Chạy cuối phiên để lưu lại quyết định." },
-  "mkt-cmd-kanban": { "descVi": "Bảng điều phối agent (sắp ra mắt).", "whenToUseVi": "Tính năng đang phát triển." },
-  "mkt-cmd-persona": { "descVi": "Quản lý chân dung khách hàng.", "whenToUseVi": "Chạy khi tạo/cập nhật persona." },
-  "mkt-cmd-plan": { "descVi": "Tạo kế hoạch thông minh.", "whenToUseVi": "Chạy trước việc lớn cần lộ trình." },
-  "mkt-cmd-plan-archive": { "descVi": "Ghi journal và lưu trữ kế hoạch đã xong.", "whenToUseVi": "Chạy khi plan hoàn tất để dọn dẹp." },
-  "mkt-cmd-plan-ci": { "descVi": "Phân tích log GitHub Actions và lên kế hoạch sửa.", "whenToUseVi": "Chạy khi CI đỏ mà chưa rõ vì sao." },
-  "mkt-cmd-plan-cro": { "descVi": "Lập kế hoạch tối ưu chuyển đổi cho nội dung.", "whenToUseVi": "Chạy khi trang có traffic nhưng ít chuyển đổi." },
-  "mkt-cmd-plan-fast": { "descVi": "Lập kế hoạch nhanh, bỏ qua nghiên cứu.", "whenToUseVi": "Chạy khi việc đã rõ, chỉ cần lộ trình." },
-  "mkt-cmd-plan-hard": { "descVi": "Nghiên cứu kỹ rồi lập kế hoạch chi tiết.", "whenToUseVi": "Chạy cho việc phức tạp, rủi ro cao." },
-  "mkt-cmd-plan-parallel": { "descVi": "Kế hoạch với các phase chạy song song được.", "whenToUseVi": "Chạy khi muốn nhiều agent làm cùng lúc." },
-  "mkt-cmd-plan-two": { "descVi": "Nghiên cứu và đề xuất 2 phương án để chọn.", "whenToUseVi": "Chạy khi muốn so sánh 2 cách tiếp cận." },
-  "mkt-cmd-plan-validate": { "descVi": "Kiểm định kế hoạch bằng phỏng vấn câu hỏi khó.", "whenToUseVi": "Chạy trước khi bắt tay làm plan quan trọng." },
-  "mkt-cmd-play": { "descVi": "Chạy playbook marketing theo chuyên gia, có theo dõi mục tiêu.", "whenToUseVi": "Điểm vào chính của hệ thống playbook." },
-  "mkt-cmd-play-create": { "descVi": "Tạo playbook mới từ template chuyên gia.", "whenToUseVi": "Chạy khi bắt đầu một chiến lược chuẩn hoá." },
-  "mkt-cmd-play-goals": { "descVi": "Đặt mục tiêu, kéo số liệu, xem tiến độ.", "whenToUseVi": "Chạy khi theo dõi KPI của playbook." },
-  "mkt-cmd-play-next": { "descVi": "Hiện và chạy bước tiếp theo của playbook.", "whenToUseVi": "Chạy hằng ngày để biết hôm nay làm gì." },
-  "mkt-cmd-play-status": { "descVi": "Bảng tiến độ playbook.", "whenToUseVi": "Chạy khi muốn nhìn tổng quan playbook." },
-  "mkt-cmd-preview": { "descVi": "Xem trước file/kế hoạch dạng trực quan.", "whenToUseVi": "Chạy khi đọc tài liệu cho dễ nhìn." },
-  "mkt-cmd-seo": { "descVi": "Audit và tối ưu SEO.", "whenToUseVi": "Điểm vào chính cho mọi việc SEO." },
-  "mkt-cmd-seo-audit": { "descVi": "Audit SEO kỹ thuật.", "whenToUseVi": "Chạy khi cần chẩn đoán sức khoẻ SEO của site." },
-  "mkt-cmd-seo-keywords": { "descVi": "Nghiên cứu và lập kế hoạch từ khoá.", "whenToUseVi": "Chạy trước khi viết content SEO." },
-  "mkt-cmd-seo-pseo": { "descVi": "Sinh template SEO hàng loạt (programmatic SEO).", "whenToUseVi": "Chạy khi muốn tạo nhiều trang SEO theo khuôn." },
-  "mkt-cmd-skill-add": { "descVi": "Thêm file tham chiếu/script vào một skill.", "whenToUseVi": "Chạy khi mở rộng skill có sẵn." },
-  "mkt-cmd-skill-create": { "descVi": "Tạo skill mới.", "whenToUseVi": "Chạy khi muốn thêm khả năng cho AI." },
-  "mkt-cmd-skill-fix-logs": { "descVi": "Sửa skill dựa trên file logs.txt.", "whenToUseVi": "Chạy khi skill lỗi và đã có log." },
-  "mkt-cmd-skill-optimize": { "descVi": "Tối ưu skill có sẵn.", "whenToUseVi": "Chạy khi skill hoạt động chưa tốt." },
-  "mkt-cmd-skill-optimize-auto": { "descVi": "Tối ưu skill tự động.", "whenToUseVi": "Bản tự chạy của skill:optimize." },
-  "mkt-cmd-skill-plan": { "descVi": "Lập kế hoạch tạo skill mới.", "whenToUseVi": "Chạy trước khi viết skill phức tạp." },
-  "mkt-cmd-skill-update": { "descVi": "Cập nhật skill có sẵn (tự động).", "whenToUseVi": "Chạy khi cần chỉnh skill theo yêu cầu mới." },
-  "mkt-cmd-slides-create": { "descVi": "Tạo slide thuyết trình chiến lược với biểu đồ.", "whenToUseVi": "Chạy khi cần bộ slide đẹp có số liệu." },
-  "mkt-cmd-social": { "descVi": "Sinh content mạng xã hội.", "whenToUseVi": "Chạy khi cần bài đăng cho các kênh social." },
-  "mkt-cmd-social-schedule": { "descVi": "Lên lịch đăng bài mạng xã hội.", "whenToUseVi": "Chạy khi xếp lịch đăng cho content đã có." },
-  "mkt-cmd-storage-list": { "descVi": "Liệt kê file trong kho S3.", "whenToUseVi": "Chạy khi xem có gì trong storage." },
-  "mkt-cmd-storage-sync": { "descVi": "Đồng bộ thư mục local lên S3.", "whenToUseVi": "Chạy khi đẩy cả thư mục assets lên cloud." },
-  "mkt-cmd-storage-upload": { "descVi": "Upload một file lên S3.", "whenToUseVi": "Chạy khi cần đưa một file lên cloud lấy link." },
-  "mkt-cmd-storage-url": { "descVi": "Lấy URL công khai của file trên S3.", "whenToUseVi": "Chạy khi cần link chia sẻ cho file đã upload." },
-  "mkt-cmd-test-ui": { "descVi": "Chạy test UI trên website và xuất báo cáo chi tiết.", "whenToUseVi": "Chạy khi cần kiểm tra website hoạt động đúng trên trình duyệt." },
-  "mkt-cmd-test-workflow": { "descVi": "Test workflow với xác minh thủ công từng bước.", "whenToUseVi": "Chạy khi kiểm định các luồng lệnh của kit." },
-  "mkt-cmd-use-mcp": { "descVi": "Khai thác tool từ MCP server.", "whenToUseVi": "Chạy khi cần dùng tool MCP cụ thể." },
-  "mkt-cmd-video-create": { "descVi": "Tạo video bằng AI Veo 3.1.", "whenToUseVi": "Chạy khi cần video ngắn sinh bằng AI." },
-  "mkt-cmd-video-script-create": { "descVi": "Viết kịch bản video hoàn chỉnh kèm định hướng sáng tạo.", "whenToUseVi": "Chạy trước khi quay/sản xuất video." },
-  "mkt-cmd-video-storyboard-create": { "descVi": "Tạo storyboard cho video.", "whenToUseVi": "Chạy khi cần phân cảnh trước khi sản xuất." },
-  "mkt-cmd-watzup": { "descVi": "Điểm lại thay đổi và chốt phiên.", "whenToUseVi": "Chạy cuối phiên làm việc." },
-  "mkt-cmd-worktree": { "descVi": "Tạo git worktree tách biệt.", "whenToUseVi": "Chạy khi làm song song nhiều nhánh." },
-  "mkt-cmd-write-audit": { "descVi": "Chấm điểm content theo chuẩn copywriting, SEO, nền tảng.", "whenToUseVi": "Chạy trước khi đăng để biết content đạt chưa." },
-  "mkt-cmd-write-blog": { "descVi": "Viết bài blog chuẩn SEO.", "whenToUseVi": "Chạy khi cần bài blog tối ưu tìm kiếm." },
-  "mkt-cmd-write-blog-youtube": { "descVi": "Chuyển video YouTube thành bài blog chuẩn SEO.", "whenToUseVi": "Chạy khi tái sử dụng video thành bài viết." },
-  "mkt-cmd-write-cro": { "descVi": "Phân tích và tối ưu content cho chuyển đổi.", "whenToUseVi": "Chạy khi trang có người đọc nhưng ít hành động." },
-  "mkt-cmd-write-enhance": { "descVi": "Phân tích điểm yếu của copy và nâng cấp.", "whenToUseVi": "Chạy khi có bản nháp muốn hay hơn." },
-  "mkt-cmd-write-fast": { "descVi": "Viết copy nhanh, thông minh.", "whenToUseVi": "Chạy khi cần chữ ngay, chấp nhận bớt trau chuốt." },
-  "mkt-cmd-write-formula": { "descVi": "Viết copy theo công thức kinh điển (AIDA, PAS, BAB...).", "whenToUseVi": "Chạy khi muốn cấu trúc thuyết phục đã kiểm chứng." },
-  "mkt-cmd-write-good": { "descVi": "Viết copy chất lượng cao, trau chuốt.", "whenToUseVi": "Chạy cho content quan trọng cần độ hoàn thiện." },
-  "mkt-cmd-write-publish": { "descVi": "Audit, tự sửa lỗi và xuất bản content hoàn chỉnh.", "whenToUseVi": "Chạy bước cuối trước khi đăng bài." },
-  "mkt-cmd-youtube-blog": { "descVi": "Chuyển video YouTube thành bài blog SEO.", "whenToUseVi": "Chạy khi tái chế video thành bài viết." },
-  "mkt-cmd-youtube-infographic": { "descVi": "Chuyển video YouTube thành infographic.", "whenToUseVi": "Chạy khi muốn tóm tắt video bằng hình ảnh." },
-  "mkt-cmd-youtube-social": { "descVi": "Chuyển video YouTube thành bài đăng đa nền tảng.", "whenToUseVi": "Chạy khi phát tán nội dung video lên các kênh social." }
+  "eng-agent-advisor": {
+    "descVi": "Agent chạy quy trình tư vấn ak:advise trong ngữ cảnh riêng, dùng model mạnh nhất.",
+    "whenToUseVi": "Dùng khi cần tư vấn sâu, tách khỏi ngữ cảnh chính."
+  },
+  "eng-agent-brainstormer": {
+    "descVi": "Agent cùng bàn giải pháp: đánh giá kiến trúc, tranh luận kỹ thuật.",
+    "whenToUseVi": "Gọi khi cần người phản biện trước khi chọn hướng triển khai."
+  },
+  "eng-agent-code-reviewer": {
+    "descVi": "Agent soát code toàn diện: bug tiềm ẩn, bảo mật, tình huống biên.",
+    "whenToUseVi": "Gọi sau khi code xong hoặc trước khi tạo PR."
+  },
+  "eng-agent-code-simplifier": {
+    "descVi": "Agent dọn code cho gọn, rõ, dễ bảo trì mà không đổi hành vi.",
+    "whenToUseVi": "Gọi sau khi tính năng chạy đúng để tinh gọn phần vừa viết."
+  },
+  "eng-agent-debugger": {
+    "descVi": "Agent điều tra sự cố: lỗi hệ thống, hiệu năng, log, CI/CD.",
+    "whenToUseVi": "Gọi khi có lỗi khó, pipeline đỏ, hoặc app chậm bất thường."
+  },
+  "eng-agent-docs-manager": {
+    "descVi": "Agent quản tài liệu kỹ thuật: cập nhật docs theo thay đổi code.",
+    "whenToUseVi": "Gọi khi cần viết/cập nhật tài liệu, chuẩn hoá docs dự án."
+  },
+  "eng-agent-explore": {
+    "descVi": "Agent quét mã nguồn nhanh: tìm file liên quan, lần theo quan hệ, tóm tắt ngữ cảnh.",
+    "whenToUseVi": "Dùng khi cần tìm nhanh chỗ code liên quan mà không phải mở từng file."
+  },
+  "eng-agent-fullstack-developer": {
+    "descVi": "Agent lập trình full-stack: thực thi phase từ kế hoạch song song.",
+    "whenToUseVi": "Gọi khi triển khai một phase cụ thể trong plan nhiều nhánh."
+  },
+  "eng-agent-git-manager": {
+    "descVi": "Agent chuyên commit/push đúng chuẩn conventional commits.",
+    "whenToUseVi": "Gọi khi cần lưu code, đẩy lên remote gọn gàng."
+  },
+  "eng-agent-journal-writer": {
+    "descVi": "Agent ghi lại sự cố nghiêm trọng và bài học khi mọi thứ đổ vỡ.",
+    "whenToUseVi": "Gọi khi test fail dai dẳng, bug production, hoặc hướng đi sai phải làm lại."
+  },
+  "eng-agent-kongming": {
+    "descVi": "Cố vấn tự động từ model mạnh nhất (fable) trong một lần chạy — chỉ khuyên, không viết code.",
+    "whenToUseVi": "Nhắc @kongming khi cần lời khuyên khó về thiết kế, gỡ lỗi hay cân nhắc đánh đổi."
+  },
+  "eng-agent-planner": {
+    "descVi": "Agent kiến trúc sư: nghiên cứu và soạn kế hoạch triển khai chi tiết.",
+    "whenToUseVi": "Gọi trước khi làm tính năng lớn hoặc thay đổi kiến trúc."
+  },
+  "eng-agent-project-manager": {
+    "descVi": "Agent điều phối dự án: gom báo cáo, đối chiếu tiến độ với kế hoạch.",
+    "whenToUseVi": "Gọi khi cần bức tranh tổng thể sau nhiều việc song song."
+  },
+  "eng-agent-researcher": {
+    "descVi": "Agent nghiên cứu: tổng hợp công nghệ, tài liệu từ nhiều nguồn.",
+    "whenToUseVi": "Gọi khi cần tìm hiểu sâu một chủ đề trước khi quyết định."
+  },
+  "eng-agent-tester": {
+    "descVi": "Agent kiểm thử: chạy test suite, đo coverage, xác minh build.",
+    "whenToUseVi": "Gọi sau khi thay đổi code đáng kể để bảo đảm không hỏng gì."
+  },
+  "eng-agent-ui-ux-designer": {
+    "descVi": "Agent thiết kế UI/UX: wireframe, design system, review giao diện.",
+    "whenToUseVi": "Gọi khi cần thiết kế màn hình mới hoặc góp ý giao diện hiện có."
+  },
+  "eng-skill-advise": {
+    "descVi": "Kỹ năng tư vấn kiểu phỏng vấn: hỏi bạn từng câu để làm rõ vấn đề rồi đưa lời khuyên thẳng thắn.",
+    "whenToUseVi": "Dùng khi bạn có ý tưởng hoặc vấn đề chưa rõ và muốn được tư vấn nên làm gì, tránh gì."
+  },
+  "eng-skill-agent-browser": {
+    "descVi": "Tự động hoá trình duyệt: test web, chụp màn hình, điền form, thu thập dữ liệu.",
+    "whenToUseVi": "Dùng khi cần thao tác web tự động mà không cần Chrome thật của bạn. Nếu cần cookie/tài khoản đang đăng nhập, dùng /ak:chrome-profile."
+  },
+  "eng-skill-agentize": {
+    "descVi": "Biến code có sẵn thành công cụ CLI hoặc MCP server cho AI dùng lại.",
+    "whenToUseVi": "Dùng khi muốn đóng gói một tính năng thành công cụ mà agent khác gọi được."
+  },
+  "eng-skill-agentkit": {
+    "descVi": "Bộ điều phối tác vụ cho AgentKit: tự chọn và ghép các skill phù hợp thành quy trình ngắn nhất.",
+    "whenToUseVi": "Dùng khi bắt đầu việc nhiều bước, nhiều lĩnh vực hoặc chưa rõ nên dùng skill nào."
+  },
+  "eng-skill-ai-artist": {
+    "descVi": "Tạo mockup sản phẩm, ảnh marketing, ảnh thương hiệu với 129 prompt tuyển chọn.",
+    "whenToUseVi": "Dùng khi cần ảnh đẹp nhanh: mockup, poster, concept art. Có phỏng vấn ngắn để chốt style trước khi tạo."
+  },
+  "eng-skill-ai-multimodal": {
+    "descVi": "Phân tích ảnh/audio/video bằng Gemini; tạo ảnh, video, giọng nói, nhạc bằng AI.",
+    "whenToUseVi": "Dùng khi cần đọc hiểu media (OCR, mô tả ảnh, gỡ băng) hoặc sinh ảnh/video/giọng đọc."
+  },
+  "eng-skill-ask": {
+    "descVi": "Hỏi đáp kỹ thuật chuyên sâu: so sánh giải pháp, tư vấn kiến trúc, best practice.",
+    "whenToUseVi": "Dùng khi chỉ cần câu trả lời/phân tích, chưa muốn sửa code."
+  },
+  "eng-skill-autoresearch": {
+    "descVi": "Khung nền cho vòng lặp tự động hướng mục tiêu, có rào an toàn (chia thành 4 skill chuyên biệt).",
+    "whenToUseVi": "Bắt đầu ở đây để hiểu cách hoạt động, rồi chuyển sang skill chuyên biệt phù hợp."
+  },
+  "eng-skill-backend-development": {
+    "descVi": "Xây backend với Node.js, Python, Go: API, đăng nhập, database, bảo mật.",
+    "whenToUseVi": "Dùng khi phần việc chính là server, API hoặc xử lý dữ liệu phía sau."
+  },
+  "eng-skill-better-auth": {
+    "descVi": "Thêm đăng nhập cho web: email/mật khẩu, Google, GitHub, 2FA, passkey.",
+    "whenToUseVi": "Dùng khi app cần hệ thống tài khoản và phân quyền với Better Auth (TypeScript)."
+  },
+  "eng-skill-bootstrap": {
+    "descVi": "Khởi tạo dự án mới từ A-Z: nghiên cứu, chọn công nghệ, thiết kế, lập kế hoạch, code.",
+    "whenToUseVi": "Dùng khi bắt đầu một dự án hoàn toàn mới và muốn đi bài bản từng bước."
+  },
+  "eng-skill-brainstorm": {
+    "descVi": "Cùng AI cân nhắc giải pháp: phân tích được–mất thẳng thắn trước khi quyết.",
+    "whenToUseVi": "Dùng khi phân vân giữa nhiều hướng kỹ thuật hoặc muốn phản biện ý tưởng."
+  },
+  "eng-skill-chrome-profile": {
+    "descVi": "Điều khiển Chrome thật của bạn (giữ nguyên đăng nhập, cookie) để tự động hoá.",
+    "whenToUseVi": "Dùng khi tác vụ cần tài khoản đang đăng nhập sẵn trong Chrome hằng ngày."
+  },
+  "eng-skill-code-review": {
+    "descVi": "Rà soát chất lượng code chặt chẽ, có dẫn chứng — tìm bug, lỗi hồi quy, chỗ khó bảo trì.",
+    "whenToUseVi": "Dùng sau khi viết xong tính năng, trước khi tạo PR, hoặc muốn đánh giá chất lượng code."
+  },
+  "eng-skill-coding-level": {
+    "descVi": "Chỉnh mức độ giải thích của AI theo trình độ của bạn.",
+    "whenToUseVi": "Dùng khi muốn câu trả lời chi tiết hơn (người mới) hoặc gọn hơn (chuyên gia)."
+  },
+  "eng-skill-common": {
+    "descVi": "Tiện ích và quy ước dùng chung cho các skill khác (nội bộ, không gọi trực tiếp).",
+    "whenToUseVi": "Chỉ được nạp khi một skill khác cần đến — bạn không cần gọi tay."
+  },
+  "eng-skill-context-engineering": {
+    "descVi": "Theo dõi và tối ưu mức dùng context/token của phiên làm việc.",
+    "whenToUseVi": "Dùng khi thấy cảnh báo giới hạn, phiên dài, hoặc muốn tiết kiệm token."
+  },
+  "eng-skill-cook": {
+    "descVi": "Làm tính năng mới từ A-Z theo quy trình chuẩn: hiểu yêu cầu, code, kiểm tra.",
+    "whenToUseVi": "Dùng khi yêu cầu đã rõ và muốn triển khai nghiêm túc có kiểm soát."
+  },
+  "eng-skill-copywriting": {
+    "descVi": "Công thức viết quảng cáo chuyển đổi: tiêu đề, email, landing page, CTA.",
+    "whenToUseVi": "Dùng khi cần chữ nghĩa bán hàng: headline, email chiến dịch, trang đích."
+  },
+  "eng-skill-cti-expert": {
+    "descVi": "Phân tích tình báo an ninh mạng và OSINT: tra cứu lộ lọt, điều tra dấu vết.",
+    "whenToUseVi": "Dùng khi cần kiểm tra email/tên miền bị lộ, điều tra mối đe doạ, làm báo cáo an ninh."
+  },
+  "eng-skill-databases": {
+    "descVi": "Thiết kế cơ sở dữ liệu và viết truy vấn cho MongoDB, PostgreSQL.",
+    "whenToUseVi": "Dùng khi việc chính là schema, truy vấn, index hoặc di trú dữ liệu."
+  },
+  "eng-skill-debug": {
+    "descVi": "Gỡ lỗi bài bản: tìm nguyên nhân gốc trước khi sửa.",
+    "whenToUseVi": "Dùng khi gặp bug, test lỗi, web chạy sai, chậm, hoặc lỗi khi triển khai."
+  },
+  "eng-skill-deploy": {
+    "descVi": "Đưa web lên mạng: tự nhận diện nền tảng phù hợp và triển khai giúp bạn.",
+    "whenToUseVi": "Dùng khi muốn publish dự án lên Vercel, Netlify, GitHub Pages, Cloudflare..."
+  },
+  "eng-skill-design": {
+    "descVi": "Thiết kế bộ nhận diện thương hiệu: logo, banner, hệ thống hình ảnh.",
+    "whenToUseVi": "Dùng cho việc thương hiệu/đồ hoạ, không phải giao diện code."
+  },
+  "eng-skill-devops": {
+    "descVi": "Hạ tầng cloud: Cloudflare, Docker, Kubernetes, GCP, CI/CD.",
+    "whenToUseVi": "Dùng khi cần container, serverless, pipeline tự động hoặc audit hạ tầng."
+  },
+  "eng-skill-docs": {
+    "descVi": "Phân tích codebase và tạo/cập nhật tài liệu dự án tự động.",
+    "whenToUseVi": "Dùng khi tài liệu thiếu, lỗi thời, hoặc khởi tạo docs cho dự án mới."
+  },
+  "eng-skill-docs-seeker": {
+    "descVi": "Tra tài liệu chính thức của thư viện/framework, luôn bản mới nhất.",
+    "whenToUseVi": "Dùng khi cần API docs chuẩn xác thay vì trí nhớ của AI."
+  },
+  "eng-skill-document-skills": {
+    "descVi": "Đọc, tạo và sửa tài liệu Office (docx, pdf, pptx, xlsx).",
+    "whenToUseVi": "Dùng khi cần làm việc với bảng, biểu mẫu, slide, bảng tính."
+  },
+  "eng-skill-excalidraw": {
+    "descVi": "Vẽ sơ đồ kiến trúc, luồng dữ liệu kiểu vẽ tay với Excalidraw.",
+    "whenToUseVi": "Dùng khi muốn sơ đồ chỉnh sửa được hoặc vẽ nhanh kiến trúc repo."
+  },
+  "eng-skill-fable-thinking": {
+    "descVi": "Quy trình suy luận chắt lọc từ Claude Fable 5 — lập luận có bằng chứng, tự phản biện.",
+    "whenToUseVi": "Dùng khi muốn model suy luận kỹ hơn, tránh mắc bẫy ở câu hỏi tưởng dễ."
+  },
+  "eng-skill-find-skills": {
+    "descVi": "Tìm và cài skill phù hợp khi bạn hỏi \"có cách nào làm X không?\".",
+    "whenToUseVi": "Dùng khi không chắc đã có công cụ nào cho việc bạn cần."
+  },
+  "eng-skill-fix": {
+    "descVi": "Sửa lỗi tự động: bạn mô tả vấn đề, AI tự tìm nguyên nhân và vá lỗi cho bạn.",
+    "whenToUseVi": "Dùng khi web/app báo lỗi, test fail, hoặc CI đỏ. Với lỗi khó truy vết, dùng thêm /ak:debug."
+  },
+  "eng-skill-frontend-design": {
+    "descVi": "Dựng giao diện đẹp, tinh tế từ ảnh thiết kế/chụp màn hình/video.",
+    "whenToUseVi": "Dùng khi độ đẹp và giống thiết kế là ưu tiên số một."
+  },
+  "eng-skill-frontend-development": {
+    "descVi": "Xây giao diện React/TypeScript theo pattern hiện đại.",
+    "whenToUseVi": "Dùng khi việc chính là component, hiệu năng render, routing phía client."
+  },
+  "eng-skill-git": {
+    "descVi": "Lưu và đồng bộ code tự động: commit, push, tạo PR không cần nhớ lệnh git.",
+    "whenToUseVi": "Dùng khi muốn commit/đẩy code, tạo pull request, gộp nhánh an toàn."
+  },
+  "eng-skill-gkg": {
+    "descVi": "Phân tích code theo ngữ nghĩa: tìm nơi dùng hàm, đánh giá tác động sửa đổi.",
+    "whenToUseVi": "Dùng khi cần biết \"sửa chỗ này ảnh hưởng đâu\" trong codebase lớn."
+  },
+  "eng-skill-google-adk-python": {
+    "descVi": "Xây AI agent bằng Google ADK Python: đa agent, công cụ MCP, deploy Vertex.",
+    "whenToUseVi": "Dùng khi làm hệ thống agent trên hệ sinh thái Google."
+  },
+  "eng-skill-graphify": {
+    "descVi": "Dựng bản đồ tri thức tra cứu được từ code, tài liệu, bài báo và hình ảnh.",
+    "whenToUseVi": "Dùng khi cần hiểu nhanh một dự án lạ, tìm mối liên hệ giữa các file."
+  },
+  "eng-skill-help": {
+    "descVi": "Mở mục trợ giúp của AgentKit.",
+    "whenToUseVi": "Dùng khi muốn biết ak có gì, có skill nào, hoặc nên chạy quy trình nào."
+  },
+  "eng-skill-html-video": {
+    "descVi": "Tạo video MP4 từ template HTML/CSS/JS, render ngay trên máy.",
+    "whenToUseVi": "Dùng cho video quảng bá, giải thích, clip mạng xã hội từ template web."
+  },
+  "eng-skill-issue-to-plan": {
+    "descVi": "Biến một issue GitHub thành kế hoạch triển khai đã được thẩm định, kiểm chứng.",
+    "whenToUseVi": "Dùng khi muốn chuyển một issue thành kế hoạch làm bài bản, sẵn sàng thực thi."
+  },
+  "eng-skill-journal": {
+    "descVi": "Ghi nhật ký kỹ thuật: phân tích thay đổi và quyết định của phiên làm việc.",
+    "whenToUseVi": "Dùng cuối phiên để lưu lại vì sao đã làm gì — hữu ích khi quay lại sau."
+  },
+  "eng-skill-llms": {
+    "descVi": "Tạo file llms.txt giúp AI khác hiểu nhanh website/tài liệu của bạn.",
+    "whenToUseVi": "Dùng khi muốn site thân thiện với AI hoặc tóm tắt docs theo chuẩn llmstxt."
+  },
+  "eng-skill-loop": {
+    "descVi": "Vòng lặp tối ưu tự động — chạy N lần theo một thước đo, tự giữ hoặc bỏ thay đổi.",
+    "whenToUseVi": "Dùng khi muốn cải thiện một chỉ số đo được (độ phủ test, hiệu năng, dung lượng...)."
+  },
+  "eng-skill-markdown-novel-viewer": {
+    "descVi": "Đọc file markdown dài như đọc sách: giao diện tĩnh lặng, dễ tập trung.",
+    "whenToUseVi": "Dùng khi cần đọc kỹ tài liệu dài (spec, báo cáo, kế hoạch) trên trình duyệt."
+  },
+  "eng-skill-mcp-builder": {
+    "descVi": "Xây MCP server để nối AI với dịch vụ ngoài (API, database, SaaS).",
+    "whenToUseVi": "Dùng khi muốn tự viết công cụ MCP bằng Python hoặc TypeScript."
+  },
+  "eng-skill-media-processing": {
+    "descVi": "Xử lý ảnh & video hàng loạt: resize, nén, đổi định dạng, xoá nền.",
+    "whenToUseVi": "Dùng khi cần FFmpeg/ImageMagick: cắt video, nén ảnh, tách nền AI."
+  },
+  "eng-skill-mermaidjs-v11": {
+    "descVi": "Vẽ sơ đồ bằng chữ với Mermaid: flowchart, sequence, ER, Gantt.",
+    "whenToUseVi": "Dùng khi cần sơ đồ nhúng thẳng vào tài liệu markdown."
+  },
+  "eng-skill-mintlify": {
+    "descVi": "Dựng site tài liệu đẹp với Mintlify: cấu hình, MDX, theme, deploy.",
+    "whenToUseVi": "Dùng khi làm trang docs sản phẩm bằng Mintlify."
+  },
+  "eng-skill-mobile-development": {
+    "descVi": "Làm app di động: React Native, Flutter, Swift, Kotlin.",
+    "whenToUseVi": "Dùng khi sản phẩm đích là app iOS/Android."
+  },
+  "eng-skill-orchestrate": {
+    "descVi": "Điều phối nhiều công cụ coding-agent chạy nền, cùng các subagent trong phiên.",
+    "whenToUseVi": "Dùng khi cần chạy nhiều việc song song hoặc theo nhiều giai đoạn qua các công cụ khác nhau."
+  },
+  "eng-skill-payment-integration": {
+    "descVi": "Tích hợp thanh toán: SePay (VietQR), Stripe, Polar, Paddle, Creem.",
+    "whenToUseVi": "Dùng khi cần nhận tiền: checkout, gói thuê bao, webhook, mã QR."
+  },
+  "eng-skill-plan": {
+    "descVi": "Lập kế hoạch triển khai, thiết kế kiến trúc, tạo lộ trình kỹ thuật chia giai đoạn chi tiết.",
+    "whenToUseVi": "Dùng khi lập kế hoạch tính năng mới, thiết kế hệ thống, chọn hướng giải pháp."
+  },
+  "eng-skill-plans-kanban": {
+    "descVi": "Mở bảng kanban theo dõi các kế hoạch AgentKit của dự án.",
+    "whenToUseVi": "Dùng khi muốn nhìn tổng quan tiến độ các plan đang chạy."
+  },
+  "eng-skill-predict": {
+    "descVi": "5 chuyên gia ảo tranh luận về thay đổi bạn định làm, bắt sớm lỗi kiến trúc/bảo mật.",
+    "whenToUseVi": "Dùng trước khi làm tính năng lớn hoặc thay đổi nhiều rủi ro."
+  },
+  "eng-skill-preview": {
+    "descVi": "Xem file hoặc tạo giải thích trực quan: slide, sơ đồ, walkthrough.",
+    "whenToUseVi": "Dùng khi lời giải thích bằng hình sẽ dễ hiểu hơn bằng chữ."
+  },
+  "eng-skill-problem-solving": {
+    "descVi": "Bộ kỹ thuật gỡ bí có hệ thống khi vấn đề rối hoặc lặp lại.",
+    "whenToUseVi": "Dùng khi bế tắc, vòng lặp phức tạp, hoặc cần đổi góc nhìn."
+  },
+  "eng-skill-project-management": {
+    "descVi": "Theo dõi tiến độ: cập nhật trạng thái plan, task, báo cáo tổng hợp.",
+    "whenToUseVi": "Dùng khi cần điểm lại dự án đang ở đâu và bàn giao giữa các phiên."
+  },
+  "eng-skill-project-organization": {
+    "descVi": "Sắp xếp file, thư mục, cấu trúc dự án gọn gàng chuẩn mực.",
+    "whenToUseVi": "Dùng khi phân vân đặt file ở đâu hoặc muốn dọn lại cấu trúc."
+  },
+  "eng-skill-react-best-practices": {
+    "descVi": "Tối ưu hiệu năng React/Next.js theo chuẩn Vercel Engineering.",
+    "whenToUseVi": "Dùng khi app React chậm, render thừa, bundle phình to."
+  },
+  "eng-skill-remotion": {
+    "descVi": "Làm video bằng code React với Remotion: animation, video dữ liệu.",
+    "whenToUseVi": "Dùng khi cần video sinh tự động theo dữ liệu/chương trình."
+  },
+  "eng-skill-repomix": {
+    "descVi": "Gói cả repo thành một file cho AI đọc: XML, Markdown, text.",
+    "whenToUseVi": "Dùng khi cần đưa toàn bộ codebase vào ngữ cảnh AI hoặc audit thư viện ngoài."
+  },
+  "eng-skill-research": {
+    "descVi": "Nghiên cứu kỹ thuật sâu: đánh giá công nghệ, best practice, kiến trúc.",
+    "whenToUseVi": "Dùng trước quyết định công nghệ quan trọng hoặc thiết kế giải pháp."
+  },
+  "eng-skill-retro": {
+    "descVi": "Tổng kết sprint từ lịch sử git: tốc độ, sức khoẻ code, xu hướng.",
+    "whenToUseVi": "Dùng cho review sprint/quý dựa trên dữ liệu commit thật."
+  },
+  "eng-skill-review-pr": {
+    "descVi": "Review pull request trên GitHub: đúng chuẩn, bảo mật, chất lượng.",
+    "whenToUseVi": "Dùng khi có PR cần soát, có thể kèm tự sửa lỗi và trả lời review."
+  },
+  "eng-skill-scenario": {
+    "descVi": "Sinh đầy đủ các tình huống biên và kịch bản test bằng cách mổ xẻ tính năng theo 12 chiều.",
+    "whenToUseVi": "Dùng trước khi làm tính năng phức tạp, lên kế hoạch QA, thiết kế test hồi quy."
+  },
+  "eng-skill-scout": {
+    "descVi": "Trinh sát codebase siêu nhanh bằng nhiều agent song song.",
+    "whenToUseVi": "Dùng khi cần tìm file/hiểu cấu trúc repo trước khi bắt tay làm."
+  },
+  "eng-skill-security": {
+    "descVi": "Kiểm định bảo mật theo STRIDE + OWASP, có vòng dò lỗi kiểu red-team và tự sửa.",
+    "whenToUseVi": "Dùng trước khi phát hành, sau khi thêm đăng nhập/thanh toán, hoặc rà soát định kỳ."
+  },
+  "eng-skill-security-scan": {
+    "descVi": "Quét lỗ hổng bảo mật: secret bị lộ, dependency rủi ro, pattern OWASP.",
+    "whenToUseVi": "Dùng trước khi phát hành hoặc khi nghi có secret trong code."
+  },
+  "eng-skill-sequential-thinking": {
+    "descVi": "Phân tích từng bước có thể tự sửa hướng giữa chừng cho bài toán phức tạp.",
+    "whenToUseVi": "Dùng khi vấn đề nhiều tầng, cần suy luận có kiểm chứng lại."
+  },
+  "eng-skill-shader": {
+    "descVi": "Viết shader GLSL: hoạ tiết procedural, hiệu ứng WebGL, generative art.",
+    "whenToUseVi": "Dùng cho đồ hoạ lập trình: noise, gradient động, hiệu ứng nền."
+  },
+  "eng-skill-ship": {
+    "descVi": "Quy trình phát hành trọn gói: gộp nhánh, test, review, commit, tạo PR.",
+    "whenToUseVi": "Dùng khi nhánh tính năng đã xong và muốn đưa lên main/beta chuẩn chỉnh."
+  },
+  "eng-skill-shopify": {
+    "descVi": "Làm app, extension, theme cho Shopify: CLI, GraphQL, Polaris, billing.",
+    "whenToUseVi": "Dùng cho mọi việc liên quan nền tảng Shopify."
+  },
+  "eng-skill-show-off": {
+    "descVi": "Tạo trang HTML tự chứa để khoe/demo thành quả trực quan.",
+    "whenToUseVi": "Dùng khi muốn trình bày kết quả đẹp mắt, gửi đi xem được ngay."
+  },
+  "eng-skill-skill-creator": {
+    "descVi": "Tự tạo hoặc nâng cấp skill cho Claude, có vòng lặp đánh giá.",
+    "whenToUseVi": "Dùng khi muốn mở rộng khả năng của AI bằng skill riêng."
+  },
+  "eng-skill-stitch": {
+    "descVi": "Sinh thiết kế UI bằng AI Google Stitch từ mô tả chữ, xuất Tailwind/HTML.",
+    "whenToUseVi": "Dùng để phác nhanh giao diện rồi chuyển thành code."
+  },
+  "eng-skill-tanstack": {
+    "descVi": "Xây app với TanStack Start/Form/AI: full-stack React, form, chat AI.",
+    "whenToUseVi": "Dùng khi dự án chọn hệ sinh thái TanStack."
+  },
+  "eng-skill-team": {
+    "descVi": "Điều phối đội agent làm việc song song nhiều phiên.",
+    "whenToUseVi": "Dùng cho việc lớn cần nhiều \"đồng đội AI\" độc lập: nghiên cứu, code, review."
+  },
+  "eng-skill-tech-graph": {
+    "descVi": "Vẽ sơ đồ kỹ thuật chất lượng cao (SVG+PNG): kiến trúc, luồng, flowchart.",
+    "whenToUseVi": "Dùng khi cần hình sơ đồ đẹp để công bố trong tài liệu/slide — bản xuất bản chính thức."
+  },
+  "eng-skill-test": {
+    "descVi": "Kiểm tra web tự động: chạy test để chắc chắn mọi thứ hoạt động đúng.",
+    "whenToUseVi": "Dùng sau khi sửa code để xác nhận không hỏng gì: unit, e2e, UI."
+  },
+  "eng-skill-threejs": {
+    "descVi": "Làm web 3D với Three.js: mô hình GLTF, animation, VR/XR.",
+    "whenToUseVi": "Dùng khi cần cảnh 3D, WebGL/WebGPU, hiệu ứng không gian."
+  },
+  "eng-skill-ui-styling": {
+    "descVi": "Trang điểm giao diện với shadcn/ui + Tailwind: theme, dark mode, responsive.",
+    "whenToUseVi": "Dùng khi cần component đẹp chuẩn accessibility và hệ thống màu."
+  },
+  "eng-skill-ui-ux-pro-max": {
+    "descVi": "Trí tuệ thiết kế UI/UX toàn diện: màu, chữ, bố cục, accessibility.",
+    "whenToUseVi": "Dùng khi cần chiến lược UX, design system, hoặc review giao diện."
+  },
+  "eng-skill-use-mcp": {
+    "descVi": "Khám phá và chạy công cụ từ các MCP server đã cài.",
+    "whenToUseVi": "Dùng khi muốn tận dụng tool MCP có sẵn cho tác vụ cụ thể."
+  },
+  "eng-skill-vibe": {
+    "descVi": "Một lệnh chạy trọn quy trình: từ issue GitHub đến code, review, PR.",
+    "whenToUseVi": "Dùng khi muốn giao cả tính năng cho AI tự chạy từ đầu đến cuối."
+  },
+  "eng-skill-watzup": {
+    "descVi": "Báo cáo bàn giao nhanh: đang làm gì, còn gì dở, bước tiếp theo.",
+    "whenToUseVi": "Dùng cuối phiên hoặc khi mở dự án ra không nhớ đang ở đâu."
+  },
+  "eng-skill-web-design-guidelines": {
+    "descVi": "Soát giao diện theo chuẩn Web Interface Guidelines và accessibility.",
+    "whenToUseVi": "Dùng khi muốn kiểm tra site đạt chuẩn UX/a11y hay chưa."
+  },
+  "eng-skill-web-frameworks": {
+    "descVi": "Xây app Next.js hiện đại: App Router, RSC, SSR, monorepo Turborepo.",
+    "whenToUseVi": "Dùng khi làm web Next.js hoặc tối ưu build/caching."
+  },
+  "eng-skill-web-testing": {
+    "descVi": "Test web chuyên sâu: Playwright, Vitest, k6 — e2e, tải, hiển thị.",
+    "whenToUseVi": "Dùng khi cần test tự động trình duyệt, đo hiệu năng, bắt flaky test."
+  },
+  "eng-skill-worktree": {
+    "descVi": "Tạo bản sao làm việc git tách biệt để làm nhiều nhánh song song.",
+    "whenToUseVi": "Dùng khi muốn thử nghiệm tính năng mà không đụng thư mục chính."
+  },
+  "eng-skill-xia": {
+    "descVi": "\"Xỉa\" tính năng từ repo khác về dự án của bạn: trích, so sánh, chuyển đổi.",
+    "whenToUseVi": "Dùng khi thấy repo khác làm hay và muốn học/mang về áp dụng."
+  },
+  "mkt-agent-analytics-analyst": {
+    "descVi": "Agent phân tích số liệu: báo cáo hiệu quả và insight marketing.",
+    "whenToUseVi": "Gọi khi cần đọc số liệu chiến dịch và rút ra bài học."
+  },
+  "mkt-agent-attraction-specialist": {
+    "descVi": "Agent hút khách: lead generation, content đầu phễu, tình báo đối thủ.",
+    "whenToUseVi": "Gọi khi cần kéo người lạ thành người quan tâm."
+  },
+  "mkt-agent-campaign-debugger": {
+    "descVi": "Agent điều tra sự cố chiến dịch: vì sao số liệu bất thường.",
+    "whenToUseVi": "Gọi khi campaign chạy kém không rõ nguyên nhân."
+  },
+  "mkt-agent-campaign-manager": {
+    "descVi": "Agent điều phối chiến dịch đa kênh từ kế hoạch đến thực thi.",
+    "whenToUseVi": "Gọi khi chạy chiến dịch phối hợp nhiều kênh cùng lúc."
+  },
+  "mkt-agent-code-reviewer": {
+    "descVi": "Agent soát chất lượng code của công cụ marketing.",
+    "whenToUseVi": "Gọi sau khi code xong công cụ/landing page."
+  },
+  "mkt-agent-community-manager": {
+    "descVi": "Agent quản cộng đồng: Discord/Slack, tương tác thành viên.",
+    "whenToUseVi": "Gọi khi vận hành cộng đồng người dùng."
+  },
+  "mkt-agent-content-creator": {
+    "descVi": "Agent sáng tạo nội dung marketing các định dạng.",
+    "whenToUseVi": "Gọi khi cần sản xuất content số lượng lớn, đúng brand."
+  },
+  "mkt-agent-content-reviewer": {
+    "descVi": "Agent duyệt chất lượng nội dung trước khi xuất bản.",
+    "whenToUseVi": "Gọi để soát content: đúng giọng điệu, chuẩn SEO, không sạn."
+  },
+  "mkt-agent-continuity-specialist": {
+    "descVi": "Agent giữ chân khách: chiến lược retention và gắn kết.",
+    "whenToUseVi": "Gọi khi khách rời bỏ nhiều, cần tăng quay lại."
+  },
+  "mkt-agent-copywriter": {
+    "descVi": "Agent viết copy chuyển đổi cao cho mọi kênh.",
+    "whenToUseVi": "Gọi khi cần headline, email, landing copy hiệu quả."
+  },
+  "mkt-agent-database-admin": {
+    "descVi": "Agent quản trị database: truy vấn, tối ưu, bảo trì.",
+    "whenToUseVi": "Gọi khi làm việc trực tiếp với cơ sở dữ liệu."
+  },
+  "mkt-agent-debugger": {
+    "descVi": "Agent điều tra lỗi hệ thống và hiệu năng.",
+    "whenToUseVi": "Gọi khi công cụ lỗi khó hoặc chạy chậm bất thường."
+  },
+  "mkt-agent-docs-manager": {
+    "descVi": "Agent quản tài liệu kỹ thuật của dự án.",
+    "whenToUseVi": "Gọi khi cần viết/cập nhật docs."
+  },
+  "mkt-agent-email-wizard": {
+    "descVi": "Agent phù thuỷ email: điều phối và tối ưu chiến dịch email.",
+    "whenToUseVi": "Gọi khi làm chuỗi email tự động, tăng open/click rate."
+  },
+  "mkt-agent-explore": {
+    "descVi": "Agent quét mã nguồn nhanh: tìm file liên quan, lần theo quan hệ, tóm tắt ngữ cảnh.",
+    "whenToUseVi": "Dùng khi cần tìm nhanh chỗ code liên quan mà không phải mở từng file."
+  },
+  "mkt-agent-fullstack-developer": {
+    "descVi": "Agent lập trình full-stack thực thi phase từ kế hoạch.",
+    "whenToUseVi": "Gọi khi triển khai công cụ web theo plan."
+  },
+  "mkt-agent-funnel-architect": {
+    "descVi": "Agent kiến trúc phễu: thiết kế và tối ưu chuyển đổi.",
+    "whenToUseVi": "Gọi khi vẽ/cải thiện hành trình từ khách lạ đến mua hàng."
+  },
+  "mkt-agent-git-manager": {
+    "descVi": "Agent commit/push code đúng chuẩn.",
+    "whenToUseVi": "Gọi khi cần lưu và đẩy code."
+  },
+  "mkt-agent-journal-writer": {
+    "descVi": "Agent ghi lại sự cố lớn và bài học rút ra.",
+    "whenToUseVi": "Gọi khi có thất bại đáng ghi nhớ để không lặp lại."
+  },
+  "mkt-agent-kongming": {
+    "descVi": "Cố vấn tự động từ model mạnh nhất (fable) trong một lần chạy — chỉ khuyên, không viết code.",
+    "whenToUseVi": "Nhắc @kongming khi cần lời khuyên khó về thiết kế, gỡ lỗi hay cân nhắc đánh đổi."
+  },
+  "mkt-agent-lead-qualifier": {
+    "descVi": "Agent chấm điểm lead: phát hiện ý định, phân loại hành vi.",
+    "whenToUseVi": "Gọi khi cần lọc lead nóng khỏi danh sách dài."
+  },
+  "mkt-agent-planner": {
+    "descVi": "Agent lập kế hoạch triển khai chi tiết.",
+    "whenToUseVi": "Gọi trước việc lớn cần nghiên cứu và lộ trình."
+  },
+  "mkt-agent-project-manager": {
+    "descVi": "Agent điều phối dự án và tổng hợp tiến độ.",
+    "whenToUseVi": "Gọi khi cần bức tranh chung sau nhiều việc song song."
+  },
+  "mkt-agent-researcher": {
+    "descVi": "Agent nghiên cứu tổng hợp từ nhiều nguồn.",
+    "whenToUseVi": "Gọi khi cần tìm hiểu sâu trước khi quyết định."
+  },
+  "mkt-agent-sale-enabler": {
+    "descVi": "Agent hỗ trợ bán hàng: tài liệu sales, đẩy nhanh chốt deal.",
+    "whenToUseVi": "Gọi khi cần pitch deck, one-pager, tài liệu thuyết phục."
+  },
+  "mkt-agent-scout": {
+    "descVi": "Agent tìm file nhanh trong codebase lớn.",
+    "whenToUseVi": "Gọi khi cần định vị code liên quan trước khi sửa."
+  },
+  "mkt-agent-scout-external": {
+    "descVi": "Agent trinh sát dùng công cụ ngoài (Gemini/OpenCode).",
+    "whenToUseVi": "Gọi khi muốn quét repo bằng model ngoài tiết kiệm context."
+  },
+  "mkt-agent-seo-specialist": {
+    "descVi": "Agent chuyên SEO: audit và tối ưu thứ hạng.",
+    "whenToUseVi": "Gọi khi cần chẩn đoán và cải thiện SEO của site."
+  },
+  "mkt-agent-social-media-manager": {
+    "descVi": "Agent quản mạng xã hội: lên lịch đăng và phân tích.",
+    "whenToUseVi": "Gọi khi vận hành các kênh social đều đặn."
+  },
+  "mkt-agent-tester": {
+    "descVi": "Agent kiểm thử chất lượng qua test tự động.",
+    "whenToUseVi": "Gọi sau thay đổi code đáng kể."
+  },
+  "mkt-agent-ui-ux-designer": {
+    "descVi": "Agent thiết kế UI/UX: wireframe, design system.",
+    "whenToUseVi": "Gọi khi cần thiết kế hoặc review giao diện."
+  },
+  "mkt-agent-upsell-maximizer": {
+    "descVi": "Agent tăng doanh thu: gợi ý upsell và mở rộng giỏ hàng.",
+    "whenToUseVi": "Gọi khi muốn khách hiện tại chi tiêu nhiều hơn một cách tự nhiên."
+  },
+  "mkt-skill-ab-test-setup": {
+    "descVi": "Thiết kế và triển khai A/B test bài bản: giả thuyết, cỡ mẫu, đo lường.",
+    "whenToUseVi": "Dùng khi muốn thử nghiệm 2 phiên bản (giá, tiêu đề, giao diện) xem cái nào tốt hơn."
+  },
+  "mkt-skill-ads-management": {
+    "descVi": "Quản lý chiến dịch quảng cáo trả phí: Google, Meta, LinkedIn, TikTok Ads.",
+    "whenToUseVi": "Dùng khi chạy ads: cấu trúc chiến dịch, ngân sách, tối ưu hiệu quả."
+  },
+  "mkt-skill-affiliate-marketing": {
+    "descVi": "Xây chương trình affiliate hoa hồng 20-40%, hợp tác KOL/KOC.",
+    "whenToUseVi": "Dùng khi muốn người khác bán giúp sản phẩm và nhận hoa hồng."
+  },
+  "mkt-skill-agent-browser": {
+    "descVi": "Tự động hóa trình duyệt và máy tính qua công cụ agent-browser.",
+    "whenToUseVi": "Dùng khi cần tự động duyệt web, chụp màn hình, điền form, thu thập dữ liệu."
+  },
+  "mkt-skill-agentkit": {
+    "descVi": "Bộ điều phối tác vụ cho AgentKit: tự chọn và ghép các skill phù hợp thành quy trình ngắn nhất.",
+    "whenToUseVi": "Dùng khi bắt đầu việc nhiều bước, nhiều lĩnh vực hoặc chưa rõ nên dùng skill nào."
+  },
+  "mkt-skill-ai-multimodal": {
+    "descVi": "Phân tích và tạo ảnh/audio/video bằng AI (Gemini, Imagen...).",
+    "whenToUseVi": "Dùng khi cần đọc hiểu media hoặc sinh ảnh/video/giọng nói cho content."
+  },
+  "mkt-skill-analytics": {
+    "descVi": "Phân tích số liệu marketing: KPI, dashboard báo cáo, attribution.",
+    "whenToUseVi": "Dùng khi muốn biết chiến dịch nào hiệu quả, tiền quảng cáo đi đâu."
+  },
+  "mkt-skill-analyze": {
+    "descVi": "Tổng hợp báo cáo hiệu quả marketing nhanh.",
+    "whenToUseVi": "Dùng khi cần báo cáo tình hình marketing định kỳ hoặc đột xuất."
+  },
+  "mkt-skill-ask": {
+    "descVi": "Hỏi đáp kỹ thuật và kiến trúc trong ngữ cảnh marketing.",
+    "whenToUseVi": "Dùng khi chỉ cần câu trả lời chuyên môn, chưa cần làm gì."
+  },
+  "mkt-skill-assets-organizing": {
+    "descVi": "Sắp xếp mọi file đầu ra (ảnh, content...) vào thư mục assets/ gọn gàng.",
+    "whenToUseVi": "Chạy nền tự động khi các lệnh khác sinh file — giữ dự án ngăn nắp."
+  },
+  "mkt-skill-banner-design": {
+    "descVi": "Thiết kế banner: mạng xã hội, quảng cáo, hero website, in ấn.",
+    "whenToUseVi": "Dùng khi cần banner đúng kích cỡ từng nền tảng, đẹp và nhất quán."
+  },
+  "mkt-skill-brainstorm": {
+    "descVi": "Bàn ý tưởng thẳng thắn: phân tích được–mất trước khi quyết.",
+    "whenToUseVi": "Dùng khi phân vân giữa các hướng chiến dịch/giải pháp."
+  },
+  "mkt-skill-brand": {
+    "descVi": "Quản lý thương hiệu: giọng điệu, nhận diện, khung thông điệp.",
+    "whenToUseVi": "Dùng khi xây dựng hoặc chuẩn hoá brand voice và bộ nhận diện."
+  },
+  "mkt-skill-campaign": {
+    "descVi": "Lập kế hoạch, chạy và tối ưu chiến dịch marketing đa kênh.",
+    "whenToUseVi": "Dùng khi bắt đầu một chiến dịch: từ mục tiêu đến thực thi."
+  },
+  "mkt-skill-cip-design": {
+    "descVi": "Thiết kế bộ nhận diện doanh nghiệp trọn gói: 50 hạng mục, 20 phong cách.",
+    "whenToUseVi": "Dùng khi cần CIP đầy đủ: logo, danh thiếp, tài liệu, biển hiệu..."
+  },
+  "mkt-skill-ckm-storage": {
+    "descVi": "Thao tác kho lưu trữ S3: upload, đồng bộ, lấy link công khai.",
+    "whenToUseVi": "Dùng khi cần đưa file media lên cloud storage và lấy URL."
+  },
+  "mkt-skill-claude-code": {
+    "descVi": "Giải đáp về Claude Code: cài đặt, lệnh slash, cấu hình.",
+    "whenToUseVi": "Dùng khi thắc mắc cách dùng chính công cụ Claude Code."
+  },
+  "mkt-skill-competitor": {
+    "descVi": "Phân tích đối thủ: trang so sánh, nội dung SEO cạnh tranh.",
+    "whenToUseVi": "Dùng khi muốn biết đối thủ đang làm gì và viết trang \"vs/alternative\"."
+  },
+  "mkt-skill-content-hub": {
+    "descVi": "Thư viện quản lý tài sản marketing ngay trên trình duyệt.",
+    "whenToUseVi": "Dùng khi muốn xem/duyệt kho ảnh, video, content đã tạo."
+  },
+  "mkt-skill-content-marketing": {
+    "descVi": "Chiến lược nội dung: lịch biên tập, trụ cột content, kế hoạch blog.",
+    "whenToUseVi": "Dùng khi xây kế hoạch nội dung dài hạn thay vì viết lẻ tẻ."
+  },
+  "mkt-skill-cook": {
+    "descVi": "Quy trình triển khai chuẩn cho mọi tính năng/bản sửa.",
+    "whenToUseVi": "Dùng khi bắt tay làm bất kỳ tính năng nào trong bộ marketing kit."
+  },
+  "mkt-skill-creativity": {
+    "descVi": "Định hướng sáng tạo: ý tưởng thị giác và concept chiến dịch.",
+    "whenToUseVi": "Dùng khi cần góc nhìn sáng tạo cho campaign hoặc visual."
+  },
+  "mkt-skill-dashboard": {
+    "descVi": "Khởi động Marketing Dashboard — trung tâm điều hành marketing.",
+    "whenToUseVi": "Dùng khi muốn xem giao diện web quản lý chiến dịch, content, assets."
+  },
+  "mkt-skill-debugging": {
+    "descVi": "Khung debug bài bản: điều tra gốc rễ trước khi sửa.",
+    "whenToUseVi": "Dùng khi công cụ/chiến dịch có lỗi cần truy nguyên nhân."
+  },
+  "mkt-skill-design": {
+    "descVi": "Thiết kế tổng hợp: nhận diện thương hiệu, design token, logo.",
+    "whenToUseVi": "Dùng cho mọi việc thiết kế thị giác của thương hiệu."
+  },
+  "mkt-skill-design-system": {
+    "descVi": "Kiến trúc design token, spec component, sinh slide chuẩn brand.",
+    "whenToUseVi": "Dùng khi cần hệ thống thiết kế nhất quán cho mọi ấn phẩm."
+  },
+  "mkt-skill-docs": {
+    "descVi": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án.",
+    "whenToUseVi": "Dùng khi tài liệu dự án thiếu hoặc lỗi thời."
+  },
+  "mkt-skill-elevenlabs": {
+    "descVi": "Tạo giọng đọc, nhân bản giọng, hiệu ứng âm thanh, nhạc bằng ElevenLabs.",
+    "whenToUseVi": "Dùng khi video/podcast cần giọng đọc AI tự nhiên hoặc âm thanh."
+  },
+  "mkt-skill-email": {
+    "descVi": "Email marketing: chiến dịch, newsletter, chuỗi drip tự động.",
+    "whenToUseVi": "Dùng khi làm email: từ nội dung đến luồng tự động hoá."
+  },
+  "mkt-skill-fix": {
+    "descVi": "Sửa lỗi tự động với định tuyến thông minh.",
+    "whenToUseVi": "Dùng khi công cụ báo lỗi, test fail, CI đỏ."
+  },
+  "mkt-skill-form-cro": {
+    "descVi": "Tối ưu form (khảo sát, liên hệ, thanh toán) để tăng tỉ lệ hoàn thành.",
+    "whenToUseVi": "Dùng khi form bị bỏ dở nhiều — trừ form đăng ký (có skill riêng)."
+  },
+  "mkt-skill-free-tool-strategy": {
+    "descVi": "Chiến lược công cụ miễn phí để hút khách (engineering as marketing).",
+    "whenToUseVi": "Dùng khi cân nhắc làm tool free để kéo traffic và lead."
+  },
+  "mkt-skill-frontend-design": {
+    "descVi": "Dựng giao diện đẹp từ ảnh thiết kế/screenshot.",
+    "whenToUseVi": "Dùng khi landing page cần độ hoàn thiện thị giác cao."
+  },
+  "mkt-skill-funnel": {
+    "descVi": "Thiết kế và tối ưu phễu chuyển đổi khách hàng.",
+    "whenToUseVi": "Dùng khi vẽ hành trình khách: từ biết đến mua, tìm điểm rơi rớt."
+  },
+  "mkt-skill-gamification-marketing": {
+    "descVi": "Game hoá marketing: điểm, huy hiệu, bảng xếp hạng, streak.",
+    "whenToUseVi": "Dùng khi muốn tăng gắn bó người dùng bằng cơ chế trò chơi."
+  },
+  "mkt-skill-google-adk-python": {
+    "descVi": "Xây AI agent bằng Google ADK Python.",
+    "whenToUseVi": "Dùng khi tự động hoá marketing bằng agent trên nền Google."
+  },
+  "mkt-skill-hub": {
+    "descVi": "Mở Content Hub + Marketing Dashboard cùng lúc.",
+    "whenToUseVi": "Dùng khi muốn vào nhanh trung tâm quản lý content và chiến dịch."
+  },
+  "mkt-skill-init": {
+    "descVi": "Khởi tạo dự án marketing: cấu trúc, brand, tài liệu nền.",
+    "whenToUseVi": "Chạy một lần khi bắt đầu dùng bộ kit cho dự án/thương hiệu mới."
+  },
+  "mkt-skill-journal": {
+    "descVi": "Ghi nhật ký công việc marketing của phiên.",
+    "whenToUseVi": "Dùng cuối phiên để lưu quyết định và bài học."
+  },
+  "mkt-skill-kit-builder": {
+    "descVi": "Tự xây thêm skill/agent/lệnh cho bộ AgentKit Marketing.",
+    "whenToUseVi": "Dùng khi muốn mở rộng kit theo nhu cầu riêng."
+  },
+  "mkt-skill-launch-strategy": {
+    "descVi": "Chiến lược ra mắt sản phẩm/tính năng: Product Hunt, truyền thông.",
+    "whenToUseVi": "Dùng khi chuẩn bị launch và cần kế hoạch từng ngày."
+  },
+  "mkt-skill-logo-design": {
+    "descVi": "Thiết kế logo với 55 phong cách, 30 bảng màu, 25 ngành.",
+    "whenToUseVi": "Dùng khi cần logo mới hoặc làm mới logo hiện có."
+  },
+  "mkt-skill-marketing-dashboard": {
+    "descVi": "Trung tâm điều hành marketing chạy trên máy, cho solopreneur.",
+    "whenToUseVi": "Dùng làm \"bộ não\" quản lý campaign, content, số liệu tại chỗ."
+  },
+  "mkt-skill-marketing-ideas": {
+    "descVi": "Gợi ý ý tưởng và chiến lược marketing cho SaaS/sản phẩm số.",
+    "whenToUseVi": "Dùng khi bí ý tưởng tăng trưởng hoặc cần cảm hứng chiến dịch."
+  },
+  "mkt-skill-marketing-planning": {
+    "descVi": "Lập kế hoạch marketing: chiến lược, lịch content, sáng kiến.",
+    "whenToUseVi": "Dùng khi cần kế hoạch marketing có cấu trúc theo khung chuẩn."
+  },
+  "mkt-skill-marketing-psychology": {
+    "descVi": "Áp dụng tâm lý học hành vi vào marketing: hiệu ứng, mô hình tư duy.",
+    "whenToUseVi": "Dùng khi muốn thông điệp chạm đúng tâm lý khách hàng."
+  },
+  "mkt-skill-marketing-research": {
+    "descVi": "Nghiên cứu thị trường: xu hướng, đối thủ, insight khách hàng.",
+    "whenToUseVi": "Dùng trước khi quyết định chiến lược hoặc vào thị trường mới."
+  },
+  "mkt-skill-mermaidjs-v11": {
+    "descVi": "Vẽ sơ đồ bằng chữ với Mermaid v11.",
+    "whenToUseVi": "Dùng khi cần flowchart/sơ đồ nhúng trong tài liệu."
+  },
+  "mkt-skill-onboarding-cro": {
+    "descVi": "Tối ưu onboarding sau đăng ký: kích hoạt người dùng nhanh hơn.",
+    "whenToUseVi": "Dùng khi user đăng ký xong nhưng bỏ đi trước khi thấy giá trị."
+  },
+  "mkt-skill-paid-ads": {
+    "descVi": "Chạy quảng cáo trả phí hiệu quả: Google, Meta, LinkedIn, TikTok.",
+    "whenToUseVi": "Dùng khi cần chiến lược, cấu trúc và tối ưu chiến dịch ads."
+  },
+  "mkt-skill-persona": {
+    "descVi": "Xây và quản lý chân dung khách hàng (persona).",
+    "whenToUseVi": "Dùng khi cần hiểu rõ mình đang nói chuyện với ai."
+  },
+  "mkt-skill-plan": {
+    "descVi": "Tạo kế hoạch thông minh có tăng cường prompt.",
+    "whenToUseVi": "Dùng trước việc lớn để có lộ trình rõ ràng."
+  },
+  "mkt-skill-play": {
+    "descVi": "Chạy playbook marketing soạn sẵn theo chuyên gia, có theo dõi mục tiêu.",
+    "whenToUseVi": "Dùng khi muốn theo một chiến lược chuẩn từng bước thay vì tự nghĩ."
+  },
+  "mkt-skill-preview": {
+    "descVi": "Xem trước file markdown, kế hoạch trực quan.",
+    "whenToUseVi": "Dùng khi muốn đọc kế hoạch/tài liệu dạng đẹp thay vì text thô."
+  },
+  "mkt-skill-pricing-strategy": {
+    "descVi": "Chiến lược giá: đóng gói, bậc giá, tâm lý định giá.",
+    "whenToUseVi": "Dùng khi quyết định giá bán, gói sản phẩm, mô hình kiếm tiền."
+  },
+  "mkt-skill-referral-program-building": {
+    "descVi": "Xây chương trình giới thiệu (referral) cho SaaS/sản phẩm số.",
+    "whenToUseVi": "Dùng khi muốn khách cũ kéo khách mới có thưởng."
+  },
+  "mkt-skill-scout": {
+    "descVi": "Trinh sát codebase nhanh bằng agent song song.",
+    "whenToUseVi": "Dùng khi cần tìm file/hiểu cấu trúc dự án."
+  },
+  "mkt-skill-seo": {
+    "descVi": "SEO toàn diện: audit, nghiên cứu từ khoá, tối ưu on-page.",
+    "whenToUseVi": "Dùng khi muốn website lên hạng tìm kiếm Google."
+  },
+  "mkt-skill-skill": {
+    "descVi": "Quản lý vòng đời skill marketing — tạo, thêm tài liệu, tối ưu, sửa, cập nhật.",
+    "whenToUseVi": "Dùng khi muốn xây hoặc cải thiện các skill tự động hóa marketing."
+  },
+  "mkt-skill-slides": {
+    "descVi": "Tạo slide HTML chiến lược với biểu đồ Chart.js, đúng design token.",
+    "whenToUseVi": "Dùng khi cần bộ slide thuyết trình đẹp, có số liệu."
+  },
+  "mkt-skill-social": {
+    "descVi": "Content mạng xã hội: sáng tạo, lên lịch, tích hợp API các nền tảng.",
+    "whenToUseVi": "Dùng khi làm nội dung X/Twitter, Facebook, LinkedIn, TikTok..."
+  },
+  "mkt-skill-storage": {
+    "descVi": "Kho lưu trữ S3 cho tài sản marketing.",
+    "whenToUseVi": "Dùng khi cần lưu media lên cloud và chia sẻ link."
+  },
+  "mkt-skill-tech-graph": {
+    "descVi": "Tạo sơ đồ kỹ thuật chất lượng cao (SVG+PNG) — kiến trúc, luồng dữ liệu, flowchart... 7 phong cách.",
+    "whenToUseVi": "Dùng khi muốn vẽ sơ đồ, minh họa kiến trúc, trực quan hóa một hệ thống hay luồng."
+  },
+  "mkt-skill-test": {
+    "descVi": "Kiểm thử workflow của kit và test UI website.",
+    "whenToUseVi": "Dùng khi cần xác nhận lệnh/luồng marketing chạy đúng."
+  },
+  "mkt-skill-ui-ux-pro-max": {
+    "descVi": "Trí tuệ thiết kế UI/UX toàn diện cho web và mobile.",
+    "whenToUseVi": "Dùng khi cần chiến lược UX, hệ thống màu chữ, review giao diện."
+  },
+  "mkt-skill-use-mcp": {
+    "descVi": "Khai thác tool từ các MCP server đã cài.",
+    "whenToUseVi": "Dùng khi muốn tận dụng tool MCP có sẵn."
+  },
+  "mkt-skill-video": {
+    "descVi": "Chiến lược video marketing: kịch bản, storyboard, quy trình sản xuất.",
+    "whenToUseVi": "Dùng khi làm video quảng bá từ ý tưởng đến xuất bản."
+  },
+  "mkt-skill-watzup": {
+    "descVi": "Điểm lại thay đổi gần đây và chốt phiên làm việc.",
+    "whenToUseVi": "Dùng cuối phiên hoặc khi cần biết đang làm dở gì."
+  },
+  "mkt-skill-web-design-guidelines": {
+    "descVi": "Soát giao diện theo chuẩn Web Interface Guidelines.",
+    "whenToUseVi": "Dùng khi kiểm tra accessibility và UX của trang."
+  },
+  "mkt-skill-worktree": {
+    "descVi": "Tạo bản sao git tách biệt để làm song song.",
+    "whenToUseVi": "Dùng khi thử nghiệm mà không đụng thư mục chính."
+  },
+  "mkt-skill-write": {
+    "descVi": "Viết đủ loại: copy sáng tạo, blog, nội dung tối ưu chuyển đổi.",
+    "whenToUseVi": "Dùng khi cần chữ nghĩa chất lượng cho bất kỳ kênh nào."
+  },
+  "mkt-skill-youtube": {
+    "descVi": "Biến video YouTube thành blog, infographic, bài mạng xã hội.",
+    "whenToUseVi": "Dùng khi muốn tái sử dụng video thành nhiều định dạng content."
+  },
+  "mkt-skill-youtube-thumbnail-design": {
+    "descVi": "Thiết kế thumbnail YouTube với 17 phong cách, tối ưu tỉ lệ click.",
+    "whenToUseVi": "Dùng khi cần thumbnail nổi bật tăng CTR cho video."
+  }
 }

@@ -19,6 +19,9 @@ scripts/.cache/
 release-manifest.json
 .repomixignore
 
+# Build artifact: list of items still needing a Vietnamese translation.
+scripts/missing-vi.txt
+
 # Internal plans & docs (reports reference the private marketing repo)
 plans/
 docs/
