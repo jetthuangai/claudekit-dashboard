@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/main.css?v=2">
+<link rel="stylesheet" href="assets/css/main.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -66,6 +66,13 @@
 
   <!-- Tab shells: static chrome; JS fills counts + wires switching (phase 4) -->
   <div class="tabs" id="tabs" role="tablist" aria-label="Chọn bộ kit">
+    <button class="tab tab-guide" role="tab" id="tab-guide" data-view="guide" aria-selected="false" aria-controls="panel-main">
+      <span class="t-icon" aria-hidden="true">📖</span>
+      <span class="t-text">
+        <span class="t-name">Hướng dẫn</span>
+        <span class="t-count">Cài đặt · Sử dụng</span>
+      </span>
+    </button>
     <button class="tab" role="tab" id="tab-engineer" data-kit="engineer" aria-selected="true" aria-controls="panel-main">
       <span class="t-icon" aria-hidden="true">🛠️</span>
       <span class="t-text">
@@ -176,6 +183,62 @@
       </section>
     </div>
   </div>
+
+  <!-- Guide view: STATIC content. Shown when the "Hướng dẫn" tab is active;
+       app.js hides #stats + .layout and reveals this. -->
+  <section id="guide-panel" class="guide" aria-labelledby="guide-title" hidden>
+    <h2 id="guide-title" class="guide-title">Bắt đầu với <span class="grad">AgentKit</span></h2>
+    <p class="guide-lead">Dashboard này giúp bạn tra cứu skill, agent của AgentKit bằng tiếng Việt. Dưới đây là cách cài AgentKit vào dự án của bạn, dùng các lệnh, và tự chạy dashboard này.</p>
+
+    <ol class="guide-steps">
+      <li class="guide-step">
+        <h3><span class="gs-num">1</span> Cài công cụ dòng lệnh <code>ak</code></h3>
+        <p>AgentKit chạy qua CLI tên <code>ak</code>. Mở terminal và chạy lệnh cài đặt tương ứng hệ điều hành:</p>
+        <pre><code># Windows (PowerShell)
+irm https://agentkit.best/install.ps1 | iex
+
+# macOS / Linux
+curl -fsSL https://agentkit.best/install.sh | sh</code></pre>
+        <p>Mở terminal mới, rồi đăng nhập bằng email hoặc API key (lấy ở <a href="https://agentkit.best/account/dashboard" target="_blank" rel="noopener">trang tài khoản</a>):</p>
+        <pre><code>ak login --email ban@email.com
+# hoặc
+ak login --api-key &lt;API_KEY_CUA_BAN&gt;</code></pre>
+        <p class="guide-note">Cần tài khoản AgentKit có bản quyền kit Engineer / Marketing. Xem <a href="https://agentkit.best" target="_blank" rel="noopener">agentkit.best</a>.</p>
+      </li>
+
+      <li class="guide-step">
+        <h3><span class="gs-num">2</span> Thêm kit vào dự án của bạn</h3>
+        <p>Vào thư mục dự án bất kỳ, cài kit cho Claude Code (skill và agent sẽ nằm trong <code>.claude/</code>):</p>
+        <pre><code>cd duong-dan-du-an-cua-ban
+ak kit init engineer --target claude-code
+ak kit init marketing --target claude-code   # nếu cần</code></pre>
+        <p>Muốn cài cho công cụ khác (ví dụ Codex) thì đổi <code>--target codex</code>.</p>
+      </li>
+
+      <li class="guide-step">
+        <h3><span class="gs-num">3</span> Sử dụng</h3>
+        <p>Trong Claude Code, gõ lệnh bắt đầu bằng <code>/ak:</code> theo tên skill — ví dụ:</p>
+        <pre><code>/ak:cook "Thêm đăng nhập cho ứng dụng"
+/ak:plan "Thiết kế hệ thống giỏ hàng"
+/ak:debug "Test bị lỗi timeout"</code></pre>
+        <p>Không nhớ tên lệnh? Dùng chính dashboard này: bấm tab <b>Engineer</b> hoặc <b>Marketing</b>, tìm kiếm (phím <kbd>Ctrl K</kbd>), bấm vào thẻ để xem hướng dẫn chi tiết, rồi bấm 📋 để chép lệnh.</p>
+      </li>
+
+      <li class="guide-step">
+        <h3><span class="gs-num">4</span> Tự chạy dashboard này</h3>
+        <p>Đây là web tĩnh — chỉ cần trình duyệt, không phải cài gì. Tải mã nguồn về:</p>
+        <pre><code>git clone https://github.com/jetthuangai/claudekit-dashboard.git
+cd claudekit-dashboard</code></pre>
+        <p>Rồi mở trên máy theo một trong hai cách:</p>
+        <ul class="guide-ul">
+          <li><b>Nhanh nhất:</b> bấm đúp mở <code>index.html</code> (cần internet lần đầu cho thư viện tìm kiếm).</li>
+          <li><b>Ổn định hơn:</b> chạy server tĩnh rồi mở <code>http://localhost:8000</code> — <code>python -m http.server 8000</code> hoặc <code>npx serve .</code></li>
+        </ul>
+        <p><b>Đưa lên mạng:</b> bật GitHub Pages (Settings → Pages → nhánh <code>main</code>, thư mục <code>/</code>). Cập nhật dữ liệu về sau: <code>ak kit init ... --build-only --out ../ak-kit-build</code> rồi <code>node scripts/build-data.mjs</code>.</p>
+        <p class="guide-note">Bản dashboard cũ (ClaudeKit) vẫn giữ ở link "Xem bản ClaudeKit cũ" dưới chân trang.</p>
+      </li>
+    </ol>
+  </section>
 </section>
 </main>
 

@@ -207,7 +207,31 @@
     marketing: "Tất cả skill, agent & lệnh"
   };
 
+  /* Guide view: static help panel shown by the "Hướng dẫn" tab. It is not a
+     kit, so it lives outside the kit render path — just show/hide the DOM. */
+  var guideActive = false;
+
+  function setGuideView(on) {
+    guideActive = on;
+    var stats = document.getElementById("stats");
+    var layout = document.querySelector(".layout");
+    var guide = document.getElementById("guide-panel");
+    if (stats) stats.hidden = on;
+    if (layout) layout.hidden = on;
+    if (guide) guide.hidden = !on;
+  }
+
+  function selectGuide() {
+    setGuideView(true);
+    var tabs = document.querySelectorAll("#tabs .tab");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].setAttribute("aria-selected", String(tabs[i].dataset.view === "guide"));
+    }
+    document.getElementById("panel-main").setAttribute("aria-labelledby", "tab-guide");
+  }
+
   function selectKit(kitId) {
+    setGuideView(false);
     state.kit = kitId;
     /* reset filters, keep query (spec) */
     state.category = "";
@@ -232,7 +256,13 @@
 
   document.getElementById("tabs").addEventListener("click", function (e) {
     var tab = e.target.closest(".tab");
-    if (tab && tab.dataset.kit && tab.dataset.kit !== state.kit) {
+    if (!tab) return;
+    if (tab.dataset.view === "guide") {
+      if (!guideActive) selectGuide();
+      return;
+    }
+    /* Re-select the kit if we're leaving the guide, even if it's the same kit. */
+    if (tab.dataset.kit && (guideActive || tab.dataset.kit !== state.kit)) {
       selectKit(tab.dataset.kit);
     }
   });
