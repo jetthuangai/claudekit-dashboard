@@ -175,7 +175,7 @@ const KHAC = { id: 'khac', label: 'Khác', icon: '✨' };
 // alongside the base names that survived the rebrand unchanged.
 const ENG_SKILL_CATEGORY = {
   bootstrap: 'planning', plan: 'planning', predict: 'planning', scenario: 'planning',
-  brainstorm: 'planning', 'problem-solving': 'planning',
+  brainstorm: 'planning', 'problem-solving': 'planning', 'goal-warmup': 'planning',
   cook: 'implementation', 'backend-development': 'implementation', 'frontend-development': 'implementation',
   'mobile-development': 'implementation', 'web-frameworks': 'implementation', tanstack: 'implementation',
   'react-best-practices': 'implementation', 'better-auth': 'implementation', copywriting: 'implementation',
@@ -186,6 +186,7 @@ const ENG_SKILL_CATEGORY = {
   deploy: 'devops', devops: 'devops', ship: 'devops', git: 'devops', worktree: 'devops', ghpm: 'devops',
   docs: 'docs', 'docs-seeker': 'docs', journal: 'docs', llms: 'docs', 'markdown-novel-viewer': 'docs',
   mintlify: 'docs', graphify: 'docs', retro: 'docs', watzup: 'docs',
+  'folder-context': 'docs', handoff: 'docs', 'interview-docs': 'docs',
   security: 'security', 'security-scan': 'security', 'cti-expert': 'security', gkg: 'security',
   'ai-artist': 'media', 'media-processing': 'media', design: 'media', 'html-video': 'media',
   remotion: 'media', preview: 'media', shader: 'media', excalidraw: 'media', 'mermaidjs-v11': 'media',
@@ -193,14 +194,14 @@ const ENG_SKILL_CATEGORY = {
   'ui-ux-pro-max': 'ui-design', 'ui-styling': 'ui-design', 'frontend-design': 'ui-design',
   'web-design-guidelines': 'ui-design', 'show-off': 'ui-design',
   research: 'research', ask: 'research', scout: 'research', repomix: 'research', xia: 'research',
-  advise: 'research', agentkit: 'utilities',
+  advise: 'research', agentkit: 'utilities', 'research-prompt': 'research', 'deep-swe': 'research',
   'mcp-builder': 'integrations', 'use-mcp': 'integrations', 'google-adk-python': 'integrations',
   'chrome-profile': 'integrations', 'agent-browser': 'integrations', 'ai-multimodal': 'integrations',
   'payment-integration': 'integrations', shopify: 'integrations', 'context-engineering': 'integrations',
   databases: 'database',
   'coding-level': 'utilities', 'find-skills': 'utilities', 'skill-creator': 'utilities', team: 'utilities',
   'project-management': 'utilities', 'project-organization': 'utilities', 'plans-kanban': 'utilities',
-  'tech-graph': 'utilities', vibe: 'utilities',
+  'tech-graph': 'utilities', vibe: 'utilities', 'codex-goal': 'utilities',
 };
 
 const ENG_AGENT_CATEGORY = {
@@ -222,6 +223,7 @@ const MKT_TOOLS = new Set([
   'sequential-thinking', 'shopify', 'skill-creator', 'storage', 'template-skill', 'test',
   'use-mcp', 'watzup', 'web-frameworks', 'worktree', 'agent-browser', 'agentkit',
   'ai-multimodal', 'chrome-profile', 'scout', 'advise', 'brainstorm', 'agentize',
+  'codex-goal', 'folder-context', 'handoff', 'interview-docs', 'research-prompt',
 ]);
 const MKT_TOOLS_RE = /^(docs|plan|skill|storage|test)([:\-]|$)/;
 

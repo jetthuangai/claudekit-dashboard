@@ -1,6 +1,6 @@
 # AgentKit Dashboard
 
-Dashboard tiếng Việt tra cứu skill và agent của hai bộ công cụ [AgentKit](https://agentkit.best) (tên cũ: ClaudeKit): **Engineer** (91 skills, 16 agents) và **Marketing** (73 skills, 32 agents).
+Dashboard tiếng Việt tra cứu skill và agent của hai bộ công cụ [AgentKit](https://agentkit.best) (tên cũ: ClaudeKit): **Engineer** (98 skills, 16 agents) và **Marketing** (78 skills, 32 agents).
 
 Có nút đổi giao diện (đen–hồng ⇄ xanh AgentKit) ở góc header, và link "Xem bản ClaudeKit cũ" ở footer để mở lại bản dashboard cũ (`legacy/`).
 
@@ -53,8 +53,9 @@ Dữ liệu nằm trong `data/data.js` + `data/details.js`, sinh tự động t�
 
 ```bash
 # 1. Build nội dung kit ra ngoài repo (cần đăng nhập ak: ak login)
-ak kit init engineer  --build-only --out ../ak-kit-build --target claude-code --yes --no-interactive
-ak kit init marketing --build-only --out ../ak-kit-build --target claude-code --yes --no-interactive
+#    Lưu ý: --out phải là ĐƯỜNG DẪN TUYỆT ĐỐI (xem phần dưới)
+ak kit init engineer  --remote --build-only --force --out /duong/dan/tuyet-doi/ak-kit-build --target claude-code --yes --no-interactive
+ak kit init marketing --remote --build-only --force --out /duong/dan/tuyet-doi/ak-kit-build --target claude-code --yes --no-interactive
 
 # 2. Quét bản build → sinh dữ liệu
 node scripts/build-data.mjs
@@ -64,6 +65,11 @@ Yêu cầu:
 - Node.js ≥ 18 (không cần npm install — script không có dependency)
 - AgentKit CLI `ak` đã đăng nhập (`ak login`), có quyền hai kit engineer + marketing
 - Nguồn kit mặc định ở `../ak-kit-build` (đổi bằng biến môi trường `AK_KIT_SRC`)
+
+Ba cờ cần lưu ý với `ak` 2.8.0-beta.1:
+- `--remote` **vẫn phải ghi rõ**, dù CLI báo "đây là mặc định, sắp bỏ". Thiếu nó thì `ak` báo nhầm là chưa mua kit.
+- `--out` phải là đường dẫn tuyệt đối. Đường dẫn tương đối (`../ak-kit-build`) làm `ak` nhân đôi thư mục (`ak-kit-build/ak-kit-build/…`) rồi build lỗi.
+- `--force` để ghi đè bản build cũ, nếu không `ak` dừng vì thư mục đã tồn tại.
 
 Mô tả tiếng Việt biên tập thủ công trong `scripts/vi-content.json` (mô tả ngắn) + `scripts/vi-details.json` (chi tiết). Item mới chưa dịch sẽ được liệt kê ở `scripts/missing-vi.txt`. Lần đầu quét một kit vừa đổi có thể cần `BUILD_BOOTSTRAP=1 node scripts/build-data.mjs` để bỏ tạm các cổng kiểm tra bản dịch, dịch xong rồi chạy lại bình thường.
 

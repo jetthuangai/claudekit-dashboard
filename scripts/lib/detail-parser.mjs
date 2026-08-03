@@ -107,11 +107,55 @@ export function parseWhenToUse(text) {
 }
 
 /**
+ * Join a list item with its wrapped continuation lines.
+ *
+ * Kit authors hard-wrap prose at ~80 columns, so a flag bullet routinely spans several lines:
+ *
+ *     - `--advice`: Run under `kongming` advisory supervision (see Advisory
+ *       supervision)
+ *
+ * A line-anchored regex sees only the first line and emits a description cut mid-sentence.
+ * A continuation is an indented, non-empty line that starts no new block: another list item,
+ * a heading, a table row, or a fence all end the item. Fenced blocks are passed through
+ * untouched so indented code never folds into prose.
+ */
+function unfoldListItems(body) {
+  const out = [];
+  let inFence = false;
+  let open = false; // currently accumulating a list item in out[out.length - 1]
+
+  for (const line of body.split(/\r?\n/)) {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      open = false;
+      out.push(line);
+      continue;
+    }
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+    if (/^\s*[-*]\s/.test(line)) {
+      open = true;
+      out.push(line);
+      continue;
+    }
+    if (open && /^\s+\S/.test(line) && !/^\s*[#|>]/.test(line)) {
+      out[out.length - 1] += ' ' + line.trim();
+      continue;
+    }
+    open = false;
+    out.push(line);
+  }
+  return out.join('\n');
+}
+
+/**
  * Flags in the two shapes the corpus actually uses. First mention of a flag wins;
  * a flag with no description attached is dropped (a bare `--json` mention teaches nothing).
  */
 export function parseFlags(text) {
-  const body = stripFrontmatter(text);
+  const body = unfoldListItems(stripFrontmatter(text));
   const found = new Map();
 
   /* Between the flag and its separator there may be a parenthetical — `*(default)*`, and worse,

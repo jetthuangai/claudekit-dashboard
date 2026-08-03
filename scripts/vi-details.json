@@ -88,7 +88,14 @@
     }
   },
   "eng-skill-advise": {
-    "overview": "Kỹ năng tư vấn dẫn dắt bằng phỏng vấn. Phân tích một yêu cầu hoặc URL (issue GitHub, tài liệu), rà soát mã nguồn, hỏi bạn từng câu một để định hình lại vấn đề thành yêu cầu và mục tiêu cụ thể, rồi đưa lời khuyên trung thực: nên làm gì, nên tránh gì, có phương án nào tốt hơn, lợi ích và đánh đổi ra sao."
+    "overview": "Kỹ năng tư vấn dẫn dắt bằng phỏng vấn. Phân tích một yêu cầu hoặc URL (issue GitHub, tài liệu), rà soát mã nguồn, hỏi bạn từng câu một để định hình lại vấn đề thành yêu cầu và mục tiêu cụ thể, rồi đưa lời khuyên trung thực: nên làm gì, nên tránh gì, có phương án nào tốt hơn, lợi ích và đánh đổi ra sao.",
+    "flags": {
+      "--html": "Gọi subagent ui-ux-designer dựng một trang HTML tự chứa, trình bày trực quan phần tư vấn cuối cùng",
+      "--md": "Gọi subagent docs-manager viết báo cáo markdown có cấu trúc",
+      "--wiki": "Gọi subagent docs-manager đăng báo cáo HTML/MD lên AgentWiki khi có sẵn",
+      "--github": "Gọi subagent git-manager trả lời thẳng vào GitHub issue gốc, hoặc tạo issue mới nếu chưa có issue nào",
+      "--agent": "Giao trọn quy trình cho subagent advisor (chạy model fable trong ngữ cảnh riêng); phiên chính chỉ làm nhiệm vụ chuyển câu hỏi phỏng vấn qua lại với bạn"
+    }
   },
   "eng-skill-agent-browser": {
     "overview": "Tự động hoá trình duyệt và ứng dụng bằng agent-browser. Dùng để test, chụp màn hình, điền form, thu thập dữ liệu, chạy Browserbase/trình duyệt trên cloud, và Electron — khi không cần cookie Chrome thật.",
@@ -157,7 +164,13 @@
     "overview": "Trỏ tới một profile Google Chrome thật để tự động hoá trình duyệt qua Chrome DevTools MCP. Có sẵn CLI chrome-profile, dò tìm profile, hướng dẫn thăm dò DevTools trực tiếp, playbook cài đặt và cách chọn tab theo URL neo."
   },
   "eng-skill-code-review": {
-    "overview": "Rà soát chất lượng code một cách nghiêm ngặt, dựa trên bằng chứng. Nhận nhiều kiểu đầu vào: thay đổi đang chờ, số PR, mã commit, hoặc quét toàn bộ mã nguồn. Tập trung vào bug, lỗi hồi quy, khả năng bảo trì, độ tin cậy và những chỗ chưa được kiểm chứng."
+    "overview": "Rà soát chất lượng code một cách nghiêm ngặt, dựa trên bằng chứng. Nhận nhiều kiểu đầu vào: thay đổi đang chờ, số PR, mã commit, hoặc quét toàn bộ mã nguồn. Tập trung vào bug, lỗi hồi quy, khả năng bảo trì, độ tin cậy và những chỗ chưa được kiểm chứng.",
+    "flags": {
+      "--pending": "Soát phần đang làm dở: cả thay đổi đã stage lẫn chưa stage, lấy qua git diff"
+    }
+  },
+  "eng-skill-codex-goal": {
+    "overview": "Hướng dẫn chạy công việc mục tiêu dài hơi trong Codex với một điều kiện dừng kiểm chứng được. Dùng khi bạn nhắc tới /goal, chế độ goal, mục tiêu bền vững, hoặc các phiên Codex tự chạy qua nhiều lượt."
   },
   "eng-skill-coding-level": {
     "overview": "Chỉnh mức độ kinh nghiệm lập trình để AI trả lời cho vừa. Dùng để điều chỉnh độ sâu giải thích, độ phức tạp của code và cách trình bày cho hợp với trình độ của bạn."
@@ -176,7 +189,8 @@
       "--parallel": "Chạy nhiều agent song song",
       "--no-test": "Bỏ qua bước test",
       "--auto": "Tự duyệt các bước ít rủi ro; thay đổi rủi ro cao sẽ dừng chờ người duyệt trước khi chốt/commit/ship",
-      "--tdd": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước đã"
+      "--tdd": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước đã",
+      "--advice": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
     },
     "examples": {
       "/ak:cook \"Add user authentication to the app\" --fast": "/ak:cook \"Thêm đăng nhập người dùng cho ứng dụng\" --fast",
@@ -198,6 +212,9 @@
     "overview": "Gỡ lỗi một cách bài bản: phân tích nguyên nhân gốc rồi mới sửa. Dùng cho bug, test thất bại, hành vi bất thường, vấn đề hiệu năng, truy vết luồng gọi, kiểm tra nhiều lớp, phân tích log, lỗi CI/CD, chẩn đoán cơ sở dữ liệu và điều tra hệ thống.",
     "whenToUse": "Mức code: test lỗi, bug, hành vi bất thường, build lỗi, vấn đề tích hợp. Mức hệ thống: lỗi server, hỏng pipeline CI/CD, tụt hiệu năng, sự cố cơ sở dữ liệu, phân tích log."
   },
+  "eng-skill-deep-swe": {
+    "overview": "Chấm điểm một model lập trình trên bộ benchmark DeepSWE thông qua Pier và OpenRouter. Dùng khi bạn muốn chạy DeepSWE, chấm điểm một model, hoặc kiểm chứng lại kết quả benchmark của một coding agent."
+  },
   "eng-skill-deploy": {
     "overview": "Triển khai dự án lên bất kỳ nền tảng nào, tự nhận diện nơi cần đưa lên. Dùng khi bạn nói \"deploy\", \"publish\", \"ship\", \"go live\", \"đẩy lên production\", \"host app này\", hoặc nhắc tới bất kỳ nền tảng hosting nào (Vercel, Netlify, Cloudflare, Railway, Fly.io, Render, Heroku, TOSE, Github Pages, AWS, GCP, Digital Ocean, Vultr, Coolify, Dokploy). Tự dò đích triển khai từ file cấu hình và docs/deployment.md."
   },
@@ -210,7 +227,11 @@
     "whenToUse": "Triển khai app serverless lên Cloudflare Workers/Pages. Đóng gói app vào container với Docker, Docker Compose. Quản lý GCP bằng gcloud CLI (Cloud Run, GKE, Cloud SQL). Quản trị cụm Kubernetes (kubectl, Helm). Quy trình GitOps (Argo CD, Flux). Pipeline CI/CD, triển khai nhiều vùng. Rà soát bảo mật, RBAC, chính sách mạng."
   },
   "eng-skill-docs": {
-    "overview": "Phân tích mã nguồn và quản lý tài liệu dự án. Dùng để khởi tạo tài liệu, cập nhật, tóm tắt và phân tích mã nguồn."
+    "overview": "Phân tích mã nguồn và quản lý tài liệu dự án. Dùng để khởi tạo tài liệu, cập nhật, tóm tắt và phân tích mã nguồn.",
+    "flags": {
+      "--advice": "Trước khi viết hay sửa bất kỳ tài liệu nào, hỏi kongming xem nên giữ, cắt hay sắp xếp lại phần nào rồi mới làm; kongming chỉ tư vấn, skill này vẫn chịu trách nhiệm mọi thay đổi",
+      "--audit": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+    }
   },
   "eng-skill-docs-seeker": {
     "overview": "Tra tài liệu thư viện/framework qua llms.txt (context7.com). Dùng cho API docs, phân tích repo GitHub, tra cứu tài liệu kỹ thuật, xem tính năng mới nhất của thư viện."
@@ -234,8 +255,12 @@
       "--auto": "Bật chế độ tự động (mặc định); những bản vá rủi ro cao sẽ dừng chờ bạn duyệt trước khi chốt/commit/ship",
       "--review": "Bật chế độ có người rà soát từng bước",
       "--quick": "Bật chế độ sửa nhanh",
-      "--parallel": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song"
+      "--parallel": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song",
+      "--advice": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
     }
+  },
+  "eng-skill-folder-context": {
+    "overview": "Tạo một file CLAUDE.md gọn cho thư mục con kèm AGENTS.md liên kết, để giữ các quy ước riêng của thư mục đó lâu dài. Dùng khi một thư mục cần ngữ cảnh riêng cho AI, ngoài phần đã khai báo ở gốc dự án."
   },
   "eng-skill-frontend-design": {
     "overview": "Dựng giao diện web chỉn chu từ bản thiết kế, ảnh chụp màn hình hoặc video. Dùng cho web component, trải nghiệm 3D, tái hiện thiết kế UI, làm prototype nhanh, giao diện nhập vai, tránh kiểu giao diện AI làm cho có."
@@ -251,6 +276,12 @@
     "overview": "Phân tích code theo ngữ nghĩa với GitLab Knowledge Graph. Dùng để nhảy tới định nghĩa, tìm nơi sử dụng, đánh giá tác động, trực quan hoá kiến trúc. Hỗ trợ Ruby, Java, Kotlin, Python, TypeScript/JavaScript.",
     "whenToUse": "Tìm mọi chỗ dùng một hàm/class trong cả mã nguồn. Nhảy tới định nghĩa của một ký hiệu. Đánh giá tác động trước khi dọn lại code. Sinh sơ đồ kiến trúc. Hiểu code với hỗ trợ RAG. Nếu chỉ cần đổ context nhanh, hỗ trợ mọi ngôn ngữ, repo từ xa hoặc đếm token thì dùng repomix thay thế."
   },
+  "eng-skill-goal-warmup": {
+    "overview": "Bước chuẩn bị khóa-kết-quả trước các phiên /goal dài hơi hoặc các phiên chạy tự động. Phỏng vấn để chốt một bản cam kết kết quả được bạn duyệt, lập kế hoạch không lệch phạm vi ngầm, rà soát để giữ đúng cam kết, lập bảng kiểm tra trước cho toàn kế hoạch, rồi bàn giao ở trạng thái Sẵn sàng / Bị chặn / Cần quyết định. Không bao giờ tự động khởi chạy /goal.",
+    "flags": {
+      "--fast": "Bỏ bước phản biện tốn kém — chỉ khi việc đủ điều kiện và bạn chấp nhận mức đảm bảo thấp hơn"
+    }
+  },
   "eng-skill-google-adk-python": {
     "overview": "Xây AI agent bằng Google ADK Python. Hệ đa agent, giao thức A2A, công cụ MCP, agent theo quy trình, trạng thái/bộ nhớ, callback/plugin, triển khai lên Vertex AI, đánh giá."
   },
@@ -258,11 +289,17 @@
     "overview": "Dựng bản đồ tri thức có thể truy vấn từ code, tài liệu, bài báo và hình ảnh. Dùng để hiểu cấu trúc mã nguồn, phân tích kiến trúc, phát hiện quan hệ giữa các file, và di chuyển trong dự án một cách tiết kiệm.",
     "whenToUse": "Hiểu kiến trúc một mã nguồn lạ trước khi lập kế hoạch. Phát hiện quan hệ và chuỗi phụ thuộc giữa các file. Tìm những điểm nút được liên kết nhiều nhất trong dự án lớn."
   },
+  "eng-skill-handoff": {
+    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc."
+  },
   "eng-skill-help": {
     "overview": "Mở mục trợ giúp của AgentKit. Dùng khi bạn muốn biết cách dùng ak, có những skill nào, hoặc nên chạy quy trình nào."
   },
   "eng-skill-html-video": {
     "overview": "Tạo video MP4 ngay trên máy từ template HTML/CSS/JS bằng nexu-io/html-video. Gồm cài đặt mã nguồn, tìm template, tuỳ biến studio, xem trước và kiểm tra bản render."
+  },
+  "eng-skill-interview-docs": {
+    "overview": "Khai thác tầm nhìn và các quyết định của bạn thành tài liệu dự án dùng được lâu dài, thông qua một cuộc phỏng vấn có dẫn dắt. Dùng cho README, ADR, tài liệu chiến lược, nguyên tắc làm việc và các tài liệu có cấu trúc."
   },
   "eng-skill-issue-to-plan": {
     "overview": "Biến một issue GitHub thành kế hoạch triển khai đã được kiểm toán và thẩm định. Đọc issue, rà soát mã nguồn, chạy một cổng brainstorm nghiêm ngặt, rồi mới lập kế hoạch (bắt buộc kèm --html --wiki, thẩm định và rà soát đối kháng), sau đó đẩy một nhánh kế hoạch và bàn giao ngay trên issue."
@@ -316,7 +353,21 @@
   },
   "eng-skill-plan": {
     "overview": "Lập kế hoạch triển khai, thiết kế kiến trúc, tạo lộ trình kỹ thuật với các giai đoạn chi tiết. Dùng cho lập kế hoạch tính năng, thiết kế hệ thống, kiến trúc giải pháp, chiến lược triển khai, tài liệu giai đoạn, xuất kế hoạch HTML độc lập với --html, và đăng lên AgentWiki với --wiki.",
-    "whenToUse": "Lập kế hoạch cho tính năng mới. Thiết kế kiến trúc hệ thống. Đánh giá các hướng kỹ thuật. Tạo lộ trình triển khai. Chia nhỏ các yêu cầu phức tạp."
+    "whenToUse": "Lập kế hoạch cho tính năng mới. Thiết kế kiến trúc hệ thống. Đánh giá các hướng kỹ thuật. Tạo lộ trình triển khai. Chia nhỏ các yêu cầu phức tạp.",
+    "flags": {
+      "--auto": "Tự chọn chế độ lập kế hoạch theo độ phức tạp của việc (mặc định)",
+      "--fast": "Chế độ nhanh: bỏ nghiên cứu, bỏ phản biện, bỏ kiểm duyệt kế hoạch",
+      "--hard": "Chế độ kỹ: 2 agent nghiên cứu, có phản biện, kiểm duyệt tùy chọn",
+      "--deep": "Chế độ sâu nhất: 2-3 agent nghiên cứu kèm scout từng phase, có cả phản biện lẫn kiểm duyệt",
+      "--parallel": "Chế độ song song: 2 agent nghiên cứu, có phản biện, và chuyển tiếp cờ --parallel sang bước cook",
+      "--two": "Vạch 2 hướng làm để bạn chọn; phản biện và kiểm duyệt chạy sau khi bạn chốt hướng",
+      "--tdd": "Thêm cấu trúc viết test trước cho từng phase, để refactor không sợ hỏng chỗ khác",
+      "--no-tasks": "Bỏ bước tạo danh sách task",
+      "--html": "Xuất kế hoạch thành một trang HTML tự chứa, tương tác được: xem dàn ý từng phase, mở chi tiết dạng markdown, kèm hình minh họa kỹ thuật vẽ màu nước nếu cần",
+      "--github": "Tạo hoặc cập nhật GitHub issue sau khi kế hoạch được duyệt, kèm nhánh, tóm tắt, link kế hoạch, các câu hỏi còn treo và trạng thái sẵn sàng review",
+      "--wiki": "Đăng bản kế hoạch cuối (tài liệu hoặc trang HTML) lên AgentWiki qua CLI hoặc MCP khi có sẵn",
+      "--advice": "Chạy dưới sự cố vấn của kongming (xem mục Advisory Supervision Mode)"
+    }
   },
   "eng-skill-plans-kanban": {
     "overview": "Mở dashboard kế hoạch của AgentKit trong giao diện cấu hình CLI. Dùng để xem kế hoạch dạng kanban, theo dõi tiến độ, kiểm tra dòng thời gian và mở nhanh các file kế hoạch.",
@@ -368,6 +419,9 @@
   "eng-skill-research": {
     "overview": "Nghiên cứu giải pháp kỹ thuật, phân tích kiến trúc, thu thập yêu cầu kỹ lưỡng. Dùng để đánh giá công nghệ, tìm hiểu best practice, thiết kế giải pháp, phân tích khả năng mở rộng/bảo mật/dễ bảo trì."
   },
+  "eng-skill-research-prompt": {
+    "overview": "Soạn một bản đề bài nghiên cứu đầy đủ, tự thân đọc là hiểu, để giao cho một người hoặc một AI đi nghiên cứu. Dùng khi bạn cần viết yêu cầu nghiên cứu, chứ không phải tự mình thực hiện nghiên cứu đó."
+  },
   "eng-skill-retro": {
     "overview": "Tạo bản tổng kết sprint dựa trên dữ liệu từ lịch sử git. Dùng để review sprint, phân tích commit, đánh giá sức khoẻ mã nguồn, báo cáo tốc độ làm việc của team và tổng kết kỹ thuật theo quý. Chạy được cho cả repo cá nhân lẫn repo team.",
     "flags": {
@@ -380,7 +434,11 @@
   },
   "eng-skill-scenario": {
     "overview": "Sinh đầy đủ các trường hợp biên và kịch bản test bằng cách phân rã tính năng theo 12 chiều. Dùng để phát hiện rủi ro trước khi làm, lập kế hoạch QA, thiết kế test hồi quy, và lặp cho tới khi độ phủ đầy đủ.",
-    "whenToUse": "Trước khi làm các tính năng phức tạp hoặc có trạng thái. Trước khi viết test (sinh ra các mục tiêu cần test). Đánh giá rủi ro khi lập kế hoạch hoặc review code. Rà soát thiết kế API — lộ sớm các tình huống biên."
+    "whenToUse": "Trước khi làm các tính năng phức tạp hoặc có trạng thái. Trước khi viết test (sinh ra các mục tiêu cần test). Đánh giá rủi ro khi lập kế hoạch hoặc review code. Rà soát thiết kế API — lộ sớm các tình huống biên.",
+    "flags": {
+      "--iterations": "Dừng sau N vòng lặp",
+      "--saturation": "Dừng khi 2 vòng liên tiếp không tìm thêm được tình huống mới nào"
+    }
   },
   "eng-skill-scout": {
     "overview": "Dò quét mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom ngữ cảnh cho công việc, tìm kiếm nhanh trên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
@@ -470,7 +528,9 @@
     "overview": "Chạy trọn pipeline vibe. Dùng cho GitHub issue, yêu cầu tính năng, sửa lỗi hoặc chạy ship tự động. Hỗ trợ worktree, cổng duyệt kế hoạch (tái dùng/TDD), định tuyến sang cook hoặc fix, ship PR, review-pr, theo dõi merge/CI.",
     "flags": {
       "--beta": "Ship lên nhánh beta/dev qua /ak:ship beta; nhãn sẵn sàng cuối cùng là ready to ship beta.",
-      "--ship": "Sau bước review/fix/reply, merge PR rồi theo dõi và sửa CI cho tới khi xanh hoặc gặp rào cản thật sự từ bên ngoài."
+      "--ship": "Sau bước review/fix/reply, merge PR rồi theo dõi và sửa CI cho tới khi xanh hoặc gặp rào cản thật sự từ bên ngoài.",
+      "--both": "Ship hai chặng: chạy trọn chặng beta trước (ship, review, merge, theo dõi CI tới khi xanh), rồi tới chặng ổn định (ship chính thức, review, merge, theo dõi CI tới khi xanh). Tự bật --ship cho cả hai chặng và ghi đè --beta.",
+      "--advice": "Chạy cả quy trình dưới sự cố vấn của kongming (xem mục Advisory supervision). Kết hợp được với mọi chế độ ship."
     }
   },
   "eng-skill-watzup": {
@@ -785,6 +845,9 @@
   "mkt-skill-claude-code": {
     "overview": "Kích hoạt khi người dùng hỏi về: cài đặt Claude Code, các lệnh gạch chéo (/plan, /fix, /content, /docs, /design, /git), tạo và quản lý Agent Skills, cấu hình MCP server, cài hook/plugin, tích hợp IDE (VS Code, JetBrains), quy trình CI/CD, triển khai cho doanh nghiệp (SSO, RBAC, sandbox), xử lý sự cố đăng nhập/hiệu năng, hoặc các tính năng nâng cao (extended thinking, caching, checkpoint)."
   },
+  "mkt-skill-codex-goal": {
+    "overview": "Hướng dẫn chạy công việc mục tiêu dài hơi trong Codex với một điều kiện dừng kiểm chứng được. Dùng khi bạn nhắc tới /goal, chế độ goal, mục tiêu bền vững, hoặc các phiên Codex tự chạy qua nhiều lượt."
+  },
   "mkt-skill-competitor": {
     "overview": "Phân tích đối thủ, làm trang \"giải pháp thay thế\", trang so sánh, nội dung SEO đấu đối thủ, định vị thị trường và làm battlecard cho sales.",
     "whenToUse": "Phân tích website và cách định vị của đối thủ. So sánh khoảng trống nội dung với đối thủ. So sánh SEO với đối thủ. Làm trang thay thế/so sánh với đối thủ. Tạo battlecard cho sales. Theo dõi đối thủ."
@@ -803,7 +866,9 @@
       "--fast": "Bỏ qua bước nghiên cứu, đi thẳng: scout → kế hoạch → code",
       "--parallel": "Chạy nhiều agent song song",
       "--no-test": "Bỏ qua bước test",
-      "--auto": "Tự duyệt mọi bước"
+      "--auto": "Tự duyệt mọi bước",
+      "--tdd": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước khi refactor, xong bước code thì chạy lại để chắc vẫn đúng",
+      "--advice": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
     },
     "examples": {
       "/cook \"Add user authentication to the app\" --fast": "/cook \"Thêm đăng nhập người dùng cho ứng dụng\" --fast"
@@ -831,7 +896,11 @@
     }
   },
   "mkt-skill-docs": {
-    "overview": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án"
+    "overview": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án",
+    "flags": {
+      "--advice": "Trước khi viết hay sửa bất kỳ tài liệu nào, hỏi kongming xem nên giữ, cắt hay sắp xếp lại phần nào rồi mới làm; kongming chỉ tư vấn, skill này vẫn chịu trách nhiệm mọi thay đổi",
+      "--audit": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+    }
   },
   "mkt-skill-elevenlabs": {
     "overview": "Tạo giọng nói, nhân bản giọng, làm hiệu ứng âm thanh và nhạc bằng ElevenLabs API. Chuyển văn bản thành giọng nói (TTS), thiết kế giọng, tạo audio, agent AI hội thoại."
@@ -841,7 +910,17 @@
     "whenToUse": "Soạn nội dung email (bản tin, email chào hàng, ra mắt, nuôi dưỡng, chào mừng, kéo khách quay lại). Thiết kế luồng email tự động. Tạo chuỗi email nuôi dưỡng. Tối ưu tiêu đề email. Cách để email không rơi vào spam."
   },
   "mkt-skill-fix": {
-    "overview": "Sửa lỗi, lỗi build, test fail và trục trặc CI/CD, tự chọn hướng xử lý phù hợp. Dùng khi báo lỗi, lỗi kiểu dữ liệu, lỗi trong log, lỗi giao diện hoặc code có vấn đề. Tự đánh giá độ khó và bật các skill liên quan."
+    "overview": "Sửa lỗi, lỗi build, test fail và trục trặc CI/CD, tự chọn hướng xử lý phù hợp. Dùng khi báo lỗi, lỗi kiểu dữ liệu, lỗi trong log, lỗi giao diện hoặc code có vấn đề. Tự đánh giá độ khó và bật các skill liên quan.",
+    "flags": {
+      "--auto": "Bật chế độ tự động (mặc định)",
+      "--review": "Bật chế độ có người rà soát từng bước",
+      "--quick": "Bật chế độ sửa nhanh",
+      "--parallel": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song",
+      "--advice": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
+    }
+  },
+  "mkt-skill-folder-context": {
+    "overview": "Tạo một file CLAUDE.md gọn cho thư mục con kèm AGENTS.md liên kết, để giữ các quy ước riêng của thư mục đó lâu dài. Dùng khi một thư mục cần ngữ cảnh riêng cho AI, ngoài phần đã khai báo ở gốc dự án."
   },
   "mkt-skill-form-cro": {
     "overview": "Dùng khi muốn tối ưu bất kỳ form nào KHÔNG phải form đăng ký tài khoản — gồm form thu thập khách tiềm năng, form liên hệ, form đặt lịch demo, form đăng ký hồ sơ, form khảo sát, hay form thanh toán. Cũng dùng khi bạn nhắc tới \"tối ưu form\", \"tăng chuyển đổi form thu lead\", \"form gây khó chịu\", \"các trường trong form\", \"tỉ lệ điền xong form\" hoặc \"form liên hệ\". Với form đăng ký tài khoản, xem signup-flow-cro. Với popup có chứa form, xem popup-cro.",
@@ -863,11 +942,17 @@
     "overview": "Xây AI agent bằng Google ADK Python. Hệ đa agent, tích hợp công cụ, điều phối quy trình.",
     "whenToUse": "Dùng skill này khi cần: Xây AI agent có tích hợp công cụ và khả năng điều phối. Tạo hệ đa agent có phân cấp phối hợp. Làm agent quy trình (tuần tự, song song, vòng lặp) cho các pipeline đoán trước được. Kết nối agent chạy bằng LLM với Google Search, Code Execution hoặc công cụ tự viết. Triển khai agent lên Vertex AI Agent Engine, Cloud Run hoặc hạ tầng riêng. Đánh giá và kiểm thử hiệu quả của agent một cách có hệ thống. Làm luồng cần người duyệt trước khi agent chạy công cụ."
   },
+  "mkt-skill-handoff": {
+    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc."
+  },
   "mkt-skill-hub": {
     "overview": "Mở Content Hub + Dashboard marketing"
   },
   "mkt-skill-init": {
     "overview": "💡💡💡💡 Khởi tạo dự án marketing"
+  },
+  "mkt-skill-interview-docs": {
+    "overview": "Khai thác tầm nhìn và các quyết định của bạn thành tài liệu dự án dùng được lâu dài, thông qua một cuộc phỏng vấn có dẫn dắt. Dùng cho README, ADR, tài liệu chiến lược, nguyên tắc làm việc và các tài liệu có cấu trúc."
   },
   "mkt-skill-journal": {
     "overview": "💡 Viết vài dòng nhật ký làm việc."
@@ -920,7 +1005,14 @@
     "overview": "Nhạc trưởng cho playbook marketing: định tuyến theo đồ thị phụ thuộc, có cổng chất lượng, theo dõi mục tiêu và gợi ý thông minh. Chiến lược của chuyên gia × tốc độ thực thi của AI. Kích hoạt bằng: /ak:play, playbook, campaign playbook, what's next, play status."
   },
   "mkt-skill-preview": {
-    "overview": "Đường dẫn tới file markdown, thư mục kế hoạch, hoặc bộ sưu tập kế hoạch"
+    "overview": "Đường dẫn tới file markdown, thư mục kế hoạch, hoặc bộ sưu tập kế hoạch",
+    "flags": {
+      "--explain": "Tạo phần giải thích trực quan",
+      "--slides": "Tạo bộ slide trình bày",
+      "--diagram": "Vẽ sơ đồ kiến trúc",
+      "--ascii": "Sơ đồ dạng ký tự, hợp để xem ngay trong terminal",
+      "--stop": "Tắt server xem trước"
+    }
   },
   "mkt-skill-pricing-strategy": {
     "overview": "Khi người dùng cần hỗ trợ về quyết định giá, đóng gói sản phẩm hoặc chiến lược kiếm tiền. Cũng dùng khi người dùng nhắc tới 'giá', 'các gói giá', 'freemium', 'dùng thử miễn phí', 'đóng gói', 'tăng giá', 'thước đo giá trị', 'Van Westendorp', 'mức sẵn lòng chi trả' hoặc 'monetization'. Skill này bao gồm nghiên cứu giá, cấu trúc gói và chiến lược đóng gói.",
@@ -928,6 +1020,9 @@
   },
   "mkt-skill-referral-program-building": {
     "overview": "Xây chương trình giới thiệu bạn bè cho sản phẩm SaaS/số. Bao gồm cách chia thưởng (hai chiều, theo bậc, nhiều bước), chọn nền tảng (Rewardful, ReferralCandy, Viral Loops, FirstPromoter), phần kỹ thuật (theo dõi, quy kết nguồn, cách gọi API), chống gian lận, mẫu email và các chỉ số KPI. Dùng để thiết kế vòng tăng trưởng lan truyền, làm tính năng giới thiệu bạn bè, hoặc tối ưu chương trình giới thiệu đang có."
+  },
+  "mkt-skill-research-prompt": {
+    "overview": "Soạn một bản đề bài nghiên cứu đầy đủ, tự thân đọc là hiểu, để giao cho một người hoặc một AI đi nghiên cứu. Dùng khi bạn cần viết yêu cầu nghiên cứu, chứ không phải tự mình thực hiện nghiên cứu đó."
   },
   "mkt-skill-scout": {
     "overview": "Dò mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom context cho công việc, tìm nhanh xuyên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
@@ -982,7 +1077,11 @@
       "--prefix": "Loại nhánh: feat|fix|refactor|docs|test|chore|perf",
       "--env": "Danh sách file .env cần copy, ngăn cách bằng dấu phẩy",
       "--json": "Xuất JSON để dễ xử lý tiếp",
-      "--dry-run": "Xem trước, không thực thi"
+      "--dry-run": "Xem trước, không thực thi",
+      "--base": "Chỉ định nhánh gốc thay vì để tự dò (mặc định dò theo thứ tự dev → develop → main → master)",
+      "--checkout-submodules": "Sau khi tạo worktree mới thì chạy git submodule update --init --checkout --recursive trong đó",
+      "--no-prefix": "Bỏ tiền tố tên nhánh, giữ nguyên chữ hoa/thường và dấu gạch chéo (hợp với mã Jira hay nhánh nhiều tầng)",
+      "--worktree-root": "Đổi vị trí đặt worktree so với mặc định (chỉ dùng khi cần)"
     }
   },
   "mkt-skill-write": {

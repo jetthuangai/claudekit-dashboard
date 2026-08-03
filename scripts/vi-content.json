@@ -119,6 +119,10 @@
     "descVi": "Rà soát chất lượng code chặt chẽ, có dẫn chứng — tìm bug, lỗi hồi quy, chỗ khó bảo trì.",
     "whenToUseVi": "Dùng sau khi viết xong tính năng, trước khi tạo PR, hoặc muốn đánh giá chất lượng code."
   },
+  "eng-skill-codex-goal": {
+    "descVi": "Hướng dẫn chạy mục tiêu dài hơi trong Codex, có điều kiện dừng kiểm chứng được.",
+    "whenToUseVi": "Dùng khi chạy /goal của Codex cho mục tiêu nhiều lượt, cần chốt rõ khi nào coi là xong."
+  },
   "eng-skill-coding-level": {
     "descVi": "Chỉnh mức độ giải thích của AI theo trình độ của bạn.",
     "whenToUseVi": "Dùng khi muốn câu trả lời chi tiết hơn (người mới) hoặc gọn hơn (chuyên gia)."
@@ -150,6 +154,10 @@
   "eng-skill-debug": {
     "descVi": "Gỡ lỗi bài bản: tìm nguyên nhân gốc trước khi sửa.",
     "whenToUseVi": "Dùng khi gặp bug, test lỗi, web chạy sai, chậm, hoặc lỗi khi triển khai."
+  },
+  "eng-skill-deep-swe": {
+    "descVi": "Chấm điểm khả năng code của một model bằng benchmark DeepSWE qua Pier và OpenRouter.",
+    "whenToUseVi": "Dùng khi muốn đo và so sánh năng lực code của các model. Lưu ý: chạy qua dịch vụ ngoài nên tốn phí."
   },
   "eng-skill-deploy": {
     "descVi": "Đưa web lên mạng: tự nhận diện nền tảng phù hợp và triển khai giúp bạn.",
@@ -191,6 +199,10 @@
     "descVi": "Sửa lỗi tự động: bạn mô tả vấn đề, AI tự tìm nguyên nhân và vá lỗi cho bạn.",
     "whenToUseVi": "Dùng khi web/app báo lỗi, test fail, hoặc CI đỏ. Với lỗi khó truy vết, dùng thêm /ak:debug."
   },
+  "eng-skill-folder-context": {
+    "descVi": "Tạo file CLAUDE.md gọn cho một thư mục con, kèm AGENTS.md liên kết.",
+    "whenToUseVi": "Dùng khi một thư mục con có quy ước riêng cần AI nhớ, khác với gốc dự án."
+  },
   "eng-skill-frontend-design": {
     "descVi": "Dựng giao diện đẹp, tinh tế từ ảnh thiết kế/chụp màn hình/video.",
     "whenToUseVi": "Dùng khi độ đẹp và giống thiết kế là ưu tiên số một."
@@ -207,6 +219,10 @@
     "descVi": "Phân tích code theo ngữ nghĩa: tìm nơi dùng hàm, đánh giá tác động sửa đổi.",
     "whenToUseVi": "Dùng khi cần biết \"sửa chỗ này ảnh hưởng đâu\" trong codebase lớn."
   },
+  "eng-skill-goal-warmup": {
+    "descVi": "Chuẩn bị trước khi chạy /goal dài hơi: chốt kết quả mong muốn rồi mới cho chạy.",
+    "whenToUseVi": "Dùng trước các phiên chạy tự động dài, để khóa mục tiêu và tránh lệch phạm vi giữa chừng."
+  },
   "eng-skill-google-adk-python": {
     "descVi": "Xây AI agent bằng Google ADK Python: đa agent, công cụ MCP, deploy Vertex.",
     "whenToUseVi": "Dùng khi làm hệ thống agent trên hệ sinh thái Google."
@@ -215,6 +231,10 @@
     "descVi": "Dựng bản đồ tri thức tra cứu được từ code, tài liệu, bài báo và hình ảnh.",
     "whenToUseVi": "Dùng khi cần hiểu nhanh một dự án lạ, tìm mối liên hệ giữa các file."
   },
+  "eng-skill-handoff": {
+    "descVi": "Tóm tắt cuộc trò chuyện thành bản bàn giao gọn, đã lược thông tin nhạy cảm.",
+    "whenToUseVi": "Dùng khi kết thúc phiên làm việc hoặc mở phiên mới, cần giữ lại quyết định và vướng mắc."
+  },
   "eng-skill-help": {
     "descVi": "Mở mục trợ giúp của AgentKit.",
     "whenToUseVi": "Dùng khi muốn biết ak có gì, có skill nào, hoặc nên chạy quy trình nào."
@@ -222,6 +242,10 @@
   "eng-skill-html-video": {
     "descVi": "Tạo video MP4 từ template HTML/CSS/JS, render ngay trên máy.",
     "whenToUseVi": "Dùng cho video quảng bá, giải thích, clip mạng xã hội từ template web."
+  },
+  "eng-skill-interview-docs": {
+    "descVi": "Phỏng vấn bạn từng câu để biến ý tưởng và quyết định thành tài liệu dự án.",
+    "whenToUseVi": "Dùng khi muốn tài liệu viết đúng ý bạn, không phải do AI tự suy diễn ra."
   },
   "eng-skill-issue-to-plan": {
     "descVi": "Biến một issue GitHub thành kế hoạch triển khai đã được thẩm định, kiểm chứng.",
@@ -314,6 +338,10 @@
   "eng-skill-research": {
     "descVi": "Nghiên cứu kỹ thuật sâu: đánh giá công nghệ, best practice, kiến trúc.",
     "whenToUseVi": "Dùng trước quyết định công nghệ quan trọng hoặc thiết kế giải pháp."
+  },
+  "eng-skill-research-prompt": {
+    "descVi": "Soạn đề bài nghiên cứu đầy đủ để giao cho người khác hoặc cho AI làm.",
+    "whenToUseVi": "Dùng khi cần viết yêu cầu nghiên cứu rõ ràng, chứ không phải tự đi nghiên cứu."
   },
   "eng-skill-retro": {
     "descVi": "Tổng kết sprint từ lịch sử git: tốc độ, sức khoẻ code, xu hướng.",
@@ -623,6 +651,10 @@
     "descVi": "Giải đáp về Claude Code: cài đặt, lệnh slash, cấu hình.",
     "whenToUseVi": "Dùng khi thắc mắc cách dùng chính công cụ Claude Code."
   },
+  "mkt-skill-codex-goal": {
+    "descVi": "Hướng dẫn chạy mục tiêu dài hơi trong Codex, có điều kiện dừng kiểm chứng được.",
+    "whenToUseVi": "Dùng khi chạy /goal của Codex cho mục tiêu nhiều lượt, cần chốt rõ khi nào coi là xong."
+  },
   "mkt-skill-competitor": {
     "descVi": "Phân tích đối thủ: trang so sánh, nội dung SEO cạnh tranh.",
     "whenToUseVi": "Dùng khi muốn biết đối thủ đang làm gì và viết trang \"vs/alternative\"."
@@ -675,6 +707,10 @@
     "descVi": "Sửa lỗi tự động với định tuyến thông minh.",
     "whenToUseVi": "Dùng khi công cụ báo lỗi, test fail, CI đỏ."
   },
+  "mkt-skill-folder-context": {
+    "descVi": "Tạo file CLAUDE.md gọn cho một thư mục con, kèm AGENTS.md liên kết.",
+    "whenToUseVi": "Dùng khi một thư mục con có quy ước riêng cần AI nhớ, khác với gốc dự án."
+  },
   "mkt-skill-form-cro": {
     "descVi": "Tối ưu form (khảo sát, liên hệ, thanh toán) để tăng tỉ lệ hoàn thành.",
     "whenToUseVi": "Dùng khi form bị bỏ dở nhiều — trừ form đăng ký (có skill riêng)."
@@ -699,6 +735,10 @@
     "descVi": "Xây AI agent bằng Google ADK Python.",
     "whenToUseVi": "Dùng khi tự động hoá marketing bằng agent trên nền Google."
   },
+  "mkt-skill-handoff": {
+    "descVi": "Tóm tắt cuộc trò chuyện thành bản bàn giao gọn, đã lược thông tin nhạy cảm.",
+    "whenToUseVi": "Dùng khi kết thúc phiên làm việc hoặc mở phiên mới, cần giữ lại quyết định và vướng mắc."
+  },
   "mkt-skill-hub": {
     "descVi": "Mở Content Hub + Marketing Dashboard cùng lúc.",
     "whenToUseVi": "Dùng khi muốn vào nhanh trung tâm quản lý content và chiến dịch."
@@ -706,6 +746,10 @@
   "mkt-skill-init": {
     "descVi": "Khởi tạo dự án marketing: cấu trúc, brand, tài liệu nền.",
     "whenToUseVi": "Chạy một lần khi bắt đầu dùng bộ kit cho dự án/thương hiệu mới."
+  },
+  "mkt-skill-interview-docs": {
+    "descVi": "Phỏng vấn bạn từng câu để biến ý tưởng và quyết định thành tài liệu dự án.",
+    "whenToUseVi": "Dùng khi muốn tài liệu viết đúng ý bạn, không phải do AI tự suy diễn ra."
   },
   "mkt-skill-journal": {
     "descVi": "Ghi nhật ký công việc marketing của phiên.",
@@ -778,6 +822,10 @@
   "mkt-skill-referral-program-building": {
     "descVi": "Xây chương trình giới thiệu (referral) cho SaaS/sản phẩm số.",
     "whenToUseVi": "Dùng khi muốn khách cũ kéo khách mới có thưởng."
+  },
+  "mkt-skill-research-prompt": {
+    "descVi": "Soạn đề bài nghiên cứu đầy đủ để giao cho người khác hoặc cho AI làm.",
+    "whenToUseVi": "Dùng khi cần viết yêu cầu nghiên cứu rõ ràng, chứ không phải tự đi nghiên cứu."
   },
   "mkt-skill-scout": {
     "descVi": "Trinh sát codebase nhanh bằng agent song song.",

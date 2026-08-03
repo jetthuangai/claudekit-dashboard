@@ -139,23 +139,23 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--html",
-        "desc": "Spawn the ui-ux-designer subagent to create a self-contained visualized HTML report of the final advice"
+        "desc": "Gọi subagent ui-ux-designer dựng một trang HTML tự chứa, trình bày trực quan phần tư vấn cuối cùng"
       },
       {
         "flag": "--md",
-        "desc": "Spawn the docs-manager subagent to create a structured markdown report"
+        "desc": "Gọi subagent docs-manager viết báo cáo markdown có cấu trúc"
       },
       {
         "flag": "--wiki",
-        "desc": "Spawn the docs-manager subagent to publish the HTML/MD report to AgentWiki when available"
+        "desc": "Gọi subagent docs-manager đăng báo cáo HTML/MD lên AgentWiki khi có sẵn"
       },
       {
         "flag": "--github",
-        "desc": "Spawn the git-manager subagent to reply directly to the source GitHub issue, or create a new GitHub issue when no source issue exists"
+        "desc": "Gọi subagent git-manager trả lời thẳng vào GitHub issue gốc, hoặc tạo issue mới nếu chưa có issue nào"
       },
       {
         "flag": "--agent",
-        "desc": "Delegate the whole workflow to the advisor subagent (runs on the fable model in isolated context). The main session becomes an orchestrator that relays each interview question back to the user via the ask_user capabilit…"
+        "desc": "Giao trọn quy trình cho subagent advisor (chạy model fable trong ngữ cảnh riêng); phiên chính chỉ làm nhiệm vụ chuyển câu hỏi phỏng vấn qua lại với bạn"
       }
     ],
     "examples": []
@@ -298,9 +298,15 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--pending",
-        "desc": "Pending"
+        "desc": "Soát phần đang làm dở: cả thay đổi đã stage lẫn chưa stage, lấy qua git diff"
       }
     ],
+    "examples": []
+  },
+  "eng-skill-codex-goal": {
+    "overview": "Hướng dẫn chạy công việc mục tiêu dài hơi trong Codex với một điều kiện dừng kiểm chứng được. Dùng khi bạn nhắc tới /goal, chế độ goal, mục tiêu bền vững, hoặc các phiên Codex tự chạy qua nhiều lượt.",
+    "whenToUse": "",
+    "flags": [],
     "examples": []
   },
   "eng-skill-coding-level": {
@@ -348,6 +354,10 @@ window.CK_DETAILS = {
       {
         "flag": "--tdd",
         "desc": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước đã"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
       }
     ],
     "examples": [
@@ -384,6 +394,12 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "eng-skill-deep-swe": {
+    "overview": "Chấm điểm một model lập trình trên bộ benchmark DeepSWE thông qua Pier và OpenRouter. Dùng khi bạn muốn chạy DeepSWE, chấm điểm một model, hoặc kiểm chứng lại kết quả benchmark của một coding agent.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "eng-skill-deploy": {
     "overview": "Triển khai dự án lên bất kỳ nền tảng nào, tự nhận diện nơi cần đưa lên. Dùng khi bạn nói \"deploy\", \"publish\", \"ship\", \"go live\", \"đẩy lên production\", \"host app này\", hoặc nhắc tới bất kỳ nền tảng hosting nào (Vercel, Netlify, Cloudflare, Railway, Fly.io, Render, Heroku, TOSE, Github Pages, AWS, GCP, Digital Ocean, Vultr, Coolify, Dokploy). Tự dò đích triển khai từ file cấu hình và docs/deployment.md.",
     "whenToUse": "",
@@ -405,7 +421,16 @@ window.CK_DETAILS = {
   "eng-skill-docs": {
     "overview": "Phân tích mã nguồn và quản lý tài liệu dự án. Dùng để khởi tạo tài liệu, cập nhật, tóm tắt và phân tích mã nguồn.",
     "whenToUse": "",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--advice",
+        "desc": "Trước khi viết hay sửa bất kỳ tài liệu nào, hỏi kongming xem nên giữ, cắt hay sắp xếp lại phần nào rồi mới làm; kongming chỉ tư vấn, skill này vẫn chịu trách nhiệm mọi thay đổi"
+      },
+      {
+        "flag": "--audit",
+        "desc": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+      }
+    ],
     "examples": []
   },
   "eng-skill-docs-seeker": {
@@ -457,8 +482,18 @@ window.CK_DETAILS = {
       {
         "flag": "--parallel",
         "desc": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
       }
     ],
+    "examples": []
+  },
+  "eng-skill-folder-context": {
+    "overview": "Tạo một file CLAUDE.md gọn cho thư mục con kèm AGENTS.md liên kết, để giữ các quy ước riêng của thư mục đó lâu dài. Dùng khi một thư mục cần ngữ cảnh riêng cho AI, ngoài phần đã khai báo ở gốc dự án.",
+    "whenToUse": "",
+    "flags": [],
     "examples": []
   },
   "eng-skill-frontend-design": {
@@ -485,6 +520,17 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "eng-skill-goal-warmup": {
+    "overview": "Bước chuẩn bị khóa-kết-quả trước các phiên /goal dài hơi hoặc các phiên chạy tự động. Phỏng vấn để chốt một bản cam kết kết quả được bạn duyệt, lập kế hoạch không lệch phạm vi ngầm, rà soát để giữ đúng cam kết, lập bảng kiểm tra trước cho toàn kế hoạch, rồi bàn giao ở trạng thái Sẵn sàng / Bị chặn / Cần quyết định. Không bao giờ tự động khởi chạy /goal.",
+    "whenToUse": "",
+    "flags": [
+      {
+        "flag": "--fast",
+        "desc": "Bỏ bước phản biện tốn kém — chỉ khi việc đủ điều kiện và bạn chấp nhận mức đảm bảo thấp hơn"
+      }
+    ],
+    "examples": []
+  },
   "eng-skill-google-adk-python": {
     "overview": "Xây AI agent bằng Google ADK Python. Hệ đa agent, giao thức A2A, công cụ MCP, agent theo quy trình, trạng thái/bộ nhớ, callback/plugin, triển khai lên Vertex AI, đánh giá.",
     "whenToUse": "",
@@ -499,6 +545,12 @@ window.CK_DETAILS = {
       "/ak:scout \"auth module\" # find specific files"
     ]
   },
+  "eng-skill-handoff": {
+    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "eng-skill-help": {
     "overview": "Mở mục trợ giúp của AgentKit. Dùng khi bạn muốn biết cách dùng ak, có những skill nào, hoặc nên chạy quy trình nào.",
     "whenToUse": "",
@@ -507,6 +559,12 @@ window.CK_DETAILS = {
   },
   "eng-skill-html-video": {
     "overview": "Tạo video MP4 ngay trên máy từ template HTML/CSS/JS bằng nexu-io/html-video. Gồm cài đặt mã nguồn, tìm template, tuỳ biến studio, xem trước và kiểm tra bản render.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-interview-docs": {
+    "overview": "Khai thác tầm nhìn và các quyết định của bạn thành tài liệu dự án dùng được lâu dài, thông qua một cuộc phỏng vấn có dẫn dắt. Dùng cho README, ADR, tài liệu chiến lược, nguyên tắc làm việc và các tài liệu có cấu trúc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -630,47 +688,51 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--auto",
-        "desc": "Auto-detect"
+        "desc": "Tự chọn chế độ lập kế hoạch theo độ phức tạp của việc (mặc định)"
       },
       {
         "flag": "--fast",
-        "desc": "Fast"
+        "desc": "Chế độ nhanh: bỏ nghiên cứu, bỏ phản biện, bỏ kiểm duyệt kế hoạch"
       },
       {
         "flag": "--hard",
-        "desc": "Hard"
+        "desc": "Chế độ kỹ: 2 agent nghiên cứu, có phản biện, kiểm duyệt tùy chọn"
       },
       {
         "flag": "--deep",
-        "desc": "Deep"
+        "desc": "Chế độ sâu nhất: 2-3 agent nghiên cứu kèm scout từng phase, có cả phản biện lẫn kiểm duyệt"
       },
       {
         "flag": "--parallel",
-        "desc": "Parallel"
+        "desc": "Chế độ song song: 2 agent nghiên cứu, có phản biện, và chuyển tiếp cờ --parallel sang bước cook"
       },
       {
         "flag": "--two",
-        "desc": "Two approaches"
+        "desc": "Vạch 2 hướng làm để bạn chọn; phản biện và kiểm duyệt chạy sau khi bạn chốt hướng"
       },
       {
         "flag": "--tdd",
-        "desc": "Add tests-first structure to each phase for regression-safe refactors"
+        "desc": "Thêm cấu trúc viết test trước cho từng phase, để refactor không sợ hỏng chỗ khác"
       },
       {
         "flag": "--no-tasks",
-        "desc": "Skip task hydration"
+        "desc": "Bỏ bước tạo danh sách task"
       },
       {
         "flag": "--html",
-        "desc": "Output a self-contained editorial interactive HTML plan with visible phase outlines, markdown detail modals, and optional generated watercolor technical sketch imagery"
+        "desc": "Xuất kế hoạch thành một trang HTML tự chứa, tương tác được: xem dàn ý từng phase, mở chi tiết dạng markdown, kèm hình minh họa kỹ thuật vẽ màu nước nếu cần"
       },
       {
         "flag": "--github",
-        "desc": "Create or update a GitHub issue after plan validation with branch, summary, plan links, open questions, and ready to review"
+        "desc": "Tạo hoặc cập nhật GitHub issue sau khi kế hoạch được duyệt, kèm nhánh, tóm tắt, link kế hoạch, các câu hỏi còn treo và trạng thái sẵn sàng review"
       },
       {
         "flag": "--wiki",
-        "desc": "Publish the final reviewed plan docs or HTML artifact to AgentWiki via CLI or MCP when available"
+        "desc": "Đăng bản kế hoạch cuối (tài liệu hoặc trang HTML) lên AgentWiki qua CLI hoặc MCP khi có sẵn"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory Supervision Mode)"
       }
     ],
     "examples": []
@@ -678,16 +740,7 @@ window.CK_DETAILS = {
   "eng-skill-plans-kanban": {
     "overview": "Mở dashboard kế hoạch của AgentKit trong giao diện cấu hình CLI. Dùng để xem kế hoạch dạng kanban, theo dõi tiến độ, kiểm tra dòng thời gian và mở nhanh các file kế hoạch.",
     "whenToUse": "",
-    "flags": [
-      {
-        "flag": "--stop",
-        "desc": "Dừng tiến trình dashboard nếu nó do plans-kanban khởi động; nếu không thì in hướng dẫn tự tắt thủ công."
-      },
-      {
-        "flag": "--open",
-        "desc": "Vẫn chấp nhận cờ này. Giờ mở dashboard đã là hành vi mặc định."
-      }
-    ],
+    "flags": [],
     "examples": []
   },
   "eng-skill-predict": {
@@ -772,6 +825,12 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "eng-skill-research-prompt": {
+    "overview": "Soạn một bản đề bài nghiên cứu đầy đủ, tự thân đọc là hiểu, để giao cho một người hoặc một AI đi nghiên cứu. Dùng khi bạn cần viết yêu cầu nghiên cứu, chứ không phải tự mình thực hiện nghiên cứu đó.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "eng-skill-retro": {
     "overview": "Tạo bản tổng kết sprint dựa trên dữ liệu từ lịch sử git. Dùng để review sprint, phân tích commit, đánh giá sức khoẻ mã nguồn, báo cáo tốc độ làm việc của team và tổng kết kỹ thuật theo quý. Chạy được cho cả repo cá nhân lẫn repo team.",
     "whenToUse": "",
@@ -799,11 +858,11 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--iterations",
-        "desc": "stop after N iterations"
+        "desc": "Dừng sau N vòng lặp"
       },
       {
         "flag": "--saturation",
-        "desc": "stop when 2 consecutive iterations produce zero New classifications"
+        "desc": "Dừng khi 2 vòng liên tiếp không tìm thêm được tình huống mới nào"
       }
     ],
     "examples": [
@@ -1019,6 +1078,14 @@ window.CK_DETAILS = {
       {
         "flag": "--ship",
         "desc": "Sau bước review/fix/reply, merge PR rồi theo dõi và sửa CI cho tới khi xanh hoặc gặp rào cản thật sự từ bên ngoài."
+      },
+      {
+        "flag": "--both",
+        "desc": "Ship hai chặng: chạy trọn chặng beta trước (ship, review, merge, theo dõi CI tới khi xanh), rồi tới chặng ổn định (ship chính thức, review, merge, theo dõi CI tới khi xanh). Tự bật --ship cho cả hai chặng và ghi đè --beta."
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy cả quy trình dưới sự cố vấn của kongming (xem mục Advisory supervision). Kết hợp được với mọi chế độ ship."
       }
     ],
     "examples": [
@@ -1351,11 +1418,7 @@ window.CK_DETAILS = {
     "overview": "Dùng agent này khi cần tìm nhanh các file liên quan trong một mã nguồn lớn để làm một việc cụ thể, bằng công cụ agent bên ngoài (Gemini, OpenCode...). Nên chủ động dùng agent này khi: bắt đầu làm một tính năng trải rộng nhiều thư mục; người dùng nói cần \"tìm\", \"định vị\" hoặc \"tra\" file; bắt đầu một phiên gỡ lỗi cần hiểu quan hệ giữa các file; người dùng hỏi về cấu trúc dự án hoặc một chức năng nằm ở đâu; trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
     "whenToUse": "",
     "flags": [],
-    "examples": [
-      "Tôi cần thêm Stripe làm cổng thanh toán mới. Giúp tôi tìm hết các file liên quan nhé?",
-      "Luồng đăng nhập đang có lỗi. Tôi cần xem lại toàn bộ file liên quan tới xác thực.",
-      "Dự án này tổ chức các bản migration database như thế nào?"
-    ]
+    "examples": []
   },
   "mkt-agent-seo-specialist": {
     "overview": "Dùng agent này để rà soát và tối ưu SEO. Bao gồm audit SEO kỹ thuật, tối ưu nội dung, phân tích từ khoá, chiến lược xây liên kết, sinh JSON+LD và phân tích SEO đối thủ.",
@@ -1512,6 +1575,12 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "mkt-skill-codex-goal": {
+    "overview": "Hướng dẫn chạy công việc mục tiêu dài hơi trong Codex với một điều kiện dừng kiểm chứng được. Dùng khi bạn nhắc tới /goal, chế độ goal, mục tiêu bền vững, hoặc các phiên Codex tự chạy qua nhiều lượt.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "mkt-skill-competitor": {
     "overview": "Phân tích đối thủ, làm trang \"giải pháp thay thế\", trang so sánh, nội dung SEO đấu đối thủ, định vị thị trường và làm battlecard cho sales.",
     "whenToUse": "Phân tích website và cách định vị của đối thủ. So sánh khoảng trống nội dung với đối thủ. So sánh SEO với đối thủ. Làm trang thay thế/so sánh với đối thủ. Tạo battlecard cho sales. Theo dõi đối thủ.",
@@ -1562,7 +1631,11 @@ window.CK_DETAILS = {
       },
       {
         "flag": "--tdd",
-        "desc": "Tests-first per phase — write tests for current behavior before"
+        "desc": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước khi refactor, xong bước code thì chạy lại để chắc vẫn đúng"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
       }
     ],
     "examples": [
@@ -1613,7 +1686,16 @@ window.CK_DETAILS = {
   "mkt-skill-docs": {
     "overview": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án",
     "whenToUse": "",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--advice",
+        "desc": "Trước khi viết hay sửa bất kỳ tài liệu nào, hỏi kongming xem nên giữ, cắt hay sắp xếp lại phần nào rồi mới làm; kongming chỉ tư vấn, skill này vẫn chịu trách nhiệm mọi thay đổi"
+      },
+      {
+        "flag": "--audit",
+        "desc": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+      }
+    ],
     "examples": []
   },
   "mkt-skill-elevenlabs": {
@@ -1634,21 +1716,31 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--auto",
-        "desc": "Activate autonomous mode (default)"
+        "desc": "Bật chế độ tự động (mặc định)"
       },
       {
         "flag": "--review",
-        "desc": "Activate human-in-the-loop review mode"
+        "desc": "Bật chế độ có người rà soát từng bước"
       },
       {
         "flag": "--quick",
-        "desc": "Activate quick mode"
+        "desc": "Bật chế độ sửa nhanh"
       },
       {
         "flag": "--parallel",
-        "desc": "Activate parallel mode: route to parallel fullstack-developer agents per issue"
+        "desc": "Bật chế độ song song: giao mỗi lỗi cho một agent fullstack-developer chạy song song"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
       }
     ],
+    "examples": []
+  },
+  "mkt-skill-folder-context": {
+    "overview": "Tạo một file CLAUDE.md gọn cho thư mục con kèm AGENTS.md liên kết, để giữ các quy ước riêng của thư mục đó lâu dài. Dùng khi một thư mục cần ngữ cảnh riêng cho AI, ngoài phần đã khai báo ở gốc dự án.",
+    "whenToUse": "",
+    "flags": [],
     "examples": []
   },
   "mkt-skill-form-cro": {
@@ -1692,6 +1784,12 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "mkt-skill-handoff": {
+    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "mkt-skill-hub": {
     "overview": "Mở Content Hub + Dashboard marketing",
     "whenToUse": "",
@@ -1704,6 +1802,12 @@ window.CK_DETAILS = {
   },
   "mkt-skill-init": {
     "overview": "💡💡💡💡 Khởi tạo dự án marketing",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-interview-docs": {
+    "overview": "Khai thác tầm nhìn và các quyết định của bạn thành tài liệu dự án dùng được lâu dài, thông qua một cuộc phỏng vấn có dẫn dắt. Dùng cho README, ADR, tài liệu chiến lược, nguyên tắc làm việc và các tài liệu có cấu trúc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1736,9 +1840,7 @@ window.CK_DETAILS = {
     "overview": "Trung tâm điều hành marketing chạy ngay trên máy, dành cho người làm một mình. Quản lý chiến dịch, nội dung và tài sản hình ảnh, có Claude Code tự động hoá bằng AI.",
     "whenToUse": "",
     "flags": [],
-    "examples": [
-      "/marketing:dashboard"
-    ]
+    "examples": []
   },
   "mkt-skill-marketing-ideas": {
     "overview": "Dùng khi bạn cần ý tưởng, cảm hứng hoặc chiến lược marketing cho sản phẩm SaaS/phần mềm của mình. Cũng dùng khi bạn hỏi 'ý tưởng marketing', 'ý tưởng tăng trưởng', 'marketing kiểu gì', 'chiến lược marketing', 'chiến thuật marketing', 'cách quảng bá' hay 'ý tưởng để phát triển'. Skill này đưa ra 140 cách làm marketing đã được kiểm chứng, sắp xếp theo nhóm.",
@@ -1811,23 +1913,23 @@ window.CK_DETAILS = {
     "flags": [
       {
         "flag": "--explain",
-        "desc": "Generate visual explanation"
+        "desc": "Tạo phần giải thích trực quan"
       },
       {
         "flag": "--slides",
-        "desc": "Generate presentation slides"
+        "desc": "Tạo bộ slide trình bày"
       },
       {
         "flag": "--diagram",
-        "desc": "Generate architecture diagram"
+        "desc": "Vẽ sơ đồ kiến trúc"
       },
       {
         "flag": "--ascii",
-        "desc": "Terminal-friendly diagram"
+        "desc": "Sơ đồ dạng ký tự, hợp để xem ngay trong terminal"
       },
       {
         "flag": "--stop",
-        "desc": "Stop preview server"
+        "desc": "Tắt server xem trước"
       }
     ],
     "examples": []
@@ -1840,6 +1942,12 @@ window.CK_DETAILS = {
   },
   "mkt-skill-referral-program-building": {
     "overview": "Xây chương trình giới thiệu bạn bè cho sản phẩm SaaS/số. Bao gồm cách chia thưởng (hai chiều, theo bậc, nhiều bước), chọn nền tảng (Rewardful, ReferralCandy, Viral Loops, FirstPromoter), phần kỹ thuật (theo dõi, quy kết nguồn, cách gọi API), chống gian lận, mẫu email và các chỉ số KPI. Dùng để thiết kế vòng tăng trưởng lan truyền, làm tính năng giới thiệu bạn bè, hoặc tối ưu chương trình giới thiệu đang có.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-research-prompt": {
+    "overview": "Soạn một bản đề bài nghiên cứu đầy đủ, tự thân đọc là hiểu, để giao cho một người hoặc một AI đi nghiên cứu. Dùng khi bạn cần viết yêu cầu nghiên cứu, chứ không phải tự mình thực hiện nghiên cứu đó.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1932,19 +2040,19 @@ window.CK_DETAILS = {
       },
       {
         "flag": "--base",
-        "desc": "Override auto-detected base branch (default: dev→develop→main→master)"
+        "desc": "Chỉ định nhánh gốc thay vì để tự dò (mặc định dò theo thứ tự dev → develop → main → master)"
       },
       {
         "flag": "--checkout-submodules",
-        "desc": "Run git submodule update --init --checkout --recursive in the new worktree after create"
+        "desc": "Sau khi tạo worktree mới thì chạy git submodule update --init --checkout --recursive trong đó"
       },
       {
         "flag": "--no-prefix",
-        "desc": "Skip branch prefix and preserve original case and slashes (for Jira keys, multi-segment branches like user/type/feature)"
+        "desc": "Bỏ tiền tố tên nhánh, giữ nguyên chữ hoa/thường và dấu gạch chéo (hợp với mã Jira hay nhánh nhiều tầng)"
       },
       {
         "flag": "--worktree-root",
-        "desc": "Override default location (only if needed)"
+        "desc": "Đổi vị trí đặt worktree so với mặc định (chỉ dùng khi cần)"
       },
       {
         "flag": "--json",
