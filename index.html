@@ -212,7 +212,8 @@ ak login --api-key &lt;API_KEY_CUA_BAN&gt;</code></pre>
         <pre><code>cd duong-dan-du-an-cua-ban
 ak kit init engineer --target claude-code
 ak kit init marketing --target claude-code   # nếu cần</code></pre>
-        <p>Muốn cài cho công cụ khác (ví dụ Codex) thì đổi <code>--target codex</code>.</p>
+        <p>Muốn dùng kit cho mọi dự án trên máy thì thêm <code>--global</code> (ví dụ <code>ak kit init engineer --target claude-code --global</code>). Cài cho công cụ khác (ví dụ Codex) thì đổi <code>--target codex</code>.</p>
+        <p class="guide-note">Dữ liệu dashboard đang theo <code>ak</code> 2.16.0 (bản ổn định). Xem tài liệu đầy đủ tại <a href="https://agentkit.best/docs" target="_blank" rel="noopener">agentkit.best/docs</a>; cập nhật CLI bằng <code>ak self-update</code>.</p>
       </li>
 
       <li class="guide-step">
@@ -234,7 +235,7 @@ cd claudekit-dashboard</code></pre>
           <li><b>Nhanh nhất:</b> bấm đúp mở <code>index.html</code> (cần internet lần đầu cho thư viện tìm kiếm).</li>
           <li><b>Ổn định hơn:</b> chạy server tĩnh rồi mở <code>http://localhost:8000</code> — <code>python -m http.server 8000</code> hoặc <code>npx serve .</code></li>
         </ul>
-        <p><b>Đưa lên mạng:</b> bật GitHub Pages (Settings → Pages → nhánh <code>main</code>, thư mục <code>/</code>). Cập nhật dữ liệu về sau: <code>ak kit init ... --build-only --out ../ak-kit-build</code> rồi <code>node scripts/build-data.mjs</code>.</p>
+        <p><b>Đưa lên mạng:</b> bật GitHub Pages (Settings → Pages → nhánh <code>main</code>, thư mục <code>/</code>). Cập nhật dữ liệu về sau: <code>ak kit init ... --remote --build-only --force --out &lt;đường-dẫn-tuyệt-đối&gt;/ak-kit-build</code> rồi <code>node scripts/build-data.mjs</code> (chi tiết trong README).</p>
         <p class="guide-note">Bản dashboard cũ (ClaudeKit) vẫn giữ ở link "Xem bản ClaudeKit cũ" dưới chân trang.</p>
       </li>
     </ol>

@@ -7,8 +7,8 @@ window.CK_DETAILS = {
     "whenToUse": "",
     "flags": [],
     "examples": [
-      "Should I build my own job queue or use an off-the-shelf one?",
-      "The requirements feel fuzzy — what should we actually build here?"
+      "Nên tự xây hàng đợi tác vụ (job queue) hay dùng giải pháp có sẵn?",
+      "Yêu cầu còn mơ hồ quá — rốt cuộc mình nên xây cái gì?"
     ]
   },
   "eng-agent-brainstormer": {
@@ -44,7 +44,7 @@ window.CK_DETAILS = {
     ]
   },
   "eng-agent-docs-manager": {
-    "overview": "Dùng agent này khi cần quản lý tài liệu kỹ thuật, đặt ra chuẩn triển khai, phân tích và cập nhật tài liệu cũ theo thay đổi của code, viết hoặc cập nhật tài liệu yêu cầu phát triển sản phẩm (PDR), sắp xếp tài liệu cho dev làm việc nhanh hơn, hoặc làm báo cáo tổng hợp tài liệu. Bao gồm các việc như rà soát cấu trúc tài liệu, đảm bảo tài liệu bám sát mã nguồn, viết tài liệu mới cho tính năng, và giữ mọi tài liệu kỹ thuật nhất quán với nhau.",
+    "overview": "Dùng agent này để tạo, đối chiếu hoặc rà soát tài liệu dự án có căn cứ, phục vụ cả người đọc lẫn AI cộng tác, không áp đặt một bố cục thư mục docs cố định, đồng thời tôn trọng lộ trình tài liệu mà repo hoặc bạn đã chỉ rõ.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -134,7 +134,7 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-advise": {
-    "overview": "Kỹ năng tư vấn dẫn dắt bằng phỏng vấn. Phân tích một yêu cầu hoặc URL (issue GitHub, tài liệu), rà soát mã nguồn, hỏi bạn từng câu một để định hình lại vấn đề thành yêu cầu và mục tiêu cụ thể, rồi đưa lời khuyên trung thực: nên làm gì, nên tránh gì, có phương án nào tốt hơn, lợi ích và đánh đổi ra sao.",
+    "overview": "Phỏng vấn để làm rõ yêu cầu hoặc phản biện một kế hoạch, rồi đưa lời khuyên kỹ thuật có bằng chứng. Dùng cho buổi tư vấn và xin ý kiến thứ hai; phần bắt tay làm thuộc về quy trình triển khai.",
     "whenToUse": "",
     "flags": [
       {
@@ -154,20 +154,28 @@ window.CK_DETAILS = {
         "desc": "Gọi subagent git-manager trả lời thẳng vào GitHub issue gốc, hoặc tạo issue mới nếu chưa có issue nào"
       },
       {
+        "flag": "--yagni",
+        "desc": "Bật chế độ YAGNI: phản biện và cắt phần phạm vi không cần cho mục tiêu (mặc định: tư vấn đủ phạm vi yêu cầu)"
+      },
+      {
         "flag": "--agent",
         "desc": "Giao trọn quy trình cho subagent advisor (chạy model fable trong ngữ cảnh riêng); phiên chính chỉ làm nhiệm vụ chuyển câu hỏi phỏng vấn qua lại với bạn"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Chế độ chọn-1-trong-5: phỏng vấn một lần, rồi 5 bản tư vấn độc lập được tạo và model mạnh nhất chọn bản tốt nhất"
       }
     ],
     "examples": []
   },
   "eng-skill-agent-browser": {
-    "overview": "Tự động hoá trình duyệt và ứng dụng bằng agent-browser. Dùng để test, chụp màn hình, điền form, thu thập dữ liệu, chạy Browserbase/trình duyệt trên cloud, và Electron — khi không cần cookie Chrome thật.",
+    "overview": "Tự động hoá trình duyệt do công cụ quản lý bằng agent-browser: chụp nhanh trang, bấm, điền form và test trên trình duyệt. Cần trạng thái tài khoản Chrome thật thì dùng chrome-profile.",
     "whenToUse": "Lựa chọn mặc định cho tự động hoá trình duyệt khi không phụ thuộc vào trạng thái đăng nhập Chrome thật của bạn: chạy tự động, điều hướng tuỳ ý, chụp màn hình, điền form, thu thập dữ liệu, làm việc nhiều tab, vòng lặp tự kiểm tra khi build, app desktop Electron, tự động hoá Slack, và trình duyệt Browserbase/cloud. Nếu cần chẩn đoán sâu ở tầng Chrome DevTools Protocol, hãy dùng cầu nối chrome-devtools-mcp hoặc client đã cấu hình sẵn nếu có. Cân nhắc trước: nếu việc không cần đúng một profile Chrome thật, Chrome DevTools MCP có thể dùng các công cụ điều hướng thông thường. Còn nếu cần trạng thái profile/cookie/tài khoản, hãy dùng ck:chrome-profile; để chrome-profile open --json mở tab và gắn vào selector nó trả về trước khi dùng các công cụ kiểm tra của MCP.",
     "flags": [],
     "examples": []
   },
   "eng-skill-agentize": {
-    "overview": "Biến mã nguồn, một tính năng hoặc một module thành công cụ CLI và/hoặc MCP server để AI dùng lại được. Bao gồm đóng gói npm, các giao diện stdio/SSE/Streamable HTTP, xử lý thông tin đăng nhập, tài liệu, test, CI, kèm một skill Claude đi cùng cho ai muốn phơi một khả năng có sẵn thành công cụ agent dùng lại được.",
+    "overview": "Đưa code hoặc API có sẵn ra thành CLI, MCP server, hoặc cả hai, để AI agent dùng được. Chọn hình thức và phạm vi triển khai dựa trên yêu cầu của bạn và dự án hiện có.",
     "whenToUse": "",
     "flags": [
       {
@@ -189,10 +197,22 @@ window.CK_DETAILS = {
       {
         "flag": "--ask",
         "desc": "phân tích xong sẽ hỏi lại bạn vài câu để chốt trước khi bắt tay làm"
+      },
+      {
+        "flag": "--yagni",
+        "desc": "Phản biện và cắt phần phạm vi không cần cho mục tiêu; truyền cờ xuống các subagent"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Phân tích/quyết định theo kiểu chọn 1 trong 5 bản, có bên kiểm định chọn"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming"
       }
     ],
     "examples": [
-      "/ak:agentize [feature-or-module] [--both|--mcp|--cli] [--auto|--ask]"
+      "/ak:agentize [feature-or-module] [--both|--mcp|--cli] [--auto|--ask] [--ultra] [--advice] [--yagni]"
     ]
   },
   "eng-skill-agentkit": {
@@ -225,8 +245,14 @@ window.CK_DETAILS = {
     "examples": []
   },
   "eng-skill-ai-multimodal": {
-    "overview": "Phân tích ảnh/audio/video bằng Gemini API (nhìn ảnh tốt hơn Claude). Tạo ảnh (Imagen 4, Nano Banana 2, MiniMax), video (Veo 3, Hailuo), giọng nói (MiniMax TTS), nhạc (MiniMax). Dùng cho phân tích hình ảnh, gỡ băng, OCR, bóc tách thiết kế, AI đa phương thức.",
+    "overview": "Phân tích và tạo nội dung ảnh, audio, video, tài liệu. Ưu tiên khả năng nhìn sẵn có của model đang dùng để đọc hiểu ảnh/tài liệu; chỉ chuyển sang Multix CLI (bản npm mới nhất) và danh mục nhà cung cấp trực tiếp khi model không nhìn được, hoặc khi cần tạo ảnh/audio/video qua một nhà cung cấp đã cấu hình.",
     "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-ak": {
+    "overview": "Điều khiển chính CLI ak — chương trình AgentKit dùng để cài, kiểm tra, cập nhật, khôi phục và gỡ kit cùng skill. Dùng khi bước tiếp theo là chạy một lệnh ak (init, kit, skills, plan, journal, doctor, recover, self-update, login), khi cần chọn giữa lệnh chỉ-xem và lệnh thay đổi, phân biệt phạm vi dự án hay toàn máy, hoặc đọc kết quả ak --json. Không dùng để viết skill (dùng ak:skill-creator) hay chọn skill cho việc chung (dùng ak:agentkit).",
+    "whenToUse": "Dùng ak:ak khi việc cần làm ngay là: chạy một lệnh con của ak (init, kit, skills, plan, journal, doctor, recover, self-update…); chọn giữa lệnh chỉ xem và lệnh thay đổi cài đặt; xác định rõ cài vào dự án hay toàn máy trước khi thay đổi; đọc kết quả ak <lệnh> --json. Không dùng khi: cần chọn skill nào chạy — đó là việc của ak:agentkit; ak:ak chỉ điều khiển chính chương trình ak.",
     "flags": [],
     "examples": []
   },
@@ -273,6 +299,14 @@ window.CK_DETAILS = {
       {
         "flag": "--parallel",
         "desc": "Nạp references/workflow-parallel.md"
+      },
+      {
+        "flag": "--yagni",
+        "desc": "Bật YAGNI: phản biện và cắt phạm vi không cần (mặc định: dựng đủ phạm vi yêu cầu); truyền sang ak:plan và ak:cook"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Bước lập kế hoạch chạy /ak:plan --ultra (chọn 1 trong 5 bản); không dùng chung với --parallel"
       }
     ],
     "examples": [
@@ -282,6 +316,37 @@ window.CK_DETAILS = {
   },
   "eng-skill-brainstorm": {
     "overview": "Cùng AI nghĩ ra giải pháp, phân tích được–mất một cách thẳng thắn. Dùng để tìm ý tưởng, chốt kiến trúc, tranh luận kỹ thuật, khám phá tính năng, đánh giá tính khả thi, bàn về thiết kế, lật ngược vấn đề, xuất báo cáo HTML và đăng lên AgentWiki.",
+    "whenToUse": "",
+    "flags": [
+      {
+        "flag": "--ask",
+        "desc": "Chế độ phỏng vấn: hỏi bạn một lượt, không truyền cờ này đi tiếp"
+      },
+      {
+        "flag": "--html",
+        "desc": "Sau khi viết xong báo cáo brainstorm dạng markdown, tạo thêm một báo cáo HTML kiểu tạp chí, chạy độc lập, theo references/editorial-magazine-html.md."
+      },
+      {
+        "flag": "--report",
+        "desc": "Xuất báo cáo Markdown lưu lâu dài, dùng kèm được với HTML"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Có các mốc cố vấn rõ ràng từ supervisor"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Tạo 5 phương án và có bên kiểm định chọn phương án tốt nhất"
+      },
+      {
+        "flag": "--yagni",
+        "desc": "Bật cắt giảm phạm vi; truyền cờ cho các bước sau"
+      }
+    ],
+    "examples": []
+  },
+  "eng-skill-bro": {
+    "overview": "Nói lại tin nhắn gần nhất của AI theo cách đơn giản, ngắn hơn, không thuật ngữ. Dùng khi bạn gõ ak:bro, hoặc bảo “nói đơn giản thôi”, “giải thích như người thường”.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -296,6 +361,10 @@ window.CK_DETAILS = {
     "overview": "Rà soát chất lượng code một cách nghiêm ngặt, dựa trên bằng chứng. Nhận nhiều kiểu đầu vào: thay đổi đang chờ, số PR, mã commit, hoặc quét toàn bộ mã nguồn. Tập trung vào bug, lỗi hồi quy, khả năng bảo trì, độ tin cậy và những chỗ chưa được kiểm chứng.",
     "whenToUse": "",
     "flags": [
+      {
+        "flag": "--ultra",
+        "desc": "Chế độ nâng cao: giữ nguyên các mốc kiểm tra riêng; không dùng chung với quét song song toàn codebase"
+      },
       {
         "flag": "--pending",
         "desc": "Soát phần đang làm dở: cả thay đổi đã stage lẫn chưa stage, lấy qua git diff"
@@ -315,14 +384,8 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "eng-skill-common": {
-    "overview": "Các tiện ích và quy ước dùng chung cho những skill khác. Đây là phần nội bộ — chỉ chạy khi một skill khác nạp nó.",
-    "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
   "eng-skill-context-engineering": {
-    "overview": "Kiểm tra mức dùng context, theo dõi thời gian còn lại, tối ưu lượng token tiêu thụ, gỡ lỗi khi context có vấn đề. Dùng khi bạn hỏi về phần trăm context, giới hạn tần suất, cảnh báo mức dùng, tối ưu context, kiến trúc agent, hệ thống bộ nhớ.",
+    "overview": "Quản lý context, ngân sách tác vụ, việc nén hội thoại và chọn model dựa trên kết quả thực tế. Dùng khi tốn token, sắp hết context, chạm giới hạn sử dụng, phiên chậm hoặc hay quên, tác vụ dài, đánh giá mức nén, đo chi phí/thời gian/số bước của agent, hệ thống bộ nhớ và agent.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -344,27 +407,15 @@ window.CK_DETAILS = {
         "desc": "Chạy nhiều agent song song"
       },
       {
-        "flag": "--no-test",
-        "desc": "Bỏ qua bước test"
-      },
-      {
         "flag": "--auto",
         "desc": "Tự duyệt các bước ít rủi ro; thay đổi rủi ro cao sẽ dừng chờ người duyệt trước khi chốt/commit/ship"
       },
       {
-        "flag": "--tdd",
-        "desc": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước đã"
-      },
-      {
-        "flag": "--advice",
-        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
+        "flag": "--no-test",
+        "desc": "Bỏ qua bước test"
       }
     ],
-    "examples": [
-      "/ak:cook \"Thêm đăng nhập người dùng cho ứng dụng\" --fast",
-      "/ak:cook path/to/plan.md --auto",
-      "/ak:cook \"Dọn lại code middleware đăng nhập\" --tdd"
-    ]
+    "examples": []
   },
   "eng-skill-copywriting": {
     "overview": "Công thức viết copy chuyển đổi, mẫu tiêu đề, mẫu email, cấu trúc landing page, tối ưu CTA và trích xuất phong cách viết. Dùng khi cần viết copy bán được hàng, đặt tiêu đề, làm chiến dịch email, landing page, hoặc áp dụng phong cách viết riêng lấy từ thư mục assets/writing-styles/.",
@@ -376,11 +427,7 @@ window.CK_DETAILS = {
     "overview": "Phân tích tình báo an ninh mạng và các vụ OSINT. Dùng để rà soát mức độ lộ lọt thông tin, do thám tên miền, kiểm tra rò rỉ dữ liệu, truy tìm theo username/email/số điện thoại, giám định ảnh, lần theo dấu vết blockchain, kiểm tra darknet, do thám tenant cloud, tra cứu lỗ hổng, mô hình hoá mối đe doạ và viết báo cáo có cấu trúc.",
     "whenToUse": "",
     "flags": [],
-    "examples": [
-      "/case target.com",
-      "/flow person",
-      "/brief"
-    ]
+    "examples": []
   },
   "eng-skill-databases": {
     "overview": "Thiết kế schema, viết truy vấn cho MongoDB và PostgreSQL. Dùng cho thiết kế cơ sở dữ liệu, truy vấn SQL/NoSQL, aggregation pipeline, index, di trú dữ liệu, replication, tối ưu hiệu năng, dùng psql CLI.",
@@ -418,8 +465,14 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "eng-skill-diagram": {
+    "overview": "Biến mô tả có cấu trúc (JSON) thành sơ đồ hệ thống tương tác đã được kiểm tra, xuất ra trang HTML tự chứa để đọc. Dùng cho sơ đồ kiến trúc, quy trình, trình tự, luồng dữ liệu và vòng đời; cần bản vẽ chỉnh tay hoặc sơ đồ in ấn thì dùng skill canvas hoặc sơ đồ xuất bản.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "eng-skill-docs": {
-    "overview": "Phân tích mã nguồn và quản lý tài liệu dự án. Dùng để khởi tạo tài liệu, cập nhật, tóm tắt và phân tích mã nguồn.",
+    "overview": "Phân tích mã nguồn và tạo, cập nhật, tóm tắt hoặc rà soát tài liệu dự án mà không áp đặt bố cục cố định (muốn bố cục cổ điển thì thêm --preset classic). Bao gồm viết và tối ưu file ngữ cảnh CLAUDE.md/AGENTS.md ở gốc dự án, hoặc rút quy tắc NÊN/KHÔNG NÊN cho file đó từ lịch sử git, các lần chạy CI và (với --source) dấu hiệu trong mã nguồn hiện tại.",
     "whenToUse": "",
     "flags": [
       {
@@ -429,6 +482,18 @@ window.CK_DETAILS = {
       {
         "flag": "--audit",
         "desc": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+      },
+      {
+        "flag": "--dry-run",
+        "desc": "Dùng với agents. Dừng sau bước xếp hạng tín hiệu, chỉ báo cáo tín hiệu và danh sách theo dõi, không gọi cố vấn, không ghi file"
+      },
+      {
+        "flag": "--source",
+        "desc": "Dùng với agents. Quét thêm mã nguồn bằng ak:scout bên cạnh lịch sử git/CI (chỉ đọc, không chạy test); quy tắc chỉ từ mã nguồn phải có đủ bằng chứng"
+      },
+      {
+        "flag": "--preset",
+        "desc": "Dùng với init. Tạo bộ tài liệu cổ điển trong docs/: project-overview-pdr, code-standards, codebase-summary, design-guidelines, deployment-guide, system-architecture, project-roadmap"
       }
     ],
     "examples": []
@@ -451,14 +516,20 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
+  "eng-skill-explain": {
+    "overview": "Giải thích khái niệm, code, hệ thống, lỗi và tài liệu, có dẫn chứng cụ thể. Thêm --eli5 để được giải thích bằng ví dụ đời thường, hoặc --html để có trang giải thích trực quan.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
   "eng-skill-fable-thinking": {
-    "overview": "Quy trình suy luận được chắt lọc từ Claude Fable 5. Giúp bất kỳ model nào lập luận như Fable — khẳng định dựa trên bằng chứng, xét nhiều giả thuyết, mô phỏng cụ thể, tự phản biện, và trả lời theo lối nêu kết luận trước có cân nhắc độ chắc chắn. Bước kiểm tra 'sàn' không bao giờ bỏ qua giúp bắt các câu hỏi mẹo trông đơn giản mà model hay trả lời sai.",
+    "overview": "Quy trình suy luận chắt lọc từ Claude Fable 5.1 — khẳng định dựa trên bằng chứng, xét nhiều giả thuyết khi chẩn đoán, tự phản biện, nêu kết luận trước và có cân nhắc độ chắc chắn. Bước kiểm tra “sàn” bắt các câu hỏi mẹo trông đơn giản mà model hay tự tin trả lời sai; vòng kiểm tra ràng buộc soát kỹ từng yêu cầu cứng như chữ cấm dùng, số lượng chính xác, định dạng bắt buộc.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-find-skills": {
-    "overview": "Giúp bạn tìm và cài skill khi bạn hỏi kiểu \"làm X thế nào\", \"có skill nào làm X không\", \"có skill nào có thể...\", hoặc khi bạn muốn mở rộng khả năng của AI. Dùng skill này khi bạn đang tìm một chức năng mà có thể đã có sẵn dưới dạng skill cài được.",
+    "overview": "Tìm hoặc cài skill cho agent khi bạn chủ động cần khả năng mới, hoặc khi việc đang làm bị chặn vì thiếu công cụ (đã kiểm chứng). Ưu tiên tìm trong danh mục skill đã cài trước khi tìm bên ngoài.",
     "whenToUse": "Dùng skill này khi bạn: Hỏi \"làm X thế nào\" mà X có thể là việc phổ biến đã có skill sẵn. Nói \"tìm skill làm X\" hoặc \"có skill nào cho X không\". Hỏi \"bạn làm được X không\" với X là một khả năng chuyên biệt. Muốn mở rộng khả năng của agent. Muốn tìm công cụ, mẫu có sẵn hoặc quy trình. Nhắc rằng bạn ước có ai đó hỗ trợ một mảng cụ thể (thiết kế, test, triển khai...)",
     "flags": [],
     "examples": []
@@ -486,6 +557,10 @@ window.CK_DETAILS = {
       {
         "flag": "--advice",
         "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Sau khi chẩn đoán, chọn cách sửa tốt nhất trong 5 phương án; không dùng chung với quick và parallel"
       }
     ],
     "examples": []
@@ -510,6 +585,12 @@ window.CK_DETAILS = {
   },
   "eng-skill-git": {
     "overview": "Quản lý commit, push, PR, gộp nhánh và tự động rà soát–merge PR. Dùng để commit, push, tạo PR, merge PR, theo dõi CI và quét lộ secret.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-github": {
+    "overview": "Quản lý dự án GitHub thành thạo bằng gh CLI — tạo/cập nhật/đóng issue có kiểm tra trùng lặp kèm bằng chứng, quản lý nhãn, PR (tạo, review, rebase, tự merge), GitHub Projects, Actions CI/CD và quản trị tổ chức/repo/môi trường/secret. Dùng mỗi khi cần báo issue, phân loại issue, quản lý vòng đời PR, xem CI chạy hay quản trị repo qua gh.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -546,10 +627,45 @@ window.CK_DETAILS = {
     ]
   },
   "eng-skill-handoff": {
-    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc.",
+    "overview": "Tạo bản bàn giao Markdown mang đi được, đã lược thông tin nhạy cảm, để một agent code mới đọc là tiếp tục việc đang dở một cách an toàn. Dùng khi đổi phiên, đổi model hoặc đổi công cụ, hoặc khi cần giữ lại quyết định, trạng thái kiểm thử và vướng mắc.",
     "whenToUse": "",
-    "flags": [],
-    "examples": []
+    "flags": [
+      {
+        "flag": "--include-diff",
+        "desc": "Kèm tóm tắt diff có giới hạn (git diff --stat + 200 dòng đầu, đã lược bí mật, ghi rõ chỗ bị cắt)"
+      },
+      {
+        "flag": "--include-status",
+        "desc": "Kèm ảnh chụp git status --short, đã lược bí mật"
+      },
+      {
+        "flag": "--force",
+        "desc": "Cho phép ghi đè file bàn giao đã có ở đường dẫn đích; không có cờ thì từ chối"
+      }
+    ],
+    "examples": [
+      "/ak:handoff",
+      "/ak:handoff \"làm tiếp phần sửa lỗi OAuth callback\"",
+      "/ak:handoff --output plans/handoffs/oauth-callback.md",
+      "/ak:handoff --include-diff --include-status",
+      "/ak:handoff --force --output plans/handoffs/oauth-callback.md"
+    ]
+  },
+  "eng-skill-handover": {
+    "overview": "Bàn giao việc đang làm dở cho một agent code được chọn cụ thể: trước hết đóng gói bối cảnh thành bản handoff, rồi giao đúng một việc cho agent đó kèm bản handoff. Kết hợp ak:handoff và ak:orchestrate.",
+    "whenToUse": "",
+    "flags": [
+      {
+        "flag": "--yes",
+        "desc": "Cho phép việc được giao ghi file hoặc thao tác phá huỷ (đổi chế độ duyệt từ “cần duyệt” sang “kế thừa”)"
+      }
+    ],
+    "examples": [
+      "/ak:handover --agent claude-code \"làm tiếp phần sửa lỗi OAuth callback\"",
+      "/ak:handover --agent codex --cwd . --task \"làm bước tiếp theo trong bản bàn giao\"",
+      "/ak:handover --agent cursor --handoff plans/handoffs/oauth-callback.md",
+      "/ak:handover --agent opencode --model anthropic/claude-sonnet-5 --yes"
+    ]
   },
   "eng-skill-help": {
     "overview": "Mở mục trợ giúp của AgentKit. Dùng khi bạn muốn biết cách dùng ak, có những skill nào, hoặc nên chạy quy trình nào.",
@@ -560,6 +676,12 @@ window.CK_DETAILS = {
   "eng-skill-html-video": {
     "overview": "Tạo video MP4 ngay trên máy từ template HTML/CSS/JS bằng nexu-io/html-video. Gồm cài đặt mã nguồn, tìm template, tuỳ biến studio, xem trước và kiểm tra bản render.",
     "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-hyperframes": {
+    "overview": "Dùng HeyGen HyperFrames CLI để tạo video bằng code, lấy HTML làm gốc. Hợp với video dọc ngắn cho mạng xã hội, clip ra mắt sản phẩm, motion graphics dựng từ bố cục HTML. Muốn làm bằng React thì xem skill remotion.",
+    "whenToUse": "Video dọc ngắn cho mạng xã hội (1080×1920, 9:16) dựng từ HTML/CSS. Clip ra mắt sản phẩm, video quảng bá lặp, motion graphics viết bằng HTML thay vì component React hay phần mềm dựng theo timeline. Mọi việc mà bố cục video được mô tả bằng HTML có thuộc tính thời gian data-composition-id / data-start. Không hợp khi dựng bằng React, cần đường cong chuyển động chính xác từng khung hình, hay cần hệ phụ đề/âm thanh của Remotion — khi đó dùng skill remotion. Không hợp cho việc chỉ nén/chuyển đổi bằng FFmpeg/ImageMagick — dùng skill media-processing.",
     "flags": [],
     "examples": []
   },
@@ -615,25 +737,8 @@ window.CK_DETAILS = {
   "eng-skill-markdown-novel-viewer": {
     "overview": "Đọc file markdown trong một trình đọc êm mắt như đọc sách, phục vụ qua HTTP. Dùng cho nội dung dài — RFC, runbook, tài liệu thiết kế, báo cáo, đặc tả, tiểu thuyết — bất cứ khi nào bạn muốn chế độ đọc không bị phân tâm trên trình duyệt.",
     "whenToUse": "",
-    "flags": [
-      {
-        "flag": "--open",
-        "desc": "Tự mở trình duyệt"
-      },
-      {
-        "flag": "--background",
-        "desc": "Chạy nền"
-      },
-      {
-        "flag": "--stop",
-        "desc": "Dừng tất cả server"
-      }
-    ],
-    "examples": [
-      "/ak:preview plans/my-plan/plan.md # View markdown file",
-      "/ak:preview plans/ # Browse directory",
-      "/ak:preview --stop # Stop server"
-    ]
+    "flags": [],
+    "examples": []
   },
   "eng-skill-mcp-builder": {
     "overview": "Xây MCP server để nối LLM với dịch vụ bên ngoài. Dùng cho FastMCP (Python), MCP SDK (Node/TypeScript), thiết kế tool, tích hợp API, cung cấp resource.",
@@ -676,6 +781,16 @@ window.CK_DETAILS = {
       "/ak:orchestrate plans/orchestrate-jobs.yaml --yes"
     ]
   },
+  "eng-skill-page-builder": {
+    "overview": "Xây, mở rộng hoặc vận hành trình dựng trang động dựa trên component và công nghệ sẵn có của dự án. Dùng cho widget tuỳ chỉnh co giãn được, trình chỉnh sửa cảm ứng responsive, xem trước, xuất bản và giao diện để agent thao tác kèm skill vận hành riêng của dự án. Không dùng cho thiết kế một trang lẻ hay bọc API chung chung.",
+    "whenToUse": "Xây hệ thống dựng trang tái sử dụng được, đăng ký các component có sẵn, hoặc thêm nháp/xem trước/xuất bản và khả năng cho agent vận hành vào trình dựng trang đã có. Mở rộng trình dựng trang với khối, liên kết dữ liệu, bố cục hay giao diện mới. Sửa trang thường ngày thì ưu tiên skill vận hành của dự án nếu có; chưa có thì dùng nhánh operate của skill này. Thiết kế một trang lẻ hay bọc CLI/MCP chung thì chuyển sang skill phù hợp. Đừng dựng cả trình dựng trang chỉ vì yêu cầu có nhắc tới “trang”.",
+    "flags": [],
+    "examples": [
+      "/ak:page-builder setup ./apps/storefront",
+      "/ak:page-builder update Thêm khối ProductGrid có sẵn, gắn dữ liệu theo danh mục",
+      "/ak:page-builder operate Tạo bản nháp trang bảng giá và gửi link xem trước"
+    ]
+  },
   "eng-skill-payment-integration": {
     "overview": "Tích hợp thanh toán với SePay (VietQR), Polar, Stripe, Paddle (đăng ký thuê bao kiểu MoR), Creem.io (bản quyền). Trang thanh toán, webhook, gói thuê bao, mã QR, đơn hàng nhiều nhà cung cấp.",
     "whenToUse": "Tích hợp cổng thanh toán (trang checkout, xử lý giao dịch). Quản lý gói thuê bao (dùng thử, nâng cấp, xuất hoá đơn). Xử lý webhook (thông báo, chống trùng lặp). Thanh toán bằng mã QR (VietQR, NAPAS). Cấp phép bản quyền phần mềm (kích hoạt theo thiết bị). Quản lý đơn hàng từ nhiều nhà cung cấp. Chia doanh thu và hoa hồng",
@@ -683,58 +798,9 @@ window.CK_DETAILS = {
     "examples": []
   },
   "eng-skill-plan": {
-    "overview": "Lập kế hoạch triển khai, thiết kế kiến trúc, tạo lộ trình kỹ thuật với các giai đoạn chi tiết. Dùng cho lập kế hoạch tính năng, thiết kế hệ thống, kiến trúc giải pháp, chiến lược triển khai, tài liệu giai đoạn, xuất kế hoạch HTML độc lập với --html, và đăng lên AgentWiki với --wiki.",
+    "overview": "Lập, kiểm tra hoặc rà soát kế hoạch triển khai có tiêu chí nghiệm thu và các phase làm được ngay. Dùng để lập kế hoạch và lộ trình; phần bắt tay làm thuộc về cook.",
     "whenToUse": "Lập kế hoạch cho tính năng mới. Thiết kế kiến trúc hệ thống. Đánh giá các hướng kỹ thuật. Tạo lộ trình triển khai. Chia nhỏ các yêu cầu phức tạp.",
-    "flags": [
-      {
-        "flag": "--auto",
-        "desc": "Tự chọn chế độ lập kế hoạch theo độ phức tạp của việc (mặc định)"
-      },
-      {
-        "flag": "--fast",
-        "desc": "Chế độ nhanh: bỏ nghiên cứu, bỏ phản biện, bỏ kiểm duyệt kế hoạch"
-      },
-      {
-        "flag": "--hard",
-        "desc": "Chế độ kỹ: 2 agent nghiên cứu, có phản biện, kiểm duyệt tùy chọn"
-      },
-      {
-        "flag": "--deep",
-        "desc": "Chế độ sâu nhất: 2-3 agent nghiên cứu kèm scout từng phase, có cả phản biện lẫn kiểm duyệt"
-      },
-      {
-        "flag": "--parallel",
-        "desc": "Chế độ song song: 2 agent nghiên cứu, có phản biện, và chuyển tiếp cờ --parallel sang bước cook"
-      },
-      {
-        "flag": "--two",
-        "desc": "Vạch 2 hướng làm để bạn chọn; phản biện và kiểm duyệt chạy sau khi bạn chốt hướng"
-      },
-      {
-        "flag": "--tdd",
-        "desc": "Thêm cấu trúc viết test trước cho từng phase, để refactor không sợ hỏng chỗ khác"
-      },
-      {
-        "flag": "--no-tasks",
-        "desc": "Bỏ bước tạo danh sách task"
-      },
-      {
-        "flag": "--html",
-        "desc": "Xuất kế hoạch thành một trang HTML tự chứa, tương tác được: xem dàn ý từng phase, mở chi tiết dạng markdown, kèm hình minh họa kỹ thuật vẽ màu nước nếu cần"
-      },
-      {
-        "flag": "--github",
-        "desc": "Tạo hoặc cập nhật GitHub issue sau khi kế hoạch được duyệt, kèm nhánh, tóm tắt, link kế hoạch, các câu hỏi còn treo và trạng thái sẵn sàng review"
-      },
-      {
-        "flag": "--wiki",
-        "desc": "Đăng bản kế hoạch cuối (tài liệu hoặc trang HTML) lên AgentWiki qua CLI hoặc MCP khi có sẵn"
-      },
-      {
-        "flag": "--advice",
-        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory Supervision Mode)"
-      }
-    ],
+    "flags": [],
     "examples": []
   },
   "eng-skill-plans-kanban": {
@@ -847,7 +913,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "eng-skill-review-pr": {
-    "overview": "Review PR trên GitHub: kiểm tra có trùng việc đã làm không, chuẩn dự án, mức cần thiết về chiến lược, tính đúng đắn, bảo mật, thay đổi phá vỡ tương thích, chất lượng code và các dấu hiệu code AI viết ẩu. Hỗ trợ --fix và --reply.",
+    "overview": "Review pull request trên GitHub: tính đúng đắn, nguy cơ làm hỏng chỗ đang chạy và bảo mật. Các chế độ tuỳ chọn fix (tự sửa), reply (gửi review lên GitHub) và merge (gộp PR) cho phép làm thêm bước tương ứng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -876,30 +942,25 @@ window.CK_DETAILS = {
   "eng-skill-scout": {
     "overview": "Dò quét mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom ngữ cảnh cho công việc, tìm kiếm nhanh trên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
     "whenToUse": "Khi bắt đầu làm tính năng trải rộng nhiều thư mục; khi cần \"tìm\", \"định vị\" hay \"tra\" file; khi bắt đầu gỡ lỗi và cần hiểu các file liên quan nhau ra sao; khi muốn biết cấu trúc dự án hoặc một chức năng nằm ở đâu; trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--ultra",
+        "desc": "Chạy scout theo kiểu chọn 1 trong 5 bản, có bên kiểm định chọn"
+      }
+    ],
     "examples": []
   },
   "eng-skill-security": {
-    "overview": "Kiểm định bảo mật dựa trên STRIDE + OWASP, kèm vòng dò tìm theo vai kẻ tấn công (red-team) tùy chọn và tự sửa. Quét code tìm lỗ hổng từ nhiều góc nhìn tấn công (tấn công đăng nhập, chuỗi cung ứng, người trong cuộc, hạ tầng), phân loại theo mức nghiêm trọng, và có thể sửa dần các lỗi bằng ak:autoresearch.",
+    "overview": "Quét mã nguồn tìm lỗ hổng bảo mật, bí mật bị viết cứng trong code, thư viện có vấn đề và các lỗi theo OWASP; tuỳ chọn thêm mô hình hoá mối đe doạ STRIDE, dò lỗi theo vai kẻ tấn công (red-team) và tự sửa. Dùng khi cần “quét bảo mật”, “kiểm tra lộ bí mật”, “rà soát bảo mật”, hoặc trước các đợt phát hành lớn.",
     "whenToUse": "Trước khi phát hành hoặc triển khai lớn. Sau khi thêm tính năng đăng nhập, thanh toán hoặc xử lý dữ liệu. Rà soát bảo mật định kỳ (hàng tháng/quý). Chuẩn bị tuân thủ (SOC 2, GDPR, PCI-DSS).",
     "flags": [],
     "examples": [
+      "/ak:security --secrets-only",
+      "/ak:security --deps-only",
+      "/ak:security",
       "/ak:security src/api//*.ts",
       "/ak:security full --red-team",
-      "/ak:security src/ --red-team --iterations 20",
-      "/ak:security full --red-team --fix",
-      "/ak:security src/ --fix --iterations 15"
-    ]
-  },
-  "eng-skill-security-scan": {
-    "overview": "Quét mã nguồn tìm lỗ hổng bảo mật, khoá bí mật viết cứng trong code, vấn đề ở thư viện phụ thuộc và các mẫu lỗi theo OWASP. Dùng khi được yêu cầu 'quét bảo mật', 'kiểm tra lộ khoá bí mật', 'rà soát bảo mật', hoặc trước các đợt phát hành lớn.",
-    "whenToUse": "",
-    "flags": [],
-    "examples": [
-      "/ak:security-scan # Full scan of current project",
-      "/ak:security-scan --secrets-only # Only secret/credential detection",
-      "/ak:security-scan --deps-only # Only dependency audit",
-      "/ak:security-scan src/api/ # Scan specific directory"
+      "/ak:security src/ --red-team --iterations 20"
     ]
   },
   "eng-skill-sequential-thinking": {
@@ -915,9 +976,21 @@ window.CK_DETAILS = {
     "examples": []
   },
   "eng-skill-ship": {
-    "overview": "Quy trình phát hành: merge nhánh đích, test, rà soát, ghi nhật ký, tuỳ chọn đăng lên AgentWiki, commit, push, tạo PR. Dùng cho bản chính thức trên main/master hoặc bản beta trên dev/beta.",
+    "overview": "Đưa một nhánh đã làm xong qua test, review, commit, push và tạo PR. Hỗ trợ bản chính thức/beta, cố vấn Kongming, và tuỳ chọn merge sau khi review, chờ CI chạy xanh.",
     "whenToUse": "",
     "flags": [
+      {
+        "flag": "--both",
+        "desc": "Ship hai chặng: beta trước, rồi mới lên bản ổn định khi đạt điều kiện"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Chạy đường ship tới PR dưới sự cố vấn (chỉ tư vấn) của kongming"
+      },
+      {
+        "flag": "--merge",
+        "desc": "Sau khi tạo PR, chạy ak:review-pr <PR> --fix --reply --merge; thêm --advice nếu có cả hai cờ"
+      },
       {
         "flag": "--skip-tests",
         "desc": "Bỏ bước test (dùng khi test đã pass rồi)"
@@ -935,6 +1008,18 @@ window.CK_DETAILS = {
         "desc": "Bỏ bước cập nhật tài liệu"
       },
       {
+        "flag": "--social",
+        "desc": "Tuỳ chọn: sau khi tạo PR, soạn nhật ký build-in-public và đăng lên mạng xã hội. Mặc định tắt"
+      },
+      {
+        "flag": "--yes-post",
+        "desc": "Bắt buộc đi kèm --social để đăng thật; thiếu thì chỉ chạy thử, in bài viết ra mà không đăng"
+      },
+      {
+        "flag": "--yes-post-private",
+        "desc": "Bắt buộc thêm khi repo là private — xác nhận lần hai trước khi đăng về việc chưa công khai"
+      },
+      {
         "flag": "--dry-run",
         "desc": "Chỉ xem trước sẽ làm gì, không thực thi"
       }
@@ -950,58 +1035,29 @@ window.CK_DETAILS = {
   "eng-skill-show-off": {
     "overview": "Tạo trang HTML độc lập, biết chiều theo sở thích người xem, để khoe kết quả công việc. Dùng cho demo, trình bày trực quan, showcase tương tác.",
     "whenToUse": "",
-    "flags": [
-      {
-        "flag": "--url",
-        "desc": "URL trang cần chụp"
-      },
-      {
-        "flag": "--output-dir",
-        "desc": "Thư mục xuất ảnh"
-      },
-      {
-        "flag": "--sections",
-        "desc": "Danh sách CSS selector của các phần, cách nhau bằng dấu phẩy"
-      },
-      {
-        "flag": "--ratios",
-        "desc": "Tỉ lệ khung ảnh khi chụp"
-      },
-      {
-        "flag": "--settle-delay",
-        "desc": "Số mili-giây chờ thêm SAU khi trang đã hiện đủ (font + ảnh + ảnh nền CSS đều đã tải xong). Tên gọi khác: --delay (giữ cho tương thích cũ)."
-      },
-      {
-        "flag": "--render-timeout",
-        "desc": "Số mili-giây tối đa chờ một tín hiệu sẵn sàng bất kỳ (font, ảnh, ảnh nền). Tránh để một tài nguyên hỏng làm treo cả lượt chạy."
-      },
-      {
-        "flag": "--format",
-        "desc": "Định dạng ảnh (png/jpg/webp)"
-      },
-      {
-        "flag": "--quality",
-        "desc": "Chất lượng ảnh (1-100, cho jpg/webp)"
-      },
-      {
-        "flag": "--max-size",
-        "desc": "Dung lượng tối đa tính bằng MB trước khi nén"
-      },
-      {
-        "flag": "--executable-path",
-        "desc": "Đường dẫn tới Chrome/Chromium (không bắt buộc). Cũng đọc được từ CHROME_EXECUTABLE_PATH hoặc PUPPETEER_EXECUTABLE_PATH."
-      }
-    ],
+    "flags": [],
     "examples": []
   },
   "eng-skill-skill-creator": {
-    "overview": "Tạo hoặc cập nhật skill cho Claude, lặp cải tiến dựa trên kết quả đánh giá. Dùng để làm skill mới, viết script cho skill, thêm tài liệu tham chiếu, tối ưu theo benchmark, tối ưu phần mô tả, chạy eval, mở rộng khả năng của Claude.",
+    "overview": "Tạo, cập nhật, kiểm tra, xác thực và đóng gói skill cho agent. Dùng khi viết tài nguyên SKILL.md hoặc chẩn đoán vì sao skill được gọi sai và chạy không đúng. Không dùng để xây CLI hay server MCP.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-sowat": {
+    "overview": "Phân tích việc vừa làm và các issue liên quan theo góc nhìn product owner. Dùng để tìm bước tiếp theo có tác động lớn nhất, phản biện các ưu tiên yếu, và giải thích điều gì quan trọng lúc này.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "eng-skill-stitch": {
     "overview": "Sinh thiết kế bằng AI với Google Stitch. Tạo giao diện từ mô tả bằng chữ, xuất ra Tailwind/HTML/DESIGN.md, nối luôn mạch từ thiết kế sang code. Dùng để làm mẫu nhanh, sinh giao diện, thử nghiệm ý tưởng thiết kế.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-sumup": {
+    "overview": "Tóm tắt phần đã làm xong: lỗi gặp phải, cách xoay xở, quyết định, hành vi, kiến trúc, cách dùng, việc cần theo dõi và bước tiếp theo. Dùng sau khi code xong hoặc khi cần bản tổng kết kỹ thuật.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1040,7 +1096,20 @@ window.CK_DETAILS = {
   "eng-skill-test": {
     "overview": "Chạy test unit, integration, e2e và test giao diện. Dùng để chạy test, phân tích độ phủ, kiểm tra build, phát hiện thay đổi giao diện ngoài ý muốn và xuất báo cáo QA.",
     "whenToUse": "Sau khi code xong: kiểm chứng tính năng mới hoặc bản vá lỗi. Kiểm tra độ phủ: đảm bảo đạt ngưỡng của dự án (từ 80% trở lên). Kiểm tra giao diện: so sánh ảnh chụp, bố cục responsive, khả năng tiếp cận. Kiểm tra build: xác nhận quá trình build, các phụ thuộc và tương thích CI/CD. Trước khi commit/push: chốt chặn chất lượng cuối cùng",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Bước phân tích/thiết kế test chạy kiểu chọn 1 trong 5 bản"
+      },
+      {
+        "flag": "--interview",
+        "desc": "Trước khi thay đổi, liệt kê mọi đề xuất (test thêm/xoá/viết lại, sửa CI) kèm lý do và hỏi bạn từng nhóm; chỉ áp dụng phần được đồng ý"
+      }
+    ],
     "examples": []
   },
   "eng-skill-threejs": {
@@ -1057,12 +1126,6 @@ window.CK_DETAILS = {
   },
   "eng-skill-ui-ux-pro-max": {
     "overview": "Trí tuệ thiết kế UI/UX cho web và mobile: chọn phong cách, hệ màu, kiểu chữ, bố cục, khả năng tiếp cận, trạng thái tương tác, responsive, form, biểu đồ, design system và review code trên React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui và HTML/CSS.",
-    "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
-  "eng-skill-use-mcp": {
-    "overview": "Tìm và chạy tool của các MCP server. Hai cách chạy: qua Gemini CLI (do LLM điều khiển, hợp mọi tác vụ) hoặc chạy script trực tiếp (chắc chắn, nhắm đúng tool/server cụ thể). Dùng cho tích hợp MCP, chạy tool, khám phá khả năng, lưu danh mục tool dùng lâu dài.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1086,10 +1149,14 @@ window.CK_DETAILS = {
       {
         "flag": "--advice",
         "desc": "Chạy cả quy trình dưới sự cố vấn của kongming (xem mục Advisory supervision). Kết hợp được với mọi chế độ ship."
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Chạy /ak:plan và /ak:code-review ở chế độ chọn 1 trong 5 bản (tuỳ chọn, tốn thời gian và chi phí hơn nhiều)"
       }
     ],
     "examples": [
-      "/ak:code-review --pending",
+      "/ak:code-review --pending [--ultra] [--advice]",
       "/ak:ship beta",
       "/ak:ship official"
     ]
@@ -1115,6 +1182,12 @@ window.CK_DETAILS = {
   "eng-skill-web-testing": {
     "overview": "Test web với Playwright, Vitest, k6. Test E2E/unit/integration/tải/bảo mật/giao diện/a11y. Dùng cho tự động hoá test, test chập chờn, Core Web Vitals, thao tác cảm ứng trên mobile, chạy đa trình duyệt.",
     "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "eng-skill-webmcp": {
+    "overview": "Xây website sẵn sàng cho AI agent bằng công cụ WebMCP trên trình duyệt: định nghĩa schema, ghi chú an toàn và bài kiểm thử. Dùng cho các thao tác trên trang và form để agent gọi được; server MCP thì thuộc ak:mcp-builder.",
+    "whenToUse": "“Thêm công cụ cho AI agent vào website” / “cho agent gọi được form của tôi” → dùng skill này. “Xây server MCP cho API” → ak:mcp-builder. “Chạy công cụ MCP có sẵn” → dùng công cụ MCP của runtime, tìm trong danh mục công cụ trước khi kết luận là không có. “Tự động hoá trình duyệt / test trang bằng agent” → ak:agent-browser.",
     "flags": [],
     "examples": []
   },
@@ -1274,7 +1347,7 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": [
       "Bọn mình vừa thêm tính năng review code bằng AI. Viết giúp tiêu đề chính và tiêu đề phụ cho landing page nhé?",
-      "We just shipped GitHub auto-invites for AgentKit. Need a tweet that'll get people excited.",
+      "Bọn mình vừa ra tính năng tự động mời vào GitHub cho AgentKit. Cần một tweet làm mọi người hào hứng.",
       "Đây là bản nháp trang bảng giá mới của bọn mình",
       "Viết tiêu đề email cho chiến dịch ra mắt sản phẩm của bọn mình"
     ]
@@ -1300,7 +1373,7 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-agent-docs-manager": {
-    "overview": "Dùng agent này khi cần quản lý tài liệu kỹ thuật, đặt ra chuẩn triển khai, phân tích và cập nhật tài liệu có sẵn theo thay đổi của code, viết hoặc cập nhật tài liệu yêu cầu phát triển sản phẩm (PDR), sắp xếp tài liệu cho dev làm việc hiệu quả hơn, hoặc xuất báo cáo tổng hợp tài liệu. Bao gồm các việc như rà soát cấu trúc tài liệu, đảm bảo docs bám sát thay đổi trong mã nguồn, viết tài liệu mới cho tính năng, và giữ mọi tài liệu kỹ thuật nhất quán với nhau.",
+    "overview": "Dùng agent này để tạo, đối chiếu hoặc rà soát tài liệu dự án có căn cứ, phục vụ cả người đọc lẫn AI cộng tác, không áp đặt một bố cục thư mục docs cố định, đồng thời tôn trọng lộ trình tài liệu mà repo hoặc bạn đã chỉ rõ.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1469,25 +1542,25 @@ window.CK_DETAILS = {
     ]
   },
   "mkt-skill-ab-test-setup": {
-    "overview": "Dùng khi bạn muốn lên kế hoạch, thiết kế hoặc triển khai một A/B test hay một thử nghiệm. Cũng dùng khi bạn nhắc tới \"A/B test\", \"split test\", \"thử nghiệm\", \"test thay đổi này\", \"biến thể nội dung\", \"multivariate test\" hoặc \"giả thuyết\". Muốn cài phần tracking thì xem analytics-tracking.",
+    "overview": "Thiết kế A/B test cho marketing và sản phẩm: split test, thử nghiệm biến thể nội dung, multivariate test. Xác định giả thuyết, chỉ số đo, cách chia lưu lượng và điều kiện dừng; không dùng cho các giả thuyết gỡ lỗi thông thường.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-ads-management": {
-    "overview": "Kích hoạt cho các chiến dịch quảng cáo trả tiền trên Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads. Gồm viết nội dung quảng cáo, nhắm đúng tệp khách, tối ưu ngân sách, test A/B, theo dõi ROAS, và sinh ảnh/video quảng cáo bằng AI qua skill ai-multimodal và ai-artist với Gemini Nano Banana Pro và Veo 3.1.",
+    "overview": "Vận hành chiến dịch quảng cáo trả phí qua API của các nền tảng đã cấp quyền: báo cáo, tạo chiến dịch, nhắm đối tượng, cập nhật ngân sách, tạm dừng/bật lại và đưa mẫu quảng cáo lên. Chỉ cần tư vấn chiến lược hoặc viết nội dung quảng cáo thì dùng paid-ads.",
     "whenToUse": "Tạo và tối ưu chiến dịch quảng cáo trả tiền. Viết nội dung quảng cáo (tìm kiếm, hiển thị, mạng xã hội). Thiết lập nhắm tệp khách hàng. Tối ưu ngân sách và mở rộng quy mô. Chiến lược test A/B. Theo dõi và quy kết ROAS/CPA. Sinh ảnh và video quảng cáo. Phân tích quảng cáo của đối thủ.",
     "flags": [],
     "examples": []
   },
   "mkt-skill-affiliate-marketing": {
-    "overview": "Xây chương trình affiliate cho SaaS với hoa hồng 20-40%, hợp tác KOL/KOC và chống gian lận. Bao gồm chọn nền tảng (PartnerStack, FirstPromoter, Rewardful), cách chia hoa hồng (theo kỳ hay một lần, chia bậc), cách tiếp cận người ảnh hưởng, tuân thủ FTC/GDPR, quản trị rủi ro và các case thực tế (Dropbox tăng 3900%, PayPal đạt 100 triệu người dùng). Dùng khi thiết kế chương trình affiliate, tuyển đối tác, tối ưu tỷ lệ chuyển đổi, chống gian lận, hoặc mở rộng doanh thu từ giới thiệu.",
+    "overview": "Thiết kế và đánh giá chương trình đối tác affiliate: cách chia hoa hồng, tuyển KOL/KOC, ghi nhận nguồn đơn (attribution) và kiểm soát gian lận. Dùng khi tăng khách qua đối tác; chương trình khách giới thiệu bạn bè thuộc về referral-program-building.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-agent-browser": {
-    "overview": "Tự động hóa trình duyệt và máy tính thông qua CLI agent-browser. Dùng cho việc duyệt web tự động kéo dài, chụp nhanh trang, chụp màn hình, điền biểu mẫu, luồng đăng nhập/kiểm thử không cần trạng thái Chrome thật, thu thập dữ liệu, QA khám phá, trình duyệt trên cloud, ứng dụng Electron, tự động hóa Slack và săn bug.",
+    "overview": "Tự động hoá trình duyệt do công cụ quản lý bằng agent-browser: chụp nhanh trang, bấm, điền form và test trên trình duyệt. Cần trạng thái tài khoản Chrome thật thì dùng chrome-profile.",
     "whenToUse": "Mặc định cho tự động hóa trình duyệt không phụ thuộc trạng thái đăng nhập Chrome thật của bạn: phiên tự động, điều hướng tùy ý, chụp màn hình, điền form, thu thập dữ liệu, làm việc nhiều tab.",
     "flags": [],
     "examples": []
@@ -1499,8 +1572,14 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-ai-multimodal": {
-    "overview": "Phân tích ảnh/audio/video bằng Gemini API (nhìn hình tốt hơn Claude). Tạo ảnh (Imagen 4, Nano Banana 2, MiniMax), video (Veo 3, Hailuo), giọng nói (MiniMax TTS), nhạc (MiniMax). Dùng để phân tích hình ảnh, gỡ băng, OCR, bóc tách thiết kế, xử lý AI đa phương tiện.",
+    "overview": "Phân tích và tạo nội dung ảnh, audio, video, tài liệu. Ưu tiên khả năng nhìn sẵn có của model đang dùng để đọc hiểu ảnh/tài liệu; chỉ chuyển sang Multix CLI (bản npm mới nhất) và danh mục nhà cung cấp trực tiếp khi model không nhìn được, hoặc khi cần tạo ảnh/audio/video qua một nhà cung cấp đã cấu hình.",
     "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-ak": {
+    "overview": "Điều khiển chính CLI ak — chương trình AgentKit dùng để cài, kiểm tra, cập nhật, khôi phục và gỡ kit cùng skill. Dùng khi bước tiếp theo là chạy một lệnh ak (init, kit, skills, plan, journal, doctor, recover, self-update, login), khi cần chọn giữa lệnh chỉ-xem và lệnh thay đổi, phân biệt phạm vi dự án hay toàn máy, hoặc đọc kết quả ak --json. Không dùng để viết skill (dùng ak:skill-creator) hay chọn skill cho việc chung (dùng ak:agentkit).",
+    "whenToUse": "Dùng ak:ak khi việc cần làm ngay là: chạy một lệnh con của ak (init, kit, skills, plan, journal, doctor, recover, self-update…); chọn giữa lệnh chỉ xem và lệnh thay đổi cài đặt; xác định rõ cài vào dự án hay toàn máy trước khi thay đổi; đọc kết quả ak <lệnh> --json. Không dùng khi: cần chọn skill nào chạy — đó là việc của ak:agentkit; ak:ak chỉ điều khiển chính chương trình ak.",
     "flags": [],
     "examples": []
   },
@@ -1510,17 +1589,6 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-analyze": {
-    "overview": "💡💡 Phân tích số liệu và báo cáo hiệu quả",
-    "whenToUse": "",
-    "flags": [],
-    "examples": [
-      "/analyze traffic",
-      "/analyze campaigns",
-      "/analyze conversions",
-      "/analyze content"
-    ]
-  },
   "mkt-skill-ask": {
     "overview": "💡 Trả lời các câu hỏi về kỹ thuật và kiến trúc.",
     "whenToUse": "",
@@ -1528,7 +1596,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-assets-organizing": {
-    "overview": "Sắp xếp mọi kết quả từ lệnh slash và subagent vào thư mục assets/ theo chủ đề, định dạng ngày và slug.",
+    "overview": "Xác định đường dẫn lưu asset marketing và sắp xếp các bộ sưu tập asset, đồng thời giữ nguyên đường dẫn bạn chọn, quy ước của repo, các link và file đang có.",
     "whenToUse": "Dùng skill này khi: Tạo nội dung cần xuất ra file (bài viết, video, thiết kế). Sinh tài nguyên bằng AI (ảnh, storyboard, kịch bản). Sắp xếp lại tài nguyên có sẵn. Xác định đường dẫn xuất file cho loại nội dung mới.",
     "flags": [],
     "examples": []
@@ -1542,12 +1610,43 @@ window.CK_DETAILS = {
   "mkt-skill-brainstorm": {
     "overview": "Cùng nghĩ giải pháp, phân tích được–mất và nói thẳng không nể nang. Dùng để lên ý tưởng, quyết định kiến trúc, tranh luận kỹ thuật, khai phá tính năng, đánh giá tính khả thi, bàn về thiết kế.",
     "whenToUse": "",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--ask",
+        "desc": "Chế độ phỏng vấn: hỏi bạn một lượt, không truyền cờ này đi tiếp"
+      },
+      {
+        "flag": "--html",
+        "desc": "Xuất thêm bản tóm tắt dạng HTML"
+      },
+      {
+        "flag": "--report",
+        "desc": "Xuất báo cáo Markdown lưu lâu dài, dùng kèm được với HTML"
+      },
+      {
+        "flag": "--advice",
+        "desc": "Có các mốc cố vấn rõ ràng từ supervisor"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Tạo 5 phương án và có bên kiểm định chọn phương án tốt nhất"
+      },
+      {
+        "flag": "--yagni",
+        "desc": "Bật cắt giảm phạm vi; truyền cờ cho các bước sau"
+      }
+    ],
     "examples": []
   },
   "mkt-skill-brand": {
     "overview": "Giọng điệu thương hiệu, bộ nhận diện hình ảnh, khung thông điệp, quản lý tài sản, giữ thương hiệu nhất quán. Kích hoạt khi làm nội dung gắn thương hiệu, xác định tông giọng, tài sản marketing, kiểm tra tuân thủ thương hiệu, sổ tay phong cách.",
     "whenToUse": "Xác định giọng điệu thương hiệu và hướng dẫn tông nội dung. Chuẩn nhận diện hình ảnh và xây sổ tay phong cách. Xây khung thông điệp. Rà soát và kiểm tra tính nhất quán của thương hiệu. Sắp xếp, đặt tên và duyệt tài sản. Quản lý bảng màu và quy cách chữ.",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-bro": {
+    "overview": "Nói lại tin nhắn gần nhất của AI theo cách đơn giản, ngắn hơn, không thuật ngữ. Dùng khi bạn gõ ak:bro, hoặc bảo “nói đơn giản thôi”, “giải thích như người thường”.",
+    "whenToUse": "",
     "flags": [],
     "examples": []
   },
@@ -1558,19 +1657,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-cip-design": {
-    "overview": "Thiết kế chương trình nhận diện doanh nghiệp (CIP) với 50 hạng mục, 20 phong cách, 20 ngành nghề. Tạo mockup CIP bằng Gemini Nano Banana (Flash/Pro). Việc làm được: thiết kế, tạo, sinh bộ nhận diện thương hiệu. Hạng mục: danh thiếp, giấy tiêu đề, biển hiệu, decal xe, đồng phục, bao bì. Phong cách: doanh nghiệp, sang trọng, tối giản, hiện đại.",
-    "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
-  "mkt-skill-ckm-storage": {
-    "overview": "Thao tác với kho lưu trữ S3 - tải lên, đồng bộ, liệt kê, lấy URL",
-    "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
-  "mkt-skill-claude-code": {
-    "overview": "Kích hoạt khi người dùng hỏi về: cài đặt Claude Code, các lệnh gạch chéo (/plan, /fix, /content, /docs, /design, /git), tạo và quản lý Agent Skills, cấu hình MCP server, cài hook/plugin, tích hợp IDE (VS Code, JetBrains), quy trình CI/CD, triển khai cho doanh nghiệp (SSO, RBAC, sandbox), xử lý sự cố đăng nhập/hiệu năng, hoặc các tính năng nâng cao (extended thinking, caching, checkpoint).",
+    "overview": "Thiết kế mockup bộ nhận diện doanh nghiệp (CIP) và các ứng dụng thương hiệu như văn phòng phẩm, biển hiệu, đồng phục, bao bì. Giữ nhận diện sẵn có hoặc phát triển ý tưởng mới trong phạm vi brief yêu cầu.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1622,27 +1709,21 @@ window.CK_DETAILS = {
         "desc": "Chạy nhiều agent song song"
       },
       {
-        "flag": "--no-test",
-        "desc": "Bỏ qua bước test"
-      },
-      {
         "flag": "--auto",
         "desc": "Tự duyệt mọi bước"
       },
       {
-        "flag": "--tdd",
-        "desc": "Viết test trước ở mỗi phase — viết test cho hành vi hiện tại trước khi refactor, xong bước code thì chạy lại để chắc vẫn đúng"
-      },
-      {
-        "flag": "--advice",
-        "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
+        "flag": "--no-test",
+        "desc": "Bỏ qua bước test"
       }
     ],
-    "examples": [
-      "/ak:cook \"Add user authentication to the app\" --fast",
-      "/ak:cook path/to/plan.md --auto",
-      "/ak:cook \"Refactor auth middleware\" --tdd"
-    ]
+    "examples": []
+  },
+  "mkt-skill-copywriting": {
+    "overview": "Công thức viết copy chuyển đổi, mẫu tiêu đề, mẫu email, cấu trúc landing page, tối ưu CTA và trích xuất giọng văn. Dùng khi viết copy ra đơn, đặt tiêu đề, làm chiến dịch email, landing page, hoặc viết theo giọng văn mẫu trong thư mục assets/writing-styles/.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
   },
   "mkt-skill-creativity": {
     "overview": "Bộ não chỉ đạo sáng tạo. 55 phong cách, 18 nền tảng, 12 kiểu giọng đọc, 17 thể loại nhạc, 30 nhóm chiến dịch. Việc làm được: tạo, thiết kế, lên kế hoạch, chỉ đạo, viết brief cho chiến dịch sáng tạo. Loại dự án: quảng cáo, video, nội dung mạng xã hội, TVC, phim thương hiệu. Phong cách: tối giản, cầu kỳ, hoài niệm, điện ảnh, UGC, sang trọng, tương lai, giàu cảm xúc. Chủ đề: phong cách hình ảnh, thông số từng nền tảng, giọng đọc, nhạc, bảng màu, nhắm đối tượng.",
@@ -1650,22 +1731,9 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-dashboard": {
-    "overview": "Khởi chạy và quản lý Marketing Dashboard",
-    "whenToUse": "",
-    "flags": [],
-    "examples": [
-      "/dashboard [mode]",
-      "/dashboard",
-      "/dashboard dev",
-      "/dashboard build",
-      "/dashboard prod",
-      "/dashboard stop"
-    ]
-  },
-  "mkt-skill-debugging": {
-    "overview": "Khung gỡ lỗi bài bản: luôn truy ra nguyên nhân gốc trước khi sửa. Gồm quy trình gỡ lỗi 4 giai đoạn, lần ngược call stack, kiểm chứng nhiều tầng và quy tắc xác minh. Dùng khi gặp lỗi, test fail, hành vi bất thường, vấn đề hiệu năng, hoặc trước khi tuyên bố đã xong việc. Ngăn kiểu sửa mò, vá triệu chứng và báo xong khi chưa xong.",
-    "whenToUse": "Luôn dùng khi: test fail, có lỗi, hành vi bất thường, vấn đề hiệu năng, build hỏng, trục trặc tích hợp, và trước khi tuyên bố đã xong việc. Đặc biệt khi: đang gấp, thấy có cách \"sửa nhanh\" quá hiển nhiên, đã thử nhiều cách sửa, chưa thực sự hiểu lỗi, hoặc sắp báo là đã xong.",
+  "mkt-skill-debug": {
+    "overview": "Gỡ lỗi có hệ thống: tìm nguyên nhân gốc trước rồi mới sửa. Dùng cho bug, test fail, hành vi bất thường, vấn đề hiệu năng, lần theo call stack, kiểm tra nhiều lớp, phân tích log, lỗi CI/CD, chẩn đoán database và điều tra hệ thống.",
+    "whenToUse": "Mức code: test fail, bug, hành vi bất thường, build lỗi, lỗi tích hợp. Mức hệ thống: lỗi server, pipeline CI/CD hỏng, hiệu năng giảm, sự cố database, phân tích log. Khi xong: kiểm chứng lại chỗ đã sửa bằng bằng chứng liên quan; chỉ cần quy trình chẩn đoán đầy đủ với lỗi chưa giải quyết được.",
     "flags": [],
     "examples": []
   },
@@ -1679,12 +1747,10 @@ window.CK_DETAILS = {
     "overview": "Kiến trúc token, đặc tả component và tạo slide. Token ba tầng (primitive→semantic→component), biến CSS, thang khoảng cách/chữ, đặc tả component, tạo slide có chiến lược. Dùng cho design token, thiết kế hệ thống, bản trình bày đúng chuẩn thương hiệu.",
     "whenToUse": "Tạo design token. Định nghĩa trạng thái của component. Hệ thống biến CSS. Thang khoảng cách/typography. Bàn giao từ thiết kế sang code. Cấu hình theme Tailwind. Tạo slide/bản trình bày.",
     "flags": [],
-    "examples": [
-      "/slides:create \"10-slide investor pitch for AgentKit Marketing\""
-    ]
+    "examples": []
   },
   "mkt-skill-docs": {
-    "overview": "Khởi tạo, cập nhật và tóm tắt tài liệu dự án",
+    "overview": "Phân tích mã nguồn và tạo, cập nhật, tóm tắt hoặc rà soát tài liệu dự án mà không áp đặt bố cục cố định (muốn bố cục cổ điển thì thêm --preset classic). Bao gồm viết và tối ưu file ngữ cảnh CLAUDE.md/AGENTS.md ở gốc dự án, hoặc rút quy tắc NÊN/KHÔNG NÊN cho file đó từ lịch sử git, các lần chạy CI và (với --source) dấu hiệu trong mã nguồn hiện tại.",
     "whenToUse": "",
     "flags": [
       {
@@ -1694,8 +1760,26 @@ window.CK_DETAILS = {
       {
         "flag": "--audit",
         "desc": "Với agent-context: cho kongming soát trước file CLAUDE.md/AGENTS.md hiện có, rồi hỏi bạn từng câu một — mỗi câu là một quyết định giữ / cắt / sửa"
+      },
+      {
+        "flag": "--dry-run",
+        "desc": "Dùng với agents. Dừng sau bước xếp hạng tín hiệu, chỉ báo cáo tín hiệu và danh sách theo dõi, không gọi cố vấn, không ghi file"
+      },
+      {
+        "flag": "--source",
+        "desc": "Dùng với agents. Quét thêm mã nguồn bằng ak:scout bên cạnh lịch sử git/CI (chỉ đọc, không chạy test); quy tắc chỉ từ mã nguồn phải có đủ bằng chứng"
+      },
+      {
+        "flag": "--preset",
+        "desc": "Dùng với init. Tạo bộ tài liệu cổ điển trong docs/: project-overview-pdr, code-standards, codebase-summary, design-guidelines, deployment-guide, system-architecture, project-roadmap"
       }
     ],
+    "examples": []
+  },
+  "mkt-skill-docs-seeker": {
+    "overview": "Tìm tài liệu thư viện/framework qua llms.txt (context7.com). Dùng để tra tài liệu API, phân tích repo GitHub, tìm tài liệu kỹ thuật và tính năng mới nhất của thư viện.",
+    "whenToUse": "",
+    "flags": [],
     "examples": []
   },
   "mkt-skill-elevenlabs": {
@@ -1707,6 +1791,12 @@ window.CK_DETAILS = {
   "mkt-skill-email": {
     "overview": "Chiến dịch email, bản tin, chuỗi email nuôi dưỡng, luồng tự động, viết lời email, tỉ lệ vào hộp thư, công thức viết tiêu đề, test A/B. Soạn nội dung email cho mọi mục đích marketing.",
     "whenToUse": "Soạn nội dung email (bản tin, email chào hàng, ra mắt, nuôi dưỡng, chào mừng, kéo khách quay lại). Thiết kế luồng email tự động. Tạo chuỗi email nuôi dưỡng. Tối ưu tiêu đề email. Cách để email không rơi vào spam.",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-explain": {
+    "overview": "Giải thích khái niệm, code, hệ thống, lỗi và tài liệu, có dẫn chứng cụ thể. Thêm --eli5 để được giải thích bằng ví dụ đời thường, hoặc --html để có trang giải thích trực quan.",
+    "whenToUse": "",
     "flags": [],
     "examples": []
   },
@@ -1733,6 +1823,10 @@ window.CK_DETAILS = {
       {
         "flag": "--advice",
         "desc": "Chạy dưới sự cố vấn của kongming (xem mục Advisory supervision)"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Sau khi chẩn đoán, chọn cách sửa tốt nhất trong 5 phương án; không dùng chung với quick và parallel"
       }
     ],
     "examples": []
@@ -1750,7 +1844,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-free-tool-strategy": {
-    "overview": "Dùng khi bạn muốn lên ý tưởng, đánh giá hoặc xây một công cụ miễn phí phục vụ marketing — thu lead, tăng giá trị SEO, hoặc nhận diện thương hiệu. Cũng dùng khi bạn nhắc tới \"engineering as marketing\", \"công cụ miễn phí\", \"công cụ marketing\", \"calculator\", \"generator\", \"công cụ tương tác\", \"công cụ thu lead\", \"làm công cụ để lấy lead\" hay \"tài nguyên miễn phí\". Skill này bắc cầu giữa kỹ thuật và marketing — hợp cho founder và marketer có nền kỹ thuật.",
+    "overview": "Lên kế hoạch và đánh giá công cụ miễn phí để hút khách, thu lead, làm SEO hoặc tăng nhận diện thương hiệu. Dùng cho các calculator, generator kiểu “engineering as marketing”; không dùng cho tiện ích nội bộ không có mục tiêu marketing.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1761,19 +1855,14 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-funnel": {
-    "overview": "💡💡 Thiết kế và tối ưu phễu chuyển đổi",
-    "whenToUse": "",
-    "flags": [],
-    "examples": [
-      "/funnel design lead-magnet",
-      "/funnel design webinar",
-      "/funnel analyze",
-      "/funnel optimize"
-    ]
-  },
   "mkt-skill-gamification-marketing": {
     "overview": "Thiết kế chiến dịch marketing kiểu game hoá với điểm thưởng, huy hiệu, bảng xếp hạng, chuỗi ngày liên tiếp, thử thách. Dùng cho chương trình khách hàng thân thiết, chiến dịch giới thiệu bạn bè, quy trình onboarding, tăng tương tác, game hoá email. Cung cấp cách chọn cơ chế, căn chỉnh tâm lý người dùng, tài liệu chiến lược, mẫu có sẵn và bộ chỉ số KPI.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-git": {
+    "overview": "Thao tác Git theo chuẩn conventional commit. Dùng để stage, commit, push, tạo PR, merge, PR xếp chồng. Tự tách commit theo loại/phạm vi và quét lộ thông tin bí mật.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1785,23 +1874,32 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-handoff": {
-    "overview": "Tạo một bản bàn giao hội thoại ngắn gọn, đã lược bỏ thông tin nhạy cảm, để một phiên agent mới đọc là hiểu ngay. Dùng khi chuyển ngữ cảnh, kết thúc một phiên làm việc, hoặc muốn giữ lại các quyết định và vướng mắc.",
+    "overview": "Tạo bản bàn giao Markdown mang đi được, đã lược thông tin nhạy cảm, để một agent code mới đọc là tiếp tục việc đang dở một cách an toàn. Dùng khi đổi phiên, đổi model hoặc đổi công cụ, hoặc khi cần giữ lại quyết định, trạng thái kiểm thử và vướng mắc.",
     "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
-  "mkt-skill-hub": {
-    "overview": "Mở Content Hub + Dashboard marketing",
-    "whenToUse": "",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--include-diff",
+        "desc": "Kèm tóm tắt diff có giới hạn (git diff --stat + 200 dòng đầu, đã lược bí mật, ghi rõ chỗ bị cắt)"
+      },
+      {
+        "flag": "--include-status",
+        "desc": "Kèm ảnh chụp git status --short, đã lược bí mật"
+      },
+      {
+        "flag": "--force",
+        "desc": "Cho phép ghi đè file bàn giao đã có ở đường dẫn đích; không có cờ thì từ chối"
+      }
+    ],
     "examples": [
-      "/write:hub # Start all services",
-      "/write:hub --scan # Rescan assets folder",
-      "/write:hub --stop # Stop all servers"
+      "/ak:handoff",
+      "/ak:handoff \"làm tiếp phần sửa lỗi OAuth callback\"",
+      "/ak:handoff --output plans/handoffs/oauth-callback.md",
+      "/ak:handoff --include-diff --include-status",
+      "/ak:handoff --force --output plans/handoffs/oauth-callback.md"
     ]
   },
   "mkt-skill-init": {
-    "overview": "💡💡💡💡 Khởi tạo dự án marketing",
+    "overview": "Khởi tạo dự án marketing — tìm hiểu hoặc thiết lập bối cảnh dự án, giới hạn thương hiệu, định hướng marketing và phần cài đặt. Dùng khi bắt đầu dự án marketing mới hoặc tiếp nhận một dự án có sẵn.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1818,12 +1916,6 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-kit-builder": {
-    "overview": "Xây các thành phần của AgentKit Marketing — skill, agent, lệnh, quy trình. Dùng khi tạo tự động hoá mới, mở rộng năng lực marketing, hoặc muốn hiểu cấu trúc của kit. Có sẵn template, ví dụ và script khởi tạo.",
-    "whenToUse": "Tạo skill mới cho một việc chuyên biệt. Thêm agent mới để tự động hoá marketing. Làm lệnh mới cho quy trình của người dùng. Thiết kế quy trình để điều phối công việc. Hiểu cấu trúc các thành phần trong kit.",
-    "flags": [],
-    "examples": []
-  },
   "mkt-skill-launch-strategy": {
     "overview": "Dùng khi bạn muốn lên kế hoạch ra mắt sản phẩm, công bố tính năng mới hoặc chiến lược phát hành. Cũng dùng khi bạn nhắc tới 'launch', 'Product Hunt', 'ra mắt tính năng', 'thông báo', 'go-to-market', 'ra mắt bản beta', 'early access', 'danh sách chờ', hoặc 'cập nhật sản phẩm'. Skill này bao gồm ra mắt theo từng giai đoạn, chiến lược kênh và cách duy trì đà sau khi ra mắt.",
     "whenToUse": "",
@@ -1831,7 +1923,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-logo-design": {
-    "overview": "Thiết kế logo với 55 phong cách, 30 bảng màu, 25 ngành nghề. Tạo logo bằng model Gemini Nano Banana, tìm theo phong cách/màu/ngành. Hành động: thiết kế, tạo, sinh logo. Ngành: công nghệ, y tế, tài chính, ẩm thực, thời trang, thể hình. Phong cách: tối giản, cổ điển, sang trọng, hình học, trừu tượng, linh vật, huy hiệu. Tính năng: tự sinh prompt, brief thiết kế, tâm lý học màu sắc.",
+    "overview": "Thiết kế logo và khám phá phong cách, bảng màu, ý tưởng thương hiệu. Dùng khi cần logo mới hoặc chỉnh sửa theo yêu cầu, giữ đúng các ràng buộc thương hiệu đã cung cấp và kiểm tra định dạng ảnh xuất cuối.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1849,7 +1941,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-marketing-planning": {
-    "overview": "Lập chiến lược marketing, chiến dịch, lịch nội dung và các sáng kiến theo các khung đã được kiểm chứng (RACE, SOSTAC, STP). Tự gọi marketing-research để lấy dữ liệu làm căn cứ.",
+    "overview": "Lập chiến lược marketing, chiến dịch, phễu, lịch nội dung và các sáng kiến theo các khung như RACE, SOSTAC và STP. Tận dụng dữ liệu hiện có và nghiên cứu thêm những chỗ còn thiếu quan trọng.",
     "whenToUse": "Dùng skill này khi: Lên kế hoạch chiến dịch marketing và các đợt ra mắt. Xây chiến lược nội dung và lịch biên tập. Định vị thương hiệu và xây thông điệp. Thiết kế phễu thu hút khách hàng. Triển khai marketing đa kênh. Cân nhắc được–mất giữa các hướng làm marketing.",
     "flags": [],
     "examples": []
@@ -1861,7 +1953,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-marketing-research": {
-    "overview": "Nghiên cứu xu hướng thị trường, đối thủ, chân dung khách hàng và cách làm marketing hiệu quả. Dùng trước bước lập kế hoạch marketing để chiến lược có dữ liệu chống lưng.",
+    "overview": "Nghiên cứu xu hướng thị trường, đối thủ, insight khách hàng, chân dung khách hàng (persona) và cách làm marketing hiệu quả.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1870,6 +1962,23 @@ window.CK_DETAILS = {
     "overview": "Tạo sơ đồ và hình minh hoạ bằng cú pháp Mermaid.js v11. Dùng khi cần vẽ lưu đồ, sơ đồ tuần tự, sơ đồ lớp, sơ đồ trạng thái, sơ đồ ER, biểu đồ Gantt, hành trình người dùng, dòng thời gian, sơ đồ kiến trúc, hoặc bất kỳ loại nào trong hơn 24 loại sơ đồ. Hỗ trợ tích hợp API JavaScript, xuất ra SVG/PNG/PDF qua CLI, đổi giao diện, cấu hình và các tính năng hỗ trợ tiếp cận. Rất hữu ích cho tài liệu, sơ đồ kỹ thuật, lập kế hoạch dự án, kiến trúc hệ thống và trình bày trực quan.",
     "whenToUse": "",
     "flags": [],
+    "examples": []
+  },
+  "mkt-skill-motion-design": {
+    "overview": "Nguyên tắc thiết kế chuyển động có cảm xúc và chuẩn kỹ thuật: ánh xạ cảm xúc sang chuyển động, 12 nguyên lý Disney áp dụng cho UI, bảng timing và easing (Material 3, Apple HIG), công thức xếp nhịp (stagger) và biên đạo nhiều phần tử. Dùng khi làm animation, hiệu ứng chuyển cảnh, micro-interaction, trạng thái đang tải, chuyển động cho hero/CTA/quảng cáo, chuyển trang hay hiệu ứng khi cuộn. Không phụ thuộc công cụ: dùng được với CSS, Framer Motion, GSAP, Lottie, Spring hay Remotion. Kết hợp với frontend-design, banner-design, video, design-system khi triển khai.",
+    "whenToUse": "",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-motion-graphics": {
+    "overview": "Điều phối việc làm chuyển động, animation hay video sang quy trình đã cài phù hợp và kiểm tra thành phẩm đã render. Chỉ đề xuất gói mẫu bên ngoài khi các công cụ sẵn có không đáp ứng được yêu cầu.",
+    "whenToUse": "",
+    "flags": [
+      {
+        "flag": "--list",
+        "desc": "In ra 15 gói mẫu, đối tượng phù hợp, cụm từ kích hoạt và lệnh cài đặt"
+      }
+    ],
     "examples": []
   },
   "mkt-skill-onboarding-cro": {
@@ -1884,25 +1993,14 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-persona": {
-    "overview": "💡💡 Quản lý chân dung khách hàng",
-    "whenToUse": "",
-    "flags": [],
-    "examples": [
-      "/persona create",
-      "/persona analyze",
-      "/persona update \"Nhà sáng lập startup công nghệ\"",
-      "/persona list"
-    ]
-  },
   "mkt-skill-plan": {
-    "overview": "💡💡💡 Tạo kế hoạch thông minh, có tăng cường prompt",
+    "overview": "Lập, kiểm tra hoặc rà soát kế hoạch triển khai có tiêu chí nghiệm thu và các phase làm được ngay. Dùng để lập kế hoạch và lộ trình; phần bắt tay làm thuộc về cook.",
     "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-play": {
-    "overview": "Nhạc trưởng cho playbook marketing: định tuyến theo đồ thị phụ thuộc, có cổng chất lượng, theo dõi mục tiêu và gợi ý thông minh. Chiến lược của chuyên gia × tốc độ thực thi của AI. Kích hoạt bằng: /ak:play, playbook, campaign playbook, what's next, play status.",
+    "overview": "Nhạc trưởng cho playbook marketing: định tuyến theo đồ thị phụ thuộc, có cổng chất lượng, theo dõi mục tiêu và gợi ý dựa trên trạng thái đã ghi lại. Kích hoạt bằng: /ak:play, playbook, campaign playbook, what's next, play status.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -1955,7 +2053,12 @@ window.CK_DETAILS = {
   "mkt-skill-scout": {
     "overview": "Dò mã nguồn nhanh bằng nhiều agent chạy song song. Dùng để tìm file, gom context cho công việc, tìm nhanh xuyên nhiều thư mục. Hỗ trợ agent nội bộ (Explore) và bên ngoài (Gemini/OpenCode).",
     "whenToUse": "Bắt đầu làm tính năng trải rộng nhiều thư mục. Người dùng nói cần \"tìm\", \"định vị\" hoặc \"tra\" file. Bắt đầu phiên gỡ lỗi cần hiểu quan hệ giữa các file. Người dùng hỏi về cấu trúc dự án hoặc một chức năng nằm ở đâu. Trước khi sửa những chỗ có thể ảnh hưởng nhiều phần của mã nguồn.",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--ultra",
+        "desc": "Chạy scout theo kiểu chọn 1 trong 5 bản, có bên kiểm định chọn"
+      }
+    ],
     "examples": []
   },
   "mkt-skill-seo": {
@@ -1964,9 +2067,9 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-skill": {
-    "overview": "Trình quản lý vòng đời skill marketing — tạo mới, thêm tài liệu tham chiếu, tối ưu, sửa, cập nhật và lên kế hoạch cho skill mới trong bộ marketing. Dùng khi xây dựng hoặc cải thiện các skill tự động hóa marketing.",
-    "whenToUse": "Tạo một skill marketing mới từ đầu (từ URL, GitHub hoặc mô tả). Thêm file tham chiếu hoặc script cho skill có sẵn. Tối ưu skill cho tiết kiệm token. Sửa skill dựa trên log lỗi.",
+  "mkt-skill-skill-creator": {
+    "overview": "Tạo, cập nhật, kiểm tra, xác thực và đóng gói skill cho agent. Dùng khi viết tài nguyên SKILL.md hoặc chẩn đoán vì sao skill được gọi sai và chạy không đúng. Không dùng để xây CLI hay server MCP.",
+    "whenToUse": "",
     "flags": [],
     "examples": []
   },
@@ -1977,14 +2080,31 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-social": {
-    "overview": "Tạo nội dung mạng xã hội, lên lịch đăng, tích hợp API cho X/Twitter, Facebook, Threads, LinkedIn, YouTube, TikTok, Instagram. Quy trình riêng cho từng nền tảng, mẫu tương tác, viết hook.",
+    "overview": "Tạo nội dung mạng xã hội, lên lịch và đăng qua nhiều dịch vụ (Postiz, Buffer, Post Bridge, Typefully, Zernio, Publer) lên X, LinkedIn, Instagram, TikTok, YouTube, Facebook, Threads, Bluesky, Mastodon và nhiều nền tảng khác. Có quy trình riêng cho từng nền tảng, mẫu tương tác, cách viết hook.",
     "whenToUse": "Viết bài đăng mạng xã hội (mọi nền tảng). Lên lịch nội dung và quản lý lịch đăng. Tối ưu nội dung theo từng nền tảng. Làm thread/carousel/reel. Chiến lược tương tác và viết hook.",
+    "flags": [
+      {
+        "flag": "--dry-run",
+        "desc": "Chạy thử, không đăng thật — an toàn cho CI và xem trước"
+      }
+    ],
+    "examples": []
+  },
+  "mkt-skill-sowat": {
+    "overview": "Phân tích việc vừa làm và các issue liên quan theo góc nhìn product owner. Dùng để tìm bước tiếp theo có tác động lớn nhất, phản biện các ưu tiên yếu, và giải thích điều gì quan trọng lúc này.",
+    "whenToUse": "",
     "flags": [],
     "examples": []
   },
   "mkt-skill-storage": {
     "overview": "Tích hợp lưu trữ đối tượng chuẩn S3 cho tài sản marketing. Chạy được với Cloudflare R2, AWS S3, MinIO, Backblaze B2, DigitalOcean Spaces.",
     "whenToUse": "Tải tài sản đã tạo (ảnh, video, slide) lên cloud. Đồng bộ thư mục tài sản dưới máy lên bucket từ xa. Lấy link công khai để chia sẻ/nhúng. Xem danh sách tài sản trên cloud",
+    "flags": [],
+    "examples": []
+  },
+  "mkt-skill-sumup": {
+    "overview": "Tóm tắt phần đã làm xong: lỗi gặp phải, cách xoay xở, quyết định, hành vi, kiến trúc, cách dùng, việc cần theo dõi và bước tiếp theo. Dùng sau khi làm xong hoặc khi cần bản tổng kết kỹ thuật.",
+    "whenToUse": "",
     "flags": [],
     "examples": []
   },
@@ -1995,9 +2115,22 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-test": {
-    "overview": "Test các quy trình AgentKit, chạy test giao diện trên website, kiểm chứng các lệnh/agent/skill marketing theo từng bước.",
+    "overview": "Chạy test unit, tích hợp, e2e và giao diện. Dùng để chạy test, phân tích độ phủ, kiểm tra build, so sánh giao diện (visual regression) và làm báo cáo QA.",
     "whenToUse": "Test giao diện website (hình ảnh, khả năng tiếp cận, responsive). Kiểm chứng quy trình (test lệnh/agent/skill). Quét component và sinh kịch bản test. Kiểm tra thủ công theo từng bước.",
-    "flags": [],
+    "flags": [
+      {
+        "flag": "--advice",
+        "desc": "Chạy dưới sự cố vấn của kongming"
+      },
+      {
+        "flag": "--ultra",
+        "desc": "Bước phân tích/thiết kế test chạy kiểu chọn 1 trong 5 bản"
+      },
+      {
+        "flag": "--interview",
+        "desc": "Trước khi thay đổi, liệt kê mọi đề xuất (test thêm/xoá/viết lại, sửa CI) kèm lý do và hỏi bạn từng nhóm; chỉ áp dụng phần được đồng ý"
+      }
+    ],
     "examples": []
   },
   "mkt-skill-ui-ux-pro-max": {
@@ -2006,14 +2139,8 @@ window.CK_DETAILS = {
     "flags": [],
     "examples": []
   },
-  "mkt-skill-use-mcp": {
-    "overview": "Dùng các tool của MCP server (Model Context Protocol)",
-    "whenToUse": "",
-    "flags": [],
-    "examples": []
-  },
   "mkt-skill-video": {
-    "overview": "Chiến lược marketing bằng video, viết kịch bản, storyboard, quy trình sản xuất, thông số video cho YouTube/TikTok/Instagram/LinkedIn, làm ảnh thu nhỏ, tạo video bằng Veo 3.1, tối ưu và tái sử dụng nội dung.",
+    "overview": "Làm video marketing: kịch bản, storyboard, render video và chuyển thể cho từng nền tảng. Chọn đúng công đoạn sản xuất bạn yêu cầu; việc tạo video dùng nhà cung cấp sẵn có, còn thumbnail là hạng mục riêng khi được yêu cầu.",
     "whenToUse": "Viết kịch bản video kèm định hướng sáng tạo. Dựng storyboard cho nội dung video. Tạo video bằng AI với Veo 3.1. Tối ưu video cho từng nền tảng. Thiết kế ảnh thu nhỏ. Tối ưu SEO cho video.",
     "flags": [],
     "examples": []
@@ -2066,7 +2193,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-write": {
-    "overview": "Viết copy sáng tạo, bài blog, nội dung tối ưu chuyển đổi và nhiều thứ khác",
+    "overview": "Cửa ngõ viết nội dung marketing: bài blog, soạn copy, sửa CTA/CRO, trau chuốt và hoàn thiện nội dung sẵn sàng đăng. Tự quy yêu cầu tự nhiên về một quy trình viết phù hợp; chiến lược và phân tích số liệu thuộc về các skill tương ứng.",
     "whenToUse": "",
     "flags": [],
     "examples": []
@@ -2078,7 +2205,7 @@ window.CK_DETAILS = {
     "examples": []
   },
   "mkt-skill-youtube-thumbnail-design": {
-    "overview": "Thiết kế thumbnail YouTube với 17 phong cách, hướng dẫn riêng cho từng ngách và tối ưu tỷ lệ click (CTR). Tạo thumbnail hoàn chỉnh kèm chữ bằng Gemini Nano Banana Pro (dựng chữ ở độ phân giải 4K). Thao tác: thiết kế, tạo, sinh thumbnail. Ngách: công nghệ, game, giáo dục, nấu ăn, thể hình, kinh doanh. Phong cách: facecam, trước-sau, listicle, sơ đồ, bảng trắng, chữ to, bí ẩn, tối kịch tính. Tính năng: AI sinh ảnh có sẵn chữ, nhận diện thương hiệu, ảnh mặt tham chiếu, mũi tên, hỗ trợ Google Font.",
+    "overview": "Thiết kế thumbnail YouTube và thử các biến thể dựa trên brief video, ảnh thương hiệu/khuôn mặt đã duyệt và chữ dễ đọc. Kiểm tra kích thước, định dạng và dung lượng file xuất; tăng CTR là mục tiêu để thử nghiệm.",
     "whenToUse": "",
     "flags": [],
     "examples": []

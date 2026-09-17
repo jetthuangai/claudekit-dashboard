@@ -176,32 +176,37 @@ const KHAC = { id: 'khac', label: 'Khác', icon: '✨' };
 const ENG_SKILL_CATEGORY = {
   bootstrap: 'planning', plan: 'planning', predict: 'planning', scenario: 'planning',
   brainstorm: 'planning', 'problem-solving': 'planning', 'goal-warmup': 'planning',
+  'issue-to-plan': 'planning', sowat: 'planning',
   cook: 'implementation', 'backend-development': 'implementation', 'frontend-development': 'implementation',
   'mobile-development': 'implementation', 'web-frameworks': 'implementation', tanstack: 'implementation',
   'react-best-practices': 'implementation', 'better-auth': 'implementation', copywriting: 'implementation',
-  agentize: 'implementation',
+  agentize: 'implementation', 'page-builder': 'implementation',
   'code-review': 'review-testing', test: 'review-testing', 'web-testing': 'review-testing',
   'review-pr': 'review-testing', loop: 'review-testing',
   debug: 'debug', fix: 'debug', autoresearch: 'debug', 'sequential-thinking': 'debug',
-  deploy: 'devops', devops: 'devops', ship: 'devops', git: 'devops', worktree: 'devops', ghpm: 'devops',
+  'fable-thinking': 'debug',
+  deploy: 'devops', devops: 'devops', ship: 'devops', git: 'devops', worktree: 'devops', ghpm: 'devops', github: 'devops',
   docs: 'docs', 'docs-seeker': 'docs', journal: 'docs', llms: 'docs', 'markdown-novel-viewer': 'docs',
   mintlify: 'docs', graphify: 'docs', retro: 'docs', watzup: 'docs',
   'folder-context': 'docs', handoff: 'docs', 'interview-docs': 'docs',
+  handover: 'docs', sumup: 'docs', 'document-skills': 'docs',
   security: 'security', 'security-scan': 'security', 'cti-expert': 'security', gkg: 'security',
   'ai-artist': 'media', 'media-processing': 'media', design: 'media', 'html-video': 'media',
   remotion: 'media', preview: 'media', shader: 'media', excalidraw: 'media', 'mermaidjs-v11': 'media',
-  stitch: 'media', threejs: 'media',
+  stitch: 'media', threejs: 'media', diagram: 'media', hyperframes: 'media',
   'ui-ux-pro-max': 'ui-design', 'ui-styling': 'ui-design', 'frontend-design': 'ui-design',
   'web-design-guidelines': 'ui-design', 'show-off': 'ui-design',
   research: 'research', ask: 'research', scout: 'research', repomix: 'research', xia: 'research',
   advise: 'research', agentkit: 'utilities', 'research-prompt': 'research', 'deep-swe': 'research',
+  explain: 'research',
   'mcp-builder': 'integrations', 'use-mcp': 'integrations', 'google-adk-python': 'integrations',
   'chrome-profile': 'integrations', 'agent-browser': 'integrations', 'ai-multimodal': 'integrations',
-  'payment-integration': 'integrations', shopify: 'integrations', 'context-engineering': 'integrations',
+  'payment-integration': 'integrations', shopify: 'integrations', webmcp: 'integrations', 'context-engineering': 'integrations',
   databases: 'database',
   'coding-level': 'utilities', 'find-skills': 'utilities', 'skill-creator': 'utilities', team: 'utilities',
   'project-management': 'utilities', 'project-organization': 'utilities', 'plans-kanban': 'utilities',
   'tech-graph': 'utilities', vibe: 'utilities', 'codex-goal': 'utilities',
+  ak: 'utilities', bro: 'utilities', help: 'utilities', orchestrate: 'utilities',
 };
 
 const ENG_AGENT_CATEGORY = {
@@ -210,6 +215,7 @@ const ENG_AGENT_CATEGORY = {
   'git-manager': 'devops', 'code-simplifier': 'review-testing', brainstormer: 'planning',
   'journal-writer': 'docs', 'docs-manager': 'docs', 'project-manager': 'utilities',
   'ui-ux-designer': 'ui-design', advisor: 'research',
+  explore: 'research', kongming: 'research',
 };
 
 // Generic dev-workflow tools bundled into the marketing kit get their own "tools" bucket
@@ -224,6 +230,7 @@ const MKT_TOOLS = new Set([
   'use-mcp', 'watzup', 'web-frameworks', 'worktree', 'agent-browser', 'agentkit',
   'ai-multimodal', 'chrome-profile', 'scout', 'advise', 'brainstorm', 'agentize',
   'codex-goal', 'folder-context', 'handoff', 'interview-docs', 'research-prompt',
+  'ak', 'bro', 'explain', 'sumup', 'sowat', 'mermaidjs-v11', 'assets-organizing', 'kongming',
 ]);
 const MKT_TOOLS_RE = /^(docs|plan|skill|storage|test)([:\-]|$)/;
 
@@ -238,9 +245,13 @@ const MKT_RULES = [
   ['content', /content|copywrit|blog|creativ|community|brand|storytell|newsletter|\bwrite\b|writer|wizard|hub|media/],
 ];
 
+const MKT_CATEGORY_OVERRIDE = { 'affiliate-marketing': 'acquisition' };
+
 function mktCategory(rawName, desc) {
   const raw = rawName.toLowerCase();
   if (MKT_TOOLS.has(raw) || MKT_TOOLS_RE.test(raw)) return 'tools';
+  // Descriptions that open with "Design …" would otherwise fall into the design bucket.
+  if (MKT_CATEGORY_OVERRIDE[raw]) return MKT_CATEGORY_OVERRIDE[raw];
   const hay = `${raw} ${desc}`.toLowerCase();
   for (const [cat, re] of MKT_RULES) if (re.test(hay)) return cat;
   return 'khac';

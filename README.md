@@ -1,6 +1,6 @@
 # AgentKit Dashboard
 
-Dashboard tiếng Việt tra cứu skill và agent của hai bộ công cụ [AgentKit](https://agentkit.best) (tên cũ: ClaudeKit): **Engineer** (98 skills, 16 agents) và **Marketing** (78 skills, 32 agents).
+Dashboard tiếng Việt tra cứu skill và agent của hai bộ công cụ [AgentKit](https://agentkit.best) (tên cũ: ClaudeKit): **Engineer** (106 skills, 16 agents) và **Marketing** (79 skills, 32 agents) — dữ liệu theo `ak` 2.16.0 (bản ổn định, 17/09/2026).
 
 Có nút đổi giao diện (đen–hồng ⇄ xanh AgentKit) ở góc header, và link "Xem bản ClaudeKit cũ" ở footer để mở lại bản dashboard cũ (`legacy/`).
 
@@ -66,7 +66,7 @@ Yêu cầu:
 - AgentKit CLI `ak` đã đăng nhập (`ak login`), có quyền hai kit engineer + marketing
 - Nguồn kit mặc định ở `../ak-kit-build` (đổi bằng biến môi trường `AK_KIT_SRC`)
 
-Ba cờ cần lưu ý với `ak` 2.8.0-beta.1:
+Ba cờ cần lưu ý (phát hiện từ `ak` 2.8.0-beta.1, vẫn dùng được với 2.16.0):
 - `--remote` **vẫn phải ghi rõ**, dù CLI báo "đây là mặc định, sắp bỏ". Thiếu nó thì `ak` báo nhầm là chưa mua kit.
 - `--out` phải là đường dẫn tuyệt đối. Đường dẫn tương đối (`../ak-kit-build`) làm `ak` nhân đôi thư mục (`ak-kit-build/ak-kit-build/…`) rồi build lỗi.
 - `--force` để ghi đè bản build cũ, nếu không `ak` dừng vì thư mục đã tồn tại.

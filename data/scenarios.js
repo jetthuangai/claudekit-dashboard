@@ -62,7 +62,7 @@ window.CK_SCENARIOS = [
     kit: 'marketing',
     icon: '📬',
     question: 'Tôi muốn làm chiến dịch email',
-    steps: [{ ref: 'mkt-skill-persona' }, { ref: 'mkt-skill-email' }, { ref: 'mkt-skill-campaign' }],
-    tip: 'Hiểu khách (persona) trước khi viết email và chạy chiến dịch — tỉ lệ mở sẽ khác hẳn.'
+    steps: [{ ref: 'mkt-skill-marketing-research' }, { ref: 'mkt-skill-email' }, { ref: 'mkt-skill-campaign' }],
+    tip: 'Nghiên cứu khách hàng trước khi viết email và chạy chiến dịch — tỉ lệ mở sẽ khác hẳn.'
   }
 ];

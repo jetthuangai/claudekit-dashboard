@@ -173,6 +173,8 @@ export function parseFlags(text) {
       // A cell listing only reference files is a "which docs does this flag load" table, not a
       // description of what the flag DOES. preview's 3-column nav table matched here otherwise.
       if (!desc || found.has(flag) || FILE_LIST.test(desc)) continue;
+      // Kits keep notes on withdrawn flags ("`--x` — cut from v1 scope"); the flag does not exist.
+      if (/^(cut|removed|dropped) from\b/i.test(desc)) continue;
       found.set(flag, truncate(desc, MAX_FLAG_DESC));
     }
   }
@@ -223,12 +225,14 @@ export function parseExamples(text, description) {
     out.push(v);
   };
 
-  if (description) {
-    const blocks = description.match(/<example>[\s\S]*?<\/example>/g) || [];
+  // Older kits folded the <example> blocks into the agent `description`; since ak 2.16 they sit
+  // in the agent body instead. Read both so either layout keeps its examples.
+  const body = stripFrontmatter(text);
+  for (const source of [description || '', body]) {
+    const blocks = source.match(/<example>[\s\S]*?<\/example>/g) || [];
     for (const b of blocks) push(userTurn(b));
   }
 
-  const body = stripFrontmatter(text);
   const fences = body.match(/```[\s\S]*?```/g) || [];
   for (const fence of fences) {
     for (const raw of fence.split(/\r?\n/)) {
